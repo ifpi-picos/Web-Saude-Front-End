@@ -1,0 +1,23 @@
+:root {
+  --primary-color: #00285f;
+  --secundary-color: #f9f9f1;
+  --card-radius: 15px;
+  --button-radius: 7px;
+  --shadow: box-shadow: 20px 20px 50px -30px #4169e1;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family:
+    "Ubuntu",
+    sem serifa;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: #eeeeee;
+}

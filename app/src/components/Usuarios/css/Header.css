@@ -1,0 +1,159 @@
+/* cabeçalho */
+.container-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 6rem;
+  background-color: var(--primary-color);
+  z-index: 1000;
+}
+
+/* button de login */
+
+.button-entrar {
+  width: 5rem;
+  height: 1.3rem;
+  background-color: var(--secundary-color);
+  border-radius: var(--button-radius);
+}
+.button-entrar a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--primary-color);
+}
+.button-entrar:hover {
+  mix-blend-mode: hard-light;
+  opacity: 100%;
+  cursor: pointer;
+}
+.container-menu a {
+  text-decoration: none;
+}
+
+.container-menu .logo {
+  margin-right: 400px;
+  width: 5rem;
+}
+.container-menu .logo a .customisar-imagem {
+  width: 5rem;
+  height: 5rem;
+}
+.container-menu nav ul {
+  display: flex;
+  margin: 1.5rem;
+}
+
+.container-menu nav ul li {
+  list-style: none;
+}
+.container-menu nav ul li a {
+  text-decoration: none;
+  color: var(--secundary-color);
+  margin: 1.5rem;
+}
+
+.container-menu nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.burgerVisible {
+  visibility: hidden;
+}
+
+/* hamburger */
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .button-entrar a {
+    font-size: 13px;
+  }
+  .burgerVisible {
+    visibility: visible;
+  }
+  .menuVisible {
+    visibility: hidden;
+  }
+  .container-menu .logo {
+    margin-left: 100px;
+  }
+  .container-menu .logo a .customisar-imagem {
+    margin-left: 200px;
+    margin-right: 0px;
+    width: 60px;
+    height: 60px;
+  }
+  /* Individual item */
+  .bm-item {
+    display: inline-block;
+
+    /* Our sidebar item styling */
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+    transition: color 0.2s;
+  }
+
+  /* Change color on hover */
+  .bm-item:hover {
+    color: white;
+  }
+
+  /* The rest copied directly from react-burger-menu docs */
+
+  /* Position and sizing of burger button */
+  .bm-burger-button {
+    position: absolute;
+    width: 33px;
+    height: 27px;
+    right: 32px;
+    top: 26px;
+  }
+
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background-color: var(--secundary-color);
+    margin-top: 10px;
+  }
+
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background-color: #bdc3c7;
+  }
+
+  /* General sidebar styles */
+  .bm-menu {
+    position: absolute;
+    width: 100vw;
+    background-color: var(--primary-color);
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+    height: 100vh;
+    margin-top: -50px;
+  }
+
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+  }
+
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}

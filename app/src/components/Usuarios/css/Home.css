@@ -1,0 +1,303 @@
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* alogan */
+.section-slogan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 47rem;
+  height: 22rem;
+  background-color: var(--primary-color);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+  margin-top: 120px;
+}
+.section-slogan .div-content h1 {
+  font-size: 3rem;
+}
+.section-slogan .div-content {
+  margin-left: 5rem;
+}
+.section-slogan .div-content h1,
+.div-content p {
+  color: var(--secundary-color);
+}
+.section-slogan .div-content img {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.section-slogan .div-content p {
+  font-size: 2em;
+}
+
+.img-slogan img {
+  width: 263.04px;
+  height: 203.61px;
+  margin-right: 30px;
+}
+.section-catalogo {
+  display: flex;
+  flex-direction: column;
+}
+/* button de pesquisa */
+.div-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div-search .input-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47rem;
+  height: 7rem;
+  background-color: var(--secundary-color);
+  border-radius: 1.5rem;
+  opacity: 100%;
+  box-shadow: var(--shadow);
+  margin-top: 2.5rem;
+}
+.div-search .input-search input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35rem;
+  height: 3rem;
+  background-color: #eeeeee;
+  border-radius: 2.5rem;
+  outline: none;
+  border: none;
+}
+.div-search .input-search input:focus {
+  color: red;
+}
+.div-search .input-search input::placeholder {
+  color: gray;
+}
+
+.div-search .input-search .button-search button {
+  width: 9rem;
+  height: 3rem;
+  border-radius: var(--button-radius);
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--secundary-color);
+  font-size: 1.5rem;
+  border: none;
+}
+
+.div-search .input-search .button-search button:hover {
+  mix-blend-mode: hard-light;
+  opacity: 100%;
+  cursor: pointer;
+}
+
+/* filtros */
+
+.div-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-buttons .div-button {
+  width: 10rem;
+  height: 2.8rem;
+  margin-top: 2.5rem;
+  margin-right: 1rem;
+  border-radius: var(--button-radius);
+  background-color: var(--primary-color);
+}
+
+.div-buttons .div-button a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--secundary-color);
+  text-decoration: none;
+}
+
+.div-buttons .div-button select {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--button-radius);
+  background-color: var(--primary-color);
+  color: var(--secundary-color);
+  font-size: 1rem;
+}
+.div-buttons .div-button select option {
+  text-align: center;
+}
+
+/*buttons do catálogo*/
+
+.div-buttons-catalogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.div-buttons-catalogo .button-prox-ant button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 147px;
+  height: 42px;
+  background-color: var(--primary-color);
+  border-radius: var(--button-radius);
+  margin-left: 10px;
+  margin-right: 10px;
+  color: var(--secundary-color);
+  border: none;
+}
+
+.div-buttons-catalogo .button-catalogo button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secundary-color);
+  width: 56px;
+  height: 42px;
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+}
+
+.div-buttons-catalogo .button-prox-ant button:hover {
+  cursor: pointer;
+  mix-blend-mode: hard-light;
+  opacity: 100%;
+}
+.div-buttons-catalogo .button-prox-ant a {
+  text-decoration: none;
+}
+.div-buttons-catalogo .button-catalogo button:hover {
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.button-catalogo a {
+  text-decoration: none;
+}
+.button-catalogo button.active {
+  /* Estilos para o botão selecionado */
+  background-color: var(--primary-color);
+  color: #fff;
+}
+/*------------------RESPONSIVIDADE------------------*/
+@media (max-width: 768px) {
+  /* section slogan */
+
+  .section-slogan {
+    flex-direction: column;
+    width: 300px;
+    height: 350px;
+    position: relative;
+  }
+  .section-slogan .div-content {
+    margin-left: 0px;
+    margin-bottom: 0px;
+  }
+  .section-slogan .div-content h1 {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+  }
+  .section-slogan .div-content p {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .section-slogan .img-slogan img {
+    width: 180px;
+    height: 180px;
+    margin-right: 0px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  /* button search */
+  .div-search .input-search {
+    width: 310px;
+    height: 70px;
+    border-radius: 50px;
+  }
+  .div-search .input-search input {
+    width: 180px;
+    height: 30px;
+    background-color: #eeeeee;
+    border-radius: 8px;
+  }
+
+  .div-search .input-search .button-search {
+    width: 70px;
+    height: 30px;
+  }
+
+  .div-search .input-search .button-search button {
+    width: 80px;
+    height: 30px;
+    font-size: 15px;
+  }
+  .div-search .input-search input::placeholder {
+    font-size: 10px;
+  }
+
+  /* filtros  */
+
+  .div-buttons .div-button {
+    width: 105px;
+    height: 27px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .div-buttons .div-button a {
+    font-size: 10px;
+  }
+
+  .div-buttons .div-button select {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--button-radius);
+    background-color: var(--primary-color);
+    color: var(--secundary-color);
+  }
+  /* buttons do catalógo*/
+  .div-buttons-catalogo {
+    padding-bottom: 20px;
+  }
+  .div-buttons-catalogo .button-prox-ant button {
+    width: 76px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .div-buttons-catalogo .button-catalogo button {
+    width: 30px;
+    height: 24px;
+    text-decoration: none;
+  }
+  /* Rodapé */
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 100px;
+    text-align: center;
+  }
+}

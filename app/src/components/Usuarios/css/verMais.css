@@ -1,0 +1,65 @@
+/* parte principal*/
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+/* atalhos */
+.top-atalhos {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 120px;
+}
+
+.top-atalhos ul {
+  display: flex;
+  margin-left: 20px;
+}
+.top-atalhos li {
+  list-style: none;
+}
+.top-atalhos li a {
+  text-decoration: none;
+  margin: 5px;
+  color: var(--primary-color);
+  font-size: 20px;
+}
+.top-atalhos li a:hover {
+  text-decoration: underline;
+}
+
+/* mapa */
+.div-mapa {
+  position: relative;
+  margin-top: 50px;
+  width: 50%;
+  height: 300px;
+  margin-bottom: 40px;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  z-index: 0;
+}
+@media (max-width: 768px) {
+  /* atalhos */
+
+  .top-atalhos {
+    justify-content: center;
+    margin-right: 20px;
+  }
+
+  .top-atalhos ul {
+    display: flex;
+    justify-content: center;
+    margin-left: 0px;
+  }
+  .top-atalhos li a {
+    font-size: 18px;
+  }
+  .div-mapa {
+    width: 90%;
+    position: relative;
+  }
+}

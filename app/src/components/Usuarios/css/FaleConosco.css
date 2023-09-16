@@ -1,0 +1,96 @@
+/* fale consoco */
+
+.section-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.div-logo .image-logo {
+  width: 100px;
+  height: 100px;
+}
+.div-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 700px;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  margin-top: 130px;
+  margin-bottom: 70px;
+}
+.div-inputs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.div-inputs input,
+.div-inputs textarea,
+.div-button button {
+  margin-top: 30px;
+}
+.div-inputs input {
+  border: none;
+  outline: none;
+  height: 25px;
+  margin-bottom: 5px;
+}
+
+.div-inputs label {
+  margin-bottom: -30px;
+  color: var(--secundary-color);
+}
+
+.div-inputs textarea {
+  width: 400px;
+  outline: none;
+}
+.div-inputs textarea::placeholder {
+  position: absolute;
+  left: 5px;
+  top: 3px;
+  font-size: 20px;
+}
+.div-button button {
+  width: 200px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+}
+button:hover {
+  background-color: var(--secundary-color);
+}
+.div-button {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .section-form {
+    width: 100%;
+  }
+  .div-form {
+    width: 320px;
+  }
+  .div-logo img {
+    width: 100px;
+  }
+
+  .div-inputs textarea {
+    width: 200px;
+    height: 200px;
+  }
+}

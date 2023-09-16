@@ -1,0 +1,15 @@
+.cadastros {
+  margin-right: 50px;
+}
+
+.cadastro {
+  display: block;
+  text-decoration: none;
+  font-size: 13px;
+  color: black;
+}
+
+.cadastro:hover {
+  background-color: blue;
+  color: white;
+}

@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.App .div-mapa {
+  width: 600px;
+  height: 300px;
+}
+
+@media (max-width: 768px) {
+  .App .div-mapa {
+    height: 350px;
+    width: 320px;
+  }
+}
