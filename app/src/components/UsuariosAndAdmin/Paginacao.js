@@ -23,7 +23,7 @@ export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
               if (currentPage > 1) {
                 const newPage = currentPage - 1;
                 setCurrentPage(newPage);
-                window.history.pushState({}, "", `/?page=${newPage}`);
+                window.history.pushState({}, "", `/${newPage}`);
               }
             }}
           >
@@ -38,7 +38,7 @@ export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
               className={currentPage === pageNumber ? "active" : ""}
               onClick={() => {
                 setCurrentPage(pageNumber);
-                window.history.pushState({}, "", `/?page=${pageNumber}`);
+                window.history.pushState({}, "", `/${pageNumber}`);
               }}
             >
               {pageNumber}
@@ -53,7 +53,7 @@ export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
               if (currentPage < totalPages) {
                 const newPage = currentPage + 1;
                 setCurrentPage(newPage);
-                window.history.pushState({}, "", `/?page=${newPage}`);
+                window.history.pushState({}, "", `/${newPage}`);
               }
             }}
           >

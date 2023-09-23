@@ -27,7 +27,7 @@ export default function CadastrarHospital() {
 
     try {
       await fetch(
-        "https://web-saude-back-end-eric-developer.vercel.app/admin/novo-hospital",
+        "https://api-web-saude.vercel.app/admin/novo-hospital",
         {
           method: "POST",
           headers: {

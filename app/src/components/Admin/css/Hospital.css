@@ -37,15 +37,14 @@
 }
 .box-hospital h2 {
   font-size: 30px;
-  color: white;
+  color: black;
 }
 .box-hospital .form-box p {
-  font-weight: bold;
-  color: white;
+  color: black;
 }
 .box-hospital .form-box p a {
-  color: black;
-  text-decoration: none;
+  color: crimson;
+  text-decoration: underline;
 }
 .box-hospital .form-box form {
   margin: 20px 0;
@@ -54,7 +53,7 @@
   margin-bottom: 15px;
 }
 .box-hospital .form-box form .input-group label {
-  color: white;
+  color: black;
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
@@ -69,7 +68,7 @@ form .input-group select {
   border: 2px solid transparent;
   padding: 15px;
   font-size: 15px;
-  color: white;
+  color: black;
   transition: all 0.4s ease;
 }
 .box-hospital .form-box form .input-group textarea {
@@ -81,7 +80,7 @@ form .input-group select {
   border: 2px solid transparent;
   padding: 15px;
   font-size: 15px;
-  color: white;
+  color: black;
   transition: all 0.4s ease;
 }
 .box-hospital .form-box form .input-group input:focus,

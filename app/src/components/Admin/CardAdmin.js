@@ -23,7 +23,7 @@ export default function CardAdmin({ pageNumber }) {
     if (searchResults.length > 0) {
       setInfo(searchResults);
     } else {
-      fetch("https://web-saude-back-end-eric-developer.vercel.app/clinicas")
+      fetch("https://api-web-saude.vercel.app/clinicas")
         .then(response => {
           if (!response.ok) {
             throw new Error("Falha ao buscar dados da API");

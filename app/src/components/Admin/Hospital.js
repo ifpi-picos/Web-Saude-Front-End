@@ -76,7 +76,7 @@ export default function HospitalForm({
     const fetchEspecialidades = async () => {
       try {
         const response = await fetch(
-          "https://web-saude-back-end-eric-developer.vercel.app/especialidades"
+          "https://api-web-saude.vercel.app/especialidades"
         );
         if (!response.ok) {
           throw new Error("Falha ao carregar as especialidades");

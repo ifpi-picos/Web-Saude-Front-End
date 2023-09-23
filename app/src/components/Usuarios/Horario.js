@@ -1,31 +1,9 @@
-"use client";
-import React, { useState, useEffect } from "react";
 import "../Usuarios/css/Horario.css";
+import Clinica from "@/services/Clinica";
 
-export default function Horario({ nome }) {
-  const [clinica, setClinica] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://web-saude-back-end-eric-developer.vercel.app/clinica/${nome}`
-        );
-        if (!response.ok) {
-          throw new Error("Falha ao buscar dados da API");
-        }
-        const data = await response.json();
-        setClinica(data);
-      } catch (error) {
-        console.error("Erro ao obter dados:", error);
-      }
-    };
-
-    if (nome) {
-      fetchData();
-    }
-  }, [nome]);
-
+export default async function Horario({ nome }) {
+  const clinica = await Clinica.pegarClinica(nome)
+ 
   return (
     <section id="horario" className="section-horario">
       <table className="table table-light table-striped table-bordered">
@@ -55,38 +33,38 @@ export default function Horario({ nome }) {
           <tr>
             <th scope="row">2</th>
             <td>Segunda</td>
-            <td>{clinica[0]?.horarioSemana?.open}</td>
-            <td>{clinica[0]?.horarioSemana?.close}</td>
+            <td>{clinica.horarioSemana?.open}</td>
+            <td>{clinica.horarioSemana?.close}</td>
           </tr>
           <tr>
             <th scope="row">3</th>
             <td>Terça</td>
-            <td>{clinica[0]?.horarioSemana?.open}</td>
-            <td>{clinica[0]?.horarioSemana?.close}</td>
+            <td>{clinica.horarioSemana?.open}</td>
+            <td>{clinica.horarioSemana?.close}</td>
           </tr>
           <tr>
             <th scope="row">4</th>
             <td>Quarta</td>
-            <td>{clinica[0]?.horarioSemana?.open}</td>
-            <td>{clinica[0]?.horarioSemana?.close}</td>
+            <td>{clinica.horarioSemana?.open}</td>
+            <td>{clinica.horarioSemana?.close}</td>
           </tr>
           <tr>
             <th scope="row">5</th>
             <td>Quinta</td>
-            <td>{clinica[0]?.horarioSemana?.open}</td>
-            <td>{clinica[0]?.horarioSemana?.close}</td>
+            <td>{clinica.horarioSemana?.open}</td>
+            <td>{clinica.horarioSemana?.close}</td>
           </tr>
           <tr>
             <th scope="row">6</th>
             <td>Sexta</td>
-            <td>{clinica[0]?.horarioSemana?.open}</td>
-            <td>{clinica[0]?.horarioSemana?.close}</td>
+            <td>{clinica.horarioSemana?.open}</td>
+            <td>{clinica.horarioSemana?.close}</td>
           </tr>
           <tr>
             <th scope="row">7</th>
             <td>Sabado</td>
-            <td>{clinica[0]?.Sabado?.open || "Fechado"} </td>
-            <td>{clinica[0]?.Sabado?.close || "Fechado"} </td>
+            <td>{clinica.Sabado?.open || "Fechado"} </td>
+            <td>{clinica.Sabado?.close || "Fechado"} </td>
           </tr>
         </tbody>
       </table>
