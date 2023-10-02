@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "@/components/Usuarios/Card";
 import Slogan from "@/components/Usuarios/Slogan";
-import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 import Filtros from "@/components/Usuarios/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
@@ -20,7 +19,6 @@ export default async function CorpoHome() {
       <Header />
       <main>
         <Slogan />
-        <ButtonSearch/>
         <Filtros />
         <Card informacao={informacao} />
       </main>
