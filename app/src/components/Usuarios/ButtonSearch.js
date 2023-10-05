@@ -1,47 +1,32 @@
 "use client"
 import React, { useState } from "react";
 import "@/components/Usuarios/css/Card.css";
-import Clinica from "@/services/Clinica";
 import Link from "next/link";
-export default function ButtonSearch({nome}) {
-  const [searchTerm, setSearchTerm] = useState(""); 
-  const [searchResults, setSearchResults] = useState([]); 
-  const handleSearch = async () => {
-    if (searchTerm.trim() === "") {
-      return;
-    }
+export default function ButtonSearch({params}) {
+  const [searchValue, setSearchValue] = useState(""); // Estado para armazenar o valor de pesquisa
 
-    try {
-      const info = await Clinica.pegarClinica(searchTerm);
-      setSearchResults([info]); 
-      window.location.href = `/${info.nome}`
-
-    } catch (error) {
-      console.error("Erro ao realizar a pesquisa:", error);
-    }
+  const handleInputChange = (event) => {
+    setSearchValue(event.target.value); // Atualiza o estado com o valor de pesquisa
   };
-  console.log(nome)
-  return (<>
+  return (
+  <>
     <div className="div-search">
       <form>
         <div className="input-search">
           <input
             type="search"
             placeholder="Hospital/Clínica ou Especialidade"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchValue}
+            onChange={handleInputChange}
           />
           <div className="button-search">
-            <button type="button" onClick={handleSearch}>
-              Buscar
-            </button>
+          <Link href={`/pesquisa/${searchValue}`}>Buscar</Link>
           </div>
         </div>
       </form>
     </div>
     
-              
-        
-          </>
+ </>
   );
-}
+
+  }

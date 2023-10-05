@@ -4,7 +4,7 @@ import Link from "next/link";
 import "@/components/Usuarios/css/Card.css";
 import Paginacao from "../UsuariosAndAdmin/Paginacao";
 
-export default function Card({ pageNumber,informacao }) {
+export default function Card({ pageNumber,informacao,busca }) {
   const [currentPage, setCurrentPage] = useState(1);
   
   useEffect(() => {
@@ -25,22 +25,16 @@ export default function Card({ pageNumber,informacao }) {
 
   return (
     <section className="section-card">
-      
-      <>
-      { limitedPosts.length === 0 ? (
-         
-
-          (<div className="card-container" >
-
+       <>
+{limitedPosts.map((info, index) => (
+      <div className="card-container" key={index}>
         <div className="top">
           <div className="image-container">
-            <img src={informacao.imagem} alt={informacao.nome} />
-            { console.log("Dados mapeados:", informacao)}
-
+            <img src={info.imagem} alt={info.nome} />
           </div>
         </div>
         <div className="button">
-          <h3>{informacao.nome}</h3>
+          <h3>{info.nome}</h3>
           <p>
             {/* {info.endereco.rua}*/}. de Fátima, 629 - Centro, Picos - PI, 
             64600-148
@@ -52,39 +46,13 @@ export default function Card({ pageNumber,informacao }) {
           </p>
           <div className="div-ver-mais btn-margin">
             <div className="div-button-ver-mais">
-              <Link href={`/ver-mais/${informacao.nome}`}>Ver mais</Link>
+              <Link href={`/ver-mais/${info.nome}`}>Ver mais</Link>
             </div>
           </div>
         </div>
-      </div>)
-    
-) : limitedPosts.map((info, index) => (
-          <div className="card-container" key={index}>
-            <div className="top">
-              <div className="image-container">
-                <img src={info.imagem} alt={info.nome} />
-              </div>
-            </div>
-            <div className="button">
-              <h3>{info.nome}</h3>
-              <p>
-                {/* {info.endereco.rua}*/}. de Fátima, 629 - Centro, Picos - PI, 
-                64600-148
-              </p>
-              <p>
-                Aberto de Segunda a Sexta das{" "}
-                {/* <strong>{info.horarioSemana.open}</strong> até as{" "}
-                  <strong>{info.horarioSemana.close}</strong>*/}
-              </p>
-              <div className="div-ver-mais btn-margin">
-                <div className="div-button-ver-mais">
-                  <Link href={`/ver-mais/${info.nome}`}>Ver mais</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </>
+      </div>
+    ))}
+  </>
 
       <Paginacao
         currentPage={currentPage}

@@ -11,6 +11,12 @@ class Clinica{
         const info = await res.json();
         return info;
       }
+
+      async filtrar(nome) {
+        const res = await fetch(`https://api-web-saude.vercel.app/buscar/?nome=${nome}`);
+        const info = await res.json();
+        return info;
+      }
 }
    
 export default new Clinica()

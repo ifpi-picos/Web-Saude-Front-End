@@ -8,10 +8,10 @@ import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 import Clinica from "@/services/Clinica";
 
-export default async function PageNumber({params}) {
+export default async function Pesquisa({ params }) {
   
-  const informacao = await Clinica.pegarClinicas()
-
+   const informacao = await Clinica.filtrar(params.busca)
+   console.log(params.busca)
   return (
     <>
       <Header />
@@ -19,7 +19,7 @@ export default async function PageNumber({params}) {
         <Slogan />
         <Filtros />
       </div>
-      <Card pageNumber={params.pageNumber} informacao={informacao}/>
+      <Card busca={params.busca} informacao={informacao}/>
       <Footer />
     </>
   );

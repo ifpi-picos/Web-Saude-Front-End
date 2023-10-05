@@ -8,7 +8,7 @@ import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 import "../components/Usuarios/css/Home.css";
 
 async function getClinicas() {
-  const res = await fetch(`https://api-web-saude.vercel.app/clinicas`);
+  const res = await fetch(`http://localhost:5000/clinicas`);
   const info = await res.json();
 
   return info;
