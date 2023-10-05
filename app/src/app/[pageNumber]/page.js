@@ -9,7 +9,13 @@ import "@/components/Usuarios/css/Layout.css";
 import Clinica from "@/services/Clinica";
 
 export default async function PageNumber({ params }) {
-  const informacao = await Clinica.pegarClinicas()
+  
+let informacao
+  if(params.pageNumber.length <= 2){
+    informacao = await Clinica.pegarClinicas()
+  }else{
+     informacao = await Clinica.pegarClinica(params.pageNumber)
+  }
 
   return (
     <>

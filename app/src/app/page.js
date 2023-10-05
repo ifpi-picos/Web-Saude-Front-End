@@ -4,6 +4,7 @@ import Slogan from "@/components/Usuarios/Slogan";
 import Filtros from "@/components/Usuarios/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
+import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 import "../components/Usuarios/css/Home.css";
 
 async function getClinicas() {
@@ -19,6 +20,7 @@ export default async function CorpoHome() {
       <Header />
       <main>
         <Slogan />
+        <ButtonSearch/>
         <Filtros />
         <Card informacao={informacao} />
       </main>

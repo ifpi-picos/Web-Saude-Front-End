@@ -3,16 +3,14 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import "@/components/Usuarios/css/Card.css";
 import Paginacao from "../UsuariosAndAdmin/Paginacao";
-import ButtonSearch from "./ButtonSearch";
 
-export default function Card({ pageNumber,informacao,infos }) {
+export default function Card({ pageNumber,informacao }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState(""); // Estado para o termo de pesquisa
-
+  
   useEffect(() => {
     if (pageNumber) {
       setCurrentPage(parseInt(pageNumber));
-      setSearchTerm(""); // Limpa o termo de pesquisa ao mudar de página
+
     }
   }, [pageNumber]);
 
@@ -21,28 +19,50 @@ export default function Card({ pageNumber,informacao,infos }) {
   const indexOfFirstPost = indexOfLastPost - maxPostsPerPage;
 
   // Filtra os dados com base no termo de pesquisa
-  const filteredPosts = informacao.filter((info) =>
-    info.nome.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const limitedPosts = Array.isArray(informacao) ? informacao.slice(indexOfFirstPost, indexOfLastPost) : [];
+  const totalPages = Math.ceil(informacao.length / maxPostsPerPage);
 
-  const limitedPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
-  const totalPages = Math.ceil(filteredPosts.length / maxPostsPerPage);
-
-  const handleSearch = () => {
-    setCurrentPage(1); // Volta para a primeira página ao realizar uma pesquisa
-    
-  };
 
   return (
     <section className="section-card">
-      <ButtonSearch/>
-
+      
       <>
-        { limitedPosts.map((info, index) => (
+      { limitedPosts.length === 0 ? (
+         
+
+          (<div className="card-container" >
+
+        <div className="top">
+          <div className="image-container">
+            <img src={informacao.imagem} alt={informacao.nome} />
+            { console.log("Dados mapeados:", informacao)}
+
+          </div>
+        </div>
+        <div className="button">
+          <h3>{informacao.nome}</h3>
+          <p>
+            {/* {info.endereco.rua}*/}. de Fátima, 629 - Centro, Picos - PI, 
+            64600-148
+          </p>
+          <p>
+            Aberto de Segunda a Sexta das{" "}
+            {/* <strong>{info.horarioSemana.open}</strong> até as{" "}
+              <strong>{info.horarioSemana.close}</strong>*/}
+          </p>
+          <div className="div-ver-mais btn-margin">
+            <div className="div-button-ver-mais">
+              <Link href={`/ver-mais/${informacao.nome}`}>Ver mais</Link>
+            </div>
+          </div>
+        </div>
+      </div>)
+    
+) : limitedPosts.map((info, index) => (
           <div className="card-container" key={index}>
             <div className="top">
               <div className="image-container">
-                <img src={info.imagem} alt={info.nome || infos.nome} />
+                <img src={info.imagem} alt={info.nome} />
               </div>
             </div>
             <div className="button">

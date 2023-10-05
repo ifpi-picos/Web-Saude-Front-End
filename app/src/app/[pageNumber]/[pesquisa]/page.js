@@ -11,7 +11,7 @@ import "@/components/Usuarios/css/Card.css";
 import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 import Link from "next/link";
 
-export default function pesquisa() {
+export default function pesquisa({params}) {
   const [searchTerm, setSearchTerm] = useState(""); 
   const [searchResults, setSearchResults] = useState([]); 
   const handleSearch = async () => {
@@ -20,13 +20,14 @@ export default function pesquisa() {
     }
 
     try {
-      const info = await Clinica.pegarClinica(searchTerm);
-      setSearchResults([info]); 
+      const info = await Clinica.pegarClinica(params.pageNumber);
+      setSearchResults([info]);
+      
     } catch (error) {
       console.error("Erro ao realizar a pesquisa:", error);
     }
   };
-  console.log(searchTerm.nome)
+  console.log(searchTerm)
   return (
     <>
       <Header />
@@ -36,6 +37,7 @@ export default function pesquisa() {
             handleSearch={handleSearch}
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
+            nome={params.pesquisa}
             
           />
           <Filtros />

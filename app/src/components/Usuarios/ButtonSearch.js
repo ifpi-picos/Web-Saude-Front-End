@@ -1,7 +1,27 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
+import "@/components/Usuarios/css/Card.css";
+import Clinica from "@/services/Clinica";
+import Link from "next/link";
+export default function ButtonSearch({nome}) {
+  const [searchTerm, setSearchTerm] = useState(""); 
+  const [searchResults, setSearchResults] = useState([]); 
+  const handleSearch = async () => {
+    if (searchTerm.trim() === "") {
+      return;
+    }
 
-export default function ButtonSearch({ handleSearch, searchTerm, setSearchTerm }) {
-  return (
+    try {
+      const info = await Clinica.pegarClinica(searchTerm);
+      setSearchResults([info]); 
+      window.location.href = `/${info.nome}`
+
+    } catch (error) {
+      console.error("Erro ao realizar a pesquisa:", error);
+    }
+  };
+  console.log(nome)
+  return (<>
     <div className="div-search">
       <form>
         <div className="input-search">
@@ -19,5 +39,9 @@ export default function ButtonSearch({ handleSearch, searchTerm, setSearchTerm }
         </div>
       </form>
     </div>
+    
+              
+        
+          </>
   );
 }
