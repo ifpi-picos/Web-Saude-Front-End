@@ -6,49 +6,33 @@ import Clinica from "@/services/Clinica";
 export default async function CardInformativo({ nome }) {
   const clinica = await Clinica.pegarClinica(nome)
   return (
-    <section className="section-informações">
-      <div className="card-informacoes">
-        <div className="top">
-          <div className="image-container">
-            <Image
-              src={clinica.imagem}
-              alt="Imagem da Clínica"
-              width={200}
-              height={200}
-            />
-          </div>
-        </div>
-        <div className="button">
-          <h3>
-            <Link href="#mapa">Mapa</Link>
-          </h3>
-          <p>
-            {clinica.endereco.rua}, {clinica.endereco.numero} -{" "}
-            {clinica.endereco.bairro}, {clinica.endereco.cidade} -{" "}
-            {clinica.endereco.uf}, {clinica.endereco.cep}
-          </p>
-          <hr />
-          <div className="div-atalhos">
-            <ul>
-              <li>
-                <Link className="btn" href="#sobre">
-                  Sobre
-                </Link>
-              </li>
-              <li>
-                <Link className="btn" href="#horario">
-                  Horário
-                </Link>
-              </li>
-              <li>
-                <Link className="btn" href="#contato">
-                  Contato
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="container">
+<div class="row">
+<div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center">
+<div class="row">
+<div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+</div>
+<div class="row user-detail">
+<div class="col-lg-12 col-sm-12 col-12">
+<img src="/demo/man01.png" class="rounded-circle img-thumbnail"/>
+<h5>John Addison</h5>
+<p><i class="fa fa-map-marker" aria-hidden="true"></i> New Jersey, USA.</p>
+<hr/>
+<a href="#" class="btn btn-success btn-sm">Follow</a>
+<a href="#" class="btn btn-info btn-sm">Send Messege</a>
+<hr/>
+<span>Lorem ips consectetur adipisium ,eiusmod tempor incididuin reprehendeanim.</span>
+</div>
+</div>
+<div class="row user-social-detail">
+<div class="col-lg-12 col-sm-12 col-12">
+<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+<a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+</div>
+</div>
+</div>
+</div>
+</div>
   );
 }
