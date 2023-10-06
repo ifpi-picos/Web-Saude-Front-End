@@ -9,8 +9,7 @@ import "@/components/Usuarios/css/Layout.css";
 import Clinica from "@/services/Clinica";
 
 export default async function Pesquisa({ params }) {
-
-   const informacao = await Clinica.filtrar(params.busca)
+  const informacao = await Clinica.filtrar(params.busca);
   return (
     <>
       <Header />
@@ -18,7 +17,7 @@ export default async function Pesquisa({ params }) {
         <Slogan />
         <Filtros />
       </div>
-      <Card busca={params.busca} informacao={informacao}/>
+      <Card busca={params.busca} informacao={informacao} />
       <Footer />
     </>
   );

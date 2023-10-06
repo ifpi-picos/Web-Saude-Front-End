@@ -8,7 +8,6 @@ import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 import Clinica from "@/services/Clinica";
 import "../components/Usuarios/css/Home.css";
 
-
 export default async function CorpoHome() {
   const informacao = await Clinica.pegarClinicas();
   return (
@@ -16,7 +15,7 @@ export default async function CorpoHome() {
       <Header />
       <main>
         <Slogan />
-        <ButtonSearch/>
+        <ButtonSearch />
         <Filtros />
         <Card informacao={informacao} />
       </main>

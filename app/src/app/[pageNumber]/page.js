@@ -8,9 +8,8 @@ import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 import Clinica from "@/services/Clinica";
 
-export default async function PageNumber({params}) {
-  
-  const informacao = await Clinica.pegarClinicas()
+export default async function PageNumber({ params }) {
+  const informacao = await Clinica.pegarClinicas();
 
   return (
     <>
@@ -19,7 +18,7 @@ export default async function PageNumber({params}) {
         <Slogan />
         <Filtros />
       </div>
-      <Card pageNumber={params.pageNumber} informacao={informacao}/>
+      <Card pageNumber={params.pageNumber} informacao={informacao} />
       <Footer />
     </>
   );

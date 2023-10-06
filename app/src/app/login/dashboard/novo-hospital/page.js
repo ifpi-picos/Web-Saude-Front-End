@@ -26,16 +26,13 @@ export default function CadastrarHospital() {
     data.especialidades = selectedEspecialidadesIds;
 
     try {
-      await fetch(
-        "https://api-web-saude.vercel.app/admin/novo-hospital",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      await fetch("https://api-web-saude.vercel.app/admin/novo-hospital", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       console.log("Hospital salvo com sucesso!");
       window.location.href = "/";
     } catch (error) {

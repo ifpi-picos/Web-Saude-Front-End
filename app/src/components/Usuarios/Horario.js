@@ -2,17 +2,14 @@ import "../Usuarios/css/Horario.css";
 import Clinica from "@/services/Clinica";
 
 export default async function Horario({ nome }) {
-  const clinica = await Clinica.pegarClinica(nome)
- 
+  const clinica = await Clinica.pegarClinica(nome);
+
   return (
     <section id="horario" className="section-horario">
       <table className="table table-light table-striped table-bordered">
         <thead>
           <tr>
-            <th
-              colSpan="4"
-              style={{ backgroundColor: "white", color: "black" }}
-            >
+            <th colSpan="4" style={{ backgroundColor: "gray", color: "white" }}>
               Horário
             </th>
           </tr>

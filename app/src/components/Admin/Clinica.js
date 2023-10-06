@@ -32,7 +32,7 @@ export default function ClinicaForm({
       if (response.ok) {
         const data = await response.json();
         setImageURL(data.secure_url);
-        setClinicImageURL(data.secure_url); 
+        setClinicImageURL(data.secure_url);
         console.log("Caminho da imagem:", data.secure_url);
       } else {
         console.error("Falha ao enviar imagem para o Cloudinary.");
@@ -108,7 +108,7 @@ export default function ClinicaForm({
       selectedEspecialidadesIds
     );
 
-    setSelectedEspecialidadesIds(selectedEspecialidadesIds); 
+    setSelectedEspecialidadesIds(selectedEspecialidadesIds);
   };
 
   return (
@@ -142,7 +142,6 @@ export default function ClinicaForm({
               name="horarioAberturaSemana"
               id="horario"
               defaultValue="07:00"
-             
             />
           </div>
           <div className="input-group horario">
@@ -152,7 +151,6 @@ export default function ClinicaForm({
               name="horarioFechamentoSemana"
               id="horario"
               defaultValue="07:00"
-            
             />
           </div>
           <div className="input-group horario">
@@ -162,7 +160,6 @@ export default function ClinicaForm({
               name="horarioAberturaSabaado"
               id="horario"
               defaultValue="07:00"
-            
             />
           </div>
 
@@ -173,7 +170,6 @@ export default function ClinicaForm({
               name="horarioFechamentoSabao"
               id="horario"
               defaultValue="18:00"
-              
             />
           </div>
 
@@ -183,7 +179,6 @@ export default function ClinicaForm({
               className="form-control"
               id="imagem"
               accept="image/*"
-          
             />
           </div>
 
@@ -211,11 +206,9 @@ export default function ClinicaForm({
             <input
               type="number"
               name="longitude"
-              
               id="longitude"
               placeholder="Digite a sua longitude"
               required
-              
             />
           </div>
 

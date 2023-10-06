@@ -1,4 +1,3 @@
-
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -6,8 +5,7 @@ import "../Usuarios/css/Contato.css";
 import Clinica from "@/services/Clinica";
 
 export default async function Contato({ nome }) {
-  const clinica = await Clinica.pegarClinica(nome)
-
+  const clinica = await Clinica.pegarClinica(nome);
 
   return (
     <div id="contatos" className="contact-info">

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import ClinicaForm from "@/components/Admin/Clinica";
@@ -14,30 +14,28 @@ export default function CadastrarClinica() {
   const [showClinicaForm, setShowClinicaForm] = useState(true);
   const [showEnderecoForm, setShowEnderecoForm] = useState(false); // Adicione isso
   const [clinicImageURL, setClinicImageURL] = useState("");
-  const [selectedEspecialidadesIds, setSelectedEspecialidadesIds] = useState([]);
+  const [selectedEspecialidadesIds, setSelectedEspecialidadesIds] = useState(
+    []
+  );
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     console.log("Dados a serem enviados para o backend:", data);
     data.imagem = clinicImageURL;
     data.especialidades = selectedEspecialidadesIds;
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/admin/nova-clinica",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
-    
-      
+      const response = await fetch("http://localhost:5000/admin/nova-clinica", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
       if (response.ok) {
         const responseData = await response.json();
-      const enderecoId = responseData.endereco._id;
-      console.log("ID do endereço:", enderecoId);
+        const enderecoId = responseData.endereco._id;
+        console.log("ID do endereço:", enderecoId);
         console.log("Clínica e endereço salvos com sucesso!");
       } else {
         console.log("Erro ao salvar a clínica e o endereço.");

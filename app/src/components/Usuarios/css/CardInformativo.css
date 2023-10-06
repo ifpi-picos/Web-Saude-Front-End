@@ -1,42 +1,148 @@
-
-  .main-section{
-  border:1px solid var(--primary-color);
-  background-color: #fff;
-  width: 900px;
-  height: 100%;
-  margin-left: 200px;
-  margin-top: 100px;
+/* card infromações*/
+.section-informações .card-informacoes {
+  width: 930px;
+  height: 550px;
+  background-color: var(--secundary-color);
+  border-radius: 6px;
+  box-shadow: 20px 20px 50px -30px #4169e1;
   margin-bottom: 100px;
-  }
-  .profile-header{
-  background-color: var(--primary-color);
-  height:150px;
-  }
-  .user-detail{
-  margin:-50px 0px 30px 0px;
-  }
-  .user-detail img{
-  height:100px;
-  width:100px;
-  }
-  .user-detail h5{
-  margin:15px 0px 5px 0px;
-  }
-  .user-social-detail{
-  padding:15px 0px;
-  background-color: var(--primary-color);
-  }
-  .user-social-detail a i{
-  color:#fff;
-  font-size:23px;
-  padding: 0px 5px;
-  }
+  margin-top: 50px;
+  border-radius: 6px;
+}
+/*.card-container:hover , .card-container:hover .button{
+    transition: .3s ease;
+    background-color:  var(--primary-color);
+    color: var(--secundary-color);
+}
 
-  @media (max-width: 768px) {
-    .main-section{
-      width: 85%;
-      margin-left: 30px;
+.card-container:hover .btn, .card-container:hover h4,.card-container:hover h3,.card-container:hover p {
+    transition: .4s ease;
+    color: var(--secundary-color);
 
-    }
-    
+}
+.card-container:hover .button .div-ver-mais .div-button-ver-mais,.card-container:hover .button .div-ver-mais .div-button-ver-mais a{
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+    border-radius: var(--button-radius);
+
+
+}*/
+.section-informações .card-informacoes .top {
+  height: 100px;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+}
+/* imagem*/
+.section-informações .card-informacoes .top .image-container {
+  background-color: var(--secundary-color);
+  width: 150px;
+  height: 150px;
+  padding: 5px;
+  border-radius: 50%;
+  transition: 0.1s ease;
+  margin-top: 30px;
+  transition: 0.5s ease;
+}
+.section-informações .card-informacoes .top .image-container img {
+  background-color: var(--secundary-color);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.section-informações .card-informacoes .top .image-container img:hover {
+  transform: scale(1);
+  margin-bottom: 40px;
+}
+
+.section-informações .card-informacoes .button {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.section-informações .card-informacoes .button .div-atalhos .btn {
+  background: none;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+}
+
+/* nome */
+.section-informações .card-informacoes .button h3 {
+  line-height: 0.4;
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 40px;
+  margin-top: 55px;
+}
+/*endereço */
+
+.section-informações .card-informacoes .button p {
+  color: rgba(0, 0, 0, 0.7);
+  margin-top: 50px;
+  font-size: 20px;
+}
+/* atalhos */
+.section-informações .card-informacoes .button hr {
+  width: 100%;
+  margin-top: 50px;
+}
+.section-informações .card-informacoes .button .div-atalhos {
+  margin-top: 40px;
+}
+.section-informações .card-informacoes .button .div-atalhos ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 15px;
+}
+.section-informações .card-informacoes .button .div-atalhos ul li .btn {
+  margin: 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.section-informações .card-informacoes .button .div-atalhos ul li .btn:hover {
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+@media (max-width: 768px) {
+  /* card */
+  .section-informações .card-informacoes {
+    width: 100%;
+    height: 520px;
   }
+  .section-informações .card-informacoes .top .image-container {
+    width: 130px;
+    height: 130px;
+  }
+  .section-informações .card-informacoes .button p {
+    font-size: 16px;
+  }
+  /* atalhos */
+  .section-informações .card-informacoes .button hr {
+    width: 100%;
+    margin-top: 60px;
+    border: solid 2px var(--primary-color);
+  }
+  .section-informações .card-informacoes .button .div-atalhos .btn {
+    position: relative;
+    right: 10px;
+    font-size: 10px;
+  }
+  .section-informações .card-informacoes .button .div-atalhos ul li .btn:hover {
+    text-decoration: underline;
+  }
+  .section-informações .card-informacoes .button .div-atalhos {
+    margin-top: 0px;
+  }
+}

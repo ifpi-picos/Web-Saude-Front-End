@@ -4,7 +4,7 @@
   align-items: center;
   background-color: var(--primary-color);
   border-radius: var(--card-radius);
-  box-shadow: var(--shadow);
+  box-shadow: 20px 20px 50px -30px #4169e1;
   margin-top: 20px;
 }
 .div-clinica-hospital h1 {
@@ -49,12 +49,12 @@
   .section-clinica-hospital {
     flex-direction: column;
     width: 350px;
-    height: 308px;
+    height: 400px;
   }
   .section-clinica-hospital .div-clinica-hospital h1 {
     font-size: 25px;
   }
   .section-clinica-hospital .img-clinica-hospital img {
-    width: 150px;
+    width: 200px;
   }
 }

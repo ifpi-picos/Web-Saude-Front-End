@@ -1,7 +1,6 @@
-
 .section-horario {
   padding: 45px;
-  background-color: var(--primary-color);
+  background-color: white;
   width: 930px;
   height: 385px;
   border-radius: 15px;
@@ -10,7 +9,7 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  box-shadow: var(--shadow);
+  box-shadow: 20px 20px 50px -30px #4169e1;
   margin-bottom: 60px;
 }
 
@@ -21,7 +20,8 @@
 @media (max-width: 768px) {
   /* horario */
   .section-horario {
-    width: 85%;
+    width: 90%;
+    height: 100%;
     padding: 30px;
   }
 }
