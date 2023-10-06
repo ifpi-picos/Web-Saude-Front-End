@@ -74,13 +74,13 @@ main {
   border: none;
 }
 .div-search .input-search input:focus {
-  color: red;
+  color: black;
 }
 .div-search .input-search input::placeholder {
   color: gray;
 }
 
-.div-search .input-search .button-search button {
+.div-search .input-search .button-search a {
   width: 9rem;
   height: 3rem;
   border-radius: var(--button-radius);
@@ -91,9 +91,10 @@ main {
   color: var(--secundary-color);
   font-size: 1.5rem;
   border: none;
+  text-decoration: none;
 }
 
-.div-search .input-search .button-search button:hover {
+.div-search .input-search .button-search a:hover {
   mix-blend-mode: hard-light;
   opacity: 100%;
   cursor: pointer;
@@ -246,7 +247,7 @@ main {
     height: 30px;
   }
 
-  .div-search .input-search .button-search button {
+  .div-search .input-search .button-search a {
     width: 80px;
     height: 30px;
     font-size: 15px;

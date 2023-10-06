@@ -11,7 +11,7 @@ export default async function Horario({ nome }) {
           <tr>
             <th
               colSpan="4"
-              style={{ backgroundColor: "#00285f", color: "white" }}
+              style={{ backgroundColor: "white", color: "black" }}
             >
               Horário
             </th>

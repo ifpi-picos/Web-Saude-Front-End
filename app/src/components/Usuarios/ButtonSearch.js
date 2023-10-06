@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 import "@/components/Usuarios/css/Card.css";
 import Link from "next/link";
-export default function ButtonSearch({params}) {
-  const [searchValue, setSearchValue] = useState(""); // Estado para armazenar o valor de pesquisa
+export default function ButtonSearch() {
+  const [searchValue, setSearchValue] = useState("");
 
   const handleInputChange = (event) => {
-    setSearchValue(event.target.value); // Atualiza o estado com o valor de pesquisa
+    setSearchValue(event.target.value);
   };
   return (
   <>

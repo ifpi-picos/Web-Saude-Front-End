@@ -32,7 +32,7 @@ export default function ClinicaForm({
       if (response.ok) {
         const data = await response.json();
         setImageURL(data.secure_url);
-        setClinicImageURL(data.secure_url); // Atualizando a URL da imagem em CadastrarClinica.js
+        setClinicImageURL(data.secure_url); 
         console.log("Caminho da imagem:", data.secure_url);
       } else {
         console.error("Falha ao enviar imagem para o Cloudinary.");
@@ -68,15 +68,13 @@ export default function ClinicaForm({
       return;
     }
 
-    // Se todos os campos obrigatórios estiverem preenchidos, você pode prosseguir para a próxima etapa
     handleNextClick();
   };
   useEffect(() => {
-    // Função para carregar as especialidades
     const fetchEspecialidades = async () => {
       try {
         const response = await fetch(
-          "https://web-saude-back-end-eric-developer.vercel.app/especialidades"
+          "https://api-web-saude.vercel.app/especialidades"
         );
         if (!response.ok) {
           throw new Error("Falha ao carregar as especialidades");
@@ -100,10 +98,8 @@ export default function ClinicaForm({
       })
     );
 
-    // Exibir os IDs e nomes das especialidades selecionadas no console
     console.log("Especialidades selecionadas:", selectedOptions);
 
-    // Exibir somente os IDs das especialidades selecionadas no console
     const selectedEspecialidadesIds = selectedOptions.map(
       especialidade => especialidade._id
     );
@@ -112,7 +108,7 @@ export default function ClinicaForm({
       selectedEspecialidadesIds
     );
 
-    setSelectedEspecialidadesIds(selectedEspecialidadesIds); // Atualize o estado com as especialidades selecionadas
+    setSelectedEspecialidadesIds(selectedEspecialidadesIds); 
   };
 
   return (
@@ -146,8 +142,7 @@ export default function ClinicaForm({
               name="horarioAberturaSemana"
               id="horario"
               defaultValue="07:00"
-              {...register("horarioSemana.open")}
-              onChange={handleChange}
+             
             />
           </div>
           <div className="input-group horario">
@@ -157,8 +152,7 @@ export default function ClinicaForm({
               name="horarioFechamentoSemana"
               id="horario"
               defaultValue="07:00"
-              {...register("horarioSemana.close")}
-              onChange={handleChange}
+            
             />
           </div>
           <div className="input-group horario">
@@ -168,8 +162,7 @@ export default function ClinicaForm({
               name="horarioAberturaSabaado"
               id="horario"
               defaultValue="07:00"
-              {...register("Sabado.open")}
-              onChange={handleChange}
+            
             />
           </div>
 
@@ -180,8 +173,7 @@ export default function ClinicaForm({
               name="horarioFechamentoSabao"
               id="horario"
               defaultValue="18:00"
-              {...register("Sabado.close")}
-              onChange={handleChange}
+              
             />
           </div>
 
@@ -191,7 +183,7 @@ export default function ClinicaForm({
               className="form-control"
               id="imagem"
               accept="image/*"
-              onChange={handleImageUpload}
+          
             />
           </div>
 
@@ -219,11 +211,11 @@ export default function ClinicaForm({
             <input
               type="number"
               name="longitude"
-              {...register("longitude")}
+              
               id="longitude"
               placeholder="Digite a sua longitude"
               required
-              onChange={handleChange}
+              
             />
           </div>
 
@@ -232,11 +224,9 @@ export default function ClinicaForm({
             <input
               type="number"
               name="latitude"
-              {...register("latitude")}
               id="latitude"
               placeholder="Digite a sua latitude"
               required
-              onChange={handleChange}
             />
           </div>
 
@@ -245,7 +235,6 @@ export default function ClinicaForm({
             <input
               type="email"
               name="email"
-              {...register("email")}
               id="email"
               placeholder="Digite a sua email"
               required
@@ -257,7 +246,6 @@ export default function ClinicaForm({
             <input
               type="tel"
               name="whatsapp"
-              {...register("whatsapp")}
               id="whatsapp"
               placeholder="Digite seu whatsapp"
               required
@@ -268,7 +256,6 @@ export default function ClinicaForm({
             <input
               type="text"
               name="instagram"
-              {...register("instagram")}
               id="instagram"
               placeholder="Digite seu Instagram"
               required
@@ -279,7 +266,6 @@ export default function ClinicaForm({
             <label htmlFor="descricao">Descrição(opcional)</label>
             <textarea
               name="descricao"
-              {...register("descricao")}
               id="descricao"
               placeholder="Descreva a Clínica"
             />

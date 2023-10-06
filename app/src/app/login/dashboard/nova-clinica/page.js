@@ -1,10 +1,9 @@
-"use client";
+"use client"
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import ClinicaForm from "@/components/Admin/Clinica";
-import EnderecoForm from "@/components/Admin/Endereco";
+import EnderecoForm from "@/components/Admin/Endereco"; // Importe o componente de endereço
 import "@/components/Admin/css/Clinica.css";
-import "@/components/Admin/css/Endereco.css";
 
 export default function CadastrarClinica() {
   const {
@@ -12,41 +11,19 @@ export default function CadastrarClinica() {
     handleSubmit,
     formState: { errors },
   } = useForm({});
-  const [showEnderecoForm, setShowEnderecoForm] = useState(false);
   const [showClinicaForm, setShowClinicaForm] = useState(true);
-  const [enderecoId, setEnderecoId] = useState("");
+  const [showEnderecoForm, setShowEnderecoForm] = useState(false); // Adicione isso
   const [clinicImageURL, setClinicImageURL] = useState("");
-  const [selectedEspecialidadesIds, setSelectedEspecialidadesIds] = useState(
-    []
-  );
+  const [selectedEspecialidadesIds, setSelectedEspecialidadesIds] = useState([]);
 
-  const addClinica = async (data, enderecoId) => {
-    data.endereco = enderecoId;
+  const onSubmit = async (data) => {
+    console.log("Dados a serem enviados para o backend:", data);
     data.imagem = clinicImageURL;
     data.especialidades = selectedEspecialidadesIds;
 
     try {
-      await fetch(
-        "https://web-saude-back-end-eric-developer.vercel.app/admin/nova-clinica",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
-      console.log("Clínica salva com sucesso!");
-      window.location.href = "/";
-    } catch (error) {
-      console.log("Erro ao salvar a clínica:", error);
-    }
-  };
-
-  const addEndereco = async data => {
-    try {
       const response = await fetch(
-        "https://web-saude-back-end-eric-developer.vercel.app/cadastrar-endereco",
+        "http://localhost:5000/admin/nova-clinica",
         {
           method: "POST",
           headers: {
@@ -55,29 +32,24 @@ export default function CadastrarClinica() {
           body: JSON.stringify(data),
         }
       );
-      const responseData = await response.json();
-      const enderecoId = responseData._id;
-
-      if (!enderecoId) {
-        console.log("Houve um erro ao salvar a clínica");
+    
+      
+      if (response.ok) {
+        const responseData = await response.json();
+      const enderecoId = responseData.endereco._id;
+      console.log("ID do endereço:", enderecoId);
+        console.log("Clínica e endereço salvos com sucesso!");
       } else {
-        setEnderecoId(enderecoId);
-        console.log("ID do Endereço:", enderecoId);
-        console.log("Endereço salvo com sucesso!");
-        addClinica(data, enderecoId);
+        console.log("Erro ao salvar a clínica e o endereço.");
       }
     } catch (error) {
-      console.log("Erro ao salvar o endereço:", error);
+      console.error("Erro ao salvar a clínica e o endereço:", error);
     }
-  };
-
-  const onSubmit = async data => {
-    await addEndereco(data);
   };
 
   const handleNextClick = () => {
-    setShowEnderecoForm(true);
     setShowClinicaForm(false);
+    setShowEnderecoForm(true); // Mude para mostrar o formulário de endereço
   };
 
   return (
@@ -89,8 +61,8 @@ export default function CadastrarClinica() {
           register={register}
           clinicImageURL={clinicImageURL}
           setClinicImageURL={setClinicImageURL}
-          selectedEspecialidadesIds={selectedEspecialidadesIds} // Passando os IDs das especialidades selecionadas
-          setSelectedEspecialidadesIds={setSelectedEspecialidadesIds} // Passando a função para atualizar os IDs das especialidades selecionadas
+          selectedEspecialidadesIds={selectedEspecialidadesIds}
+          setSelectedEspecialidadesIds={setSelectedEspecialidadesIds}
         />
       )}
       {showEnderecoForm && (

@@ -5,16 +5,12 @@ import Filtros from "@/components/Usuarios/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
 import ButtonSearch from "@/components/Usuarios/ButtonSearch";
+import Clinica from "@/services/Clinica";
 import "../components/Usuarios/css/Home.css";
 
-async function getClinicas() {
-  const res = await fetch(`http://localhost:5000/clinicas`);
-  const info = await res.json();
 
-  return info;
-}
 export default async function CorpoHome() {
-  const informacao = await getClinicas();
+  const informacao = await Clinica.pegarClinicas();
   return (
     <>
       <Header />

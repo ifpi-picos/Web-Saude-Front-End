@@ -1,93 +1,13 @@
-/* sobre */
-main.cards {
-  display: flex;
-  justify-content: center;
-}
-
-main.cards section.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  height: 400px;
-  align-items: center;
-  text-align: center;
-  background: white;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  max-height: 468px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
-
-main.cards section.card:first-child {
-  margin-left: 0;
-}
-
-main.cards section.card .icon {
-  width: 64px;
-  height: 64px;
-}
-
-.cards .card .icon .icon-about {
-  font-size: 50px;
-}
-
-main.cards section.card h2 {
-  font-size: 20px;
-  margin: 16px 0;
-}
-
-main.cards section.card span {
-  font-weight: 300;
-  max-width: 240px;
-  font-size: 80%;
-  margin-bottom: 16px;
-}
-
-main.cards section.card button {
-  padding: 0.5rem 1rem;
-  text-transform: uppercase;
-  border-radius: 32px;
-  border: 0;
-  cursor: pointer;
-  font-size: 80%;
-  font-weight: 500;
-  color: var(--secundary-color);
-  width: 150px;
-  margin-top: 50px;
-}
-
-.cards .card p {
-  width: 100%;
-  text-align: justify;
-}
-main.cards section.card.about button {
-  background-color: var(--primary-color);
-}
-
-main.cards section.card.about {
-  box-shadow: 20px 20px 50px -30px var(--primary-color);
+.sobre{
+  width: 900px;
+  background-color: white;
 }
 
 @media (max-width: 768px) {
   /* sobre */
+  .sobre{
+    width: 85%;
 
-  main.cards section.card {
-    width: 300px;
-    height: 450px;
-    margin-left: 0;
   }
-
-  main.cards section.card:last-child {
-    margin-bottom: 0;
-  }
-
-  main.cards section.card button {
-    font-size: 70%;
-  }
-  main.cards section.card button {
-    margin-top: 10px;
-  }
+  
 }

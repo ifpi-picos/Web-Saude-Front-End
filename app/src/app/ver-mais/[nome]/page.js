@@ -31,8 +31,8 @@ export default function verMais({ params }) {
         <NomeDaClinica_Hospital nome={params.nome} />
         <CardInformativo nome={params.nome} />
         <Horario nome={params.nome} />
-        <Contato nome={params.nome} />
         <CardSobre nome={params.nome} />
+        <Contato nome={params.nome} />
         <Mapa />
         <Especialidades nome={params.nome} />
       </main>

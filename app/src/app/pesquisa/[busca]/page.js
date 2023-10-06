@@ -9,9 +9,8 @@ import "@/components/Usuarios/css/Layout.css";
 import Clinica from "@/services/Clinica";
 
 export default async function Pesquisa({ params }) {
-  
+
    const informacao = await Clinica.filtrar(params.busca)
-   console.log(params.busca)
   return (
     <>
       <Header />
