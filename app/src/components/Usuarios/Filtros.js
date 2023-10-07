@@ -1,32 +1,31 @@
-"use client"
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-
+"use client";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import "@/components/Usuarios/css/Filtro.css";
 export default function Filtros() {
-  const [selectedOption, setSelectedOption] = useState('filtros');
- const router = useRouter()
+  const [selectedOption, setSelectedOption] = useState("filtros");
+  const router = useRouter();
   useEffect(() => {
-    const handleOptionChange = (e) => {
+    const handleOptionChange = e => {
       const selectedValue = e.target.value;
       setSelectedOption(selectedValue);
-  
-      if (selectedValue === 'Hospitais') {
-        router.push('/hospitais');
-      } else if (selectedValue === 'Clinicas') {
-        router.push('/clinicas');
 
+      if (selectedValue === "Hospitais") {
+        router.push("/hospitais");
+      } else if (selectedValue === "Clinicas") {
+        router.push("/clinicas");
       }
     };
 
-    const selectElement = document.querySelector('.select-element-filtros');
+    const selectElement = document.querySelector(".select-element-filtros");
 
     if (selectElement) {
-      selectElement.addEventListener('change', handleOptionChange);
+      selectElement.addEventListener("change", handleOptionChange);
     }
 
     return () => {
       if (selectElement) {
-        selectElement.removeEventListener('change', handleOptionChange);
+        selectElement.removeEventListener("change", handleOptionChange);
       }
     };
   }, []);

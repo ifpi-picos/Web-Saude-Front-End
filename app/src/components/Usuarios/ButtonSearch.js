@@ -1,7 +1,10 @@
 "use client";
+
 import React, { useState } from "react";
 import "@/components/Usuarios/css/Card.css";
 import Link from "next/link";
+import "@/components/Usuarios/css/ButtonSearch.css";
+
 export default function ButtonSearch() {
   const [searchValue, setSearchValue] = useState("");
 
@@ -23,7 +26,11 @@ export default function ButtonSearch() {
             />
             <div className="button-search">
               {console.log(searchValue)}
-              <Link href={`/pesquisa/${encodeURIComponent(formattedSearchValue)}`}>Buscar</Link>
+              <Link
+                href={`/pesquisa/${encodeURIComponent(formattedSearchValue)}`}
+              >
+                Buscar
+              </Link>
             </div>
           </div>
         </form>

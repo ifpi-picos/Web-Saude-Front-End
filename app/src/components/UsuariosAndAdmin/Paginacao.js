@@ -1,6 +1,5 @@
-
 import React from "react";
-
+import "@/components/UsuariosAndAdmin/css/Paginacao.css";
 export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
   const maxPageButtons = 4;
 

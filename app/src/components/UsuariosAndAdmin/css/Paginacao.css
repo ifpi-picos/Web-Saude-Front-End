@@ -1,0 +1,54 @@
+.div-buttons-catalogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.div-buttons-catalogo .button-prox-ant button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 147px;
+  height: 42px;
+  background-color: var(--primary-color);
+  border-radius: var(--button-radius);
+  margin-left: 10px;
+  margin-right: 10px;
+  color: var(--secundary-color);
+  border: none;
+}
+
+.div-buttons-catalogo .button-catalogo button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secundary-color);
+  width: 56px;
+  height: 42px;
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+}
+
+.div-buttons-catalogo .button-prox-ant button:hover {
+  cursor: pointer;
+  mix-blend-mode: hard-light;
+  opacity: 100%;
+}
+.div-buttons-catalogo .button-prox-ant a {
+  text-decoration: none;
+}
+.div-buttons-catalogo .button-catalogo button:hover {
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.button-catalogo a {
+  text-decoration: none;
+}
+.button-catalogo button.active {
+  background-color: var(--primary-color);
+  color: #fff;
+}

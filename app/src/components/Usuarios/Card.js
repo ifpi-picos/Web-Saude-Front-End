@@ -36,13 +36,14 @@ export default function Card({ pageNumber, informacao, busca }) {
               <h3>{info.nome}</h3>
               <p>{""}. de Fátima, 629 - Centro, Picos - PI, 64600-148</p>
               {info.horario === "Atendimento 24 Horas" ? (
-              <p>Atendimento 24 horas</p>
-           ) : (
-              <p>
-              Aberto de Segunda a Sexta das <strong>{info.horarioSemana.open}</strong> até as{" "}
-              <strong>{info.horarioSemana.close}</strong>
-            </p>
-      )}
+                <p>Atendimento 24 horas</p>
+              ) : (
+                <p>
+                  Aberto de Segunda a Sexta das{" "}
+                  <strong>{info.horarioSemana.open}</strong> até as{" "}
+                  <strong>{info.horarioSemana.close}</strong>
+                </p>
+              )}
               <div className="div-ver-mais btn-margin">
                 <div className="div-button-ver-mais">
                   <Link href={`/ver-mais/${info.nome}`}>Ver mais</Link>

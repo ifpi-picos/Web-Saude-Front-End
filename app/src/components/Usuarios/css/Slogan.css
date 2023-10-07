@@ -1,0 +1,71 @@
+.section-slogan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 47rem;
+  height: 22rem;
+  background-color: var(--primary-color);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+  margin-top: 120px;
+}
+.section-slogan .div-content h1 {
+  font-size: 3rem;
+}
+.section-slogan .div-content {
+  margin-left: 5rem;
+}
+.section-slogan .div-content h1,
+.div-content p {
+  color: var(--secundary-color);
+}
+.section-slogan .div-content img {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.section-slogan .div-content p {
+  font-size: 2em;
+}
+
+.img-slogan img {
+  width: 263.04px;
+  height: 203.61px;
+  margin-right: 30px;
+}
+.section-catalogo {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .section-slogan {
+    flex-direction: column;
+    width: 300px;
+    height: 350px;
+    position: relative;
+  }
+  .section-slogan .div-content {
+    margin-left: 0px;
+    margin-bottom: 0px;
+  }
+  .section-slogan .div-content h1 {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+  }
+  .section-slogan .div-content p {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .section-slogan .img-slogan img {
+    width: 180px;
+    height: 180px;
+    margin-right: 0px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+}
