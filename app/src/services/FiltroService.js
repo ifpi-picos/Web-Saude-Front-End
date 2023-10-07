@@ -10,7 +10,7 @@ class FiltroSeerrvice {
     const info = await res.json();
     return info;
   }
-  async pegarHospitaisEClincas() {
+  /*async pegarHospitaisEClincas() {
     const [clinicas, hospitais] = await Promise.all([
       this.pegarClinicas(),
       this.pegarHospitais(),
@@ -20,8 +20,8 @@ class FiltroSeerrvice {
 
     return hospitaisEClincas;
   }
-
-  /*
+*/
+  
       async pegarHospitaisEClincas() {
         const [clinicas, hospitais] = await Promise.all([
           this.pegarClinicas(),
@@ -29,8 +29,6 @@ class FiltroSeerrvice {
         ]);
     
         const hospitaisEClincas = { clinicas, hospitais }; 
-
-        
 
         const pegarclinicas =  hospitaisEClincas.clinicas || []; 
         const pegashospitais = hospitaisEClincas.hospitais || [];
@@ -45,7 +43,7 @@ class FiltroSeerrvice {
         );
         const info = await res.json();
         return info;
-      }*/
+      }
 }
 
 export default new FiltroSeerrvice();
