@@ -6,9 +6,10 @@ import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
 import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
-import Clinica from "@/services/Clinica";
+import Clinica from "@/services/ClinicaService";
+import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 
-export default async function PageNumber({ params }) {
+export default async function PageNumber() {
   const informacao = await Clinica.pegarClinicas();
 
   return (
@@ -16,9 +17,10 @@ export default async function PageNumber({ params }) {
       <Header />
       <div className="containers">
         <Slogan />
+        <ButtonSearch/>
         <Filtros />
       </div>
-      <Card pageNumber={params.pageNumber} informacao={informacao} />
+      <Card informacao={informacao} />
       <Footer />
     </>
   );

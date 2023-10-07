@@ -8,6 +8,8 @@ export default function ButtonSearch() {
   const handleInputChange = event => {
     setSearchValue(event.target.value);
   };
+  const formattedSearchValue = searchValue.replace(/ /g, "-"); // Substitui espaços por hífens
+
   return (
     <>
       <div className="div-search">
@@ -20,7 +22,8 @@ export default function ButtonSearch() {
               onChange={handleInputChange}
             />
             <div className="button-search">
-              <Link href={`/pesquisa/${searchValue}`}>Buscar</Link>
+              {console.log(searchValue)}
+              <Link href={`/pesquisa/${encodeURIComponent(formattedSearchValue)}`}>Buscar</Link>
             </div>
           </div>
         </form>

@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Paginacao from "../UsuariosAndAdmin/Paginacao";
 import Link from "next/link";
 import "@/components/Usuarios/css/Card.css";
-import Paginacao from "../UsuariosAndAdmin/Paginacao";
 
 export default function Card({ pageNumber, informacao, busca }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,7 +12,6 @@ export default function Card({ pageNumber, informacao, busca }) {
       setCurrentPage(parseInt(pageNumber));
     }
   }, [pageNumber]);
-
   const maxPostsPerPage = 4;
   const indexOfLastPost = currentPage * maxPostsPerPage;
   const indexOfFirstPost = indexOfLastPost - maxPostsPerPage;
@@ -36,11 +35,14 @@ export default function Card({ pageNumber, informacao, busca }) {
             <div className="button">
               <h3>{info.nome}</h3>
               <p>{""}. de Fátima, 629 - Centro, Picos - PI, 64600-148</p>
+              {info.horario === "Atendimento 24 Horas" ? (
+              <p>Atendimento 24 horas</p>
+           ) : (
               <p>
-                Aberto de Segunda a Sexta das{" "}
-                <strong>{info.horarioSemana.open}</strong> até as{" "}
-                <strong>{info.horarioSemana.close}</strong>
-              </p>
+              Aberto de Segunda a Sexta das <strong>{info.horarioSemana.open}</strong> até as{" "}
+              <strong>{info.horarioSemana.close}</strong>
+            </p>
+      )}
               <div className="div-ver-mais btn-margin">
                 <div className="div-button-ver-mais">
                   <Link href={`/ver-mais/${info.nome}`}>Ver mais</Link>

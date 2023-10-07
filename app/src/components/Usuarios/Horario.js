@@ -1,5 +1,5 @@
 import "../Usuarios/css/Horario.css";
-import Clinica from "@/services/Clinica";
+import Clinica from "@/services/ClinicaService";
 
 export default async function Horario({ nome }) {
   const clinica = await Clinica.pegarClinica(nome);

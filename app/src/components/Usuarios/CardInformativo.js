@@ -1,7 +1,7 @@
 import "../Usuarios/css/CardInformativo.css";
 import Link from "next/link";
 import Image from "next/image";
-import Clinica from "@/services/Clinica";
+import Clinica from "@/services/ClinicaService";
 
 export default async function CardInformativo({ nome }) {
   const clinica = await Clinica.pegarClinica(nome);
