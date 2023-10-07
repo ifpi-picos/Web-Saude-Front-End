@@ -1,21 +1,13 @@
 import Link from "next/link";
 
-export default function Filtros() {
+export default async function Filtros() {
   return (
     <div className="div-buttons">
       <div className="div-button">
-        <select>
-          <option defaultValue="Hospital">Hospital</option>
-          <option> Doutor Oscar</option>
-        </select>
+       <Link href={'#'}>Hospitais</Link>
       </div>
       <div className="div-button">
-        <select>
-          <option defaultValue="Clínica">Clínica</option>
-
-          <option> Medcenter</option>
-          <option> Clinica Popular</option>
-        </select>
+       <Link href={'/clinicas'}>Clínicas</Link>
       </div>
       <div className="div-button">
         <select>

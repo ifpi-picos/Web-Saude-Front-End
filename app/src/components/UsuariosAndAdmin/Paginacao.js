@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
@@ -38,7 +39,7 @@ export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
               className={currentPage === pageNumber ? "active" : ""}
               onClick={() => {
                 setCurrentPage(pageNumber);
-                window.history.pushState({}, "", `/${pageNumber}`);
+                window.history.pushState({}, "", `${pageNumber}`);
               }}
             >
               {pageNumber}
