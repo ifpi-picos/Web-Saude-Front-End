@@ -4,13 +4,13 @@ import Slogan from "@/components/Usuarios/Slogan";
 import Filtros from "@/components/Usuarios/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
-import HospitalService from "@/services/HospitalService";
 import ButtonSearch from "@/components/Usuarios/ButtonSearch";
+import FiltroService from "@/services/FiltroService";
 import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 
 export default async function filtroHospitais() {
-  const informacao = await HospitalService.pegarHospitais();
+  const informacao = await FiltroService.pegarHospitais();
 
   return (
     <>
