@@ -9,7 +9,7 @@ import "@/components/Usuarios/css/Layout.css";
 import HospitalService from "@/services/HospitalService";
 import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 
-export default async function filtroClinicas() {
+export default async function filtroHospitais() {
   const informacao = await HospitalService.pegarHospitais();
 
   return (
