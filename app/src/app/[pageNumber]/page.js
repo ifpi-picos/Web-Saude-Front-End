@@ -9,7 +9,7 @@ import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 
-export default async function PageNumber() {
+export default async function PageNumber({params}) {
   
   const informacao = await FiltroService.pegarHospitaisEClincas();
 
@@ -21,7 +21,7 @@ export default async function PageNumber() {
         <ButtonSearch />
         <Filtros />
       </div>
-      <Card informacao={informacao} />
+      <Card pageNumber={params.pageNumber} informacao={informacao} />
       <Footer />
     </>
   );

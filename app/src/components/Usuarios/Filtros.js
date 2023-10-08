@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import "@/components/Usuarios/css/Filtro.css";
+import "@/components/Usuarios/css/Filtros.css";
 export default function Filtros() {
   const [selectedOption, setSelectedOption] = useState("filtros");
   const router = useRouter();

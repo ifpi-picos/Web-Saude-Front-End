@@ -33,7 +33,7 @@
   color: gray;
 }
 
-.div-search .input-search .button-search a {
+.div-search .input-search .button-search button {
   width: 9rem;
   height: 3rem;
   border-radius: var(--button-radius);
@@ -47,7 +47,7 @@
   text-decoration: none;
 }
 
-.div-search .input-search .button-search a:hover {
+.div-search .input-search .button-search button:hover {
   mix-blend-mode: hard-light;
   opacity: 100%;
   cursor: pointer;
@@ -71,7 +71,7 @@
     height: 30px;
   }
 
-  .div-search .input-search .button-search a {
+  .div-search .input-search .button-search button {
     width: 80px;
     height: 30px;
     font-size: 15px;

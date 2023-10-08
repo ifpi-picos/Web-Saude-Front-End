@@ -6,9 +6,9 @@ import Filtros from "@/components/Usuarios/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
 import ButtonSearch from "@/components/Usuarios/ButtonSearch";
-import "../components/Usuarios/css/Home.css";
 import FiltroService from "@/services/FiltroService";
-
+import "../components/Usuarios/css/Home.css";
+import "@/components/Usuarios/css/Filtros.css"
 export default async function CorpoHome() {
   
   const informacao = await FiltroService.pegarHospitaisEClincas();
