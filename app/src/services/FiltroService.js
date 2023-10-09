@@ -2,14 +2,30 @@
 class FiltroSeerrvice {
   
   async pegarClinicas() {
-    const res = await fetch(`https://api-web-saude.vercel.app/clinicas`);
+    const res = await fetch(`https://tame-lime-stingray-tux.cyclic.cloud/clinicas`,{
 
+          method: 'GET',
+          headers: {
+            accept: 'application/json',
+          },
+
+    });
+     
+    if(!res.ok){
+      throw new Error(`houve um erro no servidor! ${res.status}`)
+
+    }
     const info = await res.json();
 
     return info;
   }
   async pegarHospitais() {
     const res = await fetch(`https://api-web-saude.vercel.app/hospitais`);
+    
+    if(!res.ok){
+      throw new Error(`houve um erro no servidor! ${res.status}`)
+    }
+
     const info = await res.json();
     
     return info;
