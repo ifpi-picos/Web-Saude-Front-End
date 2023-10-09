@@ -31,13 +31,7 @@ class FiltroSeerrvice {
           this.pegarClinicas(),
           this.pegarHospitais(),
         ]);
-    
-        const hospitaisEClincas = { clinicas, hospitais }; 
-
-        const pegarclinicas =  hospitaisEClincas.clinicas || []; 
-        const pegashospitais = hospitaisEClincas.hospitais || [];
-
-        const informacao = [...pegarclinicas, ...pegashospitais];
+        const informacao = [...clinicas, ...hospitais];
 
         return informacao;
       }
