@@ -52,3 +52,20 @@
   background-color: var(--primary-color);
   color: #fff;
 }
+
+@media (max-width: 768px) {
+.div-buttons-catalogo {
+  padding-bottom: 20px;
+}
+.div-buttons-catalogo .button-prox-ant button {
+  width: 76px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.div-buttons-catalogo .button-catalogo button {
+  width: 30px;
+  height: 24px;
+  text-decoration: none;
+}
+}

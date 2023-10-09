@@ -4,9 +4,6 @@ class FiltroSeerrvice {
   async pegarClinicas() {
     const res = await fetch(`https://api-web-saude.vercel.app/clinicas`);
 
-    if (!res.ok) {
-      throw new Error(`Erro na solicitação: ${res.status} ${res.statusText}`);
-    }
     const info = await res.json();
 
     return info;
@@ -15,11 +12,6 @@ class FiltroSeerrvice {
     const res = await fetch(`https://api-web-saude.vercel.app/hospitais`);
     const info = await res.json();
     
-    if (!res.ok) {
-        window.location.href = "/login";
-        throw new Error(`Erro na solicitação: ${res.status} ${res.statusText}`);
-    }
-
     return info;
   }
   /*async pegarHospitaisEClincas() {

@@ -127,10 +127,8 @@
 
 /*------------------RESPONSIVIDADE------------------*/
 @media (max-width: 768px) {
-  /* catálogo*/
 
   /* card */
-
   .section-card .card-container {
     width: 300px;
     height: 100%;
