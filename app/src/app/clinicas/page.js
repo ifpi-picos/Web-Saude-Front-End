@@ -10,7 +10,7 @@ import FiltroService from "@/services/FiltroService";
 import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 
 export default async function filtroClinicas() {
-  const informacao = await FiltroService.pegarClinicas()
+  const informacao = await FiltroService.pegarClinicas();
 
   return (
     <>

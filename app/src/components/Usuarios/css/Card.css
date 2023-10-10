@@ -127,7 +127,6 @@
 
 /*------------------RESPONSIVIDADE------------------*/
 @media (max-width: 768px) {
-
   /* card */
   .section-card .card-container {
     width: 300px;

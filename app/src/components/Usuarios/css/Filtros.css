@@ -31,7 +31,6 @@
   color: var(--secundary-color);
   font-size: 1rem;
   border-radius: 25px;
-
 }
 .div-buttons .div-button select option {
   text-align: center;
@@ -44,7 +43,6 @@
     margin-right: 5px;
     margin-left: 5px;
     border-radius: 17px;
-
   }
 
   .div-buttons .div-button select {
@@ -54,5 +52,4 @@
     background-color: var(--primary-color);
     color: var(--secundary-color);
   }
-
 }

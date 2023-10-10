@@ -9,16 +9,13 @@ import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 
-export default async function PageNumber({params}) {
-    let informacao
-   if(params.PageNumber === "clinicas"){
-     informacao = await FiltroService.pegarClinicas()
-     
-   }
-   else{
+export default async function PageNumber({ params }) {
+  let informacao;
+  if (params.PageNumber === "clinicas") {
+    informacao = await FiltroService.pegarClinicas();
+  } else {
     informacao = await FiltroService.pegarHospitaisEClincas();
-
-   }
+  }
 
   return (
     <>

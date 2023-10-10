@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import "@/components/Usuarios/css/ButtonSearch.css";
@@ -6,16 +6,18 @@ import "@/components/Usuarios/css/ButtonSearch.css";
 export default function ButtonSearch() {
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
- 
-  const handleInputChange = (event) => {
+
+  const handleInputChange = event => {
     const inputValue = event.target.value;
     // Remove todos os caracteres de pontuação (incluindo hífens)
     const formattedValue = inputValue.replace(/[\p{P}\p{S}]/gu, " ");
     setSearchValue(formattedValue);
   };
-  const handleSearch = (event) => {
+  const handleSearch = event => {
     event.preventDefault(); // Evita que o formulário recarregue a página
-    const formattedSearchValue = encodeURIComponent(searchValue.replace(/ /g, "-"));
+    const formattedSearchValue = encodeURIComponent(
+      searchValue.replace(/ /g, "-")
+    );
     // Redirecione para a página de pesquisa com o valor formatado
     router.push(`/pesquisa/${formattedSearchValue}`);
   };

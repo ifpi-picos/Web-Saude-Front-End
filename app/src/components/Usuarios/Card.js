@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import Paginacao from "../UsuariosAndAdmin/Paginacao";
 import Link from "next/link";

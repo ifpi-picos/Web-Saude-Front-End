@@ -18,10 +18,10 @@ export default async function Pesquisa({ params }) {
       <Header />
       <div className="containers">
         <Slogan />
-        <ButtonSearch/>
+        <ButtonSearch />
         <Filtros />
       </div>
-      <Card  informacao={informacao} />
+      <Card informacao={informacao} />
       <Footer />
     </>
   );
