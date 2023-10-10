@@ -13,7 +13,6 @@ export default async function Pesquisa({ params }) {
   const busca = decodeURIComponent(params.busca.replace(/-/g, " "));
 
   const informacao = await FiltroService.filtrar(busca);
-  console.log(informacao)
   return (
     <>
       <Header />

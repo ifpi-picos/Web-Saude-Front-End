@@ -10,8 +10,15 @@ import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 
 export default async function PageNumber({params}) {
-  
-  const informacao = await FiltroService.pegarHospitaisEClincas();
+    let informacao
+   if(params.PageNumber === "clinicas"){
+     informacao = await FiltroService.pegarClinicas()
+     
+   }
+   else{
+    informacao = await FiltroService.pegarHospitaisEClincas();
+
+   }
 
   return (
     <>

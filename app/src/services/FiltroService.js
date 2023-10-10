@@ -2,7 +2,10 @@
 class FiltroSeerrvice {
   
   async pegarClinicas() {
-    const res = await fetch(`https://api-web-saude.vercel.app/clinicas`
+    const res = await fetch(`https://api-web-saude.vercel.app/clinicas`,
+    {
+      cache:"no-store"
+    }
      );
      
     if(!res.ok){
