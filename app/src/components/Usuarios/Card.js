@@ -29,7 +29,7 @@ export default function Card({ pageNumber, informacao }) {
         <p className="mt-3">Nenhum resultado encontrado.</p> // Mensagem quando nenhum card for encontrado
       ) : (
         <>
-          {limitedPosts.map((info, index) => (
+          {informacao.map((info, index) => (
             <div className="card-container" key={index}>
               <div className="top">
                 <div className="image-container">
@@ -56,13 +56,7 @@ export default function Card({ pageNumber, informacao }) {
               </div>
             </div>
           ))}
-          {totalPages > 1 && (
-            <Paginacao
-              currentPage={currentPage}
-              totalPages={totalPages}
-              setCurrentPage={setCurrentPage}
-            />
-          )}
+        
         </>
       )}
     </section>

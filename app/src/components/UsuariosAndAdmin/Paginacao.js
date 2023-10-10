@@ -53,7 +53,7 @@ export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
               if (currentPage < totalPages) {
                 const newPage = currentPage + 1;
                 setCurrentPage(newPage);
-                window.history.pushState({}, "", `/${newPage}`);
+                window.history.pushState({}, "", `/clinicas/${newPage}`);
               }
             }}
           >

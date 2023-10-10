@@ -2,14 +2,8 @@
 class FiltroSeerrvice {
   
   async pegarClinicas() {
-    const res = await fetch(`https://tame-lime-stingray-tux.cyclic.cloud/clinicas`,{
-
-          method: 'GET',
-          headers: {
-            accept: 'application/json',
-          },
-
-    });
+    const res = await fetch(`https://api-web-saude.vercel.app/clinicas`
+     );
      
     if(!res.ok){
       throw new Error(`houve um erro no servidor! ${res.status}`)
