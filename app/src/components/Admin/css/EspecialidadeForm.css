@@ -184,6 +184,7 @@ form {
     height: 100vh;
     margin-top: 0px;
     margin-bottom: 0px;
+    border-radius: 0px;
 }
 .topo button {
     width: 100px;

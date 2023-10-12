@@ -3,8 +3,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaSave, FaEdit, FaTrash } from 'react-icons/fa';
 
 import "@/components/Admin/css/EspecialidadeForm.css"
+import EspecialidadeService from '@/services/EspecialidadeService';
 
-export default function EspecialidadeForm() {
+export default async function EspecialidadeForm() {
   const [especialidades, setEspecialidades] = useState([]);
   const [novaEspecialidade, setNovaEspecialidade] = useState('');
   const [editandoIndex, setEditandoIndex] = useState(null);
@@ -20,7 +21,7 @@ export default function EspecialidadeForm() {
       .then((data) => setEspecialidades(data))
       .catch((error) => console.error(error));
   };
-
+ const espe = await EspecialidadeService.pegarEspecialidades()
   const handleNovaEspecialidadeChange = (e) => {
     setNovaEspecialidade(e.target.value);
   };
@@ -110,7 +111,7 @@ export default function EspecialidadeForm() {
           </button>
         </div>
         <ul id="listarEspecialidades" style={{ maxHeight: '400px', overflowY: 'auto' }}>
-          {especialidades.map((especialidade, index) => (
+          {espe.map((especialidade, index) => (
             <li key={index}>
               {editandoIndex === index ? (
                 <div className="frm-linha" ref={editBoxRef}>
