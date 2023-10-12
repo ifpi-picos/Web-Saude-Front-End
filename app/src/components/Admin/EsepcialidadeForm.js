@@ -2,10 +2,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaSave, FaEdit, FaTrash } from 'react-icons/fa';
 
-import "@/components/Admin/css/EspecialidadeForm.css"
+import "@/components/Admin/css/EspecialidadeForm.css";
 import EspecialidadeService from '@/services/EspecialidadeService';
 
-export default async function EspecialidadeForm() {
+export default function EspecialidadeForm() {
   const [especialidades, setEspecialidades] = useState([]);
   const [novaEspecialidade, setNovaEspecialidade] = useState('');
   const [editandoIndex, setEditandoIndex] = useState(null);
@@ -15,13 +15,15 @@ export default async function EspecialidadeForm() {
     listarEspecialidades();
   }, []);
 
-  const listarEspecialidades = () => {
-    fetch('https://api-web-saude.vercel.app/especialidades')
-      .then((response) => response.json())
-      .then((data) => setEspecialidades(data))
-      .catch((error) => console.error(error));
+  const listarEspecialidades = async () => {
+    try {
+      const espe = await EspecialidadeService.pegarEspecialidades();
+      setEspecialidades(espe);
+    } catch (error) {
+      console.error(error);
+    }
   };
- const espe = await EspecialidadeService.pegarEspecialidades()
+
   const handleNovaEspecialidadeChange = (e) => {
     setNovaEspecialidade(e.target.value);
   };
@@ -43,7 +45,7 @@ export default async function EspecialidadeForm() {
       body: JSON.stringify({ nome: nomeEspecialidade }),
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         setNovaEspecialidade('');
         listarEspecialidades();
       })
@@ -56,7 +58,7 @@ export default async function EspecialidadeForm() {
 
   const salvarEspecialidade = (index) => {
     const editedName = editBoxRef.current.querySelector('input').value;
-    const id = especialidades[index]._id; // Substitua pelo ID correto da especialidade
+    const id = especialidades[index]._id; // Replace with the correct ID of the specialty
 
     fetch(`https://api-web-saude.vercel.app/alterar-especialidade/${id}`, {
       method: 'PUT',
@@ -66,7 +68,7 @@ export default async function EspecialidadeForm() {
       body: JSON.stringify({ nome: editedName }),
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         setEditandoIndex(null);
         listarEspecialidades();
       })
@@ -75,23 +77,21 @@ export default async function EspecialidadeForm() {
 
   const handleExcluirEspecialidade = (index) => {
     const id = especialidades[index]._id;
-  
+
     if (window.confirm('Tem certeza de que deseja excluir esta especialidade?')) {
       fetch(`https://api-web-saude.vercel.app/deletar-especialidade/${id}`, {
         method: 'DELETE',
       })
-        .then((data) => {
-
+        .then(() => {
           const updatedEspecialidades = [...especialidades];
           updatedEspecialidades.splice(index, 1);
           setEspecialidades(updatedEspecialidades);
-          listarEspecialidades()
+          listarEspecialidades();
         })
         .catch((error) => console.error(error));
     }
-
   };
-  
+
   const cancelarEdicao = () => {
     setEditandoIndex(null);
   };
@@ -111,7 +111,7 @@ export default async function EspecialidadeForm() {
           </button>
         </div>
         <ul id="listarEspecialidades" style={{ maxHeight: '400px', overflowY: 'auto' }}>
-          {espe.map((especialidade, index) => (
+          {especialidades.map((especialidade, index) => (
             <li key={index}>
               {editandoIndex === index ? (
                 <div className="frm-linha" ref={editBoxRef}>
