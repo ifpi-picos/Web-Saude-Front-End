@@ -9,9 +9,8 @@ import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 export default async function PageNumber({ params }) {
- 
-   const informacao = await FiltroService.pegarClinicas();
- 
+  const informacao = await FiltroService.pegarClinicas();
+
   return (
     <>
       <Header />

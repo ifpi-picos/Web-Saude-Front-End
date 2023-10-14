@@ -1,6 +1,6 @@
 import "../Usuarios/css/Horario.css";
 import Clinica from "@/services/ClinicaService";
-
+import FiltroService from "@/services/FiltroService";
 export default async function Horario({ nome }) {
   const clinica = await Clinica.pegarClinica(nome);
 
@@ -9,7 +9,10 @@ export default async function Horario({ nome }) {
       <table className="table table-light table-striped table-bordered">
         <thead>
           <tr>
-            <th colSpan="4" style={{ backgroundColor: "gray", color: "white" }}>
+            <th
+              colSpan="4"
+              style={{ backgroundColor: "#00285f", color: "white" }}
+            >
               Horário
             </th>
           </tr>

@@ -11,9 +11,7 @@ export default function Especialidades({ nome }) {
   const [especialidades, setEspecialidades] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://web-saude-back-end-eric-developer.vercel.app/clinica/${nome}`
-    )
+    fetch(`https://api-web-saude.vercel.app/clinica/${nome}`)
       .then(response => {
         if (!response.ok) {
           throw new Error("Falha ao buscar dados da API");
@@ -25,9 +23,7 @@ export default function Especialidades({ nome }) {
         setClinica(data);
 
         // Buscar todas as especialidades existentes
-        fetch(
-          "https://web-saude-back-end-eric-developer.vercel.app/especialidades"
-        )
+        fetch("https://api-web-saude.vercel.app/especialidades")
           .then(response => {
             if (!response.ok) {
               throw new Error("Falha ao buscar as especialidades existentes");

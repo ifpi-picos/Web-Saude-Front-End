@@ -24,17 +24,6 @@ class FiltroSeerrvice {
 
     return info;
   }
-  /*async pegarHospitaisEClincas() {
-    const [clinicas, hospitais] = await Promise.all([
-      this.pegarClinicas(),
-      this.pegarHospitais(),
-    ]);
-
-    const hospitaisEClincas = { clinicas, hospitais };
-
-    return hospitaisEClincas;
-  }
-*/
 
   async pegarHospitaisEClincas() {
     const [clinicas, hospitais] = await Promise.all([
@@ -51,6 +40,28 @@ class FiltroSeerrvice {
     );
     const info = await res.json();
     return info;
+  }
+
+  async pegarClinica(nome) {
+    const res = await fetch(`https://api-web-saude.vercel.app/clinica/${nome}`);
+    const info = await res.json();
+    return info;
+  }
+  async pegarHospital() {
+    const res = await fetch(
+      `https://api-web-saude.vercel.app/hospital/${nome}`
+    );
+    const info = await res.json();
+    return info;
+  }
+  async pegarHospitalEClinca() {
+    const [clinica, hospital] = await Promise.all([
+      this.pegarClinica(),
+      this.pegarHospital(),
+    ]);
+    const informacao = [...clinica, ...hospital];
+
+    return informacao;
   }
 }
 

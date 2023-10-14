@@ -1,13 +1,12 @@
-"use client"
-import React, { useState, useEffect, useRef } from 'react';
-import { FaSave, FaEdit, FaTrash } from 'react-icons/fa';
-
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import { FaSave, FaEdit, FaTrash } from "react-icons/fa";
 import "@/components/Admin/css/EspecialidadeForm.css";
-import EspecialidadeService from '@/services/EspecialidadeService';
+import EspecialidadeService from "@/services/EspecialidadeService";
 
 export default function EspecialidadeForm() {
   const [especialidades, setEspecialidades] = useState([]);
-  const [novaEspecialidade, setNovaEspecialidade] = useState('');
+  const [novaEspecialidade, setNovaEspecialidade] = useState("");
   const [editandoIndex, setEditandoIndex] = useState(null);
   const editBoxRef = useRef(null);
 
@@ -24,7 +23,7 @@ export default function EspecialidadeForm() {
     }
   };
 
-  const handleNovaEspecialidadeChange = (e) => {
+  const handleNovaEspecialidadeChange = e => {
     setNovaEspecialidade(e.target.value);
   };
 
@@ -36,51 +35,53 @@ export default function EspecialidadeForm() {
     }
   };
 
-  const cadastrarEspecialidade = (nomeEspecialidade) => {
-    fetch('https://api-web-saude.vercel.app/nova-especialidade', {
-      method: 'POST',
+  const cadastrarEspecialidade = nomeEspecialidade => {
+    fetch("https://api-web-saude.vercel.app/nova-especialidade", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ nome: nomeEspecialidade }),
     })
-      .then((response) => response.json())
+      .then(response => response.json())
       .then(() => {
-        setNovaEspecialidade('');
+        setNovaEspecialidade("");
         listarEspecialidades();
       })
-      .catch((error) => console.error(error));
+      .catch(error => console.error(error));
   };
 
-  const editarEspecialidade = (index) => {
+  const editarEspecialidade = index => {
     setEditandoIndex(index);
   };
 
-  const salvarEspecialidade = (index) => {
-    const editedName = editBoxRef.current.querySelector('input').value;
+  const salvarEspecialidade = index => {
+    const editedName = editBoxRef.current.querySelector("input").value;
     const id = especialidades[index]._id; // Replace with the correct ID of the specialty
 
     fetch(`https://api-web-saude.vercel.app/alterar-especialidade/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ nome: editedName }),
     })
-      .then((response) => response.json())
+      .then(response => response.json())
       .then(() => {
         setEditandoIndex(null);
         listarEspecialidades();
       })
-      .catch((error) => console.error(error));
+      .catch(error => console.error(error));
   };
 
-  const handleExcluirEspecialidade = (index) => {
+  const handleExcluirEspecialidade = index => {
     const id = especialidades[index]._id;
 
-    if (window.confirm('Tem certeza de que deseja excluir esta especialidade?')) {
+    if (
+      window.confirm("Tem certeza de que deseja excluir esta especialidade?")
+    ) {
       fetch(`https://api-web-saude.vercel.app/deletar-especialidade/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       })
         .then(() => {
           const updatedEspecialidades = [...especialidades];
@@ -88,7 +89,7 @@ export default function EspecialidadeForm() {
           setEspecialidades(updatedEspecialidades);
           listarEspecialidades();
         })
-        .catch((error) => console.error(error));
+        .catch(error => console.error(error));
     }
   };
 
@@ -110,7 +111,10 @@ export default function EspecialidadeForm() {
             <FaSave />
           </button>
         </div>
-        <ul id="listarEspecialidades" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+        <ul
+          id="listarEspecialidades"
+          style={{ maxHeight: "400px", overflowY: "auto" }}
+        >
           {especialidades.map((especialidade, index) => (
             <li key={index}>
               {editandoIndex === index ? (
@@ -121,7 +125,10 @@ export default function EspecialidadeForm() {
                     <button onClick={() => salvarEspecialidade(index)}>
                       Salvar
                     </button>
-                    <button id="btnCancelarEdicao" onClick={() => cancelarEdicao()}>
+                    <button
+                      id="btnCancelarEdicao"
+                      onClick={() => cancelarEdicao()}
+                    >
                       Cancelar
                     </button>
                   </div>
@@ -129,20 +136,34 @@ export default function EspecialidadeForm() {
               ) : (
                 <>
                   {especialidade.nome}
-                  <div className='icones'>
+                  <div className="icones">
                     <button
-                      style={{ background: "none", color: "white", marginLeft: '10px' }}
+                      style={{
+                        background: "none",
+                        color: "white",
+                        marginLeft: "10px",
+                      }}
                       id={`editarEspecialidade_${index}`}
                       onClick={() => editarEspecialidade(index)}
                     >
-                      <FaEdit style={{ width: "20px", height: "100%" }} />
+                      <FaEdit
+                        style={{
+                          width: "15px",
+                          height: "100%",
+                          marginLeft: "20px",
+                        }}
+                      />
                     </button>
                     <button
-                      style={{ background: "none", color: "white", marginLeft: '10px' }}
+                      style={{
+                        background: "none",
+                        color: "white",
+                        marginLeft: "10px",
+                      }}
                       id={`excluirEspecialidade_${index}`}
                       onClick={() => handleExcluirEspecialidade(index)}
                     >
-                      <FaTrash style={{ width: "20px", height: "100%" }} />
+                      <FaTrash style={{ width: "15px", height: "100%" }} />
                     </button>
                   </div>
                 </>

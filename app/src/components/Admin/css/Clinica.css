@@ -1,160 +1,96 @@
-.main {
-  background-color: var(--primary-color);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+section {
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  margin: 0px;
-}
-
-.box-clinica {
-  background-color: rgba(255, 255, 255, 0.5);
-  display: flex;
-  justify-self: center;
-  width: 930px;
-}
-.box-clinica .img-box {
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 50%;
-  display: flex;
   align-items: center;
-  padding: 20px;
-  border-radius: 20px 0 0 20px;
 }
-.box-clinica .img-box img {
-  width: 100%;
-}
-.box-clinica .form-box {
-  background-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(40px);
-  padding: 30px 40px;
-  width: 50%;
-  border-radius: 0 20px 20px 0;
-}
-.box-clinica h2 {
-  font-size: 30px;
-  color: black;
-}
-.box-clinica .form-box p {
-  color: black;
-}
-.box-clinica .form-box p a {
-  color: crimson;
-  text-decoration: underline;
-}
-.box-clinica .form-box form {
-  margin: 20px 0;
-}
-.box-clinica .form-box form .input-group {
-  margin-bottom: 15px;
-}
-.box-clinica .form-box form .input-group label {
-  color: black;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 5px;
-}
-.box-clinica .form-box form .input-group input,
-form .input-group select {
-  width: 100%;
-  height: 47px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  outline: none;
-  border: 2px solid transparent;
+.box {
+  margin: 50px;
+  color: white;
+  background-color: #191818;
   padding: 15px;
-  font-size: 15px;
-  color: #616161;
-  transition: all 0.4s ease;
+  border-radius: 15px;
+  width: 30%;
 }
-
-.box-clinica .form-box form .input-group textarea {
-  width: 100%;
-  height: 80px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 20px;
-  outline: none;
-  border: 2px solid transparent;
-  padding: 15px;
-  font-size: 15px;
-  color: black;
-  transition: all 0.4s ease;
+fieldset {
+  border: 3px solid #00285f;
 }
-.box-clinica .form-box form .input-group input:focus,
-.box-clinica .form-box form .input-group textarea:focus {
-  border-color: #ff008869;
-}
-.box-clinica .form-box form .input-group select {
-  padding: 0px;
-}
-.box-clinica .form-box form .select {
-  margin-top: 8px;
-}
-form .input-group select option {
+legend {
+  border: 1px solid #00285f;
+  padding: 10px;
   text-align: center;
+  background-color: #00285f;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+.inputBox {
+  position: relative;
+  margin: 40px;
+}
+.inputUser {
+  background: none;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  color: white;
+  font-size: 15px;
+  width: 100%;
+  letter-spacing: 2px;
+}
+.labelInput {
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  pointer-events: none;
+  transition: 0.5s;
+  margin-top: -15px;
 }
 
-.box-clinica .form-box form .input-group button {
+.inputUser:focus ~ .labelInput,
+.inputUser:valid ~ .labelInput {
+  top: -15px;
+  font-size: 12px;
+  color: #00285f;
+}
+#data_nascimento {
+  border: none;
+  padding: 8px;
+  border-radius: 10px;
+  outline: none;
+  font-size: 15px;
+}
+#submit {
+  background-image: linear-gradient(to right, #00285f, rgb(90, 20, 220));
+  width: 100%;
+  border: none;
+  padding: 15px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+#submit:hover {
+  background-image: linear-gradient(to right, #00285f, rgb(80, 19, 195));
+}
+ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 47px;
-  background: white;
-  border-radius: 20px;
-  outline: none;
-  border: none;
-  margin-top: 15px;
-  color: black;
-  cursor: pointer;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-.box-clinica .form-box form .input-group button:hover {
-  background-color: #4169e1;
+  flex-direction: column;
+  list-style: none;
+  border-radius: 15px;
+  margin: 50px;
+  color: white;
+  background-color: #191818;
+  padding: 15px;
+  border-radius: 15px;
+  width: 20%;
 }
 @media (max-width: 768px) {
-  .box-clinica .form-box h2 {
-    font-size: 22px;
-  }
-  .box-clinica .img-box {
-    display: none;
-  }
-  .box-clinica {
-    background-color: var(--primary-color);
-    width: 100%;
-  }
-  .box-clinica .form-box {
-    width: 100%;
-    border-radius: 0px;
-    background-color: var(--primary-color);
-  }
-  .box .box-form {
-    width: 100%;
-  }
-  .box-form .form-box {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  section {
     flex-direction: column;
   }
-  .box-clinica .form-box form .input-group input,
-  form .input-group select {
-    height: 15px;
-  }
-  .box-clinica .form-box form .input-group textarea {
-    height: 80px;
-  }
-}
-@media (max-width: 500px) {
-  .w50 {
-    width: 100%;
-    padding: 0;
+  .box {
+    width: 85%;
   }
 }
