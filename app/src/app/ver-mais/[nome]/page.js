@@ -1,3 +1,4 @@
+"use client"
 import NomeDaClinica_Hospital from "@/components/Usuarios/NomeDaClínica_Hospital";
 import Header from "@/components/Usuarios/Header";
 import CardInformativo from "@/components/Usuarios/CardInformativo";
