@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import axios from "axios";
+
 function ClinicaForm() {
   const [formData, setFormData] = useState({
     cep: "",
@@ -52,7 +52,7 @@ function ClinicaForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/admin/nova-clinica", {
+      const response = await fetch("https://api-web-saude.vercel.app/admin/nova-clinica", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

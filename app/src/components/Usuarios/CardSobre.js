@@ -1,4 +1,4 @@
-"use client";
+
 import "../Usuarios/css/CardSobre.css";
 import Clinica from "@/services/ClinicaService";
 import Card from "react-bootstrap/Card";
