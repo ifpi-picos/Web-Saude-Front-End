@@ -1,7 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
+import CloudinaryUploadWidget from "../UsuariosAndAdmin/Upload";
+import SpecialtySelect from "../UsuariosAndAdmin/Select";
 
-function ClinicaForm() {
+export default function ClinicaForm() {
+  const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
+
   const [formData, setFormData] = useState({
     cep: "",
     rua: "",
@@ -10,6 +14,7 @@ function ClinicaForm() {
     cidade: "",
     uf: "",
     nome: "",
+    iamgem: "",
     horarioSemana: {
       open: "",
       close: "",
@@ -18,11 +23,18 @@ function ClinicaForm() {
       open: "",
       close: "",
     },
+    email: "",
+    whatsapp: "",
+    instagram: "",
+    descricao: "",
     longitude: "",
     latitude: "",
     especialidades: [],
   });
-  // Atualize a função handleChange para tratar os campos de hora
+
+  const handleImageURLChange = imageUrl => {
+    setFormData({ ...formData, imagem: imageUrl });
+  };
   const handleChange = e => {
     const { name, value } = e.target;
     if (name.startsWith("horarioSemana.")) {
@@ -47,18 +59,28 @@ function ClinicaForm() {
       setFormData({ ...formData, [name]: value });
     }
   };
-
+  const handleSpecialtyChange = selectedSpecialties => {
+    setFormData({ ...formData, especialidades: selectedSpecialties });
+    const selectedIds = selectedSpecialties.map(specialty => specialty.value);
+    setSelectedSpecialtyIds(selectedIds);
+  };
   const handleSubmit = async e => {
     e.preventDefault();
-
+    const dataToSend = {
+      ...formData,
+      especialidades: selectedSpecialtyIds, // Inclui os IDs das especialidades selecionadas
+    };
     try {
-      const response = await fetch("https://api-web-saude.vercel.app/admin/nova-clinica", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://api-web-saude.vercel.app/admin/nova-clinica",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
 
       if (response.ok) {
         const responseData = await response.json();
@@ -89,6 +111,20 @@ function ClinicaForm() {
                 value={formData.nome}
                 onChange={handleChange}
                 required
+              />
+            </div>
+
+            <div className="buttonBox">
+              <label className="labelInput"> Imagem da Clínica:</label>
+
+              <div className="buttontUser">
+                <CloudinaryUploadWidget onURLChange={handleImageURLChange} />
+              </div>
+            </div>
+            <div className="selectBox">
+              <SpecialtySelect
+                onChange={handleSpecialtyChange}
+                selectedSpecialties={formData.especialidades}
               />
             </div>
 
@@ -150,7 +186,55 @@ function ClinicaForm() {
                 required
               />
             </div>
+            <div className="inputBox">
+              <label className="labelInput">Email (opcional):</label>
 
+              <input
+                className="inputUser"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="inputBox">
+              <label className="labelInput">instagram (opcional):</label>
+
+              <input
+                className="inputUser"
+                type="text"
+                name="instagram"
+                value={formData.instagram}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="inputBox">
+              <label className="labelInput"> whatsapp (opcional):</label>
+
+              <input
+                className="inputUser"
+                type="text"
+                name="whatsapp"
+                value={formData.whatsapp}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="inputBox">
+              <label className="labelInput"> Descrição (opcional):</label>
+
+              <textarea
+                className=""
+                name="descricao"
+                value={formData.descricao}
+                onChange={handleChange}
+                required
+                placeholder="texto"
+              />
+            </div>
             <div className="inputBox">
               <label className="labelInput"> Longitude:</label>
 
@@ -243,7 +327,7 @@ function ClinicaForm() {
             </div>
 
             <div className="inputBox">
-              <label className="labelInput">UF:</label>
+              <label className="labelInput">Uf:</label>
 
               <input
                 className="inputUser"
@@ -264,5 +348,3 @@ function ClinicaForm() {
     </section>
   );
 }
-
-export default ClinicaForm;

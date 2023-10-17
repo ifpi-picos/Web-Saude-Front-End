@@ -22,9 +22,15 @@ legend {
   border-radius: 8px;
   margin-bottom: 30px;
 }
-.inputBox {
+.inputBox,
+.buttonBox {
   position: relative;
   margin: 40px;
+}
+.selectBox {
+  position: relative;
+  margin: 40px;
+  margin-top: -20px;
 }
 .inputUser {
   background: none;
@@ -36,6 +42,24 @@ legend {
   width: 100%;
   letter-spacing: 2px;
 }
+textarea {
+  border-bottom: 1px solid white;
+  outline: none;
+  width: 100%;
+  margin-top: 3px;
+  height: 100px;
+}
+
+.buttonBox button {
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: white;
+  outline: none;
+  font-size: 15px;
+  width: 100%;
+  height: 35px;
+}
+
 .labelInput {
   font-size: 12px;
   position: absolute;
@@ -43,7 +67,7 @@ legend {
   left: 0px;
   pointer-events: none;
   transition: 0.5s;
-  margin-top: -15px;
+  margin-top: -18px;
 }
 
 .inputUser:focus ~ .labelInput,
@@ -52,13 +76,7 @@ legend {
   font-size: 12px;
   color: #00285f;
 }
-#data_nascimento {
-  border: none;
-  padding: 8px;
-  border-radius: 10px;
-  outline: none;
-  font-size: 15px;
-}
+
 #submit {
   background-image: linear-gradient(to right, #00285f, rgb(90, 20, 220));
   width: 100%;
@@ -91,6 +109,6 @@ ul {
     flex-direction: column;
   }
   .box {
-    width: 85%;
+    width: 90%;
   }
 }

@@ -1,4 +1,3 @@
-
 import "../Usuarios/css/NomeDaClínica_Hospital.css";
 import Image from "next/image";
 import imagem from "../../components/imgs/doutor-vermais.svg";

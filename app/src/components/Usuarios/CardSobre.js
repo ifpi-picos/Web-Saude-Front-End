@@ -1,9 +1,7 @@
-
 import "../Usuarios/css/CardSobre.css";
 import Card from "react-bootstrap/Card";
 
 export default async function CardSobre({ nome }) {
-
   return (
     <Card className="sobre">
       <Card.Header>Sobre</Card.Header>
