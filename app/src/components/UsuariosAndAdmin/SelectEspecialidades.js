@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
-const SpecialtySelect = ({ onChange, selectedSpecialties }) => {
+  export default function SelectEspecialidades  ({ onChange, selectedSpecialties })  {
   const [specialtyOptions, setSpecialtyOptions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -57,4 +57,3 @@ const SpecialtySelect = ({ onChange, selectedSpecialties }) => {
   );
 };
 
-export default SpecialtySelect;

@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
-import CloudinaryUploadWidget from "../UsuariosAndAdmin/Upload";
-import SpecialtySelect from "../UsuariosAndAdmin/Select";
+import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
+import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
+import { FaUser } from "react-icons/fa";
+import Link from "next/link";
 
 export default function ClinicaForm() {
   const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
@@ -85,6 +87,8 @@ export default function ClinicaForm() {
       if (response.ok) {
         const responseData = await response.json();
         console.log(responseData);
+        window.location.href = '/';
+
       } else {
         console.error("Erro ao enviar os dados.");
       }
@@ -95,6 +99,11 @@ export default function ClinicaForm() {
 
   return (
     <section>
+       <div className="painel">
+       <h3> <Link href="/login/dashboard">
+          <FaUser size={24} /> Ir para o Painel
+        </Link></h3>
+      </div>
       <div className="box">
         <legend>
           <strong>Cadastrar Nova Clínica</strong>
@@ -122,7 +131,7 @@ export default function ClinicaForm() {
               </div>
             </div>
             <div className="selectBox">
-              <SpecialtySelect
+              <SelectEspecialidades
                 onChange={handleSpecialtyChange}
                 selectedSpecialties={formData.especialidades}
               />

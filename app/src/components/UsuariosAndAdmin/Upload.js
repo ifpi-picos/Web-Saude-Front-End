@@ -1,9 +1,9 @@
-"use client";
 import React, { useState } from "react";
 import { CldUploadWidget } from "next-cloudinary";
+import Image from "next/image";
 
 function CloudinaryUploadWidget({ onURLChange }) {
-  const [imageSelected, setImageSelected] = useState(false);
+  const [imageSelected, setImageSelected] = useState(null);
 
   function handleUploadSuccess(result) {
     const imageUrl = result.info.secure_url;
@@ -16,32 +16,34 @@ function CloudinaryUploadWidget({ onURLChange }) {
     }
     console.log("Upload bem-sucedido. URL da imagem:", imageUrl);
 
-    setImageSelected(true); // Marca que uma imagem foi selecionada
+    setImageSelected(imageUrl); // Define a URL da imagem selecionada
   }
 
   return (
     <div>
-      {imageSelected ? (
-        <div>Imagem foi selecionada</div>
-      ) : (
-        <CldUploadWidget
-          uploadPreset={process.env.localNEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
-          onSuccess={handleUploadSuccess}
-        >
-          {({ open }) => {
-            function handleOnClick(e) {
-              e.preventDefault();
-              open();
-            }
+      <div style={{display:"flex",justifyContent:"space-around"}}>
+        <label>Imagem Selecionada:</label>
+        {imageSelected && (
+          <Image src={imageSelected} alt="Imagem Selecionada" width="35" height="25" style={{borderRadius:"5px"}} />
+        )}
+      </div>
+      <CldUploadWidget
+        uploadPreset={process.env.localNEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+        onSuccess={handleUploadSuccess}
+      >
+        {({ open }) => {
+          function handleOnClick(e) {
+            e.preventDefault();
+            open();
+          }
 
-            return (
-              <button className="upload" onClick={handleOnClick}>
-                Enviar imagem
-              </button>
-            );
-          }}
-        </CldUploadWidget>
-      )}
+          return (
+            <button className="upload" onClick={handleOnClick}>
+              Enviar imagem
+            </button>
+          );
+        }}
+      </CldUploadWidget>
     </div>
   );
 }

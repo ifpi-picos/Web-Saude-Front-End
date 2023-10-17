@@ -3,6 +3,11 @@ section {
   justify-content: center;
   align-items: center;
 }
+
+.painel{
+  margin-bottom: -35px;
+  margin-top: 12px;
+}
 .box {
   margin: 50px;
   color: white;
@@ -107,6 +112,10 @@ ul {
 @media (max-width: 768px) {
   section {
     flex-direction: column;
+  }
+  .painel{
+    margin-bottom: -35px;
+    margin-top: 12px;
   }
   .box {
     width: 90%;
