@@ -1,6 +1,11 @@
+"use client"
+import HospitalForm from "@/components/Admin/Formularios/HospitalForm";
+import "@/components/Admin/Formularios/css/Form.css";
+
 export default function CadastrarHospital() {
   return (
-  <h1>page de hospital</h1>
-  )
-
+    <main className="main">
+      <HospitalForm />
+    </main>
+  );
 }

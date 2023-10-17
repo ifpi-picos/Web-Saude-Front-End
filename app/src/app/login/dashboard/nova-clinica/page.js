@@ -1,6 +1,6 @@
 "use client";
 import ClinicaForm from "@/components/Admin/Formularios/ClinicaForm";
-import "@/components/Admin/Formularios/css/form.css";
+import "@/components/Admin/Formularios/css/Form.css";
 
 export default function CadastrarClinica() {
   return (
