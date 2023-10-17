@@ -16,7 +16,7 @@ export default function ClinicaForm() {
     cidade: "",
     uf: "",
     nome: "",
-    iamgem: "",
+    imagem: "",
     horarioSemana: {
       open: "",
       close: "",
