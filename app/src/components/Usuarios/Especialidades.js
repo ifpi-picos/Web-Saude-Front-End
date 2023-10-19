@@ -47,7 +47,7 @@ export default function Especialidades({ nome }) {
   const getNomesEspecialidadesClinica = () => {
     const nomesEspecialidades = especialidades
       .filter(especialidade =>
-        clinica[0]?.especialidades?.includes(especialidade._id)
+        clinica.especialidades?.includes(especialidade._id)
       )
       .map(especialidade => especialidade.nome);
     return nomesEspecialidades;
