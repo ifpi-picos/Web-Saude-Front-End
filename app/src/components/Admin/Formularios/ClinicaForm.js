@@ -177,7 +177,6 @@ export default function ClinicaForm() {
                 name="sabado.open"
                 value={formData.sabado.open}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="inputBox">
@@ -192,7 +191,6 @@ export default function ClinicaForm() {
                 name="sabado.close"
                 value={formData.sabado.close}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="inputBox">
@@ -204,7 +202,6 @@ export default function ClinicaForm() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="inputBox">
@@ -216,7 +213,7 @@ export default function ClinicaForm() {
                 name="instagram"
                 value={formData.instagram}
                 onChange={handleChange}
-                required
+                
               />
             </div>
             <div className="inputBox">
@@ -228,7 +225,7 @@ export default function ClinicaForm() {
                 name="whatsapp"
                 value={formData.whatsapp}
                 onChange={handleChange}
-                required
+                
               />
             </div>
 

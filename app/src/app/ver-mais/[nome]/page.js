@@ -34,7 +34,7 @@ export default function verMais({ params }) {
         <Horario nome={params.nome} />
         <CardSobre nome={params.nome} />
         <Contato nome={params.nome} />
-        <Mapa />
+        <Mapa nome={params.nome} />
         <Especialidades nome={params.nome} />
       </main>
       <Footer />
