@@ -62,8 +62,8 @@ export default async function Horario({ nome }) {
           <tr>
             <th scope="row">7</th>
             <td>Sabado</td>
-            <td>{clinica.Sabado?.open || "Fechado"} </td>
-            <td>{clinica.Sabado?.close || "Fechado"} </td>
+            <td>{clinica.sabado?.open || "Fechado"} </td>
+            <td>{clinica.sabado?.close || "Fechado"} </td>
           </tr>
         </tbody>
       </table>
