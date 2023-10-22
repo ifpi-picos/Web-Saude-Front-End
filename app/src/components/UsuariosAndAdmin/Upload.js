@@ -21,10 +21,16 @@ function CloudinaryUploadWidget({ onURLChange }) {
 
   return (
     <div>
-      <div style={{display:"flex",justifyContent:"space-around"}}>
+      <div style={{ display: "flex", justifyContent: "space-around" }}>
         <label>Imagem Selecionada:</label>
         {imageSelected && (
-          <Image src={imageSelected} alt="Imagem Selecionada" width="35" height="25" style={{borderRadius:"5px"}} />
+          <Image
+            src={imageSelected}
+            alt="Imagem Selecionada"
+            width="35"
+            height="25"
+            style={{ borderRadius: "5px" }}
+          />
         )}
       </div>
       <CldUploadWidget

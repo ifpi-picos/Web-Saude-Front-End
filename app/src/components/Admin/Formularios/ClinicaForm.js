@@ -87,8 +87,7 @@ export default function ClinicaForm() {
       if (response.ok) {
         const responseData = await response.json();
         console.log(responseData);
-        window.location.href = '/';
-
+        window.location.href = "/";
       } else {
         console.error("Erro ao enviar os dados.");
       }
@@ -99,10 +98,13 @@ export default function ClinicaForm() {
 
   return (
     <section>
-       <div className="painel">
-       <h3> <Link href="/login/dashboard">
-          <FaUser size={24} /> Ir para o Painel
-        </Link></h3>
+      <div className="painel">
+        <h3>
+          {" "}
+          <Link href="/login/dashboard">
+            <FaUser size={24} /> Ir para o Painel
+          </Link>
+        </h3>
       </div>
       <div className="box">
         <legend>
@@ -213,7 +215,6 @@ export default function ClinicaForm() {
                 name="instagram"
                 value={formData.instagram}
                 onChange={handleChange}
-                
               />
             </div>
             <div className="inputBox">
@@ -225,7 +226,6 @@ export default function ClinicaForm() {
                 name="whatsapp"
                 value={formData.whatsapp}
                 onChange={handleChange}
-                
               />
             </div>
 

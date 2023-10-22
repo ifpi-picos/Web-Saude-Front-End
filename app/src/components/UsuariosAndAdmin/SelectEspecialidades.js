@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
-  export default function SelectEspecialidades  ({ onChange, selectedSpecialties })  {
+export default function SelectEspecialidades({
+  onChange,
+  selectedSpecialties,
+}) {
   const [specialtyOptions, setSpecialtyOptions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -55,5 +58,4 @@ import Select from "react-select";
       onChange={handleSelectionChange}
     />
   );
-};
-
+}

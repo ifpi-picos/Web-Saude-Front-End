@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import HospitalForm from "@/components/Admin/Formularios/HospitalForm";
 import "@/components/Admin/Formularios/css/Form.css";
 

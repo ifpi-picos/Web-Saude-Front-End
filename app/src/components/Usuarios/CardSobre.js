@@ -11,11 +11,7 @@ export default async function CardSobre({ nome }) {
       <Card.Header>Sobre</Card.Header>
       <Card.Body>
         <section className="mb-0">
-          <p>
-            
-           {clinica.descricao}
-          </p>
-        
+          <p>{clinica.descricao}</p>
         </section>
       </Card.Body>
     </Card>

@@ -1,4 +1,3 @@
-
 import React from "react";
 import Card from "@/components/Usuarios/Card";
 import Slogan from "@/components/Usuarios/Slogan";
