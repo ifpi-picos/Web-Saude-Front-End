@@ -26,7 +26,6 @@ export default function Filtros() {
     setSelectedEspecialidade(selectedOption);
 
     if (selectedOption) {
-      // Gere a URL a partir do nome da especialidade
       const especialidadeUrl = `/pesquisa/${selectedOption.label}`;
       router.push(especialidadeUrl);
     }
