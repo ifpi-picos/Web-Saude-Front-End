@@ -10,8 +10,8 @@ import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 
 export default async function filtroHospitais() {
-  const informacao = await FiltroService.pegarClinicas();
-
+  const informacao = await FiltroService.unidadesdeSaude();
+   
   return (
     <>
       <Header />

@@ -9,9 +9,9 @@ import FiltroService from "@/services/FiltroService";
 import "../components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Filtros.css";
 export default async function CorpoHome() {
-  const informacao = await FiltroService.pegarClinicas();
-
-  return (
+  const informacao = await FiltroService.unidadesdeSaude()
+ 
+  return ( 
     <>
       <Header />
       <main>

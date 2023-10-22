@@ -4,12 +4,12 @@ import Slogan from "@/components/Usuarios/Slogan";
 import Filtros from "@/components/Usuarios/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
-import FiltroService from "@/services/FiltroService";
 import ButtonSearch from "@/components/Usuarios/ButtonSearch";
 import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
+import ClinicaService from "@/services/ClinicaService";
 export default async function PageNumber({ params }) {
-  const informacao = await FiltroService.pegarClinicas();
+  const informacao = await ClinicaService.pegarClinicas()
 
   return (
     <>

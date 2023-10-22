@@ -6,11 +6,11 @@ import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
 import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
-import FiltroService from "@/services/FiltroService";
 import ButtonSearch from "@/components/Usuarios/ButtonSearch";
+import ClinicaService from "@/services/ClinicaService";
 
 export default async function filtroClinicas() {
-  const informacao = await FiltroService.pegarClinicas();
+  const informacao = await ClinicaService.pegarClinicas();
 
   return (
     <>
