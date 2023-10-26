@@ -61,6 +61,8 @@ export default function Card({ pageNumber, informacao }) {
                   ) : (
                     <p>Fechado aos sábados</p>
                   )
+                ) : info.horario === "Atendimento 24 Horas" ? (
+                  <p>Abre todos os dias</p>
                 ) : (
                   <p>Fechado aos sábados</p>
                 )}

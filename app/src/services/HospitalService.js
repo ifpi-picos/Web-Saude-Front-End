@@ -18,7 +18,6 @@ class HospitalService {
 
     return info;
   }
-
 }
 
 export default new HospitalService();

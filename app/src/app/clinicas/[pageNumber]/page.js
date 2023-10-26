@@ -9,7 +9,7 @@ import "@/components/Usuarios/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 import ClinicaService from "@/services/ClinicaService";
 export default async function PageNumber({ params }) {
-  const informacao = await ClinicaService.pegarClinicas()
+  const informacao = await ClinicaService.pegarClinicas();
 
   return (
     <>

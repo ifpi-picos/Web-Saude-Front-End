@@ -1,17 +1,17 @@
 import "../Usuarios/css/CardInformativo.css";
 import Link from "next/link";
 import Image from "next/image";
-import Clinica from "@/services/ClinicaService";
+import FiltroService from "@/services/FiltroService";
 
 export default async function CardInformativo({ nome }) {
-  const clinica = await Clinica.pegarClinica(nome);
+  const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(nome);
   return (
     <section className="section-informações">
       <div className="card-informacoes">
         <div className="top">
           <div className="image-container">
             <Image
-              src={clinica.imagem}
+              src={unidadesdeSaude.imagem}
               alt="Imagem da Clínica"
               width={200}
               height={200}
@@ -23,9 +23,9 @@ export default async function CardInformativo({ nome }) {
             <Link href="#mapa">Mapa</Link>
           </h3>
           <p>
-            {clinica.endereco.rua}, {clinica.endereco.numero} -{" "}
-            {clinica.endereco.bairro}, {clinica.endereco.cidade} -{" "}
-            {clinica.endereco.uf}, {clinica.endereco.cep}
+            {unidadesdeSaude.endereco.rua}, {unidadesdeSaude.endereco.numero} -{" "}
+            {unidadesdeSaude.endereco.bairro}, {unidadesdeSaude.endereco.cidade}{" "}
+            - {unidadesdeSaude.endereco.uf}, {unidadesdeSaude.endereco.cep}
           </p>
           <hr />
           <div className="div-atalhos">

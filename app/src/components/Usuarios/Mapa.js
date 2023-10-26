@@ -3,56 +3,56 @@ import React, { useState, useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "../Usuarios/css/Mapa.css";
-import Clinica from "@/services/ClinicaService";
+import FiltroService from "@/services/FiltroService";
 
 export default function Mapa({ nome }) {
   const [map, setMap] = useState(null);
-  const [clinica, setClinica] = useState(null);
+  const [unidadesDeSaude, setUnidadesDeSaude] = useState(null);
 
   useEffect(() => {
-    async function fetchClinica() {
-      const clinicaData = await Clinica.pegarClinica(nome);
-      setClinica(clinicaData);
+    async function fetchUnidadesDeSaude() {
+      const unidades = await FiltroService.pegarUnidadedeSaude(nome);
+      setUnidadesDeSaude(unidades);
     }
 
-    fetchClinica();
+    fetchUnidadesDeSaude();
   }, [nome]);
 
   useEffect(() => {
-    if (clinica) {
+    if (unidadesDeSaude) {
       if (!map) {
         const newMap = L.map("mapa").setView(
-          [clinica.latitude, clinica.longitude],
+          [unidadesDeSaude.latitude, unidadesDeSaude.longitude],
           20
         );
         const endereco =
-          clinica.endereco.rua +
+          unidadesDeSaude.endereco.rua +
           " - " +
-          clinica.endereco.numero +
+          unidadesDeSaude.endereco.numero +
           " - " +
-          clinica.endereco.bairro +
+          unidadesDeSaude.endereco.bairro +
           " - " +
-          clinica.endereco.cidade +
+          unidadesDeSaude.endereco.cidade +
           " - " +
-          clinica.endereco.uf +
+          unidadesDeSaude.endereco.uf +
           " - " +
-          clinica.endereco.cep;
+          unidadesDeSaude.endereco.cep;
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(newMap);
 
-        L.marker([clinica.latitude, clinica.longitude])
+        L.marker([unidadesDeSaude.latitude, unidadesDeSaude.longitude])
           .addTo(newMap)
           .bindPopup(endereco)
           .openPopup();
 
         setMap(newMap);
       } else {
-        map.setView([clinica.latitude, clinica.longitude], 20);
+        map.setView([unidadesDeSaude.latitude, unidadesDeSaude.longitude], 20);
       }
     }
-  }, [clinica, map]);
+  }, [unidadesDeSaude, map]);
 
   return (
     <div className="App">

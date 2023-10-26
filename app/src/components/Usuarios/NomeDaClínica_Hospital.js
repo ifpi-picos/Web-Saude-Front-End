@@ -1,15 +1,14 @@
 import "../Usuarios/css/NomeDaClínica_Hospital.css";
 import Image from "next/image";
 import imagem from "../../components/imgs/doutor-vermais.svg";
-import Clinica from "@/services/ClinicaService";
-
+import FiltroService from "@/services/FiltroService";
 export default async function NomeDaClinica_Hospital({ nome }) {
-  const clinica = await Clinica.pegarClinica(nome);
+  const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(nome);
 
   return (
     <section className="section-clinica-hospital">
       <div className="div-clinica-hospital">
-        <h1>{clinica.nome}</h1>
+        <h1>{unidadesdeSaude.nome}</h1>
       </div>
       <div className="img-clinica-hospital">
         <Image src={imagem} alt="img-clinica-hospital" />
