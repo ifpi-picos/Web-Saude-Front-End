@@ -1,5 +1,6 @@
-import "../Usuarios/css/Horario.css";
 import FiltroService from "@/services/FiltroService";
+import "@/components/Usuarios/Ver-Mais/css/Horario.css"
+
 export default async function Horario({ nome }) {
   const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(nome);
 

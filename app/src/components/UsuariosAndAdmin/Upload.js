@@ -16,14 +16,14 @@ function CloudinaryUploadWidget({ onURLChange }) {
     }
     console.log("Upload bem-sucedido. URL da imagem:", imageUrl);
 
-    setImageSelected(imageUrl); // Define a URL da imagem selecionada
+    setImageSelected(imageUrl);
   }
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
-        <label>Imagem Selecionada:</label>
-        {imageSelected && (
+      {imageSelected && (
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <label>Imagem Selecionada:</label>
           <Image
             src={imageSelected}
             alt="Imagem Selecionada"
@@ -31,8 +31,8 @@ function CloudinaryUploadWidget({ onURLChange }) {
             height="25"
             style={{ borderRadius: "5px" }}
           />
-        )}
-      </div>
+        </div>
+      )}
       <CldUploadWidget
         uploadPreset={process.env.localNEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
         onSuccess={handleUploadSuccess}

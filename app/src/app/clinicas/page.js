@@ -1,12 +1,12 @@
 import React from "react";
-import Card from "@/components/Usuarios/Card";
-import Slogan from "@/components/Usuarios/Slogan";
-import Filtros from "@/components/Usuarios/Filtros";
+import Card from "@/components/Usuarios/Home/Card";
+import Slogan from "@/components/Usuarios/Home/Slogan";
+import Filtros from "@/components/Usuarios/Home/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
-import "@/components/Usuarios/css/Home.css";
+import "@/components/Usuarios/Home/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
-import ButtonSearch from "@/components/Usuarios/ButtonSearch";
+import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import ClinicaService from "@/services/ClinicaService";
 
 export default async function filtroClinicas() {

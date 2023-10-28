@@ -1,6 +1,6 @@
 import Slogam from "@/components/imgs/medicos.svg";
 import Image from "next/image";
-import "@/components/Usuarios/css/Slogan.css";
+import "@/components/Usuarios/Home/css/Slogan.css";
 export default function Slogan() {
   return (
     <section className="section-slogan">

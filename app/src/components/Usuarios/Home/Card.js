@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Paginacao from "../UsuariosAndAdmin/Paginacao";
+import Paginacao from "../../UsuariosAndAdmin/Paginacao";
 import Link from "next/link";
-import "@/components/Usuarios/css/Card.css";
+import "@/components/Usuarios/Home/css/Card.css";
 
 export default function Card({ pageNumber, informacao }) {
   const [currentPage, setCurrentPage] = useState(1);

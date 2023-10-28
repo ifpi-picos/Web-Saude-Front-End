@@ -4,9 +4,11 @@ import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
 import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
 import { FaUser } from "react-icons/fa";
 import Link from "next/link";
+import { Modal, Button } from "react-bootstrap";
 
 export default function ClinicaForm() {
   const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const [formData, setFormData] = useState({
     cep: "",
@@ -27,7 +29,10 @@ export default function ClinicaForm() {
   });
 
   const handleImageURLChange = imageUrl => {
-    setFormData({ ...formData, imagem: imageUrl });
+    setFormData(prevData => ({
+      ...prevData,
+      imagem: imageUrl,
+    }));
   };
   const handleChange = e => {
     const { name, value } = e.target;
@@ -58,11 +63,12 @@ export default function ClinicaForm() {
     const selectedIds = selectedSpecialties.map(specialty => specialty.value);
     setSelectedSpecialtyIds(selectedIds);
   };
+
   const handleSubmit = async e => {
     e.preventDefault();
     const dataToSend = {
       ...formData,
-      especialidades: selectedSpecialtyIds, // Inclui os IDs das especialidades selecionadas
+      especialidades: selectedSpecialtyIds, 
     };
     try {
       const response = await fetch(
@@ -79,6 +85,7 @@ export default function ClinicaForm() {
       if (response.ok) {
         const responseData = await response.json();
         console.log(responseData);
+        setShowModal(true);
         window.location.href = "/";
       } else {
         console.error("Erro ao enviar os dados.");
@@ -89,12 +96,12 @@ export default function ClinicaForm() {
   };
 
   return (
+    <>
     <section>
       <div className="painel">
         <h3>
-          {" "}
           <Link href="/login/dashboard">
-            <FaUser size={24} /> Ir para o Painel
+            <FaUser size={24} /> Painel
           </Link>
         </h3>
       </div>
@@ -291,5 +298,17 @@ export default function ClinicaForm() {
         </form>
       </div>
     </section>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Hospital Salvo com Sucesso</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>O Hospital foi salvo com sucesso.</Modal.Body>
+      <Modal.Footer>
+        <Button variant="primary" onClick={() => setShowModal(false)}>
+          Fechar
+        </Button>
+      </Modal.Footer>
+      </Modal>
+    </>
   );
 }

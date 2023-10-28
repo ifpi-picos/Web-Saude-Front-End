@@ -1,13 +1,22 @@
 "use client";
-import { useState } from "react";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import "../Admin/css/HeaderAdmin.css";
+import React, { useState } from 'react';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import '../Admin/css/HeaderAdmin.css';
 
 export default function HeaderAdmin() {
   const [expanded, setExpanded] = useState(false);
+  const [dropdownBackgroundColor, setDropdownBackgroundColor] = useState('transparent');
 
   const handleToggle = () => {
     setExpanded(!expanded);
+  };
+
+  const handleDropdownMouseOver = () => {
+    setDropdownBackgroundColor('#yourColor'); // Substitua '#yourColor' pela cor desejada
+  };
+
+  const handleDropdownMouseOut = () => {
+    setDropdownBackgroundColor('transparent');
   };
 
   return (
@@ -15,45 +24,39 @@ export default function HeaderAdmin() {
       expand="lg"
       expanded={expanded}
       variant="dark"
-      style={{ backgroundColor: "#00285f" }}
+      style={{ backgroundColor: '#00285f' }}
     >
-      <Container fluid className="w-100 m-4">
-        <Navbar.Toggle onClick={handleToggle} aria-controls="navbar-nav" />
+      <Container fluid className="conatainer w-100 m-4">
+        <Navbar.Toggle  onClick={handleToggle} aria-controls="navbar-nav" />
         <Navbar.Collapse
           id="navbar-nav"
-          className={expanded ? "justify-content-start" : "justify-content-end"}
+          className={expanded ? 'justify-content-start' : 'justify-content-end'}
         >
-          <Nav
-            className={
-              expanded ? "mr-auto flex-column align-items-start" : "mr-auto"
-            }
-          >
+          <Navbar.Brand href="#home" className="ms-auto">
+            Logo
+          </Navbar.Brand>
+          <Nav className={expanded ? 'mr-auto flex-column align-items-start' : 'mr-auto'}>
             <Nav.Link href="#home">Perfil</Nav.Link>
             <NavDropdown
               className="cadastros"
               title="Cadastro"
               id="nav-dropdown"
+              onMouseOver={handleDropdownMouseOver}
+              onMouseOut={handleDropdownMouseOut}
+              style={{ backgroundColor: dropdownBackgroundColor }}
             >
-              <Nav.Link
-                className="cadastro"
-                href="/login/dashboard/nova-clinica"
-              >
+              <Nav.Link className="cadastro" href="/login/dashboard/nova-clinica">
                 Cadastrar Clínica
               </Nav.Link>
-              <Nav.Link
-                className="cadastro"
-                href="/login/dashboard/novo-hospital"
-              >
+              <Nav.Link className="cadastro" href="/login/dashboard/novo-hospital">
                 Cadastrar Hospital
               </Nav.Link>
               <Nav.Link className="cadastro" href="/">
                 Cadastrar Especialidades
               </Nav.Link>
-              <NavDropdown.Divider />
             </NavDropdown>
             <Nav.Link href="#home">Logout</Nav.Link>
           </Nav>
-          <Navbar.Brand href="#home">Logo</Navbar.Brand>
         </Navbar.Collapse>
       </Container>
     </Navbar>

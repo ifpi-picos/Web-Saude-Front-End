@@ -34,7 +34,6 @@ export default function SelectEspecialidades({
   };
 
   useEffect(() => {
-    // Carregar as opções de especialidades apenas uma vez
     fetch("https://api-web-saude.vercel.app/especialidades")
       .then(response => response.json())
       .then(data => {

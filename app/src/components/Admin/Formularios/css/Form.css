@@ -2,14 +2,12 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin-top: 435px;
 }
 
-.painel {
-  margin-bottom: -35px;
-  margin-top: 12px;
-}
 .box {
-  margin: 50px;
   color: white;
   background-color: #191818;
   padding: 15px;
@@ -46,6 +44,9 @@ legend {
   font-size: 15px;
   width: 100%;
   letter-spacing: 2px;
+}
+.inputUser:focus {
+  color: white
 }
 textarea {
   border-bottom: 1px solid white;
@@ -110,13 +111,7 @@ ul {
   width: 20%;
 }
 @media (max-width: 768px) {
-  section {
-    flex-direction: column;
-  }
-  .painel {
-    margin-bottom: -35px;
-    margin-top: 12px;
-  }
+ 
   .box {
     width: 90%;
   }

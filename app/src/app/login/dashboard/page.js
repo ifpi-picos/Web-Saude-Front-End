@@ -1,9 +1,12 @@
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import CardAdmin from "@/components/Admin/CardAdmin";
 import CardProgressos from "@/components/Admin/CardProgressos";
+import FiltroService from "@/services/FiltroService";
 import "@/components/Admin/css/Dashboard.css";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const informacao = await FiltroService.unidadesdeSaude();
+
   return (
     <>
       <div className="main-content">
@@ -34,7 +37,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <CardAdmin />
+          <CardAdmin informacao={informacao} />
         </div>
       </div>
     </>

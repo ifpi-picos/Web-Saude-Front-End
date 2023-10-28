@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import "@/components/Usuarios/css/ButtonSearch.css";
+import "@/components/Usuarios/Home/css/ButtonSearch.css";
 
 export default function ButtonSearch() {
   const [searchValue, setSearchValue] = useState("");

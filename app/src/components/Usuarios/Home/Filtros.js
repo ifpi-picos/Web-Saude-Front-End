@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Select from "react-select";
-import "@/components/Usuarios/css/Filtros.css";
+import "@/components/Usuarios/Home/css/Filtros.css";
 
 export default function Filtros() {
   const router = useRouter();

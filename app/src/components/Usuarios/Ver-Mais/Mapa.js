@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "../Usuarios/css/Mapa.css";
 import FiltroService from "@/services/FiltroService";
+import "@/components/Usuarios/Ver-Mais/css/Mapa.css"
 
 export default function Mapa({ nome }) {
   const [map, setMap] = useState(null);

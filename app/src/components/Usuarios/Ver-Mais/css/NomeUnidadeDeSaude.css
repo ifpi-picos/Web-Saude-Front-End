@@ -1,0 +1,61 @@
+.section-clinica-hospital {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    border-radius: var(--card-radius);
+    box-shadow: 20px 20px 50px -30px var(--primary-color);
+    margin-top: 20px;
+  }
+  .div-clinica-hospital h1 {
+    color: var(--secundary-color);
+  }
+  
+  /* section nome da  clinica */
+  
+  .section-clinica-hospital {
+    flex-direction: column;
+    width: 700px;
+    height: 408px;
+  }
+  .div-clinica-hospital {
+    margin-left: 0px;
+    margin-bottom: 0px;
+  }
+  
+  .div-clinica-hospital h1 {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .img-clinica-hospital img {
+    width: 240px;
+    height: 240px;
+    margin-right: 0px;
+    margin-bottom: 30px;
+  }
+  
+  /* section informações */
+  .section-informações {
+    width: 93%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .section-clinica-hospital {
+      flex-direction: column;
+      width: 335px;
+      height: 400px;
+    }
+    .section-clinica-hospital .div-clinica-hospital h1 {
+      font-size: 25px;
+    }
+    .section-clinica-hospital .img-clinica-hospital img {
+      width: 200px;
+    }
+  }
+  

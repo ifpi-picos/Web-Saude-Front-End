@@ -1,43 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { FaCog } from 'react-icons/fa'; // Importe o ícone de engrenagem do React Icons
+import { Button, Modal } from "react-bootstrap";
 import "../Admin/css/CardAdmin.css";
-import Image from "next/image";
-
-export default function CardAdmin({ pageNumber }) {
-  const [info, setInfo] = useState([]);
+import Paginacao from "../UsuariosAndAdmin/Paginacao";
+export default function CardAdmin({ pageNumber,informacao }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const maxPostsPerPage = 3;
-  const [searchResults, setSearchResults] = useState([]);
-
-  const indexOfLastPost = currentPage * maxPostsPerPage;
-  const indexOfFirstPost = indexOfLastPost - maxPostsPerPage;
-  const limitedPosts = Array.isArray(info)
-    ? info.slice(indexOfFirstPost, indexOfLastPost)
-    : [];
-  const totalPages = Math.ceil(info.length / maxPostsPerPage);
-
-  const maxPageButtons = 4;
-
-  useEffect(() => {
-    if (searchResults.length > 0) {
-      setInfo(searchResults);
-    } else {
-      fetch("https://api-web-saude.vercel.app/clinicas")
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Falha ao buscar dados da API");
-          }
-          return response.json();
-        })
-        .then(data => {
-          setInfo(data);
-        })
-        .catch(error => {
-          console.error("Erro ao obter dados:", error);
-        });
-    }
-  }, [searchResults]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     if (pageNumber) {
@@ -45,106 +16,126 @@ export default function CardAdmin({ pageNumber }) {
     }
   }, [pageNumber]);
 
-  function getIntervaloPaginas() {
-    let paginaInicial = Math.max(
-      1,
-      currentPage - Math.floor(maxPageButtons / 2)
-    );
-    const paginaFinal = Math.min(
-      totalPages,
-      paginaInicial + maxPageButtons - 1
-    );
-    paginaInicial = Math.max(1, paginaFinal - maxPageButtons + 1);
-    return Array.from(
-      { length: paginaFinal - paginaInicial + 1 },
-      (_, i) => paginaInicial + i
-    );
-  }
+  const maxPostsPerPage = 4;
+  const indexOfLastPost = currentPage * maxPostsPerPage;
+  const indexOfFirstPost = indexOfLastPost - maxPostsPerPage;
 
-  function handleSearch(data) {
-    setSearchResults(data);
-    setCurrentPage(1);
-  }
-
-  const postsToDisplay =
-    searchResults.length > 0 ? searchResults : limitedPosts;
-
+  // Filtra os dados com base no termo de pesquisa
+  const limitedPosts = Array.isArray(informacao)
+    ? informacao.slice(indexOfFirstPost, indexOfLastPost)
+    : [];
+  const totalPages = Math.ceil(informacao.length / maxPostsPerPage);
+  const handleShowModal = item => {
+    setSelectedItem(item);
+    setShowModal(true);
+  };
+  
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  
+  const handleDeleteItem = () => {
+    // Adicione a lógica para excluir o item selecionado
+    // Após a exclusão, você pode fechar o modal
+    // Certifique-se de lidar com a exclusão no seu servidor/API
+    // e atualizar a lista de informações
+    setShowModal(false);
+  };
+  
+  const handleUpdateItem = () => {
+    // Adicione a lógica para atualizar o item selecionado
+    // Após a atualização, você pode fechar o modal
+    // Certifique-se de lidar com a atualização no seu servidor/API
+    // e atualizar a lista de informações
+    setShowModal(false);
+  };
   return (
     <section className="section-card-admin">
-      {postsToDisplay.length > 0 ? (
-        postsToDisplay.map((info, key) => (
-          <div className="card-container" key={key}>
-            <div className="top">
-              <div className="image-container">
-                <Image
-                  src={info.imagem}
-                  height={200}
-                  width={200}
-                  alt={info.nome}
-                />
+      {limitedPosts.length === 0 ? (
+        <p className="mt-3">Nenhum resultado encontrado.</p>
+      ) : (
+        <>
+          {limitedPosts.map((info, index) => (
+            <div className="card-container" key={index}>
+              <div className="top">
+                <div className="image-container">
+                  <img src={info.imagem} alt={info.nome} />
+                </div>
               </div>
-            </div>
-            <div className="button">
-              <h3>{info.nome}</h3>
-              <p>
-                {info.endereco.rua}. de Fátima, 629 - Centro, Picos - PI,
-                64600-148
-              </p>
-              <p>
-                Aberto de Segunda a Sexta das{" "}
-                <strong>{info.horarioSemana.open}</strong> até as{" "}
-                <strong>{info.horarioSemana.close}</strong>
-              </p>
-              <div className="div-ver-mais btn-margin">
-                <div className="div-button-ver-mais">
-                  <Link href={`/ver-mais/${info.nome}`}>Ver mais</Link>
+              <div className="button">
+              <div className="icone">
+              <FaCog
+                size={30}
+                className="config-icon"
+                onClick={() => handleShowModal(info)}
+              />
+              </div>
+                <h3>{info.nome}</h3>
+                <p>
+                  {info.endereco.rua}, {info.endereco.numero} -{" "}
+                  {info.endereco.bairro}, {info.endereco.cidade} -
+                  {info.endereco.uf}, {info.endereco.cep}
+                </p>
+                {info.horario === "Atendimento 24 Horas" ? (
+                  <p>Atendimento 24 horas</p>
+                ) : (
+                  <p>
+                    Aberto de Segunda a Sexta das{" "}
+                    <strong>{info.horarioSemana.open}</strong> até as{" "}
+                    <strong>{info.horarioSemana.close}</strong>
+                  </p>
+                )}
+                {info.sabado ? (
+                  info.sabado.open && info.sabado.close ? (
+                    <p>
+                      Aberto aos sábados das <strong>{info.sabado.open}</strong>{" "}
+                      até as <strong>{info.sabado.close}</strong>
+                    </p>
+                  ) : (
+                    <p>Fechado aos sábados</p>
+                  )
+                ) : info.horario === "Atendimento 24 Horas" ? (
+                  <p>Abre todos os dias</p>
+                ) : (
+                  <p>Fechado aos sábados</p>
+                )}
+                <div className="div-ver-mais btn-margin">
+                  <div className="div-button-ver-mais">
+                    <Link href={`/ver-mais/${info.nome}`}>Ver mais</Link>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="buttons">
-              <div className="button-alterar">
-                <Link href="">Editar</Link>
-              </div>
-              <div className="button-deletar">
-                <Link href="">Deletar</Link>
-              </div>
-            </div>
-            <hr />
-          </div>
-        ))
-      ) : (
-        <div className="no-results-message">Nenhum resultado encontrado.</div>
+          ))}
+          {totalPages > 1 && (
+            <Paginacao
+              currentPage={currentPage}
+              totalPages={totalPages}
+              setCurrentPage={setCurrentPage}
+            />
+          )}
+        </>
       )}
-
-      <div className="div-buttons-catalogo">
-        {currentPage > 1 && (
-          <div className="button-prox-ant">
-            <Link href={`/${currentPage - 1}`} key="anterior">
-              <button>Anterior</button>
-            </Link>
-          </div>
-        )}
-        {getIntervaloPaginas().map(numeroPagina => (
-          <div className="div-buttons" key={numeroPagina}>
-            <div className="button-catalogo">
-              <Link href={`/${numeroPagina}`} key={numeroPagina}>
-                <button
-                  className={currentPage === numeroPagina ? "active" : ""}
-                >
-                  {numeroPagina}
-                </button>
-              </Link>
-            </div>
-          </div>
-        ))}
-        {currentPage < totalPages && (
-          <div className="button-prox-ant">
-            <Link href={`/${currentPage + 1}`} key="proxima">
-              <button>Próximo</button>
-            </Link>
-          </div>
-        )}
-      </div>
+      <Modal show={showModal} onHide={handleCloseModal}>
+<Modal.Header closeButton>
+  <Modal.Title>Opções do Item</Modal.Title>
+</Modal.Header>
+<Modal.Body>
+  <p>Escolha uma opção:</p>
+  <Button variant="success" onClick={handleUpdateItem}>
+    Alterar
+  </Button>
+  <Button variant="danger" onClick={handleDeleteItem}>
+    Excluir
+  </Button>
+  <Button variant="secondary" onClick={handleCloseModal}>
+    Fechar
+  </Button>
+</Modal.Body>
+</Modal>
     </section>
   );
 }
+
+
+
