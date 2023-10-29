@@ -70,6 +70,8 @@ export default function ClinicaForm() {
       ...formData,
       especialidades: selectedSpecialtyIds, 
     };
+    const token = localStorage.getItem("token"); 
+
     try {
       const response = await fetch(
         "https://api-web-saude.vercel.app/admin/novo-hospital",
@@ -77,6 +79,8 @@ export default function ClinicaForm() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "x-access-token": token,
+
           },
           body: JSON.stringify(dataToSend),
         }
