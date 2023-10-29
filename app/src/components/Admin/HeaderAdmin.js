@@ -12,13 +12,16 @@ export default function HeaderAdmin() {
   };
 
   const handleDropdownMouseOver = () => {
-    setDropdownBackgroundColor('#yourColor'); // Substitua '#yourColor' pela cor desejada
-  };
+    setDropdownBackgroundColor('#yourColor'); 
+  }
 
   const handleDropdownMouseOut = () => {
     setDropdownBackgroundColor('transparent');
   };
-
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/login'; 
+  };
   return (
     <Navbar
       expand="lg"
@@ -51,11 +54,11 @@ export default function HeaderAdmin() {
               <Nav.Link className="cadastro" href="/login/dashboard/novo-hospital">
                 Cadastrar Hospital
               </Nav.Link>
-              <Nav.Link className="cadastro" href="/">
+              <Nav.Link className="cadastro" href="/login/dashboard/especialidades">
                 Cadastrar Especialidades
               </Nav.Link>
             </NavDropdown>
-            <Nav.Link href="#home">Logout</Nav.Link>
+            <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

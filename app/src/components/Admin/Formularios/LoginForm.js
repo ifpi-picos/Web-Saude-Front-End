@@ -1,13 +1,12 @@
+"use client"
 import { FaHome } from "react-icons/fa";
 import Link from "next/link";
-import { useState } from 'react'; 
+import { useState,useEffect } from 'react'; 
 import "@/components/Admin/Formularios/css/Form.css";
-
 export default function LoginForm(){
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [authToken, setAuthToken] = useState(null); // Defina authToken como estado
-
+  const [authToken, setAuthToken] = useState(null); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -31,14 +30,18 @@ export default function LoginForm(){
 
         localStorage.setItem('token', token);
         setAuthToken(token);
-         window.location.href = "/login/dashboard"
-        console.log('Token salvo no localStorage:', localStorage.getItem('token'));
+         console.log('Token salvo no localStorage:', localStorage.getItem('token'));
 
       }
     } catch (error) {
       console.error('Erro ao fazer login:', error);
     }
   };
+  useEffect(() => {
+    if (authToken) {
+         window.location.href = "/login/dashboard";
+    }
+  }, [authToken]);
   return (
     <section style={{ marginTop: "0px" }}>
       <div className="painel">
