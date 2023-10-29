@@ -1,8 +1,6 @@
-"use client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { SessionProvider } from "next-auth/react"; // Importe o SessionProvider
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -42,8 +40,6 @@ export default function RootLayout({ children, session }) {
         />
       </head>
       <body style={{ backgroundColor: "#eeeeee" }} className={inter.className}>
-        {/* Envolve o conteúdo com o SessionProvider */}
-        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );
