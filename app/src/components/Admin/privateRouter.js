@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation"; // Importe useRouter corretamente
 import { useEffect } from "react";
@@ -21,4 +21,3 @@ export default function PrivateRoute({ children }) {
 
   return children;
 }
-

@@ -38,18 +38,18 @@ class FiltroSeerrvice {
     const info = await res.json();
     return info;
   }
-  async filtrarUnidadesDeSaude(nome){
+  async filtrarUnidadesDeSaude(nome) {
     const res = await fetch(
       `https://api-web-saude.vercel.app/buscar/?nome=${nome}`,
       {
-        cache:"no-store"
+        cache: "no-store",
       }
     );
     if (!res.ok) {
       throw new Error(`Houve um erro no servidor! ${res.status}`);
     }
     const info = await res.json();
-    
+
     return info;
   }
 }

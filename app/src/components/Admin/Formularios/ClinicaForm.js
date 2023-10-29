@@ -75,9 +75,9 @@ export default function ClinicaForm() {
     e.preventDefault();
     const dataToSend = {
       ...formData,
-      especialidades: selectedSpecialtyIds, 
+      especialidades: selectedSpecialtyIds,
     };
-    const token = localStorage.getItem("token"); 
+    const token = localStorage.getItem("token");
 
     try {
       const response = await fetch(
@@ -87,7 +87,6 @@ export default function ClinicaForm() {
           headers: {
             "Content-Type": "application/json",
             "x-access-token": token,
-
           },
           body: JSON.stringify(dataToSend),
         }
@@ -108,271 +107,271 @@ export default function ClinicaForm() {
 
   return (
     <>
-    <section>
-      <div className="painel">
-        <h3>
-          <Link href="/login/dashboard">
-            <FaUser size={24} /> Ir para o Painel
-          </Link>
-        </h3>
-      </div>
-      <div className="box">
-        <legend>
-          <strong>Cadastrar Nova Clínica</strong>
-        </legend>
-        <form onSubmit={handleSubmit}>
-          <fieldset>
-            <div className="inputBox">
-              <label className="labelInput"> Nome da Clínica:</label>
+      <section>
+        <div className="painel">
+          <h3>
+            <Link href="/login/dashboard">
+              <FaUser size={24} /> Ir para o Painel
+            </Link>
+          </h3>
+        </div>
+        <div className="box">
+          <legend>
+            <strong>Cadastrar Nova Clínica</strong>
+          </legend>
+          <form onSubmit={handleSubmit}>
+            <fieldset>
+              <div className="inputBox">
+                <label className="labelInput"> Nome da Clínica:</label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="nome"
-                value={formData.nome}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="buttonBox">
-              <label className="labelInput"> Imagem da Clínica:</label>
-
-              <div className="buttontUser">
-                <CloudinaryUploadWidget onURLChange={handleImageURLChange} />
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="nome"
+                  value={formData.nome}
+                  onChange={handleChange}
+                  required
+                />
               </div>
-            </div>
-            <div className="selectBox">
-              <SelectEspecialidades
-                onChange={handleSpecialtyChange}
-                selectedSpecialties={formData.especialidades}
-              />
-            </div>
 
-            <div className="inputBox">
-              <label className="labelInput">
-                Horário de Abertura (Semana):
-              </label>
+              <div className="buttonBox">
+                <label className="labelInput"> Imagem da Clínica:</label>
 
-              <input
-                className="inputUser"
-                type="time"
-                name="horarioSemana.open"
-                value={formData.horarioSemana.open}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="inputBox">
-              <label className="labelInput">
-                Horário de Fechamento (Semana):
-              </label>
+                <div className="buttontUser">
+                  <CloudinaryUploadWidget onURLChange={handleImageURLChange} />
+                </div>
+              </div>
+              <div className="selectBox">
+                <SelectEspecialidades
+                  onChange={handleSpecialtyChange}
+                  selectedSpecialties={formData.especialidades}
+                />
+              </div>
 
-              <input
-                className="inputUser"
-                type="time"
-                name="horarioSemana.close"
-                value={formData.horarioSemana.close}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="inputBox">
-              <label className="labelInput">
-                {" "}
-                Horário de Abertura (Sábado):
-              </label>
+              <div className="inputBox">
+                <label className="labelInput">
+                  Horário de Abertura (Semana):
+                </label>
 
-              <input
-                className="inputUser"
-                type="time"
-                name="sabado.open"
-                value={formData.sabado.open}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="inputBox">
-              <label className="labelInput">
-                {" "}
-                Horário de Fechamento (Sábado):
-              </label>
+                <input
+                  className="inputUser"
+                  type="time"
+                  name="horarioSemana.open"
+                  value={formData.horarioSemana.open}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="inputBox">
+                <label className="labelInput">
+                  Horário de Fechamento (Semana):
+                </label>
 
-              <input
-                className="inputUser"
-                type="time"
-                name="sabado.close"
-                value={formData.sabado.close}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="inputBox">
-              <label className="labelInput">Email (opcional):</label>
+                <input
+                  className="inputUser"
+                  type="time"
+                  name="horarioSemana.close"
+                  value={formData.horarioSemana.close}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="inputBox">
+                <label className="labelInput">
+                  {" "}
+                  Horário de Abertura (Sábado):
+                </label>
 
-              <input
-                className="inputUser"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="inputBox">
-              <label className="labelInput">instagram (opcional):</label>
+                <input
+                  className="inputUser"
+                  type="time"
+                  name="sabado.open"
+                  value={formData.sabado.open}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="inputBox">
+                <label className="labelInput">
+                  {" "}
+                  Horário de Fechamento (Sábado):
+                </label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="instagram"
-                value={formData.instagram}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="inputBox">
-              <label className="labelInput"> whatsapp (opcional):</label>
+                <input
+                  className="inputUser"
+                  type="time"
+                  name="sabado.close"
+                  value={formData.sabado.close}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="inputBox">
+                <label className="labelInput">Email (opcional):</label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="whatsapp"
-                value={formData.whatsapp}
-                onChange={handleChange}
-              />
-            </div>
+                <input
+                  className="inputUser"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="inputBox">
+                <label className="labelInput">instagram (opcional):</label>
 
-            <div className="inputBox">
-              <label className="labelInput"> Descrição (opcional):</label>
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="instagram"
+                  value={formData.instagram}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="inputBox">
+                <label className="labelInput"> whatsapp (opcional):</label>
 
-              <textarea
-                className=""
-                name="descricao"
-                value={formData.descricao}
-                onChange={handleChange}
-                required
-                placeholder="texto"
-              />
-            </div>
-            <div className="inputBox">
-              <label className="labelInput"> Longitude:</label>
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="whatsapp"
+                  value={formData.whatsapp}
+                  onChange={handleChange}
+                />
+              </div>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="longitude"
-                value={formData.longitude}
-                onChange={handleChange}
-                required
-              />
-            </div>
+              <div className="inputBox">
+                <label className="labelInput"> Descrição (opcional):</label>
 
-            <div className="inputBox">
-              <label className="labelInput">Latitude: </label>
+                <textarea
+                  className=""
+                  name="descricao"
+                  value={formData.descricao}
+                  onChange={handleChange}
+                  required
+                  placeholder="texto"
+                />
+              </div>
+              <div className="inputBox">
+                <label className="labelInput"> Longitude:</label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="latitude"
-                value={formData.latitude}
-                onChange={handleChange}
-                required
-              />
-            </div>
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="longitude"
+                  value={formData.longitude}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            <div className="inputBox">
-              <label className="labelInput">CEP:</label>
+              <div className="inputBox">
+                <label className="labelInput">Latitude: </label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="cep"
-                value={formData.cep}
-                onChange={handleChange}
-                required
-              />
-            </div>
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="latitude"
+                  value={formData.latitude}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            <div className="inputBox">
-              <label className="labelInput">Rua:</label>
+              <div className="inputBox">
+                <label className="labelInput">CEP:</label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="rua"
-                value={formData.rua}
-                onChange={handleChange}
-                required
-              />
-            </div>
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="cep"
+                  value={formData.cep}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            <div className="inputBox">
-              <label className="labelInput">Número:</label>
+              <div className="inputBox">
+                <label className="labelInput">Rua:</label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="numero"
-                value={formData.numero}
-                onChange={handleChange}
-                required
-              />
-            </div>
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="rua"
+                  value={formData.rua}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            <div className="inputBox">
-              <label className="labelInput">Bairro:</label>
+              <div className="inputBox">
+                <label className="labelInput">Número:</label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="bairro"
-                value={formData.bairro}
-                onChange={handleChange}
-                required
-              />
-            </div>
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="numero"
+                  value={formData.numero}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            <div className="inputBox">
-              <label className="labelInput">Cidade:</label>
+              <div className="inputBox">
+                <label className="labelInput">Bairro:</label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="cidade"
-                value={formData.cidade}
-                onChange={handleChange}
-                required
-              />
-            </div>
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="bairro"
+                  value={formData.bairro}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            <div className="inputBox">
-              <label className="labelInput">Uf:</label>
+              <div className="inputBox">
+                <label className="labelInput">Cidade:</label>
 
-              <input
-                className="inputUser"
-                type="text"
-                name="uf"
-                value={formData.uf}
-                onChange={handleChange}
-                required
-              />
-            </div>
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="cidade"
+                  value={formData.cidade}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            <button id="submit" type="submit">
-              Cadastrar Clínica
-            </button>
-          </fieldset>
-        </form>
-      </div>
-    </section>
-     <Modal show={showModal} onHide={() => setShowModal(false)}>
-     <Modal.Header closeButton>
-       <Modal.Title>Clínica Salva com Sucesso</Modal.Title>
-     </Modal.Header>
-     <Modal.Body>A clínica foi salva com sucesso.</Modal.Body>
-     <Modal.Footer>
-       <Button variant="primary" onClick={() => setShowModal(false)}>
-         Fechar
-       </Button>
-     </Modal.Footer>
-   </Modal>
-   </>
+              <div className="inputBox">
+                <label className="labelInput">Uf:</label>
+
+                <input
+                  className="inputUser"
+                  type="text"
+                  name="uf"
+                  value={formData.uf}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <button id="submit" type="submit">
+                Cadastrar Clínica
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Clínica Salva com Sucesso</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>A clínica foi salva com sucesso.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => setShowModal(false)}>
+            Fechar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }

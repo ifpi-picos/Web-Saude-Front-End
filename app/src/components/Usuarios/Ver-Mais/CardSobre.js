@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card";
 import FiltroService from "@/services/FiltroService";
-import "@/components/Usuarios/Ver-Mais/css/CardSobre.css"
+import "@/components/Usuarios/Ver-Mais/css/CardSobre.css";
 
 export default async function CardSobre({ nome }) {
   const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(nome);

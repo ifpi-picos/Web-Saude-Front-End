@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaCog } from 'react-icons/fa'; // Importe o ícone de engrenagem do React Icons
+import { FaCog } from "react-icons/fa"; // Importe o ícone de engrenagem do React Icons
 import { Button, Modal } from "react-bootstrap";
 import "../Admin/css/CardAdmin.css";
 import Paginacao from "../UsuariosAndAdmin/Paginacao";
-export default function CardAdmin({ pageNumber,informacao }) {
+export default function CardAdmin({ pageNumber, informacao }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -29,11 +29,11 @@ export default function CardAdmin({ pageNumber,informacao }) {
     setSelectedItem(item);
     setShowModal(true);
   };
-  
+
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  
+
   const handleDeleteItem = () => {
     // Adicione a lógica para excluir o item selecionado
     // Após a exclusão, você pode fechar o modal
@@ -41,7 +41,7 @@ export default function CardAdmin({ pageNumber,informacao }) {
     // e atualizar a lista de informações
     setShowModal(false);
   };
-  
+
   const handleUpdateItem = () => {
     // Adicione a lógica para atualizar o item selecionado
     // Após a atualização, você pode fechar o modal
@@ -63,13 +63,13 @@ export default function CardAdmin({ pageNumber,informacao }) {
                 </div>
               </div>
               <div className="button">
-              <div className="icone">
-              <FaCog
-                size={30}
-                className="config-icon"
-                onClick={() => handleShowModal(info)}
-              />
-              </div>
+                <div className="icone">
+                  <FaCog
+                    size={30}
+                    className="config-icon"
+                    onClick={() => handleShowModal(info)}
+                  />
+                </div>
                 <h3>{info.nome}</h3>
                 <p>
                   {info.endereco.rua}, {info.endereco.numero} -{" "}
@@ -117,25 +117,22 @@ export default function CardAdmin({ pageNumber,informacao }) {
         </>
       )}
       <Modal show={showModal} onHide={handleCloseModal}>
-<Modal.Header closeButton>
-  <Modal.Title>Opções do Item</Modal.Title>
-</Modal.Header>
-<Modal.Body>
-  <p>Escolha uma opção:</p>
-  <Button variant="success" onClick={handleUpdateItem}>
-    Alterar
-  </Button>
-  <Button variant="danger" onClick={handleDeleteItem}>
-    Excluir
-  </Button>
-  <Button variant="secondary" onClick={handleCloseModal}>
-    Fechar
-  </Button>
-</Modal.Body>
-</Modal>
+        <Modal.Header closeButton>
+          <Modal.Title>Opções do Item</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Escolha uma opção:</p>
+          <Button variant="success" onClick={handleUpdateItem}>
+            Alterar
+          </Button>
+          <Button variant="danger" onClick={handleDeleteItem}>
+            Excluir
+          </Button>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Fechar
+          </Button>
+        </Modal.Body>
+      </Modal>
     </section>
   );
 }
-
-
-

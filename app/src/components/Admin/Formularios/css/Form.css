@@ -46,7 +46,7 @@ legend {
   letter-spacing: 2px;
 }
 .inputUser:focus {
-  color: white
+  color: white;
 }
 textarea {
   border-bottom: 1px solid white;
@@ -111,7 +111,6 @@ ul {
   width: 20%;
 }
 @media (max-width: 768px) {
- 
   .box {
     width: 90%;
   }

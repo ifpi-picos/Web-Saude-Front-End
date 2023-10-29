@@ -1,44 +1,49 @@
 "use client";
-import React, { useState } from 'react';
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import '../Admin/css/HeaderAdmin.css';
+import React, { useState } from "react";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import "../Admin/css/HeaderAdmin.css";
 
 export default function HeaderAdmin() {
   const [expanded, setExpanded] = useState(false);
-  const [dropdownBackgroundColor, setDropdownBackgroundColor] = useState('transparent');
+  const [dropdownBackgroundColor, setDropdownBackgroundColor] =
+    useState("transparent");
 
   const handleToggle = () => {
     setExpanded(!expanded);
   };
 
   const handleDropdownMouseOver = () => {
-    setDropdownBackgroundColor('#yourColor'); 
-  }
+    setDropdownBackgroundColor("#yourColor");
+  };
 
   const handleDropdownMouseOut = () => {
-    setDropdownBackgroundColor('transparent');
+    setDropdownBackgroundColor("transparent");
   };
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    window.location.href = '/login'; 
+    localStorage.removeItem("token");
+    window.location.href = "/login";
   };
   return (
     <Navbar
       expand="lg"
       expanded={expanded}
       variant="dark"
-      style={{ backgroundColor: '#00285f' }}
+      style={{ backgroundColor: "#00285f" }}
     >
       <Container fluid className="conatainer w-100 m-4">
-        <Navbar.Toggle  onClick={handleToggle} aria-controls="navbar-nav" />
+        <Navbar.Toggle onClick={handleToggle} aria-controls="navbar-nav" />
         <Navbar.Collapse
           id="navbar-nav"
-          className={expanded ? 'justify-content-start' : 'justify-content-end'}
+          className={expanded ? "justify-content-start" : "justify-content-end"}
         >
           <Navbar.Brand href="#home" className="ms-auto">
             Logo
           </Navbar.Brand>
-          <Nav className={expanded ? 'mr-auto flex-column align-items-start' : 'mr-auto'}>
+          <Nav
+            className={
+              expanded ? "mr-auto flex-column align-items-start" : "mr-auto"
+            }
+          >
             <Nav.Link href="#home">Perfil</Nav.Link>
             <NavDropdown
               className="cadastros"
@@ -48,13 +53,22 @@ export default function HeaderAdmin() {
               onMouseOut={handleDropdownMouseOut}
               style={{ backgroundColor: dropdownBackgroundColor }}
             >
-              <Nav.Link className="cadastro" href="/login/dashboard/nova-clinica">
+              <Nav.Link
+                className="cadastro"
+                href="/login/dashboard/nova-clinica"
+              >
                 Cadastrar Clínica
               </Nav.Link>
-              <Nav.Link className="cadastro" href="/login/dashboard/novo-hospital">
+              <Nav.Link
+                className="cadastro"
+                href="/login/dashboard/novo-hospital"
+              >
                 Cadastrar Hospital
               </Nav.Link>
-              <Nav.Link className="cadastro" href="/login/dashboard/especialidades">
+              <Nav.Link
+                className="cadastro"
+                href="/login/dashboard/especialidades"
+              >
                 Cadastrar Especialidades
               </Nav.Link>
             </NavDropdown>

@@ -38,13 +38,12 @@ export default function EspecialidadeForm() {
   };
 
   const cadastrarEspecialidade = nomeEspecialidade => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
     fetch("https://api-web-saude.vercel.app/nova-especialidade", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "x-access-token": token,
-
       },
       body: JSON.stringify({ nome: nomeEspecialidade }),
     })
@@ -52,11 +51,9 @@ export default function EspecialidadeForm() {
       .then(() => {
         setNovaEspecialidade("");
         listarEspecialidades();
-        if(token){
+        if (token) {
           setSuccessMessage("Especialidade cadastrada com sucesso.");
-
         }
-
       })
       .catch(error => console.error(error));
   };
@@ -67,14 +64,13 @@ export default function EspecialidadeForm() {
 
   const salvarEspecialidade = index => {
     const editedName = editBoxRef.current.querySelector("input").value;
-    const id = especialidades[index]._id; 
-    const token = localStorage.getItem("token")
+    const id = especialidades[index]._id;
+    const token = localStorage.getItem("token");
     fetch(`https://api-web-saude.vercel.app/alterar-especialidade/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "x-access-token": token,
-
       },
       body: JSON.stringify({ nome: editedName }),
     })
@@ -82,11 +78,9 @@ export default function EspecialidadeForm() {
       .then(() => {
         setEditandoIndex(null);
         listarEspecialidades();
-        if(token){
+        if (token) {
           setSuccessMessage("Especialidade atualizada com sucesso.");
-
         }
-
       })
       .catch(error => console.error(error));
   };
@@ -102,7 +96,6 @@ export default function EspecialidadeForm() {
         headers: {
           "Content-Type": "application/json",
           "x-access-token": token,
-  
         },
       })
         .then(() => {
@@ -110,11 +103,9 @@ export default function EspecialidadeForm() {
           updatedEspecialidades.splice(index, 1);
           setEspecialidades(updatedEspecialidades);
           listarEspecialidades();
-          if(token){
+          if (token) {
             setSuccessMessage("Especialidade excluída com sucesso.");
-
           }
-
         })
         .catch(error => console.error(error));
     }
@@ -128,9 +119,9 @@ export default function EspecialidadeForm() {
     <>
       {successMessage && (
         <div className="alert alert-success" role="alert">
-    {successMessage}
-   </div>
-)}
+          {successMessage}
+        </div>
+      )}
       <div className="conteudo">
         <div className="topo">
           <input
@@ -203,9 +194,7 @@ export default function EspecialidadeForm() {
             </li>
           ))}
         </ul>
-        
       </div>
-    
     </>
   );
 }

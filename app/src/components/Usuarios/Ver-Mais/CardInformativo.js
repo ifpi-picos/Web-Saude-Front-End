@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import FiltroService from "@/services/FiltroService";
-import "@/components/Usuarios/Ver-Mais/css/CardInformativo.css"
+import "@/components/Usuarios/Ver-Mais/css/CardInformativo.css";
 export default async function CardInformativo({ nome }) {
   const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(nome);
   return (
