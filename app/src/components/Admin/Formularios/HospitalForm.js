@@ -3,7 +3,6 @@ import { useState } from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
 import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
 import { FaUser } from "react-icons/fa";
-import Link from "next/link";
 import { Modal, Button } from "react-bootstrap";
 
 export default function ClinicaForm() {
@@ -103,9 +102,9 @@ export default function ClinicaForm() {
       <section style={{ marginTop: "300px" }}>
         <div className="painel">
           <h3>
-            <Link href="/login/dashboard">
+            <a href="/login/dashboard">
               <FaUser size={24} /> Painel
-            </Link>
+            </a>
           </h3>
         </div>
         <div className="box">

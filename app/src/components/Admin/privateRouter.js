@@ -1,6 +1,7 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { useEffect,useState } from 'react';
+import isTokenValid from '@/services/IsvalidToken';
 
 const PrivateRoute = ({ children }) => {
   const router = useRouter();
@@ -8,7 +9,7 @@ const PrivateRoute = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token) {
+    if (!token ||!isTokenValid(token)) {
       router.push('/login');
     }
     else {

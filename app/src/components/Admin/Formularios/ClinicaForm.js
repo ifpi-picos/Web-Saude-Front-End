@@ -3,7 +3,6 @@ import { useState } from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
 import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
 import { FaUser } from "react-icons/fa";
-import Link from "next/link";
 import { Modal, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
@@ -140,9 +139,9 @@ export default function ClinicaForm() {
       <section>
         <div className="painel">
           <h3>
-            <Link href="/login/dashboard">
+            <a href="/login/dashboard">
               <FaUser size={24} /> Ir para o Painel
-            </Link>
+            </a>
           </h3>
         </div>
         <div className="box">

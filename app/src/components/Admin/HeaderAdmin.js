@@ -23,7 +23,7 @@ export default function HeaderAdmin() {
   };
   const handleLogout = () => {
     localStorage.removeItem("token");
-    "/login";
+    window.location.href =  "/login";
   };
   return (
     <Navbar
