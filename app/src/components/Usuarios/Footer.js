@@ -2,13 +2,13 @@ import React from "react";
 import Link from "next/link";
 import "@/components/Usuarios/css/Footer.css";
 import Image from "next/image";
-import Logo from "../imgs/logo.png";
+
 
 export default function Footer() {
   return (
     <footer className="footer-distributed">
       <div className="footer-left">
-        <Image src={Logo} width={200} alt="Logo" />
+        <Image src="/imgs/logo.png" width={200} height={200} alt="Logo" />
         <p className="footer-links">
           <Link href="/faleconosco" className="link-1">
             Fale Conosco

@@ -2,12 +2,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import error from "@/components/imgs/undraw_server_down_s-4-lk.svg";
 function ErrorPage({ statusCode }) {
   return (
     <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
       <div className="text-center">
-        <Image src={error} alt="Erro" width={300} height={300} />
+        <Image src="/imgs/undraw_server_down_s-4-lk.svg" alt="Erro" width={300} height={300} />
         <h1 className="display-4">Oops! Algo deu errado.</h1>
         <p className="lead">
           Ocorreu um erro ({statusCode}). Lamentamos pelo inconveniente.

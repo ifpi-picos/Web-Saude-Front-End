@@ -9,16 +9,15 @@ export default function ButtonSearch() {
 
   const handleInputChange = event => {
     const inputValue = event.target.value;
-    // Remove todos os caracteres de pontuação (incluindo hífens)
-    const formattedValue = inputValue.replace(/[\p{P}\p{S}]/gu, " ");
+    const formattedValue = inputValue; 
     setSearchValue(formattedValue);
   };
   const handleSearch = event => {
-    event.preventDefault(); // Evita que o formulário recarregue a página
+    event.preventDefault(); 
     const formattedSearchValue = encodeURIComponent(
       searchValue.replace(/ /g, "-")
     );
-    // Redirecione para a página de pesquisa com o valor formatado
+    
     router.push(`/pesquisa/${formattedSearchValue}`);
   };
 

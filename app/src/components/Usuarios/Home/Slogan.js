@@ -1,6 +1,6 @@
-import Slogam from "@/components/imgs/medicos.svg";
 import Image from "next/image";
 import "@/components/Usuarios/Home/css/Slogan.css";
+
 export default function Slogan() {
   return (
     <section className="section-slogan">
@@ -9,7 +9,7 @@ export default function Slogan() {
         <p>A Saúde mais perto de você</p>
       </div>
       <div className="img-slogan">
-        <Image src={Slogam} alt="slogan" />
+        <Image src="/imgs/medicos.svg" width={0} height={0} alt="slogan" />
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-import Logo from "@/components/imgs/logo.png";
 import "@/components/Usuarios/css/FaleConosco.css";
 import Header from "@/components/Usuarios/Header";
 import Image from "next/image";
@@ -11,7 +10,7 @@ export default function FaleConosco() {
         <div className="div-form">
           <form action="#">
             <div className="div-logo">
-              <Image className="image-logo" src={Logo} alt="logo" />
+              <Image className="image-logo" src="/imgs/logo.png" width={200} height={200} alt="logo" />
             </div>
 
             <h1 className="title">Fale Conosco</h1>

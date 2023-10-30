@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import error from "@/components/imgs/undraw_page_not_found_re_e9o6.svg";
 import "@/app/not-found.css";
+
 export default function NotFound() {
   return (
     <section className="section-erro">
       <div className="div-img">
         <Image
-          src={error}
+          src="/imgs/undraw_page_not_found_re_e9o6.svg"
           className="img-erro"
           alt="img-erro"
           width={300}

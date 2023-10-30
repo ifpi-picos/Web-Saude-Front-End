@@ -1,5 +1,4 @@
 import Image from "next/image";
-import imagem from "@/components/imgs/doutor-vermais.svg";
 import FiltroService from "@/services/FiltroService";
 import "@/components/Usuarios/Ver-Mais/css/NomeUnidadeDeSaude.css";
 export default async function NomeDaClinica_Hospital({ nome }) {
@@ -11,7 +10,7 @@ export default async function NomeDaClinica_Hospital({ nome }) {
         <h1>{unidadesdeSaude.nome}</h1>
       </div>
       <div className="img-clinica-hospital">
-        <Image src={imagem} alt="img-clinica-hospital" />
+        <Image src="/imgs/doutor-vermais.svg" alt="img-clinica-hospital" width={200} height={200} />
       </div>
     </section>
   );

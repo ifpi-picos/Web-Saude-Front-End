@@ -1,7 +1,6 @@
 "use client";
 import { slide as Menu } from "react-burger-menu";
 import Link from "next/link";
-import logo from "../imgs/logo.png";
 import Image from "next/image";
 import "../Usuarios/css/Header.css";
 
@@ -10,7 +9,7 @@ export default function Header() {
     <header className="container-menu">
       <div className="logo">
         <Link href="/">
-          <Image src={logo} alt="Foto teste" className="customisar-imagem" />
+          <Image src="/imgs/logo.png" alt="Foto teste" width={200} height={200} className="customisar-imagem" />
         </Link>
       </div>
       <div className="menuVisible">
