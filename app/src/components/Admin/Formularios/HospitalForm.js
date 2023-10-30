@@ -100,7 +100,7 @@ export default function ClinicaForm() {
 
   return (
     <>
-      <section>
+      <section style={{ marginTop: "300px" }}>
         <div className="painel">
           <h3>
             <Link href="/login/dashboard">

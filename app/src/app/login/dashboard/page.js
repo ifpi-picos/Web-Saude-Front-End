@@ -9,6 +9,7 @@ export default async function Dashboard() {
   const informacao = await FiltroService.unidadesdeSaude();
 
   return (
+    <PrivateRoute>
     <div className="main-content">
       <HeaderAdmin />
 
@@ -36,5 +37,7 @@ export default async function Dashboard() {
         <CardAdmin informacao={informacao} />
       </div>
     </div>
+    </PrivateRoute>
+
   );
 }
