@@ -9,7 +9,13 @@ export default function Header() {
     <header className="container-menu">
       <div className="logo">
         <Link href="/">
-          <Image src="/imgs/logo.png" alt="Foto teste" width={200} height={200} className="customisar-imagem" />
+          <Image
+            src="/imgs/logo.png"
+            alt="Foto teste"
+            width={200}
+            height={200}
+            className="customisar-imagem"
+          />
         </Link>
       </div>
       <div className="menuVisible">

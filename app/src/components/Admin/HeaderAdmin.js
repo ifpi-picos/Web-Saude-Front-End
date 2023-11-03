@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 import "../Admin/css/HeaderAdmin.css";
 
 export default function HeaderAdmin() {
   const [expanded, setExpanded] = useState(false);
-  const [dropdownBackgroundColor, setDropdownBackgroundColor] = useState("transparent");
-    const router = useRouter();
+  const [dropdownBackgroundColor, setDropdownBackgroundColor] =
+    useState("transparent");
+  const router = useRouter();
 
   const handleToggle = () => {
     setExpanded(!expanded);
@@ -23,7 +24,7 @@ export default function HeaderAdmin() {
   };
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href =  "/login";
+    window.location.href = "/login";
   };
   return (
     <Navbar

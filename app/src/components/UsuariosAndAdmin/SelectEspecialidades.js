@@ -12,7 +12,6 @@ export default function SelectEspecialidades({
     control: (provided, state) => ({
       ...provided,
       backgroundColor: "white",
-      marginBottom: "50px",
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,

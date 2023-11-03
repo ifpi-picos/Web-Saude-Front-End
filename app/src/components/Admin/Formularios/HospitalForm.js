@@ -2,73 +2,50 @@
 import { useState } from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
 import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
-import { FaUser } from "react-icons/fa";
 import { Modal, Button } from "react-bootstrap";
+import { useForm, Controller } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import "@/components/Admin/Formularios/css/Form.css";
+import Image from "next/image";
+import PrivateRoute from "../privateRouter";
 
-export default function ClinicaForm() {
-  const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+const schema = yup.object().shape({
+  nome: yup.string().required("O nome da clínica é obrigatório"),
+  imagem: yup.string(),
+  email: yup.string().email("Informe um e-mail válido"),
+  whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
+  instagram: yup.string(),
+  descricao: yup.string(),
+  longitude: yup.string().required("A longitude é obrigatória"),
+  latitude: yup.string().required("A latitude é obrigatória"),
+  cep: yup.string().required("O CEP é obrigatório"),
+  rua: yup.string().required("A rua é obrigatória"),
+  numero: yup.string().required("O número é obrigatório"),
+  bairro: yup.string().required("O bairro é obrigatório"),
+  cidade: yup.string().required("A cidade é obrigatória"),
+  uf: yup.string().required("O estado (UF) é obrigatório"),
+  especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
+});
 
-  const [formData, setFormData] = useState({
-    cep: "",
-    rua: "",
-    numero: "",
-    bairro: "",
-    cidade: "",
-    uf: "",
-    nome: "",
-    imagem: "",
-    email: "",
-    whatsapp: "",
-    instagram: "",
-    descricao: "",
-    longitude: "",
-    latitude: "",
-    especialidades: [],
+export default function HospitalForm() {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const handleImageURLChange = imageUrl => {
-    setFormData(prevData => ({
-      ...prevData,
-      imagem: imageUrl,
-    }));
-  };
-  const handleChange = e => {
-    const { name, value } = e.target;
-    if (name.startsWith("horarioSemana.")) {
-      const fieldName = name.replace("horarioSemana.", "");
-      setFormData({
-        ...formData,
-        horarioSemana: {
-          ...formData.horarioSemana,
-          [fieldName]: value,
-        },
-      });
-    } else if (name.startsWith("sabado.")) {
-      const fieldName = name.replace("sabado.", "");
-      setFormData({
-        ...formData,
-        sabado: {
-          ...formData.sabado,
-          [fieldName]: value,
-        },
-      });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
-  };
-  const handleSpecialtyChange = selectedSpecialties => {
-    setFormData({ ...formData, especialidades: selectedSpecialties });
-    const selectedIds = selectedSpecialties.map(specialty => specialty.value);
-    setSelectedSpecialtyIds(selectedIds);
-  };
+  const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [imageURL, setImageURL] = useState("");
+  const [imageLink, setImageLink] = useState("");
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const dataToSend = {
-      ...formData,
-      especialidades: selectedSpecialtyIds,
-    };
+  const onSubmit = async formData => {
+    formData.imagem = imageLink;
+    formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
 
     try {
@@ -80,15 +57,14 @@ export default function ClinicaForm() {
             "Content-Type": "application/json",
             "x-access-token": token,
           },
-          body: JSON.stringify(dataToSend),
+          body: JSON.stringify(formData),
         }
       );
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
         setShowModal(true);
-        window.location.href = "/";
+        window.location.href = "/login/dashboard";
       } else {
         console.error("Erro ao enviar os dados.");
       }
@@ -97,220 +73,272 @@ export default function ClinicaForm() {
     }
   };
 
+  const handleImageURLChange = imageUrl => {
+    setImageURL(imageUrl);
+    setImageLink(imageUrl);
+  };
+
+  const handleSpecialtyChange = selectedSpecialties => {
+    setError("especialidades", "");
+    const selectedIds = selectedSpecialties.map(specialty => specialty.value);
+    setSelectedSpecialtyIds(selectedIds);
+  };
+
   return (
-    <>
-      <section style={{ marginTop: "300px" }}>
-        <div className="painel">
-          <h3>
-            <a href="/login/dashboard">
-              <FaUser size={24} /> Painel
-            </a>
-          </h3>
-        </div>
-        <div className="box">
-          <legend>
-            <strong>Cadastrar Novo Hospital</strong>
-          </legend>
-          <form onSubmit={handleSubmit}>
-            <fieldset>
-              <div className="inputBox">
-                <label className="labelInput"> Nome do Hospital:</label>
+    <PrivateRoute>
+      <>
+        <section className="section-form">
+          <div className="div-form">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="div-logo">
+                <Image
+                  className="image-logo"
+                  src="/imgs/Logo.png"
+                  alt="logo"
+                  width={200}
+                  height={200}
+                />
+              </div>
 
-                <input
-                  className="inputUser"
-                  type="text"
+              <h2 className="title">Cadastrar Hospital</h2>
+              <div className="div-inputs">
+                <label>Nome</label>
+                <Controller
                   name="nome"
-                  value={formData.nome}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="nome"
+                      value={field.value}
+                      onChange={field.onChange}
+                      {...field}
+                    />
+                  )}
                 />
-              </div>
-
-              <div className="buttonBox">
-                <label className="labelInput"> Imagem do Hospital:</label>
-
-                <div className="buttontUser">
-                  <CloudinaryUploadWidget onURLChange={handleImageURLChange} />
-                </div>
-              </div>
-              <div className="selectBox">
-                <SelectEspecialidades
-                  onChange={handleSpecialtyChange}
-                  selectedSpecialties={formData.especialidades}
-                />
-              </div>
-
-              <div className="inputBox">
-                <label className="labelInput">Email (opcional):</label>
-
-                <input
-                  className="inputUser"
-                  type="email"
+                {errors.nome && (
+                  <div className="error">{errors.nome.message}</div>
+                )}
+                <CloudinaryUploadWidget onURLChange={handleImageURLChange} />
+                {errors.imagem && (
+                  <div className="error">{errors.imagem.message}</div>
+                )}
+                <SelectEspecialidades onChange={handleSpecialtyChange} />
+                {errors.especialidades && (
+                  <div className="error">{errors.especialidades.message}</div>
+                )}
+                <label htmlFor="email">Email</label>
+                <Controller
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="email"
+                      name="email"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-              </div>
-              <div className="inputBox">
-                <label className="labelInput">instagram (opcional):</label>
-
-                <input
-                  className="inputUser"
-                  type="text"
-                  name="instagram"
-                  value={formData.instagram}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className="inputBox">
-                <label className="labelInput"> whatsapp (opcional):</label>
-
-                <input
-                  className="inputUser"
-                  type="text"
+                {errors.email && (
+                  <div className="error">{errors.email.message}</div>
+                )}
+                <label htmlFor="whatsapp">Whatsapp</label>
+                <Controller
                   name="whatsapp"
-                  value={formData.whatsapp}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="tel"
+                      name="whatsapp"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-              </div>
-
-              <div className="inputBox">
-                <label className="labelInput"> Descrição (opcional):</label>
-
-                <textarea
-                  className=""
+                {errors.whatsapp && (
+                  <div className="error">{errors.whatsapp.message}</div>
+                )}
+                <label htmlFor="instagram">Instagram</label>
+                <Controller
+                  name="instagram"
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="instagram"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
+                />
+                {errors.instagram && (
+                  <div className="error">{errors.instagram.message}</div>
+                )}
+                <label htmlFor="descricao">Descrição</label>
+                <Controller
                   name="descricao"
-                  value={formData.descricao}
-                  onChange={handleChange}
-                  required
-                  placeholder="texto"
+                  control={control}
+                  render={({ field }) => (
+                    <textarea
+                      name="descricao"
+                      value={field.value}
+                      onChange={field.onChange}
+                      cols="30"
+                      rows="10"
+                      placeholder="Descrição"
+                    />
+                  )}
                 />
-              </div>
-              <div className="inputBox">
-                <label className="labelInput"> Longitude:</label>
-
-                <input
-                  className="inputUser"
-                  type="text"
+                {errors.descricao && (
+                  <div className="error">{errors.descricao.message}</div>
+                )}
+                <label htmlFor="longitude">Longitude</label>
+                <Controller
                   name="longitude"
-                  value={formData.longitude}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="longitude"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-              </div>
-
-              <div className="inputBox">
-                <label className="labelInput">Latitude: </label>
-
-                <input
-                  className="inputUser"
-                  type="text"
+                {errors.longitude && (
+                  <div className="error">{errors.longitude.message}</div>
+                )}
+                <label htmlFor="latitude">Latitude</label>
+                <Controller
                   name="latitude"
-                  value={formData.latitude}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="latitude"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-              </div>
+                {errors.latitude && (
+                  <div className="error">{errors.latitude.message}</div>
+                )}
 
-              <div className="inputBox">
-                <label className="labelInput">CEP:</label>
-
-                <input
-                  className="inputUser"
-                  type="text"
+                <label htmlFor="cep">CEP</label>
+                <Controller
                   name="cep"
-                  value={formData.cep}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="cep"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-              </div>
-
-              <div className="inputBox">
-                <label className="labelInput">Rua:</label>
-
-                <input
-                  className="inputUser"
-                  type="text"
+                {errors.cep && (
+                  <div className="error">{errors.cep.message}</div>
+                )}
+                <label htmlFor="rua">Rua</label>
+                <Controller
                   name="rua"
-                  value={formData.rua}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="rua"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-              </div>
-
-              <div className="inputBox">
-                <label className="labelInput">Número:</label>
-
-                <input
-                  className="inputUser"
-                  type="text"
+                {errors.rua && (
+                  <div className="error">{errors.rua.message}</div>
+                )}
+                <label htmlFor="numero">Número</label>
+                <Controller
                   name="numero"
-                  value={formData.numero}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="numero"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-              </div>
-
-              <div className="inputBox">
-                <label className="labelInput">Bairro:</label>
-
-                <input
-                  className="inputUser"
-                  type="text"
+                {errors.numero && (
+                  <div className="error">{errors.numero.message}</div>
+                )}
+                <label htmlFor="bairro">Bairro</label>
+                <Controller
                   name="bairro"
-                  value={formData.bairro}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="bairro"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-              </div>
-
-              <div className="inputBox">
-                <label className="labelInput">Cidade:</label>
-
-                <input
-                  className="inputUser"
-                  type="text"
+                {errors.bairro && (
+                  <div className="error">{errors.bairro.message}</div>
+                )}
+                <label htmlFor="cidade">Cidade</label>
+                <Controller
                   name="cidade"
-                  value={formData.cidade}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="cidade"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
-              </div>
-
-              <div className="inputBox">
-                <label className="labelInput">Uf:</label>
-
-                <input
-                  className="inputUser"
-                  type="text"
+                {errors.cidade && (
+                  <div className="error">{errors.cidade.message}</div>
+                )}
+                <label htmlFor="uf">Estado</label>
+                <Controller
                   name="uf"
-                  value={formData.uf}
-                  onChange={handleChange}
-                  required
+                  control={control}
+                  render={({ field }) => (
+                    <input
+                      type="text"
+                      name="uf"
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
+                  )}
                 />
+                {errors.uf && <div className="error">{errors.uf.message}</div>}
               </div>
-
-              <button id="submit" type="submit">
-                Cadastrar Hospital
-              </button>
-            </fieldset>
-          </form>
-        </div>
-      </section>
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Hospital Salvo com Sucesso</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>O Hospital foi salvo com sucesso.</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={() => setShowModal(false)}>
-            Fechar
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+              <div className="div-button">
+                <button type="submit">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </section>
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Hospital Salvo com Sucesso</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>O Hospital foi salvo com sucesso.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => setShowModal(false)}>
+              Fechar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    </PrivateRoute>
   );
 }

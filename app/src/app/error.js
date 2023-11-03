@@ -6,7 +6,12 @@ function ErrorPage({ statusCode }) {
   return (
     <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
       <div className="text-center">
-        <Image src="/imgs/undraw_server_down_s-4-lk.svg" alt="Erro" width={300} height={300} />
+        <Image
+          src="/imgs/undraw_server_down_s-4-lk.svg"
+          alt="Erro"
+          width={300}
+          height={300}
+        />
         <h1 className="display-4">Oops! Algo deu errado.</h1>
         <p className="lead">
           Ocorreu um erro ({statusCode}). Lamentamos pelo inconveniente.

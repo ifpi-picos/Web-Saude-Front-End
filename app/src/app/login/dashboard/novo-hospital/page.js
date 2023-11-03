@@ -5,9 +5,9 @@ import PrivateRoute from "@/components/Admin/privateRouter";
 export default function CadastrarHospital() {
   return (
     <PrivateRoute>
-    <main className="main">
-      <HospitalForm />
-    </main>
+      <main className="main">
+        <HospitalForm />
+      </main>
     </PrivateRoute>
   );
 }

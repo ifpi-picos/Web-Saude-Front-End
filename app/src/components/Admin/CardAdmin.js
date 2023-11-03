@@ -5,6 +5,7 @@ import { FaCog } from "react-icons/fa"; // Importe o ícone de engrenagem do Rea
 import { Button, Modal } from "react-bootstrap";
 import "../Admin/css/CardAdmin.css";
 import Paginacao from "../UsuariosAndAdmin/Paginacao";
+
 export default function CardAdmin({ pageNumber, informacao }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
@@ -20,11 +21,11 @@ export default function CardAdmin({ pageNumber, informacao }) {
   const indexOfLastPost = currentPage * maxPostsPerPage;
   const indexOfFirstPost = indexOfLastPost - maxPostsPerPage;
 
-  // Filtra os dados com base no termo de pesquisa
   const limitedPosts = Array.isArray(informacao)
     ? informacao.slice(indexOfFirstPost, indexOfLastPost)
     : [];
   const totalPages = Math.ceil(informacao.length / maxPostsPerPage);
+
   const handleShowModal = item => {
     setSelectedItem(item);
     setShowModal(true);
@@ -35,20 +36,43 @@ export default function CardAdmin({ pageNumber, informacao }) {
   };
 
   const handleDeleteItem = () => {
-    // Adicione a lógica para excluir o item selecionado
-    // Após a exclusão, você pode fechar o modal
-    // Certifique-se de lidar com a exclusão no seu servidor/API
-    // e atualizar a lista de informações
-    setShowModal(false);
+    if (selectedItem) {
+      const itemId = selectedItem._id;
+      console.log(itemId);
+      const tipoEstabelecimento = selectedItem.horario;
+      console.log("tipo", tipoEstabelecimento);
+
+      const token = localStorage.getItem("token");
+      const deleteEndpoint =
+        tipoEstabelecimento === "Atendimento 24 Horas"
+          ? `https://api-web-saude.vercel.app/admin/deletar-hospital/${itemId}`
+          : `https://api-web-saude.vercel.app/admin/deletar-clinica/${itemId}`;
+
+      fetch(deleteEndpoint, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": token,
+        },
+      })
+        .then(response => {
+          if (response.ok) {
+            setShowModal(false);
+            window.location.href = "/login/dashboard";
+          } else {
+            console.error("Erro ao excluir o estabelecimento.");
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   };
 
   const handleUpdateItem = () => {
-    // Adicione a lógica para atualizar o item selecionado
-    // Após a atualização, você pode fechar o modal
-    // Certifique-se de lidar com a atualização no seu servidor/API
-    // e atualizar a lista de informações
     setShowModal(false);
   };
+
   return (
     <section className="section-card-admin">
       {limitedPosts.length === 0 ? (
@@ -63,7 +87,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 </div>
               </div>
               <div className="button">
-                <div className="icone">
+                <div className="icone" style={{ marginTop: "35px" }}>
                   <FaCog
                     size={30}
                     className="config-icon"
@@ -121,14 +145,26 @@ export default function CardAdmin({ pageNumber, informacao }) {
           <Modal.Title>Opções do Item</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Escolha uma opção:</p>
-          <Button variant="success" onClick={handleUpdateItem}>
+          <p className="opcoes">Escolha uma opção:</p>
+          <Button
+            className="buttons-model"
+            variant="success"
+            onClick={handleUpdateItem}
+          >
             Alterar
           </Button>
-          <Button variant="danger" onClick={handleDeleteItem}>
+          <Button
+            className="buttons-model"
+            variant="danger"
+            onClick={handleDeleteItem}
+          >
             Excluir
           </Button>
-          <Button variant="secondary" onClick={handleCloseModal}>
+          <Button
+            className="buttons-model"
+            variant="secondary"
+            onClick={handleCloseModal}
+          >
             Fechar
           </Button>
         </Modal.Body>

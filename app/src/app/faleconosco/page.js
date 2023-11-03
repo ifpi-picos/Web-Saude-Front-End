@@ -10,7 +10,13 @@ export default function FaleConosco() {
         <div className="div-form">
           <form action="#">
             <div className="div-logo">
-              <Image className="image-logo" src="/imgs/logo.png" width={200} height={200} alt="logo" />
+              <Image
+                className="image-logo"
+                src="/imgs/logo.png"
+                width={200}
+                height={200}
+                alt="logo"
+              />
             </div>
 
             <h1 className="title">Fale Conosco</h1>

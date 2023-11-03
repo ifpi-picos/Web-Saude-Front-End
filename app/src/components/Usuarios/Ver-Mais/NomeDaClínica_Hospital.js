@@ -10,7 +10,12 @@ export default async function NomeDaClinica_Hospital({ nome }) {
         <h1>{unidadesdeSaude.nome}</h1>
       </div>
       <div className="img-clinica-hospital">
-        <Image src="/imgs/doutor-vermais.svg" alt="img-clinica-hospital" width={200} height={200} />
+        <Image
+          src="/imgs/doutor-vermais.svg"
+          alt="img-clinica-hospital"
+          width={200}
+          height={200}
+        />
       </div>
     </section>
   );

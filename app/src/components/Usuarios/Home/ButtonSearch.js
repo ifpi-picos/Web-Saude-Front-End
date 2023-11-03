@@ -9,15 +9,15 @@ export default function ButtonSearch() {
 
   const handleInputChange = event => {
     const inputValue = event.target.value;
-    const formattedValue = inputValue; 
+    const formattedValue = inputValue;
     setSearchValue(formattedValue);
   };
   const handleSearch = event => {
-    event.preventDefault(); 
+    event.preventDefault();
     const formattedSearchValue = encodeURIComponent(
       searchValue.replace(/ /g, "-")
     );
-    
+
     router.push(`/pesquisa/${formattedSearchValue}`);
   };
 

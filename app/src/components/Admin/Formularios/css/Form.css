@@ -1,117 +1,127 @@
-section {
+.error {
+  color: red;
+}
+.section-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  margin-top: 435px;
 }
-
-.box {
-  color: white;
-  background-color: #191818;
-  padding: 15px;
-  border-radius: 15px;
-  width: 30%;
+.div-logo {
+  display: flex;
+  justify-content: center;
 }
-fieldset {
-  border: 3px solid #00285f;
-}
-legend {
-  border: 1px solid #00285f;
-  padding: 10px;
-  text-align: center;
-  background-color: #00285f;
-  border-radius: 8px;
-  margin-bottom: 30px;
-}
-.inputBox,
-.buttonBox {
-  position: relative;
-  margin: 40px;
-}
-.selectBox {
-  position: relative;
-  margin: 40px;
-  margin-top: -20px;
-}
-.inputUser {
-  background: none;
-  border: none;
-  border-bottom: 1px solid white;
-  outline: none;
-  color: white;
-  font-size: 15px;
-  width: 100%;
-  letter-spacing: 2px;
-}
-.inputUser:focus {
-  color: white;
-}
-textarea {
-  border-bottom: 1px solid white;
-  outline: none;
-  width: 100%;
-  margin-top: 3px;
+.div-logo .image-logo {
+  width: 100px;
   height: 100px;
+  margin-top: 10px;
 }
-
-.buttonBox button {
-  border: none;
-  border-bottom: 1px solid black;
-  background-color: white;
-  outline: none;
-  font-size: 15px;
-  width: 100%;
-  height: 35px;
-}
-
-.labelInput {
-  font-size: 12px;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  pointer-events: none;
-  transition: 0.5s;
-  margin-top: -18px;
-}
-
-.inputUser:focus ~ .labelInput,
-.inputUser:valid ~ .labelInput {
-  top: -15px;
-  font-size: 12px;
-  color: #00285f;
-}
-
-#submit {
-  background-image: linear-gradient(to right, #00285f, rgb(90, 20, 220));
-  width: 100%;
-  border: none;
-  padding: 15px;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  border-radius: 10px;
-}
-#submit:hover {
-  background-image: linear-gradient(to right, #00285f, rgb(80, 19, 195));
-}
-ul {
+.div-form {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  list-style: none;
-  border-radius: 15px;
-  margin: 50px;
-  color: white;
-  background-color: #191818;
-  padding: 15px;
-  border-radius: 15px;
-  width: 20%;
+
+  width: 700px;
+  max-height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+.div-inputs,
+.div-horario {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.div-horarios {
+  display: flex;
+  justify-content: space-between;
+}
+.div-inputs input,
+.div-inputs textarea,
+.div-button button {
+  margin-top: 30px;
+}
+.div-inputs input {
+  outline: none;
+  height: 25px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: solid 1px;
+}
+
+.div-inputs label {
+  margin-bottom: -30px;
+  color: var(--secundary-color);
+}
+.div-inputs .div-horarios .div-horario input {
+  outline: none;
+  width: 100%;
+}
+.upload {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.div-inputs textarea {
+  width: 400px;
+  outline: none;
+  border-radius: 5px;
+}
+.div-inputs textarea::placeholder {
+  position: absolute;
+  left: 5px;
+  top: 3px;
+  font-size: 20px;
+}
+.div-button button {
+  width: 200px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+}
+button:hover {
+  background-color: var(--secundary-color);
+}
+.div-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  color: white;
+}
+
 @media (max-width: 768px) {
-  .box {
-    width: 90%;
+  .section-form {
+    width: 100%;
+  }
+  .div-form {
+    width: 320px;
+  }
+  .div-logo img {
+    width: 100px;
+  }
+  .div-inputs input {
+    border: none;
+    outline: none;
+    height: 25px;
+    margin-bottom: 5px;
+  }
+
+  .div-inputs .div-horarios .div-horario input {
+    border: none;
+    outline: none;
+    width: 80%;
+  }
+  .div-inputs textarea {
+    width: 200px;
+    height: 200px;
   }
 }

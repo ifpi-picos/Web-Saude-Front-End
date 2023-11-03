@@ -10,12 +10,7 @@ import "@/components/Usuarios/Home/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 
 export default async function PageNumber({ params }) {
-  let informacao;
-  if (params.PageNumber === "clinicas") {
-    informacao = await FiltroService.pegarClinicas();
-  } else {
-    informacao = await FiltroService.pegarHospitaisEClincas();
-  }
+  const informacao = await FiltroService.pegarHospitaisEClincas();
 
   return (
     <>
@@ -25,7 +20,7 @@ export default async function PageNumber({ params }) {
         <ButtonSearch />
         <Filtros />
       </div>
-      <Card pageNumber={params.pageNumber} informacao={informacao} />
+      <Card informacao={informacao} />
       <Footer />
     </>
   );
