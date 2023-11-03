@@ -74,7 +74,7 @@ export default function LoginForm() {
           <div className="div-logo">
             <Image
               className="image-logo"
-              src="/imgs/Logo.png"
+              src="/imgs/logo.png"
               alt="logo"
               width={200}
               height={200}

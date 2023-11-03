@@ -81,6 +81,37 @@ export default function CardAdmin({ pageNumber, informacao }) {
         <>
           {limitedPosts.map((info, index) => (
             <div className="card-container" key={index}>
+               <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Opções do Item</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p className="opcoes">Escolha uma opção:</p>
+          <Button
+            className="buttons-model"
+            variant="success"
+            onClick={handleUpdateItem}
+
+          >
+          <Link href={`login/dashboard/alterar-clinica/${info?._id}`}>Alterar</Link>
+
+          </Button>
+          <Button
+            className="buttons-model"
+            variant="danger"
+            onClick={handleDeleteItem}
+          >
+            Excluir
+          </Button>
+          <Button
+            className="buttons-model"
+            variant="secondary"
+            onClick={handleCloseModal}
+          >
+            Fechar
+          </Button>
+        </Modal.Body>
+        </Modal>
               <div className="top">
                 <div className="image-container">
                   <img src={info.imagem} alt={info.nome} />
@@ -140,35 +171,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
           )}
         </>
       )}
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Opções do Item</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p className="opcoes">Escolha uma opção:</p>
-          <Button
-            className="buttons-model"
-            variant="success"
-            onClick={handleUpdateItem}
-          >
-            Alterar
-          </Button>
-          <Button
-            className="buttons-model"
-            variant="danger"
-            onClick={handleDeleteItem}
-          >
-            Excluir
-          </Button>
-          <Button
-            className="buttons-model"
-            variant="secondary"
-            onClick={handleCloseModal}
-          >
-            Fechar
-          </Button>
-        </Modal.Body>
-      </Modal>
+     
     </section>
   );
 }

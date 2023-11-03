@@ -2,6 +2,11 @@
 .opcoes {
   margin: 5px;
 }
+
+.buttons-model a{
+  text-decoration: none;
+  color: white;
+}
 /* cards */
 .section-card-admin {
   display: flex;

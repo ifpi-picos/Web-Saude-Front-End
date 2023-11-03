@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import "@/components/Admin/Formularios/css/Form.css";
 import Image from "next/image";
 import PrivateRoute from "../privateRouter";
+import { useRouter } from "next/navigation";
 
 const schema = yup.object().shape({
   nome: yup.string().required("O nome da clínica é obrigatório"),
@@ -30,22 +31,22 @@ const schema = yup.object().shape({
       .string()
       .required("O horário de fechamento de sábado é obrigatório"),
   }),
-  email: yup.string().email("Informe um e-mail válido"),
-  whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
-  instagram: yup.string(),
-  descricao: yup.string(),
-  longitude: yup.string().required("A longitude é obrigatória"),
-  latitude: yup.string().required("A latitude é obrigatória"),
-  cep: yup.string().required("O CEP é obrigatório"),
-  rua: yup.string().required("A rua é obrigatória"),
-  numero: yup.string().required("O número é obrigatório"),
-  bairro: yup.string().required("O bairro é obrigatório"),
-  cidade: yup.string().required("A cidade é obrigatória"),
-  uf: yup.string().required("O estado (UF) é obrigatório"),
-  especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
-});
+    email: yup.string().email("Informe um e-mail válido"),
+    whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
+    instagram: yup.string(),
+    descricao: yup.string(),
+    longitude: yup.string().required("A longitude é obrigatória"),
+    latitude: yup.string().required("A latitude é obrigatória"),
+    cep: yup.string().required("O CEP é obrigatório"),
+    rua: yup.string().required("A rua é obrigatória"),
+    numero: yup.string().required("O número é obrigatório"),
+    bairro: yup.string().required("O bairro é obrigatório"),
+    cidade: yup.string().required("A cidade é obrigatória"),
+    uf: yup.string().required("O estado (UF) é obrigatório"),
+    especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
+    });
 
-export default function ClinicaForm() {
+export default function AlterarClincaForm({id}) {
   const {
     control,
     handleSubmit,
@@ -54,7 +55,9 @@ export default function ClinicaForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const router = useRouter();
 
+console.log('Valor do parâmetro id:', id);
   const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [imageURL, setImageURL] = useState("");
@@ -69,9 +72,9 @@ export default function ClinicaForm() {
 
     try {
       const response = await fetch(
-        "https://api-web-saude.vercel.app/admin/nova-clinica",
+        `https://api-web-saude.vercel.app/admin/alterar-clinica/${id}`,
         {
-          method: "POST",
+          method: "Put",
           headers: {
             "Content-Type": "application/json",
             "x-access-token": token,
