@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
 import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
 import { Modal, Button } from "react-bootstrap";
@@ -46,33 +46,44 @@ const schema = yup.object().shape({
     especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
     });
 
-export default function AlterarClincaForm({id}) {
-  const {
+export default function AlterarClincaForm({clinicaData,nome}) {
+    const {
     control,
     handleSubmit,
     formState: { errors },
     setError,
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues:clinicaData,
+    
   });
-  const router = useRouter();
+  console.log("nome",clinicaData._id)
+  useEffect(() => {
+    const initialData = {
+      ...clinicaData,  
+      ...clinicaData.endereco,  
+    };
 
-console.log('Valor do parâmetro id:', id);
+    reset(initialData);
+  }, [clinicaData, reset]);
+
+  const router = useRouter();
   const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [imageURL, setImageURL] = useState("");
   const [imageLink, setImageLink] = useState("");
+  console.log(clinicaData.imagem)
 
   const onSubmit = async formData => {
     formData.imagem = imageLink;
     console.log("img", formData.imagem);
     formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
-    console.log("Dados a serem enviados:", formData);
 
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/admin/alterar-clinica/${id}`,
+        `https://api-web-saude.vercel.app/admin/alterar-clinica/${clinicaData._id}`,
         {
           method: "Put",
           headers: {
@@ -82,6 +93,7 @@ console.log('Valor do parâmetro id:', id);
           body: JSON.stringify(formData),
         }
       );
+      console.log("Dados do formulário:", formData);
 
       if (response.ok) {
         const responseData = await response.json();
@@ -89,8 +101,8 @@ console.log('Valor do parâmetro id:', id);
         setShowModal(true);
         window.location.href = "/login/dashboard";
       } else {
-        console.error("Erro ao enviar os dados.");
-      }
+        const errorData = await response.json(); // Obtenha informações específicas do erro
+        console.error("Erro ao enviar os dados:", errorData);      }
     } catch (error) {
       console.error(error);
     }
@@ -107,7 +119,7 @@ console.log('Valor do parâmetro id:', id);
     setSelectedSpecialtyIds(selectedIds);
   };
   return (
-    <PrivateRoute>
+    
       <>
         <section className="section-form">
           <div className="div-form">
@@ -122,7 +134,7 @@ console.log('Valor do parâmetro id:', id);
                 />
               </div>
 
-              <h2 className="title">Cadastrar Clínica</h2>
+              <h2 className="title">Alterar Clínica</h2>
               <div className="div-inputs">
                 <label>Nome</label>
                 <Controller
@@ -141,12 +153,12 @@ console.log('Valor do parâmetro id:', id);
                 {errors.nome && (
                   <div className="error">{errors.nome.message}</div>
                 )}
-                <CloudinaryUploadWidget onURLChange={handleImageURLChange} />
+                <CloudinaryUploadWidget onURLChange={handleImageURLChange} defaultImage={clinicaData.imagem}  />
                 {errors.imagem && (
                   <div className="error">{errors.imagem.message}</div>
                 )}
 
-                <SelectEspecialidades onChange={handleSpecialtyChange} />
+                <SelectEspecialidades onChange={handleSpecialtyChange} nome={nome} />
                 {errors.especialidades && (
                   <div className="error">{errors.especialidades.message}</div>
                 )}
@@ -428,6 +440,6 @@ console.log('Valor do parâmetro id:', id);
           </Modal.Footer>
         </Modal>
       </>
-    </PrivateRoute>
+    
   );
 }

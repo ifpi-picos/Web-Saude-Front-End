@@ -1,21 +1,29 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaCog } from "react-icons/fa"; // Importe o ícone de engrenagem do React Icons
+import { FaCog } from "react-icons/fa";
 import { Button, Modal } from "react-bootstrap";
 import "../Admin/css/CardAdmin.css";
 import Paginacao from "../UsuariosAndAdmin/Paginacao";
 
 export default function CardAdmin({ pageNumber, informacao }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [itemStates, setItemStates] = useState([]);
 
   useEffect(() => {
     if (pageNumber) {
       setCurrentPage(parseInt(pageNumber));
     }
   }, [pageNumber]);
+
+  useEffect(() => {
+    // Initialize itemStates with the initial state for each item
+    const initialState = informacao.map(() => ({
+      showModal: false,
+      selectedItem: null,
+    }));
+    setItemStates(initialState);
+  }, [informacao]);
 
   const maxPostsPerPage = 4;
   const indexOfLastPost = currentPage * maxPostsPerPage;
@@ -26,22 +34,28 @@ export default function CardAdmin({ pageNumber, informacao }) {
     : [];
   const totalPages = Math.ceil(informacao.length / maxPostsPerPage);
 
-  const handleShowModal = item => {
-    setSelectedItem(item);
-    setShowModal(true);
+  const handleShowModal = (item, index) => {
+    const newStates = [...itemStates];
+    newStates[index] = {
+      showModal: true,
+      selectedItem: item,
+    };
+    setItemStates(newStates);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
+  const handleCloseModal = (index) => {
+    const newStates = [...itemStates];
+    newStates[index] = {
+      showModal: false,
+      selectedItem: null,
+    };
+    setItemStates(newStates);
   };
 
-  const handleDeleteItem = () => {
+  const handleDeleteItem = (selectedItem, index) => {
     if (selectedItem) {
       const itemId = selectedItem._id;
-      console.log(itemId);
       const tipoEstabelecimento = selectedItem.horario;
-      console.log("tipo", tipoEstabelecimento);
-
       const token = localStorage.getItem("token");
       const deleteEndpoint =
         tipoEstabelecimento === "Atendimento 24 Horas"
@@ -55,22 +69,22 @@ export default function CardAdmin({ pageNumber, informacao }) {
           "x-access-token": token,
         },
       })
-        .then(response => {
+        .then((response) => {
           if (response.ok) {
-            setShowModal(false);
+            handleCloseModal(index);
             window.location.href = "/login/dashboard";
           } else {
             console.error("Erro ao excluir o estabelecimento.");
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
         });
     }
   };
 
-  const handleUpdateItem = () => {
-    setShowModal(false);
+  const handleUpdateItem = (index) => {
+    handleCloseModal(index);
   };
 
   return (
@@ -81,37 +95,25 @@ export default function CardAdmin({ pageNumber, informacao }) {
         <>
           {limitedPosts.map((info, index) => (
             <div className="card-container" key={index}>
-               <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Opções do Item</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p className="opcoes">Escolha uma opção:</p>
-          <Button
-            className="buttons-model"
-            variant="success"
-            onClick={handleUpdateItem}
-
-          >
-          <Link href={`login/dashboard/alterar-clinica/${info?._id}`}>Alterar</Link>
-
-          </Button>
-          <Button
-            className="buttons-model"
-            variant="danger"
-            onClick={handleDeleteItem}
-          >
-            Excluir
-          </Button>
-          <Button
-            className="buttons-model"
-            variant="secondary"
-            onClick={handleCloseModal}
-          >
-            Fechar
-          </Button>
-        </Modal.Body>
-        </Modal>
+              <Modal show={itemStates[index]?.showModal} onHide={() => handleCloseModal(index)}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Opções do Item</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <p className="opcoes">Escolha uma opção:</p>
+                  <Button className="buttons-model" variant="success" onClick={() => handleUpdateItem(index)}>
+                    <Link href={`/login/dashboard/alterar-clinica/${info.nome}`}>
+                      Alterar
+                    </Link>
+                  </Button>
+                  <Button className="buttons-model" variant="danger" onClick={() => handleDeleteItem(itemStates[index]?.selectedItem, index)}>
+                    Excluir
+                  </Button>
+                  <Button className="buttons-model" variant="secondary" onClick={() => handleCloseModal(index)}>
+                    Fechar
+                  </Button>
+                </Modal.Body>
+              </Modal>
               <div className="top">
                 <div className="image-container">
                   <img src={info.imagem} alt={info.nome} />
@@ -119,32 +121,23 @@ export default function CardAdmin({ pageNumber, informacao }) {
               </div>
               <div className="button">
                 <div className="icone" style={{ marginTop: "35px" }}>
-                  <FaCog
-                    size={30}
-                    className="config-icon"
-                    onClick={() => handleShowModal(info)}
-                  />
+                  <FaCog size={30} className="config-icon" onClick={() => handleShowModal(info, index)} />
                 </div>
                 <h3>{info.nome}</h3>
                 <p>
-                  {info.endereco.rua}, {info.endereco.numero} -{" "}
-                  {info.endereco.bairro}, {info.endereco.cidade} -
-                  {info.endereco.uf}, {info.endereco.cep}
+                  {info.endereco.rua}, {info.endereco.numero} - {info.endereco.bairro}, {info.endereco.cidade} - {info.endereco.uf}, {info.endereco.cep}
                 </p>
                 {info.horario === "Atendimento 24 Horas" ? (
                   <p>Atendimento 24 horas</p>
                 ) : (
                   <p>
-                    Aberto de Segunda a Sexta das{" "}
-                    <strong>{info.horarioSemana.open}</strong> até as{" "}
-                    <strong>{info.horarioSemana.close}</strong>
+                    Aberto de Segunda a Sexta das <strong>{info.horarioSemana.open}</strong> até as <strong>{info.horarioSemana.close}</strong>
                   </p>
                 )}
                 {info.sabado ? (
                   info.sabado.open && info.sabado.close ? (
                     <p>
-                      Aberto aos sábados das <strong>{info.sabado.open}</strong>{" "}
-                      até as <strong>{info.sabado.close}</strong>
+                      Aberto aos sábados das <strong>{info.sabado.open}</strong> até as <strong>{info.sabado.close}</strong>
                     </p>
                   ) : (
                     <p>Fechado aos sábados</p>
@@ -171,7 +164,6 @@ export default function CardAdmin({ pageNumber, informacao }) {
           )}
         </>
       )}
-     
     </section>
   );
 }

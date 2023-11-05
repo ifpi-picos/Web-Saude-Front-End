@@ -14,7 +14,7 @@ class FiltroSeerrvice {
 
       const data = await res.json();
       if (!data.Message || !Array.isArray(data.Message)) {
-        throw new Error("Resposta inválida da API");
+         throw new Error("Resposta inválida da API");
       }
 
       const unidades = data.Message;
@@ -26,19 +26,25 @@ class FiltroSeerrvice {
   }
 
   async pegarUnidadedeSaude(nome) {
-    const res = await fetch(
-      `https://api-web-saude.vercel.app/hospital-ou-clinica/${nome}`,
-      {
-        cache: "no-store",
-      }
-    );
-    if (!res.ok) {
-      throw new Error(`Houve um erro no servidor! ${res.status}`);
-    }
-    const info = await res.json();
-    return info;
+    try {
+      
+        const res = await fetch(
+          `https://api-web-saude.vercel.app/hospital-ou-clinica/${nome}`,
+          {
+            cache: "no-store",
+          }
+        );
+        if (!res.ok) {
+          throw new Error(`Houve um erro no servidor! ${res.status}`);
+        }
+          const info = await res.json();
+          return info;
+  } catch (error) {
+      console.error(error)
+  }
   }
   async filtrarUnidadesDeSaude(nome) {
+    
     const res = await fetch(
       `https://api-web-saude.vercel.app/buscar/?nome=${nome}`,
       {
@@ -51,6 +57,24 @@ class FiltroSeerrvice {
     const info = await res.json();
 
     return info;
+  }
+  async pegarEspecialidadesPeloNomeDaUnidadeDeSaude(nome) {
+    try {
+      
+        const res = await fetch(
+          `https://api-web-saude.vercel.app/especialidades/${nome}`,
+          {
+            cache: "no-store",
+          }
+        );
+        if (!res.ok) {
+          throw new Error(`Houve um erro no servidor! ${res.status}`);
+        }
+          const info = await res.json();
+          return info;
+  } catch (error) {
+      console.error(error)
+  }
   }
 }
 
