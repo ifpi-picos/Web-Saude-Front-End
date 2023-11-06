@@ -1,6 +1,6 @@
 class HospitalService {
-  async pegarHospitais() {
-    const res = await fetch(`https://api-web-saude.vercel.app/hospitais`);
+  async pegarHospital(nome) {
+    const res = await fetch(`https://api-web-saude.vercel.app/hospital/${nome}`);
     const info = await res.json();
     return info;
   }

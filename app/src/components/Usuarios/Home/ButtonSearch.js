@@ -30,6 +30,7 @@ export default function ButtonSearch() {
             placeholder="Hospital/Clínica ou Especialidade"
             value={searchValue}
             onChange={handleInputChange}
+            required
           />
           <div className="button-search">
             <button type="submit">Buscar</button>

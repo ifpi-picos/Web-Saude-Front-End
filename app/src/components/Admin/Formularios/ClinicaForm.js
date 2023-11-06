@@ -8,7 +8,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "@/components/Admin/Formularios/css/Form.css";
 import Image from "next/image";
-import PrivateRoute from "../privateRouter";
 
 const schema = yup.object().shape({
   nome: yup.string().required("O nome da clínica é obrigatório"),
@@ -84,7 +83,7 @@ export default function ClinicaForm() {
         const responseData = await response.json();
         console.log(responseData);
         setShowModal(true);
-        window.location.href = "/login/dashboard";
+        window.location.href = "/dashboard";
       } else {
         console.error("Erro ao enviar os dados.");
       }
@@ -104,7 +103,6 @@ export default function ClinicaForm() {
     setSelectedSpecialtyIds(selectedIds);
   };
   return (
-    <PrivateRoute>
       <>
         <section className="section-form">
           <div className="div-form">
@@ -425,6 +423,5 @@ export default function ClinicaForm() {
           </Modal.Footer>
         </Modal>
       </>
-    </PrivateRoute>
   );
 }

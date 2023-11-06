@@ -7,7 +7,6 @@ export default function SelectEspecialidades({
   nome
 }) {
   const [specialtyOptions, setSpecialtyOptions] = useState([]);
-  const [selectedOptions, setSelectedOptions] = useState([]);
   const [especialidades, setEspecialidades] = useState([]);
 
   const customStyles = {
@@ -23,7 +22,7 @@ export default function SelectEspecialidades({
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isSelected ? "blue" : "#00285f",
-      color:"white"
+      color: "white"
     }),
     menu: (provided, state) => ({
       ...provided,
@@ -32,15 +31,19 @@ export default function SelectEspecialidades({
   };
 
   const handleSelectionChange = (selectedOptions) => {
-    setSelectedOptions(selectedOptions);
     onChange(selectedOptions);
   };
 
   useEffect(() => {
     fetch(`https://api-web-saude.vercel.app/especialidades/${nome}`)
       .then((response) => response.json())
-      .then((data) => setEspecialidades(data));
-  }, []);
+      .then((data) => {
+        setEspecialidades(data);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar especialidades da API:", error);
+      });
+  }, [nome]);
 
   useEffect(() => {
     fetch("https://api-web-saude.vercel.app/especialidades")
@@ -50,20 +53,12 @@ export default function SelectEspecialidades({
           value: specialty._id,
           label: specialty.nome,
         }));
-
-        const hospitalEspecialidades = especialidades.map((info) => ({
-          value: info._id,
-          label: info.nome,
-        }));
-
-        setSelectedOptions(hospitalEspecialidades);
-
         setSpecialtyOptions(specialtyOptionsFromAPI);
       })
       .catch((error) => {
         console.error("Erro ao buscar especialidades da API:", error);
       });
-  }, [especialidades]);
+  }, []);
 
   return (
     <Select
@@ -71,6 +66,7 @@ export default function SelectEspecialidades({
       options={specialtyOptions}
       isMulti
       onChange={handleSelectionChange}
+      value={selectedSpecialties}
     />
   );
 }

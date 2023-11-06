@@ -1,5 +1,5 @@
 "use client";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller,set } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "@/components/Admin/Formularios/css/Form.css";
@@ -48,17 +48,13 @@ export default function LoginForm() {
           localStorage.getItem("token")
         );
 
-        window.location.href = "/login/dashboard";
+        window.location.href = "/dashboard";
       }
     } catch (error) {
-      console.error("Erro ao fazer login:", error);
-      setError("email", {
-        type: "manual",
-        message: "Erro ao fazer login, verifique suas credenciais.",
-      });
-    }
-  };
+      console.error("Erro ao fazer login: Status inesperado", error);
 
+  };
+  }
   return (
     <section className="section-form">
       <div

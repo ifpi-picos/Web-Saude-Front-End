@@ -1,5 +1,5 @@
 "use client";
-import { useState ,useEffect} from "react";
+import { useState,useEffect } from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
 import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
 import { Modal, Button } from "react-bootstrap";
@@ -10,61 +10,34 @@ import "@/components/Admin/Formularios/css/Form.css";
 import Image from "next/image";
 
 const schema = yup.object().shape({
-  nome: yup.string().required("O nome da clínica é obrigatório"),
+  nome: yup.string(),
   imagem: yup.string(),
-  horarioSemana: yup.object().shape({
-    open: yup
-      .string()
-      .required("O horário de abertura da semana é obrigatório")
-      .nullable(),
-    close: yup
-      .string()
-      .required("O horário de fechamento da semana é obrigatório"),
-  }),
-  sabado: yup.object().shape({
-    open: yup
-      .string()
-      .required("O horário de abertura de sábado é obrigatório"),
-    close: yup
-      .string()
-      .required("O horário de fechamento de sábado é obrigatório"),
-  }),
-    email: yup.string().email("Informe um e-mail válido"),
-    whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
-    instagram: yup.string(),
-    descricao: yup.string(),
-    longitude: yup.string().required("A longitude é obrigatória"),
-    latitude: yup.string().required("A latitude é obrigatória"),
-    cep: yup.string().required("O CEP é obrigatório"),
-    rua: yup.string().required("A rua é obrigatória"),
-    numero: yup.string().required("O número é obrigatório"),
-    bairro: yup.string().required("O bairro é obrigatório"),
-    cidade: yup.string().required("A cidade é obrigatória"),
-    uf: yup.string().required("O estado (UF) é obrigatório"),
-    especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
-    });
+  email: yup.string().email("Informe um e-mail válido"),
+  whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
+  instagram: yup.string(),
+  descricao: yup.string(),
+  longitude: yup.string(),
+  latitude: yup.string(),
+  cep: yup.string(),
+  rua: yup.string(),
+  numero: yup.string(),
+  bairro: yup.string(),
+  cidade: yup.string(),
+  uf: yup.string(),
+  especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
+});
 
-export default function AlterarClincaForm({clinicaData,nome}) {
-    const {
+export default function AlterarHospitalForm({hospitalData,nome}) {
+  const {
     control,
     handleSubmit,
     formState: { errors },
     setError,
     reset,
-  } = useForm({
+} = useForm({
     resolver: yupResolver(schema),
-    defaultValues:clinicaData,
     
   });
-
-  useEffect(() => {
-    const initialData = {
-      ...clinicaData,  
-      ...clinicaData.endereco,  
-    };
-
-    reset(initialData);
-  }, [clinicaData, reset]);
 
   const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -72,15 +45,14 @@ export default function AlterarClincaForm({clinicaData,nome}) {
   const [imageLink, setImageLink] = useState("");
 
   const onSubmit = async formData => {
-    formData.imagem = imageLink;
+    formData.imagem = imageLink || hospitalData.imagem;
     formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
-
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/admin/alterar-clinica/${clinicaData._id}`,
+        `https://api-web-saude.vercel.app/admin/alterar-hospital/${hospitalData._id}`,
         {
-          method: "Put",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             "x-access-token": token,
@@ -88,15 +60,14 @@ export default function AlterarClincaForm({clinicaData,nome}) {
           body: JSON.stringify(formData),
         }
       );
-
-      if (response.ok) {
+      console.log("dados",formData)
+      if (!response.ok) {
+        console.error(`Erro na solicitação: ${response.status}`);
+      } else {
         const responseData = await response.json();
-        console.log(responseData);
         setShowModal(true);
         window.location.href = "/dashboard";
-      } else {
-        const errorData = await response.json();
-        console.error("Erro ao enviar os dados:", errorData);      }
+      }
     } catch (error) {
       console.error(error);
     }
@@ -105,15 +76,15 @@ export default function AlterarClincaForm({clinicaData,nome}) {
   const handleImageURLChange = imageUrl => {
     setImageURL(imageUrl);
     setImageLink(imageUrl);
-    console.log("URL da imagem:", imageUrl);
   };
+
   const handleSpecialtyChange = selectedSpecialties => {
     setError("especialidades", "");
     const selectedIds = selectedSpecialties.map(specialty => specialty.value);
     setSelectedSpecialtyIds(selectedIds);
   };
+
   return (
-    
       <>
         <section className="section-form">
           <div className="div-form">
@@ -125,14 +96,16 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                   alt="logo"
                   width={200}
                   height={200}
+                  
                 />
               </div>
 
-              <h2 className="title">Alterar Clínica</h2>
+              <h2 className="title">Alterar Hospital</h2>
               <div className="div-inputs">
                 <label>Nome</label>
                 <Controller
                   name="nome"
+                  defaultValue={hospitalData.nome}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -140,6 +113,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                       name="nome"
                       value={field.value}
                       onChange={field.onChange}
+                      required
                       {...field}
                     />
                   )}
@@ -147,84 +121,20 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 {errors.nome && (
                   <div className="error">{errors.nome.message}</div>
                 )}
-                <CloudinaryUploadWidget onURLChange={handleImageURLChange} defaultImage={clinicaData.imagem}  />
+                <CloudinaryUploadWidget onURLChange={handleImageURLChange} defaultImage={hospitalData.imagem} />
                 {errors.imagem && (
                   <div className="error">{errors.imagem.message}</div>
                 )}
 
                 <SelectEspecialidades onChange={handleSpecialtyChange} nome={nome} />
-                {errors.especialidades && (
-                  <div className="error">{errors.especialidades.message}</div>
-                )}
-                <label htmlFor="horarioSemanaAbertura">
-                  Horário Semana Abertura
-                </label>
-                <Controller
-                  name="horarioSemana.open"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="time"
-                      name="horarioSemana.open"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
+                  {errors.especialidades && (
+                    <div className="error">{errors.especialidades.message}</div>
                   )}
-                />
-                {errors.horarioSemana?.open && (
-                  <div className="error">
-                    {errors.horarioSemana?.open.message}
-                  </div>
-                )}
-                <label htmlFor="horarioSemanaFechamento">
-                  Horário Semana Fechamento
-                </label>
-                <Controller
-                  name="horarioSemana.close"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="time"
-                      name="horarioSemana.close"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.horarioSemana?.close && (
-                  <div className="error">
-                    {errors.horarioSemana?.close.message}
-                  </div>
-                )}
-                <label htmlFor="sabadoAbertura">Sábado Abertura</label>
-                <Controller
-                  name="sabado.open"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="time"
-                      name="sabado.open"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                <label htmlFor="sabadoFechamento">Sábado Fechamento</label>
-                <Controller
-                  name="sabado.close"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="time"
-                      name="sabado.close"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
+
                 <label htmlFor="email">Email</label>
                 <Controller
                   name="email"
+                  defaultValue={hospitalData.email}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -241,6 +151,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="whatsapp">Whatsapp</label>
                 <Controller
                   name="whatsapp"
+                  defaultValue={hospitalData.whatsapp}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -257,6 +168,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="instagram">Instagram</label>
                 <Controller
                   name="instagram"
+                  defaultValue={hospitalData.instagram}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -273,6 +185,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="descricao">Descrição</label>
                 <Controller
                   name="descricao"
+                  defaultValue={hospitalData.descricao}
                   control={control}
                   render={({ field }) => (
                     <textarea
@@ -291,6 +204,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="longitude">Longitude</label>
                 <Controller
                   name="longitude"
+                  defaultValue={hospitalData.longitude}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -307,6 +221,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="latitude">Latitude</label>
                 <Controller
                   name="latitude"
+                  defaultValue={hospitalData.latitude}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -324,6 +239,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="cep">CEP</label>
                 <Controller
                   name="cep"
+                  defaultValue={hospitalData.endereco.cep}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -340,6 +256,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="rua">Rua</label>
                 <Controller
                   name="rua"
+                  defaultValue={hospitalData.endereco.rua}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -356,6 +273,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="numero">Número</label>
                 <Controller
                   name="numero"
+                  defaultValue={hospitalData.endereco.numero}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -372,6 +290,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="bairro">Bairro</label>
                 <Controller
                   name="bairro"
+                  defaultValue={hospitalData.endereco.bairro}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -388,6 +307,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="cidade">Cidade</label>
                 <Controller
                   name="cidade"
+                  defaultValue={hospitalData.endereco.cidade}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -404,6 +324,7 @@ export default function AlterarClincaForm({clinicaData,nome}) {
                 <label htmlFor="uf">Estado</label>
                 <Controller
                   name="uf"
+                  defaultValue={hospitalData.endereco.uf}
                   control={control}
                   render={({ field }) => (
                     <input
@@ -424,9 +345,9 @@ export default function AlterarClincaForm({clinicaData,nome}) {
         </section>
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
-            <Modal.Title>Clínica Salva com Sucesso</Modal.Title>
+            <Modal.Title>Hospital Alterado com Sucesso</Modal.Title>
           </Modal.Header>
-          <Modal.Body>A clínica foi salva com sucesso.</Modal.Body>
+          <Modal.Body>O Hospital foi Alterado com sucesso.</Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={() => setShowModal(false)}>
               Fechar
@@ -434,6 +355,5 @@ export default function AlterarClincaForm({clinicaData,nome}) {
           </Modal.Footer>
         </Modal>
       </>
-    
   );
 }

@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { useRouter } from "next/navigation";
-
 import "../Admin/css/HeaderAdmin.css";
 
 export default function HeaderAdmin() {
@@ -58,19 +57,19 @@ export default function HeaderAdmin() {
             >
               <Nav.Link
                 className="cadastro"
-                href="/login/dashboard/nova-clinica"
+                href="/nova-clinica"
               >
                 Cadastrar Clínica
               </Nav.Link>
               <Nav.Link
                 className="cadastro"
-                href="/login/dashboard/novo-hospital"
+                href="/novo-hospital"
               >
                 Cadastrar Hospital
               </Nav.Link>
               <Nav.Link
                 className="cadastro"
-                href="/login/dashboard/especialidades"
+                href="/especialidades"
               >
                 Cadastrar Especialidades
               </Nav.Link>

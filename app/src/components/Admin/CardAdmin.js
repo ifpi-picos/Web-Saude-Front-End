@@ -17,7 +17,6 @@ export default function CardAdmin({ pageNumber, informacao }) {
   }, [pageNumber]);
 
   useEffect(() => {
-    // Initialize itemStates with the initial state for each item
     const initialState = informacao.map(() => ({
       showModal: false,
       selectedItem: null,
@@ -102,7 +101,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 <Modal.Body>
                   <p className="opcoes">Escolha uma opção:</p>
                   <Button className="buttons-model" variant="success" onClick={() => handleUpdateItem(index)}>
-                    <Link href={`/login/dashboard/alterar-clinica/${info.nome}`}>
+                    <Link href={`/alterar-hospital/${info.nome}`}>
                       Alterar
                     </Link>
                   </Button>

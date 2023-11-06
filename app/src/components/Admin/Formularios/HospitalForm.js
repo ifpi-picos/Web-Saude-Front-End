@@ -8,10 +8,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "@/components/Admin/Formularios/css/Form.css";
 import Image from "next/image";
-import PrivateRoute from "../privateRouter";
 
 const schema = yup.object().shape({
-  nome: yup.string().required("O nome da clínica é obrigatório"),
+  nome: yup.string().required("O nome do hospital é obrigatório"),
   imagem: yup.string(),
   email: yup.string().email("Informe um e-mail válido"),
   whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
@@ -60,11 +59,10 @@ export default function HospitalForm() {
           body: JSON.stringify(formData),
         }
       );
-
       if (response.ok) {
         const responseData = await response.json();
         setShowModal(true);
-        window.location.href = "/login/dashboard";
+        window.location.href = "/dashboard";
       } else {
         console.error("Erro ao enviar os dados.");
       }
@@ -85,7 +83,6 @@ export default function HospitalForm() {
   };
 
   return (
-    <PrivateRoute>
       <>
         <section className="section-form">
           <div className="div-form">
@@ -339,6 +336,5 @@ export default function HospitalForm() {
           </Modal.Footer>
         </Modal>
       </>
-    </PrivateRoute>
   );
 }
