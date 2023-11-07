@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 
-function CloudinaryUploadWidget({ onURLChange ,defaultImage}) {
+function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
   const [imageSelected, setImageSelected] = useState(defaultImage || null);
 
   function handleUploadSuccess(result) {

@@ -55,22 +55,13 @@ export default function HeaderAdmin() {
               onMouseOut={handleDropdownMouseOut}
               style={{ backgroundColor: dropdownBackgroundColor }}
             >
-              <Nav.Link
-                className="cadastro"
-                href="/nova-clinica"
-              >
+              <Nav.Link className="cadastro" href="/nova-clinica">
                 Cadastrar Clínica
               </Nav.Link>
-              <Nav.Link
-                className="cadastro"
-                href="/novo-hospital"
-              >
+              <Nav.Link className="cadastro" href="/novo-hospital">
                 Cadastrar Hospital
               </Nav.Link>
-              <Nav.Link
-                className="cadastro"
-                href="/especialidades"
-              >
+              <Nav.Link className="cadastro" href="/especialidades">
                 Cadastrar Especialidades
               </Nav.Link>
             </NavDropdown>

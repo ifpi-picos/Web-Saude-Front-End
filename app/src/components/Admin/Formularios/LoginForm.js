@@ -1,5 +1,5 @@
 "use client";
-import { useForm, Controller,set } from "react-hook-form";
+import { useForm, Controller, set } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "@/components/Admin/Formularios/css/Form.css";
@@ -52,9 +52,8 @@ export default function LoginForm() {
       }
     } catch (error) {
       console.error("Erro ao fazer login: Status inesperado", error);
-
+    }
   };
-  }
   return (
     <section className="section-form">
       <div

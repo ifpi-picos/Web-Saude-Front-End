@@ -42,7 +42,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
     setItemStates(newStates);
   };
 
-  const handleCloseModal = (index) => {
+  const handleCloseModal = index => {
     const newStates = [...itemStates];
     newStates[index] = {
       showModal: false,
@@ -58,8 +58,8 @@ export default function CardAdmin({ pageNumber, informacao }) {
       const token = localStorage.getItem("token");
       const deleteEndpoint =
         tipoEstabelecimento === "Atendimento 24 Horas"
-          ? `https://api-web-saude.vercel.app/admin/deletar-hospital/${itemId}`
-          : `https://api-web-saude.vercel.app/admin/deletar-clinica/${itemId}`;
+          ? `https://api-web-saude.vercel.app/deletar-hospital/${itemId}`
+          : `https://api-web-saude.vercel.app/deletar-clinica/${itemId}`;
 
       fetch(deleteEndpoint, {
         method: "DELETE",
@@ -68,7 +68,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
           "x-access-token": token,
         },
       })
-        .then((response) => {
+        .then(response => {
           if (response.ok) {
             handleCloseModal(index);
             window.location.href = "/login/dashboard";
@@ -76,13 +76,13 @@ export default function CardAdmin({ pageNumber, informacao }) {
             console.error("Erro ao excluir o estabelecimento.");
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(error);
         });
     }
   };
 
-  const handleUpdateItem = (index) => {
+  const handleUpdateItem = index => {
     handleCloseModal(index);
   };
 
@@ -94,21 +94,36 @@ export default function CardAdmin({ pageNumber, informacao }) {
         <>
           {limitedPosts.map((info, index) => (
             <div className="card-container" key={index}>
-              <Modal show={itemStates[index]?.showModal} onHide={() => handleCloseModal(index)}>
+              <Modal
+                show={itemStates[index]?.showModal}
+                onHide={() => handleCloseModal(index)}
+              >
                 <Modal.Header closeButton>
                   <Modal.Title>Opções do Item</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <p className="opcoes">Escolha uma opção:</p>
-                  <Button className="buttons-model" variant="success" onClick={() => handleUpdateItem(index)}>
-                    <Link href={`/alterar-hospital/${info.nome}`}>
-                      Alterar
-                    </Link>
+                  <Button
+                    className="buttons-model"
+                    variant="success"
+                    onClick={() => handleUpdateItem(index)}
+                  >
+                    <Link href={`/alterar-clinica/${info.nome}`}>Alterar</Link>
                   </Button>
-                  <Button className="buttons-model" variant="danger" onClick={() => handleDeleteItem(itemStates[index]?.selectedItem, index)}>
+                  <Button
+                    className="buttons-model"
+                    variant="danger"
+                    onClick={() =>
+                      handleDeleteItem(itemStates[index]?.selectedItem, index)
+                    }
+                  >
                     Excluir
                   </Button>
-                  <Button className="buttons-model" variant="secondary" onClick={() => handleCloseModal(index)}>
+                  <Button
+                    className="buttons-model"
+                    variant="secondary"
+                    onClick={() => handleCloseModal(index)}
+                  >
                     Fechar
                   </Button>
                 </Modal.Body>
@@ -120,23 +135,32 @@ export default function CardAdmin({ pageNumber, informacao }) {
               </div>
               <div className="button">
                 <div className="icone" style={{ marginTop: "35px" }}>
-                  <FaCog size={30} className="config-icon" onClick={() => handleShowModal(info, index)} />
+                  <FaCog
+                    size={30}
+                    className="config-icon"
+                    onClick={() => handleShowModal(info, index)}
+                  />
                 </div>
                 <h3>{info.nome}</h3>
                 <p>
-                  {info.endereco.rua}, {info.endereco.numero} - {info.endereco.bairro}, {info.endereco.cidade} - {info.endereco.uf}, {info.endereco.cep}
+                  {info.endereco.rua}, {info.endereco.numero} -{" "}
+                  {info.endereco.bairro}, {info.endereco.cidade} -{" "}
+                  {info.endereco.uf}, {info.endereco.cep}
                 </p>
                 {info.horario === "Atendimento 24 Horas" ? (
                   <p>Atendimento 24 horas</p>
                 ) : (
                   <p>
-                    Aberto de Segunda a Sexta das <strong>{info.horarioSemana.open}</strong> até as <strong>{info.horarioSemana.close}</strong>
+                    Aberto de Segunda a Sexta das{" "}
+                    <strong>{info.horarioSemana.open}</strong> até as{" "}
+                    <strong>{info.horarioSemana.close}</strong>
                   </p>
                 )}
                 {info.sabado ? (
                   info.sabado.open && info.sabado.close ? (
                     <p>
-                      Aberto aos sábados das <strong>{info.sabado.open}</strong> até as <strong>{info.sabado.close}</strong>
+                      Aberto aos sábados das <strong>{info.sabado.open}</strong>{" "}
+                      até as <strong>{info.sabado.close}</strong>
                     </p>
                   ) : (
                     <p>Fechado aos sábados</p>

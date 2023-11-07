@@ -10,10 +10,10 @@ export default function Especialidades({ nome }) {
 
   useEffect(() => {
     fetch(`https://api-web-saude.vercel.app/especialidades/${nome}`)
-      .then((response) => response.json())
-      .then((data) => setEspecialidades(data));
+      .then(response => response.json())
+      .then(data => setEspecialidades(data));
   }, [nome]);
- 
+
   return (
     <div id="especialidades">
       <Button

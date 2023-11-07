@@ -1,6 +1,11 @@
 class Clinica {
   async pegarClinica(nome) {
-    const res = await fetch(`https://api-web-saude.vercel.app/clinica/${nome}`);
+    const res = await fetch(
+      `https://api-web-saude.vercel.app/clinica/${nome}`,
+      {
+        cache: "no-store",
+      }
+    );
     const info = await res.json();
     return info;
   }

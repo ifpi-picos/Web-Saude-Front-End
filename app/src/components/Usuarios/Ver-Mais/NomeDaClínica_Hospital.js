@@ -2,7 +2,6 @@ import Image from "next/image";
 import FiltroService from "@/services/FiltroService";
 import "@/components/Usuarios/Ver-Mais/css/NomeUnidadeDeSaude.css";
 export default async function NomeDaClinica_Hospital({ nome }) {
-  
   const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(nome);
 
   return (

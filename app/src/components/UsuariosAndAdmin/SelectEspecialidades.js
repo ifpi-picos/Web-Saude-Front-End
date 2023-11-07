@@ -4,7 +4,7 @@ import Select from "react-select";
 export default function SelectEspecialidades({
   onChange,
   selectedSpecialties,
-  nome
+  nome,
 }) {
   const [specialtyOptions, setSpecialtyOptions] = useState([]);
   const [especialidades, setEspecialidades] = useState([]);
@@ -13,7 +13,7 @@ export default function SelectEspecialidades({
     control: (provided, state) => ({
       ...provided,
       backgroundColor: "white",
-      maxWidth: "300px"
+      maxWidth: "300px",
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,
@@ -22,7 +22,7 @@ export default function SelectEspecialidades({
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isSelected ? "blue" : "#00285f",
-      color: "white"
+      color: "white",
     }),
     menu: (provided, state) => ({
       ...provided,
@@ -30,32 +30,32 @@ export default function SelectEspecialidades({
     }),
   };
 
-  const handleSelectionChange = (selectedOptions) => {
+  const handleSelectionChange = selectedOptions => {
     onChange(selectedOptions);
   };
 
   useEffect(() => {
     fetch(`https://api-web-saude.vercel.app/especialidades/${nome}`)
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         setEspecialidades(data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error("Erro ao buscar especialidades da API:", error);
       });
   }, [nome]);
 
   useEffect(() => {
     fetch("https://api-web-saude.vercel.app/especialidades")
-      .then((response) => response.json())
-      .then((data) => {
-        const specialtyOptionsFromAPI = data.map((specialty) => ({
+      .then(response => response.json())
+      .then(data => {
+        const specialtyOptionsFromAPI = data.map(specialty => ({
           value: specialty._id,
           label: specialty.nome,
         }));
         setSpecialtyOptions(specialtyOptionsFromAPI);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error("Erro ao buscar especialidades da API:", error);
       });
   }, []);

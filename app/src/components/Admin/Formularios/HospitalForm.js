@@ -83,258 +83,254 @@ export default function HospitalForm() {
   };
 
   return (
-      <>
-        <section className="section-form">
-          <div className="div-form">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="div-logo">
-                <Image
-                  className="image-logo"
-                  src="/imgs/logo.png"
-                  alt="logo"
-                  width={200}
-                  height={200}
-                />
-              </div>
+    <>
+      <section className="section-form">
+        <div className="div-form">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="div-logo">
+              <Image
+                className="image-logo"
+                src="/imgs/logo.png"
+                alt="logo"
+                width={200}
+                height={200}
+              />
+            </div>
 
-              <h2 className="title">Cadastrar Hospital</h2>
-              <div className="div-inputs">
-                <label>Nome</label>
-                <Controller
-                  name="nome"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="nome"
-                      value={field.value}
-                      onChange={field.onChange}
-                      {...field}
-                    />
-                  )}
-                />
-                {errors.nome && (
-                  <div className="error">{errors.nome.message}</div>
+            <h2 className="title">Cadastrar Hospital</h2>
+            <div className="div-inputs">
+              <label>Nome</label>
+              <Controller
+                name="nome"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="nome"
+                    value={field.value}
+                    onChange={field.onChange}
+                    {...field}
+                  />
                 )}
-                <CloudinaryUploadWidget onURLChange={handleImageURLChange} />
-                {errors.imagem && (
-                  <div className="error">{errors.imagem.message}</div>
+              />
+              {errors.nome && (
+                <div className="error">{errors.nome.message}</div>
+              )}
+              <CloudinaryUploadWidget onURLChange={handleImageURLChange} />
+              {errors.imagem && (
+                <div className="error">{errors.imagem.message}</div>
+              )}
+              <SelectEspecialidades onChange={handleSpecialtyChange} />
+              {errors.especialidades && (
+                <div className="error">{errors.especialidades.message}</div>
+              )}
+              <label htmlFor="email">Email</label>
+              <Controller
+                name="email"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="email"
+                    name="email"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <SelectEspecialidades onChange={handleSpecialtyChange} />
-                {errors.especialidades && (
-                  <div className="error">{errors.especialidades.message}</div>
+              />
+              {errors.email && (
+                <div className="error">{errors.email.message}</div>
+              )}
+              <label htmlFor="whatsapp">Whatsapp</label>
+              <Controller
+                name="whatsapp"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="tel"
+                    name="whatsapp"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <label htmlFor="email">Email</label>
-                <Controller
-                  name="email"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="email"
-                      name="email"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.email && (
-                  <div className="error">{errors.email.message}</div>
+              />
+              {errors.whatsapp && (
+                <div className="error">{errors.whatsapp.message}</div>
+              )}
+              <label htmlFor="instagram">Instagram</label>
+              <Controller
+                name="instagram"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="instagram"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <label htmlFor="whatsapp">Whatsapp</label>
-                <Controller
-                  name="whatsapp"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="tel"
-                      name="whatsapp"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.whatsapp && (
-                  <div className="error">{errors.whatsapp.message}</div>
+              />
+              {errors.instagram && (
+                <div className="error">{errors.instagram.message}</div>
+              )}
+              <label htmlFor="descricao">Descrição</label>
+              <Controller
+                name="descricao"
+                control={control}
+                render={({ field }) => (
+                  <textarea
+                    name="descricao"
+                    value={field.value}
+                    onChange={field.onChange}
+                    cols="30"
+                    rows="10"
+                    placeholder="Descrição"
+                  />
                 )}
-                <label htmlFor="instagram">Instagram</label>
-                <Controller
-                  name="instagram"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="instagram"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.instagram && (
-                  <div className="error">{errors.instagram.message}</div>
+              />
+              {errors.descricao && (
+                <div className="error">{errors.descricao.message}</div>
+              )}
+              <label htmlFor="longitude">Longitude</label>
+              <Controller
+                name="longitude"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="longitude"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <label htmlFor="descricao">Descrição</label>
-                <Controller
-                  name="descricao"
-                  control={control}
-                  render={({ field }) => (
-                    <textarea
-                      name="descricao"
-                      value={field.value}
-                      onChange={field.onChange}
-                      cols="30"
-                      rows="10"
-                      placeholder="Descrição"
-                    />
-                  )}
-                />
-                {errors.descricao && (
-                  <div className="error">{errors.descricao.message}</div>
+              />
+              {errors.longitude && (
+                <div className="error">{errors.longitude.message}</div>
+              )}
+              <label htmlFor="latitude">Latitude</label>
+              <Controller
+                name="latitude"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="latitude"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <label htmlFor="longitude">Longitude</label>
-                <Controller
-                  name="longitude"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="longitude"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.longitude && (
-                  <div className="error">{errors.longitude.message}</div>
-                )}
-                <label htmlFor="latitude">Latitude</label>
-                <Controller
-                  name="latitude"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="latitude"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.latitude && (
-                  <div className="error">{errors.latitude.message}</div>
-                )}
+              />
+              {errors.latitude && (
+                <div className="error">{errors.latitude.message}</div>
+              )}
 
-                <label htmlFor="cep">CEP</label>
-                <Controller
-                  name="cep"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="cep"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.cep && (
-                  <div className="error">{errors.cep.message}</div>
+              <label htmlFor="cep">CEP</label>
+              <Controller
+                name="cep"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="cep"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <label htmlFor="rua">Rua</label>
-                <Controller
-                  name="rua"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="rua"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.rua && (
-                  <div className="error">{errors.rua.message}</div>
+              />
+              {errors.cep && <div className="error">{errors.cep.message}</div>}
+              <label htmlFor="rua">Rua</label>
+              <Controller
+                name="rua"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="rua"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <label htmlFor="numero">Número</label>
-                <Controller
-                  name="numero"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="numero"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.numero && (
-                  <div className="error">{errors.numero.message}</div>
+              />
+              {errors.rua && <div className="error">{errors.rua.message}</div>}
+              <label htmlFor="numero">Número</label>
+              <Controller
+                name="numero"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="numero"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <label htmlFor="bairro">Bairro</label>
-                <Controller
-                  name="bairro"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="bairro"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.bairro && (
-                  <div className="error">{errors.bairro.message}</div>
+              />
+              {errors.numero && (
+                <div className="error">{errors.numero.message}</div>
+              )}
+              <label htmlFor="bairro">Bairro</label>
+              <Controller
+                name="bairro"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="bairro"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <label htmlFor="cidade">Cidade</label>
-                <Controller
-                  name="cidade"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="cidade"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.cidade && (
-                  <div className="error">{errors.cidade.message}</div>
+              />
+              {errors.bairro && (
+                <div className="error">{errors.bairro.message}</div>
+              )}
+              <label htmlFor="cidade">Cidade</label>
+              <Controller
+                name="cidade"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="cidade"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
                 )}
-                <label htmlFor="uf">Estado</label>
-                <Controller
-                  name="uf"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      type="text"
-                      name="uf"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.uf && <div className="error">{errors.uf.message}</div>}
-              </div>
-              <div className="div-button">
-                <button type="submit">Enviar</button>
-              </div>
-            </form>
-          </div>
-        </section>
-        <Modal show={showModal} onHide={() => setShowModal(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Hospital Salvo com Sucesso</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>O Hospital foi salvo com sucesso.</Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={() => setShowModal(false)}>
-              Fechar
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
+              />
+              {errors.cidade && (
+                <div className="error">{errors.cidade.message}</div>
+              )}
+              <label htmlFor="uf">Estado</label>
+              <Controller
+                name="uf"
+                control={control}
+                render={({ field }) => (
+                  <input
+                    type="text"
+                    name="uf"
+                    value={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
+              {errors.uf && <div className="error">{errors.uf.message}</div>}
+            </div>
+            <div className="div-button">
+              <button type="submit">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Hospital Salvo com Sucesso</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>O Hospital foi salvo com sucesso.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => setShowModal(false)}>
+            Fechar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
