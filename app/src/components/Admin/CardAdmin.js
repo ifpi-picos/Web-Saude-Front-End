@@ -53,35 +53,42 @@ export default function CardAdmin({ pageNumber, informacao }) {
 
   const handleDeleteItem = (selectedItem, index) => {
     if (selectedItem) {
-      const itemId = selectedItem._id;
-      const tipoEstabelecimento = selectedItem.horario;
-      const token = localStorage.getItem("token");
-      const deleteEndpoint =
-        tipoEstabelecimento === "Atendimento 24 Horas"
-          ? `https://api-web-saude.vercel.app/deletar-hospital/${itemId}`
-          : `https://api-web-saude.vercel.app/deletar-clinica/${itemId}`;
+      const confirmation = window.confirm(
+        "Tem certeza que deseja deletar esta unidade de saúde?"
+      );
 
-      fetch(deleteEndpoint, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": token,
-        },
-      })
-        .then(response => {
-          if (response.ok) {
-            handleCloseModal(index);
-            window.location.href = "/login/dashboard";
-          } else {
-            console.error("Erro ao excluir o estabelecimento.");
-          }
+      if (confirmation) {
+        const itemId = selectedItem._id;
+        const tipoEstabelecimento = selectedItem.horario;
+        console.log(itemId, tipoEstabelecimento);
+        const token = localStorage.getItem("token");
+        const deleteEndpoint =
+          tipoEstabelecimento === "Atendimento 24 Horas"
+            ? `https://api-web-saude.vercel.app/admin/deletar-hospital/${itemId}`
+            : `https://api-web-saude.vercel.app/admin/deletar-clinica/${itemId}`;
+        console.log("DELETE endpoint:", deleteEndpoint);
+
+        fetch(deleteEndpoint, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": token,
+          },
         })
-        .catch(error => {
-          console.error(error);
-        });
+          .then(response => {
+            if (response.ok) {
+              handleCloseModal(index);
+              window.location.href = "/dashboard";
+            } else {
+              console.error("Erro ao excluir o estabelecimento.");
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
     }
   };
-
   const handleUpdateItem = index => {
     handleCloseModal(index);
   };
@@ -108,14 +115,20 @@ export default function CardAdmin({ pageNumber, informacao }) {
                     variant="success"
                     onClick={() => handleUpdateItem(index)}
                   >
-                    <Link href={`/alterar-clinica/${info.nome}`}>Alterar</Link>
+                    <Link
+                      href={
+                        info.horario === "Atendimento 24 Horas"
+                          ? `/alterar-hospital/${info.nome}`
+                          : `/alterar-clinica/${info.nome}`
+                      }
+                    >
+                      Alterar
+                    </Link>
                   </Button>
                   <Button
                     className="buttons-model"
                     variant="danger"
-                    onClick={() =>
-                      handleDeleteItem(itemStates[index]?.selectedItem, index)
-                    }
+                    onClick={() => handleDeleteItem(info, index)}
                   >
                     Excluir
                   </Button>

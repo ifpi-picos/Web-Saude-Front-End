@@ -21,14 +21,7 @@ const schema = yup.object().shape({
       .string()
       .required("O horário de fechamento da semana é obrigatório"),
   }),
-  sabado: yup.object().shape({
-    open: yup
-      .string()
-      .required("O horário de abertura de sábado é obrigatório"),
-    close: yup
-      .string()
-      .required("O horário de fechamento de sábado é obrigatório"),
-  }),
+
   email: yup.string().email("Informe um e-mail válido"),
   whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
   instagram: yup.string(),
@@ -61,8 +54,9 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
   const [imageLink, setImageLink] = useState("");
 
   const onSubmit = async formData => {
-    formData.imagem = imageLink;
+    formData.imagem = imageLink || hospitalData.imagem;
     formData.especialidades = selectedSpecialtyIds;
+    console.log("idsEsp", formData.especialidades);
     const token = localStorage.getItem("token");
 
     try {
@@ -77,6 +71,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
           body: JSON.stringify(formData),
         }
       );
+      console.log("idsEsp", formData.especialidades);
 
       if (response.ok) {
         const responseData = await response.json();
@@ -101,6 +96,9 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
     setError("especialidades", "");
     const selectedIds = selectedSpecialties.map(specialty => specialty.value);
     setSelectedSpecialtyIds(selectedIds);
+
+    // Log dos IDs das especialidades selecionadas
+    console.log("selecionadas:", selectedIds);
   };
   return (
     <>
@@ -197,7 +195,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
               <label htmlFor="sabadoAbertura">Sábado Abertura</label>
               <Controller
                 name="sabado.open"
-                defaultValue={clinicaData.sabado.open}
+                defaultValue={clinicaData?.sabado?.open}
                 control={control}
                 render={({ field }) => (
                   <input
@@ -211,7 +209,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
               <label htmlFor="sabadoFechamento">Sábado Fechamento</label>
               <Controller
                 name="sabado.close"
-                defaultValue={clinicaData.sabado.close}
+                defaultValue={clinicaData?.sabado?.close}
                 control={control}
                 render={({ field }) => (
                   <input

@@ -17,7 +17,6 @@ export default function Card({ pageNumber, informacao }) {
   const indexOfLastPost = currentPage * maxPostsPerPage;
   const indexOfFirstPost = indexOfLastPost - maxPostsPerPage;
 
-  // Filtra os dados com base no termo de pesquisa
   const limitedPosts = Array.isArray(informacao)
     ? informacao.slice(indexOfFirstPost, indexOfLastPost)
     : [];

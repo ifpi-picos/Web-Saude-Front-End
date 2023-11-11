@@ -5,9 +5,16 @@ export default function SelectEspecialidades({
   onChange,
   selectedSpecialties,
   nome,
+  esepecialidadesSelecionadas,
 }) {
   const [specialtyOptions, setSpecialtyOptions] = useState([]);
-  const [especialidades, setEspecialidades] = useState([]);
+  const [selectedDefaultSpecialties, setSelectedDefaultSpecialties] = useState(
+    []
+  );
+  const [selectedCustomSpecialties, setSelectedCustomSpecialties] = useState(
+    []
+  );
+  const [removedSpecialtyIds, setRemovedSpecialtyIds] = useState([]); // Novo estado para armazenar os IDs removidos
 
   const customStyles = {
     control: (provided, state) => ({
@@ -31,14 +38,46 @@ export default function SelectEspecialidades({
   };
 
   const handleSelectionChange = selectedOptions => {
+    // Separe as especialidades padrão e as personalizadas
+    const defaultSpecialties = selectedOptions.filter(option =>
+      selectedDefaultSpecialties.some(
+        defaultOption => defaultOption.value === option.value
+      )
+    );
+    const customSpecialties = selectedOptions.filter(
+      option =>
+        !defaultSpecialties.some(
+          defaultOption => defaultOption.value === option.value
+        )
+    );
+
+    setSelectedDefaultSpecialties(defaultSpecialties);
+    setSelectedCustomSpecialties(customSpecialties);
     onChange(selectedOptions);
+
+    // Detecte as especialidades removidas e adicione os IDs ao estado removedSpecialtyIds
+    const removedIds = removedSpecialtyIds.slice();
+    selectedDefaultSpecialties.forEach(defaultOption => {
+      if (
+        !defaultSpecialties.some(option => option.value === defaultOption.value)
+      ) {
+        removedIds.push(defaultOption.value);
+      }
+    });
+    setRemovedSpecialtyIds(removedIds);
+    esepecialidadesSelecionadas = selectedOptions.map(option => option.value);
+    console.log("especialidades selecionadas:", esepecialidadesSelecionadas);
   };
 
   useEffect(() => {
     fetch(`https://api-web-saude.vercel.app/especialidades/${nome}`)
       .then(response => response.json())
       .then(data => {
-        setEspecialidades(data);
+        const defaultSpecialties = data.map(specialty => ({
+          value: specialty._id,
+          label: specialty.nome,
+        }));
+        setSelectedDefaultSpecialties(defaultSpecialties);
       })
       .catch(error => {
         console.error("Erro ao buscar especialidades da API:", error);
@@ -66,7 +105,7 @@ export default function SelectEspecialidades({
       options={specialtyOptions}
       isMulti
       onChange={handleSelectionChange}
-      value={selectedSpecialties}
+      value={selectedDefaultSpecialties.concat(selectedCustomSpecialties)}
     />
   );
 }

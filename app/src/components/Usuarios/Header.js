@@ -11,7 +11,7 @@ export default function Header() {
         <Link href="/">
           <Image
             src="/imgs/logo.png"
-            alt="Foto teste"
+            alt="logo"
             width={200}
             height={200}
             className="customisar-imagem"

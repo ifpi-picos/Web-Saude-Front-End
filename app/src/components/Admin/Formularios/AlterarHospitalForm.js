@@ -44,7 +44,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
   const [imageLink, setImageLink] = useState("");
 
   const onSubmit = async formData => {
-    formData.imagem = imageLink || hospitalData.imagem || "";
+    formData.imagem = imageLink || hospitalData.imagem;
     formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
     try {

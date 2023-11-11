@@ -3,7 +3,7 @@ import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 
 function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
-  const [imageSelected, setImageSelected] = useState(defaultImage || null);
+  const [imageSelected, setImageSelected] = useState(defaultImage || "");
 
   function handleUploadSuccess(result) {
     const imageUrl = result.info.secure_url;
