@@ -1,10 +1,14 @@
+
 class FiltroSeerrvice {
+  
   async unidadesdeSaude() {
     try {
+
       const res = await fetch(
         `https://api-web-saude.vercel.app/unidades-de-saude`,
         {
           cache: "no-store",
+        
         }
       );
 
@@ -62,6 +66,29 @@ class FiltroSeerrvice {
         `https://api-web-saude.vercel.app/especialidades/${nome}`,
         {
           cache: "no-store",
+        }
+      );
+      if (!res.ok) {
+        throw new Error(`Houve um erro no servidor! ${res.status}`);
+      }
+      const info = await res.json();
+      return info;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  async pegarUnidadedeSaudeDoUsuario(id) {
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await fetch(
+        `https://api-web-saude.vercel.app/usuario/unidades-desaude/${id}`,
+        {
+          cache: "no-store",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": token,
+          },
         }
       );
       if (!res.ok) {

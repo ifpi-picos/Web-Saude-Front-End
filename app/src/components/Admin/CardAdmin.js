@@ -95,7 +95,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
 
   return (
     <section className="section-card-admin">
-      {limitedPosts.length === 0 ? (
+      {limitedPosts.length === 0  ? (
         <p className="mt-3">Nenhum resultado encontrado.</p>
       ) : (
         <>

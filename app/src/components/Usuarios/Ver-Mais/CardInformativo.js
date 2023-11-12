@@ -22,9 +22,9 @@ export default async function CardInformativo({ nome }) {
             <Link href="#mapa">Mapa</Link>
           </h3>
           <p>
-            {unidadesdeSaude.endereco.rua}, {unidadesdeSaude.endereco.numero} -{" "}
-            {unidadesdeSaude.endereco.bairro}, {unidadesdeSaude.endereco.cidade}{" "}
-            - {unidadesdeSaude.endereco.uf}, {unidadesdeSaude.endereco.cep}
+            {unidadesdeSaude?.endereco?.rua}, {unidadesdeSaude?.endereco?.numero} -{" "}
+            {unidadesdeSaude?.endereco?.bairro}, {unidadesdeSaude?.endereco?.cidade}{" "}
+            - {unidadesdeSaude?.endereco?.uf}, {unidadesdeSaude?.endereco?.cep}
           </p>
           <hr />
           <div className="div-atalhos">
