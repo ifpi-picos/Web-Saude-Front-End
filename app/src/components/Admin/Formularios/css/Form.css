@@ -1,5 +1,5 @@
 .error {
-  color: #f00;;
+  color: #f00;
 }
 .section-form {
   display: flex;
@@ -75,7 +75,7 @@
   top: 3px;
   font-size: 20px;
 }
-.div-button button {
+.div-button-submit button {
   width: 200px;
   height: 30px;
   cursor: pointer;
@@ -85,9 +85,10 @@
 button:hover {
   background-color: var(--secundary-color);
 }
-.div-button {
+.div-button-submit {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
   margin-bottom: 15px;
 }
 

@@ -7,7 +7,6 @@
   text-decoration: none;
   font-size: 13px;
   color: black;
-
 }
 
 .cadastro:hover {
@@ -18,10 +17,11 @@
   width: 60px;
   height: 60px;
 }
-.custom-toggler{
-  background-color:  white;
+.custom-toggler {
+  background-color: white;
 }
 
-.profile, .logout{
-color: white;
+.profile,
+.logout {
+  color: white;
 }

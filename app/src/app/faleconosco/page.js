@@ -1,4 +1,5 @@
 import "@/components/Usuarios/css/FaleConosco.css";
+import Footer from "@/components/Usuarios/Footer";
 import Header from "@/components/Usuarios/Header";
 import Image from "next/image";
 
@@ -39,6 +40,7 @@ export default function FaleConosco() {
           </form>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

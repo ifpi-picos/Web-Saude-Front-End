@@ -5,9 +5,21 @@ import Link from "next/link";
 export default function especialidade() {
   return (
     <PrivateRoute>
-      <HeaderAdmin/>
+      <HeaderAdmin />
       <div className="page-header">
-       <Link href="/dashboard" style={{display:"flex",justifyContent:"center",fontSize:"20px",fontWeight:"bold",marginBottom:"-45px",marginTop:"10px"}}>Dashboard</Link>
+        <Link
+          href="/dashboard"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            fontSize: "20px",
+            fontWeight: "bold",
+            marginBottom: "-45px",
+            marginTop: "10px",
+          }}
+        >
+          Dashboard
+        </Link>
       </div>
       <EspecialidadeForm />
     </PrivateRoute>

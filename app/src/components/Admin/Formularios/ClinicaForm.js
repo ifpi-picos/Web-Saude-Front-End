@@ -22,20 +22,20 @@ const schema = yup.object().shape({
       .string()
       .required("O horário de fechamento da semana é obrigatório"),
   }),
- 
-    email: yup.string().email("Informe um e-mail válido"),
-    whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
-    instagram: yup.string(),
-    descricao: yup.string(),
-    longitude: yup.string().required("A longitude é obrigatória"),
-    latitude: yup.string().required("A latitude é obrigatória"),
-    cep: yup.string().required("O CEP é obrigatório"),
-    rua: yup.string().required("A rua é obrigatória"),
-    numero: yup.string().required("O número é obrigatório"),
-    bairro: yup.string().required("O bairro é obrigatório"),
-    cidade: yup.string().required("A cidade é obrigatória"),
-    uf: yup.string().required("O estado (UF) é obrigatório"),
-    especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
+
+  email: yup.string().email("Informe um e-mail válido"),
+  whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
+  instagram: yup.string(),
+  descricao: yup.string(),
+  longitude: yup.string().required("A longitude é obrigatória"),
+  latitude: yup.string().required("A latitude é obrigatória"),
+  cep: yup.string().required("O CEP é obrigatório"),
+  rua: yup.string().required("A rua é obrigatória"),
+  numero: yup.string().required("O número é obrigatório"),
+  bairro: yup.string().required("O bairro é obrigatório"),
+  cidade: yup.string().required("A cidade é obrigatória"),
+  uf: yup.string().required("O estado (UF) é obrigatório"),
+  especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
 });
 
 export default function ClinicaForm() {
@@ -194,7 +194,9 @@ export default function ClinicaForm() {
                   />
                 )}
               />
-              <label htmlFor="sabadoFechamento">Sábado Fechamento (opcional)</label>
+              <label htmlFor="sabadoFechamento">
+                Sábado Fechamento (opcional)
+              </label>
               <Controller
                 name="sabado.close"
                 control={control}
@@ -397,7 +399,7 @@ export default function ClinicaForm() {
               />
               {errors.uf && <div className="error">{errors.uf.message}</div>}
             </div>
-            <div className="div-button">
+            <div className="div-button-submit">
               <button type="submit">Enviar</button>
             </div>
           </form>

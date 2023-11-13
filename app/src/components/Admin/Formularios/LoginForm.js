@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useForm, Controller, set } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import "@/components/Admin/Formularios/css/Form.css";
 import Image from "next/image";
+import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
   email: yup
@@ -43,13 +43,12 @@ export default function LoginForm() {
         const token = responseData.token;
 
         localStorage.setItem("token", token);
-       
+
         window.location.href = "/dashboard";
       }
 
-      if(response.status === 401){
+      if (response.status === 401) {
         setErrorMessage("Email ou senha incorretos");
-
       }
     } catch (error) {
       console.error("Erro ao fazer login: Status inesperado", error);
@@ -116,7 +115,7 @@ export default function LoginForm() {
             {errorMessage && <div className="error">{errorMessage}</div>}
           </div>
 
-          <div className="div-button">
+          <div className="div-button-submit">
             <button type="submit">Enviar</button>
           </div>
         </form>

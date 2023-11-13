@@ -6,9 +6,20 @@ import Link from "next/link";
 export default function CadastrarHospital() {
   return (
     <PrivateRoute>
-      <HeaderAdmin/>
+      <HeaderAdmin />
       <div className="page-header">
-       <Link href="/dashboard" style={{display:"flex",justifyContent:"center",fontSize:"20px",fontWeight:"bold",marginTop:"8px"}}>Dashboard</Link>
+        <Link
+          href="/dashboard"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            fontSize: "20px",
+            fontWeight: "bold",
+            marginTop: "8px",
+          }}
+        >
+          Dashboard
+        </Link>
       </div>
       <main className="main">
         <HospitalForm />

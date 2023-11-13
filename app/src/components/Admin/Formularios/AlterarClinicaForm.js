@@ -55,12 +55,10 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
 
   const onSubmit = async formData => {
     formData.imagem = imageLink || clinicaData.imagem;
-    if(selectedSpecialtyIds.length === 0 ){
-      formData.especialidades = clinicaData.especialidades
-    }
-    else{
-      formData.especialidades = selectedSpecialtyIds
-
+    if (selectedSpecialtyIds.length === 0) {
+      formData.especialidades = clinicaData.especialidades;
+    } else {
+      formData.especialidades = selectedSpecialtyIds;
     }
     const token = localStorage.getItem("token");
 
@@ -206,7 +204,9 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                   />
                 )}
               />
-              <label htmlFor="sabadoFechamento">Sábado Fechamento (opcional)</label>
+              <label htmlFor="sabadoFechamento">
+                Sábado Fechamento (opcional)
+              </label>
               <Controller
                 name="sabado.close"
                 defaultValue={clinicaData?.sabado?.close}
@@ -422,7 +422,10 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
               />
               {errors.uf && <div className="error">{errors.uf.message}</div>}
             </div>
-            <div className="div-button">
+            <div
+              className="div-button-submit"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
               <button type="submit">Enviar</button>
             </div>
           </form>

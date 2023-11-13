@@ -192,7 +192,7 @@
   background-color: var(--primary-color);
   color: #fff;
 }
-.icone{
+.icone {
   margin-top: 80px;
 }
 @media (max-width: 768px) {
@@ -310,7 +310,7 @@
     height: 24px;
     text-decoration: none;
   }
-  .icone{
+  .icone {
     margin-top: 35px;
   }
 }

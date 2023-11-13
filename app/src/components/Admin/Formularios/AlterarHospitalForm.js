@@ -1,5 +1,5 @@
 "use client";
-import { useState} from "react";
+import { useState } from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
 import SelectEspecialidadesUpdate from "@/components/UsuariosAndAdmin/SelectEspecialidadesUpdate";
 import { Modal, Button } from "react-bootstrap";
@@ -44,12 +44,10 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
 
   const onSubmit = async formData => {
     formData.imagem = imageLink || hospitalData.imagem;
-    if(selectedSpecialtyIds.length === 0 ){
-      formData.especialidades = hospitalData.especialidades
-    }
-    else{
-      formData.especialidades = selectedSpecialtyIds
-
+    if (selectedSpecialtyIds.length === 0) {
+      formData.especialidades = hospitalData.especialidades;
+    } else {
+      formData.especialidades = selectedSpecialtyIds;
     }
     const token = localStorage.getItem("token");
     try {
@@ -341,7 +339,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
               />
               {errors.uf && <div className="error">{errors.uf.message}</div>}
             </div>
-            <div className="div-button">
+            <div className="div-button-submit">
               <button type="submit">Enviar</button>
             </div>
           </form>

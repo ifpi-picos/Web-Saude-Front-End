@@ -43,11 +43,16 @@ export default function HeaderAdmin() {
             className="customisar-imagem"
           />
         </Navbar.Brand>
-        <Navbar.Toggle onClick={handleToggle} aria-controls="navbar-nav" className="custom-toggler"
- />
+        <Navbar.Toggle
+          onClick={handleToggle}
+          aria-controls="navbar-nav"
+          className="custom-toggler"
+        />
         <Navbar.Collapse id="navbar-nav" className="justify-content-end">
           <Nav>
-            <Nav.Link className="profile" href="#profile">Perfil</Nav.Link>
+            <Nav.Link className="profile" href="#profile">
+              Perfil
+            </Nav.Link>
             <NavDropdown
               className="cadastros"
               title={<span style={{ color: "white" }}>Cadastro</span>}
@@ -66,7 +71,9 @@ export default function HeaderAdmin() {
                 Cadastrar Especialidades
               </Nav.Link>
             </NavDropdown>
-            <Nav.Link className="logout" onClick={handleLogout}>Logout</Nav.Link>
+            <Nav.Link className="logout" onClick={handleLogout}>
+              Logout
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

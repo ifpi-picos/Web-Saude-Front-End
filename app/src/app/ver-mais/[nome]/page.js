@@ -8,10 +8,18 @@ import CardSobre from "@/components/Usuarios/Ver-Mais/CardSobre";
 import Especialidades from "@/components/Usuarios/Ver-Mais/Especialidades";
 import Mapa from "@/components/Usuarios/Ver-Mais/Mapa";
 import Footer from "@/components/Usuarios/Footer";
-import "../../../components/Usuarios/css/verMais.css";
 import Link from "next/link";
+import FiltroService from "@/services/FiltroService";
+import NotFound from "@/app/not-found";
+import "../../../components/Usuarios/css/verMais.css";
 
-export default function verMais({ params }) {
+export default async function verMais({ params }) {
+  const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(params.nome);
+
+  if (unidadesdeSaude.length === 0) {
+    return <NotFound />;
+  }
+
   return (
     <>
       <Header />
@@ -19,12 +27,10 @@ export default function verMais({ params }) {
         <div className="top-atalhos">
           <ul>
             <li>
-              {" "}
-              <Link href="/">Home Page </Link>{" "}
+              <Link href="/">Home Page </Link>
             </li>
             <li>/</li>
             <li>
-              {" "}
               <Link href="#especialidades"> Especialidades </Link>
             </li>
           </ul>
@@ -34,7 +40,7 @@ export default function verMais({ params }) {
         <Horario nome={params?.nome} />
         <CardSobre nome={params?.nome} />
         <Contato nome={params?.nome} />
-        {/* <Mapa nome={params?.nome} /> */ }
+        <Mapa nome={params?.nome} />
         <Especialidades nome={params?.nome} />
       </main>
       <Footer />

@@ -1,6 +1,6 @@
-"use client"
-import { useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
+"use client";
+import { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 export function useDecodedToken() {
   const [decodedToken, setDecodedToken] = useState(null);
 
@@ -13,7 +13,7 @@ export function useDecodedToken() {
           setDecodedToken(decoded.sub);
         }
       } catch (error) {
-        console.error('Erro ao decodificar o token:', error);
+        console.error("Erro ao decodificar o token:", error);
         setDecodedToken(null);
       }
     }

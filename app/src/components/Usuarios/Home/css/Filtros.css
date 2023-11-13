@@ -36,11 +36,11 @@
 
 @media (max-width: 768px) {
   .div-buttons .div-button {
-    width: 130px;
+    width: 165px;
     height: 40px;
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 2px;
     border-radius: 17px;
+    margin-left: 2px;
   }
 
   .div-buttons .div-button select {

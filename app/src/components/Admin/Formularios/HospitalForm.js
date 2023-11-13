@@ -317,7 +317,7 @@ export default function HospitalForm() {
               />
               {errors.uf && <div className="error">{errors.uf.message}</div>}
             </div>
-            <div className="div-button">
+            <div className="div-button-submit">
               <button type="submit">Enviar</button>
             </div>
           </form>

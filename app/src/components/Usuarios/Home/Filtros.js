@@ -52,11 +52,8 @@ export default function Filtros() {
       backgroundColor: "#00285f",
       color: "red",
       borderRadius: 10,
-      width:"10rem",
+      width: "9rem",
       height: "2.8rem",
-      marginTop: "2.5rem",
-      marginRight: "1rem"
-
     }),
     option: (styles, { isFocused, isSelected }) => ({
       ...styles,
@@ -69,33 +66,35 @@ export default function Filtros() {
     }),
     input: styles => ({
       ...styles,
-      color: "white", 
+      color: "white",
     }),
   };
 
   return (
     <div className="div-buttons">
-    <Select
-      className="select-element-filtros"
-      value={selectedFiltro}
-      options={[
-        { value: "Hospitais", label: "Hospitais" },
-        { value: "Clínicas", label: "Clínicas" },
-      ]}
-      onChange={handleFiltroChange}
-      styles={customStyles}
-      placeholder="Filtros"
-    />
-
-    <Select
-      className="select-element-filtros"
-      value={selectedEspecialidade}
-      options={especialidades}
-      onChange={handleEspecialidadeChange}
-      styles={customStyles}
-      placeholder="Especialidades"
-    />
-  </div>
-
+      <div className="div-button">
+        <Select
+          className="select-element-filtros"
+          value={selectedFiltro}
+          options={[
+            { value: "Hospitais", label: "Hospitais" },
+            { value: "Clínicas", label: "Clínicas" },
+          ]}
+          onChange={handleFiltroChange}
+          styles={customStyles}
+          placeholder="Filtros"
+        />
+      </div>
+      <div className="div-button">
+        <Select
+          className="select-element-filtros"
+          value={selectedEspecialidade}
+          options={especialidades}
+          onChange={handleEspecialidadeChange}
+          styles={customStyles}
+          placeholder="Especialidades"
+        />
+      </div>
+    </div>
   );
 }
