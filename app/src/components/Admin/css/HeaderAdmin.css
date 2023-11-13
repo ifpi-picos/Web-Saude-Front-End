@@ -7,13 +7,21 @@
   text-decoration: none;
   font-size: 13px;
   color: black;
+
 }
 
 .cadastro:hover {
   background-color: blue;
-  color: white;
+  color: black;
 }
 .customisar-imagem {
   width: 60px;
   height: 60px;
+}
+.custom-toggler{
+  background-color:  white;
+}
+
+.profile, .logout{
+color: white;
 }

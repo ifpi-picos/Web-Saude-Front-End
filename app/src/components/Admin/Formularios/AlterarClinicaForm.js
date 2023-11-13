@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
-import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
+import SelectEspecialidadesUpdate from "@/components/UsuariosAndAdmin/SelectEspecialidadesUpdate";
 import { Modal, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
@@ -54,9 +54,14 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
   const [imageLink, setImageLink] = useState("");
 
   const onSubmit = async formData => {
-    formData.imagem = imageLink || hospitalData.imagem;
-    formData.especialidades = selectedSpecialtyIds;
-    console.log("idsEsp", formData.especialidades);
+    formData.imagem = imageLink || clinicaData.imagem;
+    if(selectedSpecialtyIds.length === 0 ){
+      formData.especialidades = clinicaData.especialidades
+    }
+    else{
+      formData.especialidades = selectedSpecialtyIds
+
+    }
     const token = localStorage.getItem("token");
 
     try {
@@ -71,7 +76,6 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
           body: JSON.stringify(formData),
         }
       );
-      console.log("idsEsp", formData.especialidades);
 
       if (response.ok) {
         const responseData = await response.json();
@@ -90,15 +94,11 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
   const handleImageURLChange = imageUrl => {
     setImageURL(imageUrl);
     setImageLink(imageUrl);
-    console.log("URL da imagem:", imageUrl);
   };
   const handleSpecialtyChange = selectedSpecialties => {
     setError("especialidades", "");
     const selectedIds = selectedSpecialties.map(specialty => specialty.value);
     setSelectedSpecialtyIds(selectedIds);
-
-    // Log dos IDs das especialidades selecionadas
-    console.log("selecionadas:", selectedIds);
   };
   return (
     <>
@@ -143,7 +143,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 <div className="error">{errors.imagem.message}</div>
               )}
 
-              <SelectEspecialidades
+              <SelectEspecialidadesUpdate
                 onChange={handleSpecialtyChange}
                 nome={nome}
               />
@@ -192,7 +192,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                   {errors.horarioSemana?.close.message}
                 </div>
               )}
-              <label htmlFor="sabadoAbertura">Sábado Abertura</label>
+              <label htmlFor="sabadoAbertura">Sábado Abertura (opcional)</label>
               <Controller
                 name="sabado.open"
                 defaultValue={clinicaData?.sabado?.open}
@@ -206,7 +206,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                   />
                 )}
               />
-              <label htmlFor="sabadoFechamento">Sábado Fechamento</label>
+              <label htmlFor="sabadoFechamento">Sábado Fechamento (opcional)</label>
               <Controller
                 name="sabado.close"
                 defaultValue={clinicaData?.sabado?.close}
@@ -220,7 +220,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                   />
                 )}
               />
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email (opcional)</label>
               <Controller
                 name="email"
                 defaultValue={clinicaData.email}
@@ -237,7 +237,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
               {errors.email && (
                 <div className="error">{errors.email.message}</div>
               )}
-              <label htmlFor="whatsapp">Whatsapp</label>
+              <label htmlFor="whatsapp">Whatsapp (opcional)</label>
               <Controller
                 name="whatsapp"
                 defaultValue={clinicaData.whatsapp}
@@ -254,7 +254,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
               {errors.whatsapp && (
                 <div className="error">{errors.whatsapp.message}</div>
               )}
-              <label htmlFor="instagram">Instagram</label>
+              <label htmlFor="instagram">Instagram (opcional)</label>
               <Controller
                 name="instagram"
                 defaultValue={clinicaData.instagram}
@@ -271,7 +271,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
               {errors.instagram && (
                 <div className="error">{errors.instagram.message}</div>
               )}
-              <label htmlFor="descricao">Descrição</label>
+              <label htmlFor="descricao">Descrição (opcional)</label>
               <Controller
                 name="descricao"
                 defaultValue={clinicaData.descricao}

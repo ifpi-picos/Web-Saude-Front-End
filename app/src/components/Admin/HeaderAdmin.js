@@ -30,7 +30,7 @@ export default function HeaderAdmin() {
     <Navbar
       expand="lg"
       expanded={expanded}
-      variant="dark"
+      variant="white"
       style={{ backgroundColor: "#00285f" }}
     >
       <Container fluid className="conatainer w-100 m-4">
@@ -43,13 +43,14 @@ export default function HeaderAdmin() {
             className="customisar-imagem"
           />
         </Navbar.Brand>
-        <Navbar.Toggle onClick={handleToggle} aria-controls="navbar-nav" />
+        <Navbar.Toggle onClick={handleToggle} aria-controls="navbar-nav" className="custom-toggler"
+ />
         <Navbar.Collapse id="navbar-nav" className="justify-content-end">
           <Nav>
-            <Nav.Link href="#profile">Perfil</Nav.Link>
+            <Nav.Link className="profile" href="#profile">Perfil</Nav.Link>
             <NavDropdown
               className="cadastros"
-              title="Cadastro"
+              title={<span style={{ color: "white" }}>Cadastro</span>}
               id="nav-dropdown"
               onMouseOver={handleDropdownMouseOver}
               onMouseOut={handleDropdownMouseOut}
@@ -65,7 +66,7 @@ export default function HeaderAdmin() {
                 Cadastrar Especialidades
               </Nav.Link>
             </NavDropdown>
-            <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+            <Nav.Link className="logout" onClick={handleLogout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

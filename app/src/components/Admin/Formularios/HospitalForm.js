@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
-import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
+import SelectEspecialidadesSalvar from "@/components/UsuariosAndAdmin/SelectEspecialidadesSalvar";
 import { Modal, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
+import { useDecodedToken } from "@/services/decodeToken";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "@/components/Admin/Formularios/css/Form.css";
 import Image from "next/image";
@@ -41,9 +42,11 @@ export default function HospitalForm() {
   const [showModal, setShowModal] = useState(false);
   const [imageURL, setImageURL] = useState("");
   const [imageLink, setImageLink] = useState("");
+  const decodedToken = useDecodedToken();
 
   const onSubmit = async formData => {
     formData.imagem = imageLink;
+    formData.usuario = decodedToken;
     formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
 
@@ -120,11 +123,11 @@ export default function HospitalForm() {
               {errors.imagem && (
                 <div className="error">{errors.imagem.message}</div>
               )}
-              <SelectEspecialidades onChange={handleSpecialtyChange} />
+              <SelectEspecialidadesSalvar onChange={handleSpecialtyChange} />
               {errors.especialidades && (
                 <div className="error">{errors.especialidades.message}</div>
               )}
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email (opcional)</label>
               <Controller
                 name="email"
                 control={control}
@@ -140,7 +143,7 @@ export default function HospitalForm() {
               {errors.email && (
                 <div className="error">{errors.email.message}</div>
               )}
-              <label htmlFor="whatsapp">Whatsapp</label>
+              <label htmlFor="whatsapp">Whatsapp (opcional)</label>
               <Controller
                 name="whatsapp"
                 control={control}
@@ -156,7 +159,7 @@ export default function HospitalForm() {
               {errors.whatsapp && (
                 <div className="error">{errors.whatsapp.message}</div>
               )}
-              <label htmlFor="instagram">Instagram</label>
+              <label htmlFor="instagram">Instagram (opcional)</label>
               <Controller
                 name="instagram"
                 control={control}
@@ -172,7 +175,7 @@ export default function HospitalForm() {
               {errors.instagram && (
                 <div className="error">{errors.instagram.message}</div>
               )}
-              <label htmlFor="descricao">Descrição</label>
+              <label htmlFor="descricao">Descrição (opcional)</label>
               <Controller
                 name="descricao"
                 control={control}
@@ -190,7 +193,7 @@ export default function HospitalForm() {
               {errors.descricao && (
                 <div className="error">{errors.descricao.message}</div>
               )}
-              <label htmlFor="longitude">Longitude</label>
+              <label htmlFor="longitude">Longitude (opcional)</label>
               <Controller
                 name="longitude"
                 control={control}
@@ -206,7 +209,7 @@ export default function HospitalForm() {
               {errors.longitude && (
                 <div className="error">{errors.longitude.message}</div>
               )}
-              <label htmlFor="latitude">Latitude</label>
+              <label htmlFor="latitude">Latitude (opcional)</label>
               <Controller
                 name="latitude"
                 control={control}

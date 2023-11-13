@@ -7,7 +7,7 @@ import PrivateRoute from "@/components/Admin/privateRouter";
 import { useDecodedToken } from "@/services/decodeToken";
 import "@/components/Admin/css/Dashboard.css";
 import Loading from "../loading";
-
+import Link from "next/link";
 export default function Dashboard() {
   const decodedToken = useDecodedToken();
   const [informacao, setInformacao] = useState([]);
@@ -52,7 +52,7 @@ export default function Dashboard() {
 
       <div className="page-header">
         <h1>Dashboard</h1>
-        <small>Home / Dashboard</small>
+        <small><Link href="/">Home</Link> / <strong>Dashboard</strong></small>
       </div>
 
       <div className="page-content">

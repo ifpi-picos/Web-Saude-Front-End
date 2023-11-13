@@ -1,4 +1,5 @@
 "use client";
+import React, { useState } from 'react';
 import { useForm, Controller, set } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -25,6 +26,7 @@ export default function LoginForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async data => {
     try {
@@ -40,15 +42,14 @@ export default function LoginForm() {
         const responseData = await response.json();
         const token = responseData.token;
 
-        console.log("Token recebido:", token);
-
         localStorage.setItem("token", token);
-        console.log(
-          "Token salvo no localStorage:",
-          localStorage.getItem("token")
-        );
-
+       
         window.location.href = "/dashboard";
+      }
+
+      if(response.status === 401){
+        setErrorMessage("Email ou senha incorretos");
+
       }
     } catch (error) {
       console.error("Erro ao fazer login: Status inesperado", error);
@@ -111,6 +112,8 @@ export default function LoginForm() {
             {errors.senha && (
               <div className="error">{errors.senha.message}</div>
             )}
+
+            {errorMessage && <div className="error">{errorMessage}</div>}
           </div>
 
           <div className="div-button">

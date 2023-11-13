@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
-import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
+import SelectEspecialidadesUpdate from "@/components/UsuariosAndAdmin/SelectEspecialidadesUpdate";
 import { Modal, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
@@ -10,23 +10,22 @@ import "@/components/Admin/Formularios/css/Form.css";
 import Image from "next/image";
 
 const schema = yup.object().shape({
-  nome: yup.string(),
+  nome: yup.string().required("O nome do hospital é obrigatório"),
   imagem: yup.string(),
   email: yup.string().email("Informe um e-mail válido"),
   whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
   instagram: yup.string(),
   descricao: yup.string(),
-  longitude: yup.string(),
-  latitude: yup.string(),
-  cep: yup.string(),
-  rua: yup.string(),
-  numero: yup.string(),
-  bairro: yup.string(),
-  cidade: yup.string(),
-  uf: yup.string(),
+  longitude: yup.string().required("A longitude é obrigatória"),
+  latitude: yup.string().required("A latitude é obrigatória"),
+  cep: yup.string().required("O CEP é obrigatório"),
+  rua: yup.string().required("A rua é obrigatória"),
+  numero: yup.string().required("O número é obrigatório"),
+  bairro: yup.string().required("O bairro é obrigatório"),
+  cidade: yup.string().required("A cidade é obrigatória"),
+  uf: yup.string().required("O estado (UF) é obrigatório"),
   especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
 });
-
 export default function AlterarHospitalForm({ hospitalData, nome }) {
   const {
     control,
@@ -45,7 +44,13 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
 
   const onSubmit = async formData => {
     formData.imagem = imageLink || hospitalData.imagem;
-    formData.especialidades = selectedSpecialtyIds;
+    if(selectedSpecialtyIds.length === 0 ){
+      formData.especialidades = hospitalData.especialidades
+    }
+    else{
+      formData.especialidades = selectedSpecialtyIds
+
+    }
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
@@ -126,7 +131,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 <div className="error">{errors.imagem.message}</div>
               )}
 
-              <SelectEspecialidades
+              <SelectEspecialidadesUpdate
                 onChange={handleSpecialtyChange}
                 nome={nome}
               />
@@ -134,7 +139,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 <div className="error">{errors.especialidades.message}</div>
               )}
 
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email (opcional)</label>
               <Controller
                 name="email"
                 defaultValue={hospitalData.email}
@@ -151,7 +156,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
               {errors.email && (
                 <div className="error">{errors.email.message}</div>
               )}
-              <label htmlFor="whatsapp">Whatsapp</label>
+              <label htmlFor="whatsapp">Whatsapp (opcional)</label>
               <Controller
                 name="whatsapp"
                 defaultValue={hospitalData.whatsapp}
@@ -168,7 +173,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
               {errors.whatsapp && (
                 <div className="error">{errors.whatsapp.message}</div>
               )}
-              <label htmlFor="instagram">Instagram</label>
+              <label htmlFor="instagram">Instagram (opcional)</label>
               <Controller
                 name="instagram"
                 defaultValue={hospitalData.instagram}
@@ -185,7 +190,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
               {errors.instagram && (
                 <div className="error">{errors.instagram.message}</div>
               )}
-              <label htmlFor="descricao">Descrição</label>
+              <label htmlFor="descricao">Descrição (opcional)</label>
               <Controller
                 name="descricao"
                 defaultValue={hospitalData.descricao}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
-export default function SelectEspecialidades({
+export default function SelectEspecialidadesUpdate({
   onChange,
   selectedSpecialties,
   nome,
@@ -14,7 +14,7 @@ export default function SelectEspecialidades({
   const [selectedCustomSpecialties, setSelectedCustomSpecialties] = useState(
     []
   );
-  const [removedSpecialtyIds, setRemovedSpecialtyIds] = useState([]); // Novo estado para armazenar os IDs removidos
+  const [removedSpecialtyIds, setRemovedSpecialtyIds] = useState([]);
 
   const customStyles = {
     control: (provided, state) => ({
@@ -38,7 +38,6 @@ export default function SelectEspecialidades({
   };
 
   const handleSelectionChange = selectedOptions => {
-    // Separe as especialidades padrão e as personalizadas
     const defaultSpecialties = selectedOptions.filter(option =>
       selectedDefaultSpecialties.some(
         defaultOption => defaultOption.value === option.value
@@ -55,7 +54,6 @@ export default function SelectEspecialidades({
     setSelectedCustomSpecialties(customSpecialties);
     onChange(selectedOptions);
 
-    // Detecte as especialidades removidas e adicione os IDs ao estado removedSpecialtyIds
     const removedIds = removedSpecialtyIds.slice();
     selectedDefaultSpecialties.forEach(defaultOption => {
       if (

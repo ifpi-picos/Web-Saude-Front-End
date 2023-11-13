@@ -1,13 +1,14 @@
 "use client";
 import { useState } from "react";
 import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
-import SelectEspecialidades from "../../UsuariosAndAdmin/SelectEspecialidades";
+import SelectEspecialidadesSalvar from "@/components/UsuariosAndAdmin/SelectEspecialidadesSalvar";
 import { Modal, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
+import { useDecodedToken } from "@/services/decodeToken";
 import { yupResolver } from "@hookform/resolvers/yup";
-import "@/components/Admin/Formularios/css/Form.css";
 import Image from "next/image";
+import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
   nome: yup.string().required("O nome da clínica é obrigatório"),
@@ -21,27 +22,20 @@ const schema = yup.object().shape({
       .string()
       .required("O horário de fechamento da semana é obrigatório"),
   }),
-  sabado: yup.object().shape({
-    open: yup
-      .string()
-      .required("O horário de abertura de sábado é obrigatório"),
-    close: yup
-      .string()
-      .required("O horário de fechamento de sábado é obrigatório"),
-  }),
-  email: yup.string().email("Informe um e-mail válido"),
-  whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
-  instagram: yup.string(),
-  descricao: yup.string(),
-  longitude: yup.string().required("A longitude é obrigatória"),
-  latitude: yup.string().required("A latitude é obrigatória"),
-  cep: yup.string().required("O CEP é obrigatório"),
-  rua: yup.string().required("A rua é obrigatória"),
-  numero: yup.string().required("O número é obrigatório"),
-  bairro: yup.string().required("O bairro é obrigatório"),
-  cidade: yup.string().required("A cidade é obrigatória"),
-  uf: yup.string().required("O estado (UF) é obrigatório"),
-  especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
+ 
+    email: yup.string().email("Informe um e-mail válido"),
+    whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
+    instagram: yup.string(),
+    descricao: yup.string(),
+    longitude: yup.string().required("A longitude é obrigatória"),
+    latitude: yup.string().required("A latitude é obrigatória"),
+    cep: yup.string().required("O CEP é obrigatório"),
+    rua: yup.string().required("A rua é obrigatória"),
+    numero: yup.string().required("O número é obrigatório"),
+    bairro: yup.string().required("O bairro é obrigatório"),
+    cidade: yup.string().required("A cidade é obrigatória"),
+    uf: yup.string().required("O estado (UF) é obrigatório"),
+    especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
 });
 
 export default function ClinicaForm() {
@@ -59,9 +53,11 @@ export default function ClinicaForm() {
   const [imageURL, setImageURL] = useState("");
   const [imageLink, setImageLink] = useState("");
 
+  const decodedToken = useDecodedToken();
+
   const onSubmit = async formData => {
     formData.imagem = imageLink;
-    console.log("img", formData.imagem);
+    formData.usuario = decodedToken;
     formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
     console.log("Dados a serem enviados:", formData);
@@ -141,7 +137,7 @@ export default function ClinicaForm() {
                 <div className="error">{errors.imagem.message}</div>
               )}
 
-              <SelectEspecialidades onChange={handleSpecialtyChange} />
+              <SelectEspecialidadesSalvar onChange={handleSpecialtyChange} />
               {errors.especialidades && (
                 <div className="error">{errors.especialidades.message}</div>
               )}
@@ -185,7 +181,7 @@ export default function ClinicaForm() {
                   {errors.horarioSemana?.close.message}
                 </div>
               )}
-              <label htmlFor="sabadoAbertura">Sábado Abertura</label>
+              <label htmlFor="sabadoAbertura">Sábado Abertura (opcional)</label>
               <Controller
                 name="sabado.open"
                 control={control}
@@ -198,7 +194,7 @@ export default function ClinicaForm() {
                   />
                 )}
               />
-              <label htmlFor="sabadoFechamento">Sábado Fechamento</label>
+              <label htmlFor="sabadoFechamento">Sábado Fechamento (opcional)</label>
               <Controller
                 name="sabado.close"
                 control={control}
@@ -211,7 +207,7 @@ export default function ClinicaForm() {
                   />
                 )}
               />
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email (opcional)</label>
               <Controller
                 name="email"
                 control={control}
@@ -227,7 +223,7 @@ export default function ClinicaForm() {
               {errors.email && (
                 <div className="error">{errors.email.message}</div>
               )}
-              <label htmlFor="whatsapp">Whatsapp</label>
+              <label htmlFor="whatsapp">Whatsapp (opcional)</label>
               <Controller
                 name="whatsapp"
                 control={control}
@@ -243,7 +239,7 @@ export default function ClinicaForm() {
               {errors.whatsapp && (
                 <div className="error">{errors.whatsapp.message}</div>
               )}
-              <label htmlFor="instagram">Instagram</label>
+              <label htmlFor="instagram">Instagram (opcional)</label>
               <Controller
                 name="instagram"
                 control={control}
@@ -259,7 +255,7 @@ export default function ClinicaForm() {
               {errors.instagram && (
                 <div className="error">{errors.instagram.message}</div>
               )}
-              <label htmlFor="descricao">Descrição</label>
+              <label htmlFor="descricao">Descrição (opcional)</label>
               <Controller
                 name="descricao"
                 control={control}

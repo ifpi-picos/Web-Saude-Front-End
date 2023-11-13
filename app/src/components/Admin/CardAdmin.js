@@ -147,7 +147,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 </div>
               </div>
               <div className="button">
-                <div className="icone" style={{ marginTop: "35px" }}>
+                <div className="icone" >
                   <FaCog
                     size={30}
                     className="config-icon"
