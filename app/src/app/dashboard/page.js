@@ -12,11 +12,13 @@ export default function Dashboard() {
   const decodedToken = useDecodedToken();
   const [informacao, setInformacao] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [useToken, setUseToken] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       if (decodedToken) {
         const token = localStorage.getItem("token");
+        setUseToken(token)
         try {
           const response = await fetch(
             `https://api-web-saude.vercel.app/usuario/unidades-desaude/${decodedToken}`,
@@ -40,15 +42,11 @@ export default function Dashboard() {
     fetchData();
   }, [decodedToken]);
 
-  if (!decodedToken) {
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
-  }
+ useEffect(()=>{
 
-  if (isLoading) {
+  }
+ )
+  if (isLoading && useToken) {
     return (
       <div>
         <Loading />
