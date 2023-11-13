@@ -36,7 +36,7 @@ export default function Filtros() {
       .then(response => response.json())
       .then(data => {
         const options = data.map(especialidade => ({
-          value: especialidade.id,
+          value: especialidade._id,
           label: especialidade.nome,
         }));
         setEspecialidades(options);
@@ -52,8 +52,6 @@ export default function Filtros() {
       backgroundColor: "#00285f",
       color: "red",
       borderRadius: 10,
-      width: "9rem",
-      height: "2.8rem",
     }),
     option: (styles, { isFocused, isSelected }) => ({
       ...styles,
@@ -71,7 +69,7 @@ export default function Filtros() {
   };
 
   return (
-    <div className="div-buttons">
+    <div className="div-selects">
       <div className="div-button">
         <Select
           className="select-element-filtros"
