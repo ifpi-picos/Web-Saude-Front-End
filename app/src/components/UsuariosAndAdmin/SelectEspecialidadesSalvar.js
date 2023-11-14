@@ -24,12 +24,12 @@ export default function SelectEspecialidadesSalvar({
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,
-      display: "none",
     }),
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isSelected ? "blue" : "#00285f",
       color: "white",
+      
     }),
     menu: (provided, state) => ({
       ...provided,
@@ -38,7 +38,6 @@ export default function SelectEspecialidadesSalvar({
   };
 
   const handleSelectionChange = selectedOptions => {
-    // Separe as especialidades padrão e as personalizadas
     const defaultSpecialties = selectedOptions.filter(option =>
       selectedDefaultSpecialties.some(
         defaultOption => defaultOption.value === option.value

@@ -19,9 +19,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 700px;
-  max-height: 100%;
   background-color: var(--primary-color);
   border-radius: 20px;
   margin-top: 10px;
@@ -32,6 +30,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 }
 .div-horarios {
   display: flex;
@@ -55,10 +54,13 @@
   color: var(--secundary-color);
 }
 .div-inputs .div-horarios .div-horario input {
+  max-width: 100%;
   outline: none;
   width: 100%;
+
 }
 .upload {
+  max-width: 100%;
   width: 100%;
   height: 30px;
   margin-bottom: 5px;

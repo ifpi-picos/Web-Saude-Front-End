@@ -79,6 +79,7 @@ export default function LoginForm() {
           <h2 className="title">Login</h2>
           <div className="div-inputs">
             <label htmlFor="email">Email</label>
+            
             <Controller
               name="email"
               control={control}
@@ -116,7 +117,7 @@ export default function LoginForm() {
           </div>
 
           <div className="div-button-submit">
-            <button type="submit">Enviar</button>
+            <button type="submit">Entrar</button>
           </div>
         </form>
       </div>
