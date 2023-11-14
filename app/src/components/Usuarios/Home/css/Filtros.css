@@ -2,13 +2,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 280px;
+  
 }
 
 .div-selects .div-button {
+  display: flex;
+  justify-content: center;
   min-width: 10rem;
   height: 2.8rem;
   margin-top: 2.5rem;
-  margin-right: 1rem;
+ 
 }
 
 .div-selects .div-button select {
@@ -28,9 +32,7 @@
   .div-selects .div-button {
     min-width: 120px;
     height: 40px;
-    margin-right: 2px;
     border-radius: 17px;
-    margin-left: 2px;
   }
 
   .div-selects .div-button select {

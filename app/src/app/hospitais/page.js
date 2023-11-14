@@ -5,12 +5,12 @@ import Filtros from "@/components/Usuarios/Home/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
-import FiltroService from "@/services/FiltroService";
+import HospitalService from "@/services/HospitalService";
 import "@/components/Usuarios/Home/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 
 export default async function filtroHospitais() {
-  const informacao = await FiltroService.unidadesdeSaude();
+  const informacao = await HospitalService.pegarHospitais();
 
   return (
     <>

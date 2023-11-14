@@ -36,7 +36,6 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  console.log(hospitalData.endereco.rua);
   const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [imageURL, setImageURL] = useState("");
@@ -54,7 +53,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
       const response = await fetch(
         `https://api-web-saude.vercel.app/admin/alterar-hospital/${hospitalData._id}`,
         {
-          method: "PUT",
+          method: "Put",
           headers: {
             "Content-Type": "application/json",
             "x-access-token": token,
@@ -62,11 +61,11 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
           body: JSON.stringify(formData),
         }
       );
-      console.log("dados", formData);
       if (!response.ok) {
         console.error(`Erro na solicitação: ${response.status}`);
       } else {
         const responseData = await response.json();
+        console.log(responseData);
         setShowModal(true);
         window.location.href = "/dashboard";
       }
