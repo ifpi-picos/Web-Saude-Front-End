@@ -60,6 +60,7 @@
   max-width: 100%;
   outline: none;
   width: 100%;
+
 }
 .upload {
   max-width: 100%;
@@ -70,8 +71,8 @@
 }
 .div-inputs textarea {
   width: 400px;
-  border-radius: 5px;
   outline-color: #f00;
+  border-radius: 5px;
 }
 .div-inputs textarea::placeholder {
   position: absolute;
@@ -123,12 +124,11 @@ button:hover {
   .div-inputs .div-horarios .div-horario input {
     border: none;
     outline: none;
+    width: 80%;
   }
   .div-inputs textarea {
     width: 200px;
     height: 200px;
   }
-  .select {
-    width: 214px;
-  }
+ 
 }
