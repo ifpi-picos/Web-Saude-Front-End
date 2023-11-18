@@ -43,6 +43,7 @@ export default function HeaderAdmin() {
             className="customisar-imagem"
           />
         </Navbar.Brand>
+
         <Navbar.Toggle
           onClick={handleToggle}
           aria-controls="navbar-nav"
@@ -50,8 +51,8 @@ export default function HeaderAdmin() {
         />
         <Navbar.Collapse id="navbar-nav" className="justify-content-end">
           <Nav>
-            <Nav.Link className="profile" href="#profile">
-              Perfil
+            <Nav.Link className="painel" href="/dashboard">
+              Dashboard
             </Nav.Link>
             <NavDropdown
               className="cadastros"

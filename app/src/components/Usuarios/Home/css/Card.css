@@ -44,8 +44,9 @@
 .section-card .card-container .top .image-container img {
   background-color: var(--secundary-color);
   width: 100%;
-  height: 100%;
   border-radius: 50%;
+  max-width: 100%;
+  height: auto;
 }
 
 /*.section-card .card-container .top .image-container img:hover{
@@ -63,7 +64,6 @@
 
 /* nome */
 .section-card .card-container .button h3 {
-  line-height: 0.4;
   font-size: 1.6rem;
   color: rgba(0, 0, 0, 0.9);
   margin-bottom: 40px;

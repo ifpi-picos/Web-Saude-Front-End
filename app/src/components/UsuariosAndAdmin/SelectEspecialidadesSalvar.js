@@ -21,6 +21,7 @@ export default function SelectEspecialidadesSalvar({
       ...provided,
       backgroundColor: "white",
       maxWidth: "300px",
+      
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,

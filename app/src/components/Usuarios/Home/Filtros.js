@@ -35,9 +35,10 @@ export default function Filtros() {
     fetch("https://api-web-saude.vercel.app/especialidades")
       .then(response => response.json())
       .then(data => {
-        const options = data.map(especialidade => ({
+        const options = data.map((especialidade , index) => ({
           value: especialidade._id,
           label: especialidade.nome,
+          key: index,
         }));
         setEspecialidades(options);
       })
@@ -52,11 +53,14 @@ export default function Filtros() {
       backgroundColor: "#00285f",
       color: "red",
       borderRadius: 10,
+      width:"160px"
+
     }),
     option: (styles, { isFocused, isSelected }) => ({
       ...styles,
       backgroundColor: isSelected ? "blue" : isFocused ? "lightgray" : "white",
       color: isSelected ? "white" : "black",
+    
     }),
     singleValue: styles => ({
       ...styles,
@@ -69,9 +73,9 @@ export default function Filtros() {
   };
 
   return (
-    <div className="div-selects">
+    <div className="div-select-filtros" >
       <div className="div-button">
-        <Select
+        <Select 
           className="select-element-filtros"
           value={selectedFiltro}
           options={[

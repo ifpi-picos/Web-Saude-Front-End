@@ -20,7 +20,6 @@ export default function SelectEspecialidadesUpdate({
     control: (provided, state) => ({
       ...provided,
       backgroundColor: "white",
-      maxWidth: "300px",
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,
@@ -33,7 +32,6 @@ export default function SelectEspecialidadesUpdate({
     }),
     menu: (provided, state) => ({
       ...provided,
-      backgroundColor: "white",
     }),
   };
 
