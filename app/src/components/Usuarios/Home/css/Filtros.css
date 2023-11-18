@@ -11,15 +11,17 @@
   margin: 3px;
   height: 2.8rem;
   margin-top: 2.5rem;
- 
+}
+.select-element-filtros-2 {
+  width: 120px;
+}
+.select-element-filtros-2 {
+  width: 160px;
 }
 
 @media (max-width: 768px) {
- 
   .div-select-filtros .div-button {
     height: 40px;
     border-radius: 17px;
-    
   }
-
 }

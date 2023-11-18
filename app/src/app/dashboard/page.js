@@ -18,7 +18,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       if (decodedToken) {
         const token = localStorage.getItem("token");
-        setUseToken(token)
+        setUseToken(token);
         try {
           const response = await fetch(
             `https://api-web-saude.vercel.app/usuario/unidades-desaude/${decodedToken}`,
@@ -42,10 +42,7 @@ export default function Dashboard() {
     fetchData();
   }, [decodedToken]);
 
- useEffect(()=>{
-
-  }
- )
+  useEffect(() => {});
   if (isLoading && useToken) {
     return (
       <div>

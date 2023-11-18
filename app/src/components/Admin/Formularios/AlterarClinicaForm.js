@@ -13,13 +13,8 @@ const schema = yup.object().shape({
   nome: yup.string().required("O nome da clínica é obrigatório"),
   imagem: yup.string(),
   horarioSemana: yup.object().shape({
-    open: yup
-      .string()
-      .required("O horário de abertura da semana é obrigatório")
-      .nullable(),
-    close: yup
-      .string()
-      .required("O horário de fechamento da semana é obrigatório"),
+    open: yup.string().required("horário obrigatório").nullable(),
+    close: yup.string().required("horário obrigatório"),
   }),
 
   email: yup.string().email("Informe um e-mail válido"),

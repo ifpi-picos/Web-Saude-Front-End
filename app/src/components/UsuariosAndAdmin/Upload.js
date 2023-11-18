@@ -44,7 +44,7 @@ function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
           }
 
           return (
-            <button className="upload" onClick={handleOnClick}>
+            <button className="upload" type="button" onClick={handleOnClick}>
               Enviar imagem
             </button>
           );

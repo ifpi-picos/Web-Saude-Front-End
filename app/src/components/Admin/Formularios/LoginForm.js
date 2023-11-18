@@ -14,8 +14,8 @@ const schema = yup.object().shape({
   senha: yup
     .string()
     .required("A senha é obrigatória")
-    .min(6, "A senha deve ter pelo menos 6 caracteres")
-    .max(12, "A senha não pode ter mais de 12 caracteres"),
+    .min(6, "min 6 caracteres")
+    .max(12, "max 12 caracteres"),
 });
 
 export default function LoginForm() {
@@ -79,7 +79,7 @@ export default function LoginForm() {
           <h2 className="title">Login</h2>
           <div className="div-inputs">
             <label htmlFor="email">Email</label>
-            
+
             <Controller
               name="email"
               control={control}

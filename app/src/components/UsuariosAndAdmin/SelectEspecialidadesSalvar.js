@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
+import "@/components/Admin/Formularios/css/Form.css";
 
 export default function SelectEspecialidadesSalvar({
   onChange,
@@ -19,9 +20,7 @@ export default function SelectEspecialidadesSalvar({
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      backgroundColor: "white",
-      maxWidth: "300px",
-      
+      width: "100%",
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,
@@ -30,7 +29,6 @@ export default function SelectEspecialidadesSalvar({
       ...provided,
       backgroundColor: state.isSelected ? "blue" : "#00285f",
       color: "white",
-      
     }),
     menu: (provided, state) => ({
       ...provided,
@@ -100,6 +98,7 @@ export default function SelectEspecialidadesSalvar({
 
   return (
     <Select
+      className="select"
       styles={customStyles}
       options={specialtyOptions}
       isMulti
