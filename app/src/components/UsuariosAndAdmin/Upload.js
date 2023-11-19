@@ -58,3 +58,4 @@ function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
 }
 
 export default CloudinaryUploadWidget;
+ 

@@ -4,6 +4,7 @@ import { useForm, Controller, set } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
+import Link from "next/link";
 import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
@@ -67,6 +68,7 @@ export default function LoginForm() {
       >
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="div-logo">
+            <Link href="/">
             <Image
               className="image-logo"
               src="/imgs/logo.png"
@@ -74,6 +76,7 @@ export default function LoginForm() {
               width={200}
               height={200}
             />
+            </Link>
           </div>
 
           <h2 className="title">Login</h2>

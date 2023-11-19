@@ -119,18 +119,20 @@ button:hover {
     outline: none;
     height: 25px;
     margin-bottom: 5px;
+    width: 215px;
+
   }
 
   .div-inputs .div-horarios .div-horario input {
     border: none;
     outline: none;
-    width: 100%;
+    width: 215px;
   }
   .div-inputs textarea {
     width: 200px;
     height: 200px;
   }
   .select {
-    width: 212px;
+    width: 215px;
   }
 }

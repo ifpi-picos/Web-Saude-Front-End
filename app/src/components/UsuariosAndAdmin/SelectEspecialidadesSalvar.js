@@ -20,7 +20,6 @@ export default function SelectEspecialidadesSalvar({
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      width: "100%",
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,
