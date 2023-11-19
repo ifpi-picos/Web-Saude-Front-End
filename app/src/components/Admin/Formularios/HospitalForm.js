@@ -5,7 +5,6 @@ import SelectEspecialidadesSalvar from "@/components/UsuariosAndAdmin/SelectEspe
 import { Modal, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
-import { useDecodedToken } from "@/services/decodeToken";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "@/components/Admin/Formularios/css/Form.css";
 import Image from "next/image";
@@ -42,11 +41,9 @@ export default function HospitalForm() {
   const [showModal, setShowModal] = useState(false);
   const [imageURL, setImageURL] = useState("");
   const [imageLink, setImageLink] = useState("");
-  const decodedToken = useDecodedToken();
 
   const onSubmit = async formData => {
     formData.imagem = imageLink;
-    formData.usuario = decodedToken;
     formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
 

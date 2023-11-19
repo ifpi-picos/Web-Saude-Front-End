@@ -36,6 +36,9 @@ function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
       <CldUploadWidget
         uploadPreset={process.env.localNEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
         onSuccess={handleUploadSuccess}
+        options={{
+          clientAllowedFormats: ["png", "jpg", "jpeg", "gif","svg"],
+        }}
       >
         {({ open }) => {
           function handleOnClick(e) {

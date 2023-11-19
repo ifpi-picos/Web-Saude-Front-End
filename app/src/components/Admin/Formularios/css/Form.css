@@ -2,7 +2,7 @@
   color: #f00;
 }
 .select {
-  width: 100%;
+  width: 400px;
 }
 .section-form {
   display: flex;
@@ -124,11 +124,13 @@ button:hover {
   .div-inputs .div-horarios .div-horario input {
     border: none;
     outline: none;
-    width: 80%;
+    width: 100%;
   }
   .div-inputs textarea {
     width: 200px;
     height: 200px;
   }
- 
+  .select {
+    width: 212px;
+  }
 }

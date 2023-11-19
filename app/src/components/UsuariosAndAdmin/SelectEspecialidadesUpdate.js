@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
+import "@/components/Admin/Formularios/css/Form.css";
 
 export default function SelectEspecialidadesUpdate({
   onChange,
@@ -97,6 +98,7 @@ export default function SelectEspecialidadesUpdate({
 
   return (
     <Select
+      className="select"
       styles={customStyles}
       options={specialtyOptions}
       isMulti
