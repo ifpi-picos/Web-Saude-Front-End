@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-
+import Card from "react-bootstrap/Card";
+import "@/components/Usuarios/Ver-Mais/css/Especialidades.css"
 export default function Especialidades({ nome }) {
-  const [show, setShow] = useState(false);
   const [especialidades, setEspecialidades] = useState([]);
-  const fechaModal = () => setShow(false);
-  const abrirModal = () => setShow(true);
 
   useEffect(() => {
     fetch(`https://api-web-saude.vercel.app/especialidades/${nome}`)
@@ -15,32 +11,18 @@ export default function Especialidades({ nome }) {
   }, [nome]);
 
   return (
-    <div id="especialidades">
-      <Button
-        className="button-especialidades"
-        variant="primary"
-        onClick={abrirModal}
-      >
-        Especialidades
-      </Button>
-
-      <Modal show={show} onHide={fechaModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Especialidades</Modal.Title>
-        </Modal.Header>
-        <Modal.Body style={{ cursor: "pointer" }}>
-          <ul>
+      <Card className="card-especialidades">
+        <Card.Body>
+          <Card.Title style={{ textAlign: "center" }}>Especialidades</Card.Title>
+          <Card.Text>
             {especialidades.map((especialidade, index) => (
-              <li key={index}>{especialidade.nome}</li>
+              <span key={index}>
+                {especialidade.nome}
+                {index !== especialidades.length - 1 && ", "}
+              </span>
             ))}
-          </ul>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={fechaModal}>
-            Fechar
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
+          </Card.Text>
+        </Card.Body>
+      </Card>
   );
 }

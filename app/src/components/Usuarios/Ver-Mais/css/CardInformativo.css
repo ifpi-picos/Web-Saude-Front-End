@@ -1,6 +1,6 @@
 /* card infromações*/
 .section-informações .card-informacoes {
-  width: 930px;
+  width: 900px;
   height: 550px;
   background-color: var(--secundary-color);
   border-radius: 6px;
@@ -118,7 +118,7 @@
 @media (max-width: 768px) {
   /* card */
   .section-informações .card-informacoes {
-    width: 100%;
+    width: 95%;
     height: 520px;
   }
   .section-informações .card-informacoes .top .image-container {
