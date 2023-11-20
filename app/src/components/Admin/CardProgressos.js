@@ -20,7 +20,7 @@ export default function CardProgressos() {
           <span className="las la-envelope"></span>
         </div>
         <div className="card-progress">
-          <small>Novos e-mails recebidos</small>
+          <small>visualizações mensal</small>
           <div className="card-indicator">
             <div className="indicator four" style={{ width: "80%" }}></div>
           </div>

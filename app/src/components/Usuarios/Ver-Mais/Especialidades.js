@@ -18,7 +18,8 @@ export default function Especialidades({ nome }) {
             {especialidades.map((especialidade, index) => (
               <span key={index}>
                 {especialidade.nome}
-                {index !== especialidades.length - 1 && ", "}
+                {index !== especialidades.length - 1 ? ", " : "."}
+
               </span>
             ))}
           </Card.Text>

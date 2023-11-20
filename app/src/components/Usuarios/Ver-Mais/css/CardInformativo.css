@@ -2,7 +2,8 @@
 .section-informações .card-informacoes {
   width: 900px;
   height: 550px;
-  background-color: var(--secundary-color);
+  background-color: white;
+  fill: white;
   border-radius: 6px;
   box-shadow: 20px 20px 50px -30px #4169e1;
   margin-bottom: 70px;

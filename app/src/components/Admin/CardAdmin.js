@@ -106,7 +106,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 onHide={() => handleCloseModal(index)}
               >
                 <Modal.Header closeButton>
-                  <Modal.Title>Opções do Item</Modal.Title>
+                  <Modal.Title>Opções da {info.nome}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <p className="opcoes">Escolha uma opção:</p>
@@ -115,7 +115,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                     variant="success"
                     onClick={() => handleUpdateItem(index)}
                   >
-                    <Link
+                    <a
                       href={
                         info.horario === "Atendimento 24 Horas"
                           ? `/alterar-hospital/${info.nome}`
@@ -123,7 +123,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                       }
                     >
                       Alterar
-                    </Link>
+                    </a>
                   </Button>
                   <Button
                     className="buttons-model"

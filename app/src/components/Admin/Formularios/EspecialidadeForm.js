@@ -8,7 +8,6 @@ export default function EspecialidadeForm() {
   const [especialidades, setEspecialidades] = useState([]);
   const [novaEspecialidade, setNovaEspecialidade] = useState("");
   const [editandoIndex, setEditandoIndex] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
 
   const editBoxRef = useRef(null);
 
@@ -52,7 +51,8 @@ export default function EspecialidadeForm() {
         setNovaEspecialidade("");
         listarEspecialidades();
         if (token) {
-          setSuccessMessage("Especialidade cadastrada com sucesso.");
+          window.alert("Especialidade salva com sucesso!")
+
         }
       })
       .catch(error => console.error(error));
@@ -79,7 +79,8 @@ export default function EspecialidadeForm() {
         setEditandoIndex(null);
         listarEspecialidades();
         if (token) {
-          setSuccessMessage("Especialidade atualizada com sucesso.");
+          window.alert("Especialidade alterada com sucesso!")
+
         }
       })
       .catch(error => console.error(error));
@@ -103,9 +104,7 @@ export default function EspecialidadeForm() {
           updatedEspecialidades.splice(index, 1);
           setEspecialidades(updatedEspecialidades);
           listarEspecialidades();
-          if (token) {
-            setSuccessMessage("Especialidade excluída com sucesso.");
-          }
+        
         })
         .catch(error => console.error(error));
     }
@@ -117,11 +116,7 @@ export default function EspecialidadeForm() {
 
   return (
     <>
-      {successMessage && (
-        <div className="alert alert-success" role="alert">
-          {successMessage}
-        </div>
-      )}
+     
       <div className="conteudo">
         <div className="topo">
           <input

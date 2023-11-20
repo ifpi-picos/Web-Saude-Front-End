@@ -23,12 +23,10 @@
   height: 3rem;
   background-color: #eeeeee;
   border-radius: 2.5rem;
-  outline: none;
+  outline-color: var(--primary-color);
   border: none;
 }
-.div-search .input-search input:focus {
-  color: black;
-}
+
 .div-search .input-search input::placeholder {
   color: gray;
 }

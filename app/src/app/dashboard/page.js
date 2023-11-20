@@ -8,6 +8,7 @@ import { useDecodedToken } from "@/services/decodeToken";
 import "@/components/Admin/css/Dashboard.css";
 import Loading from "../loading";
 import Link from "next/link";
+
 export default function Dashboard() {
   const decodedToken = useDecodedToken();
   const [informacao, setInformacao] = useState([]);
@@ -67,20 +68,7 @@ export default function Dashboard() {
           <CardProgressos />
           <div className="registros table-responsive">
             <div className="registro-header">
-              <div className="add">
-                <button style={{ marginRight: "10px" }}>Buscar</button>
-                <select name="" id="">
-                  <option value="">ID</option>
-                </select>
-              </div>
-
-              <div className="browse">
-                <input
-                  type="search"
-                  placeholder="Search"
-                  className="record-search"
-                />
-              </div>
+              <p><strong>Clique no botão ver mais e veja como ficou seu estabelecimento!</strong></p>
             </div>
           </div>
           <CardAdmin informacao={informacao} />

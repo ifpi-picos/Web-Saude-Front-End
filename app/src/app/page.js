@@ -7,6 +7,7 @@ import Footer from "@/components/Usuarios/Footer";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import FiltroService from "@/services/FiltroService";
 import "../components/Usuarios/Home/css/Home.css";
+
 export default async function CorpoHome() {
   const informacao = await FiltroService.unidadesdeSaude();
 
