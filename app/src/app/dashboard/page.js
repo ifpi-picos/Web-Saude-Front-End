@@ -68,7 +68,12 @@ export default function Dashboard() {
           <CardProgressos />
           <div className="registros table-responsive">
             <div className="registro-header">
-              <p><strong>Clique no botão ver mais e veja como ficou seu estabelecimento!</strong></p>
+              <p>
+                <strong>
+                  Clique no botão ver mais para ver as imfoamções do seu
+                  estabelecimento!
+                </strong>
+              </p>
             </div>
           </div>
           <CardAdmin informacao={informacao} />

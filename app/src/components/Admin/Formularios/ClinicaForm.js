@@ -52,7 +52,6 @@ export default function ClinicaForm() {
     formData.imagem = imageLink;
     formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
-    console.log("Dados a serem enviados:", formData);
 
     try {
       const response = await fetch(
@@ -69,7 +68,6 @@ export default function ClinicaForm() {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
         setShowModal(true);
         window.location.href = "/dashboard";
       } else {
@@ -83,7 +81,6 @@ export default function ClinicaForm() {
   const handleImageURLChange = imageUrl => {
     setImageURL(imageUrl);
     setImageLink(imageUrl);
-    console.log("URL da imagem:", imageUrl);
   };
   const handleSpecialtyChange = selectedSpecialties => {
     setError("especialidades", "");
@@ -97,13 +94,13 @@ export default function ClinicaForm() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="div-logo">
               <Link href="/dashboard">
-              <Image
-                className="image-logo"
-                src="/imgs/logo.png"
-                alt="logo"
-                width={200}
-                height={200}
-              />
+                <Image
+                  className="image-logo"
+                  src="/imgs/logo.png"
+                  alt="logo"
+                  width={200}
+                  height={200}
+                />
               </Link>
             </div>
 

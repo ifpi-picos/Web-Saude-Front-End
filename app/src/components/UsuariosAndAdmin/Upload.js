@@ -37,7 +37,7 @@ function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
         uploadPreset={process.env.localNEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
         onSuccess={handleUploadSuccess}
         options={{
-          clientAllowedFormats: ["png", "jpg", "jpeg", "gif","svg"],
+          clientAllowedFormats: ["png", "jpg", "jpeg", "gif", "svg"],
         }}
       >
         {({ open }) => {
@@ -58,4 +58,3 @@ function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
 }
 
 export default CloudinaryUploadWidget;
- 

@@ -25,7 +25,9 @@ export default function Card({ pageNumber, informacao }) {
   return (
     <section className="section-card">
       {limitedPosts.length === 0 ? (
-        <p className="mt-3"><strong>Nenhum resultado encontrado.</strong></p>
+        <p className="mt-3">
+          <strong>Nenhum resultado encontrado.</strong>
+        </p>
       ) : (
         <>
           {limitedPosts.map((info, index) => (

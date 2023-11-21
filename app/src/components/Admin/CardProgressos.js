@@ -3,11 +3,11 @@ export default function CardProgressos() {
     <div className="analytics">
       <div className="card">
         <div className="card-head">
-          <h2>340,230</h2>
+          <h2>340</h2>
           <span className="las la-eye"></span>
         </div>
         <div className="card-progress">
-          <small>visualizações de página</small>
+          <small>visualizações total de seus estabelecimentos</small>
           <div className="card-indicator">
             <div className="indicator two" style={{ width: "80%" }}></div>
           </div>
@@ -16,7 +16,7 @@ export default function CardProgressos() {
 
       <div className="card">
         <div className="card-head">
-          <h2>47,500</h2>
+          <h2>47</h2>
           <span className="las la-envelope"></span>
         </div>
         <div className="card-progress">

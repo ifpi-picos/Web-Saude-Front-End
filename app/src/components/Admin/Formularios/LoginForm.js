@@ -69,13 +69,13 @@ export default function LoginForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="div-logo">
             <Link href="/">
-            <Image
-              className="image-logo"
-              src="/imgs/logo.png"
-              alt="logo"
-              width={200}
-              height={200}
-            />
+              <Image
+                className="image-logo"
+                src="/imgs/logo.png"
+                alt="logo"
+                width={200}
+                height={200}
+              />
             </Link>
           </div>
 

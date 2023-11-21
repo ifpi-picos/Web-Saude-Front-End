@@ -1,7 +1,7 @@
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 export const initGA = () => {
-  ReactGA.initialize('G-LCHFKNEDK7'); 
+  ReactGA.initialize("G-LCHFKNEDK7");
 };
 
 export const logPageView = () => {

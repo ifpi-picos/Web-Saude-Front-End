@@ -51,8 +51,7 @@ export default function EspecialidadeForm() {
         setNovaEspecialidade("");
         listarEspecialidades();
         if (token) {
-          window.alert("Especialidade salva com sucesso!")
-
+          window.alert("Especialidade salva com sucesso!");
         }
       })
       .catch(error => console.error(error));
@@ -79,8 +78,7 @@ export default function EspecialidadeForm() {
         setEditandoIndex(null);
         listarEspecialidades();
         if (token) {
-          window.alert("Especialidade alterada com sucesso!")
-
+          window.alert("Especialidade alterada com sucesso!");
         }
       })
       .catch(error => console.error(error));
@@ -104,7 +102,6 @@ export default function EspecialidadeForm() {
           updatedEspecialidades.splice(index, 1);
           setEspecialidades(updatedEspecialidades);
           listarEspecialidades();
-        
         })
         .catch(error => console.error(error));
     }
@@ -116,7 +113,6 @@ export default function EspecialidadeForm() {
 
   return (
     <>
-     
       <div className="conteudo">
         <div className="topo">
           <input
