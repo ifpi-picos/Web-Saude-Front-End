@@ -4,25 +4,23 @@ import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import CardAdmin from "@/components/Admin/CardAdmin";
 import CardProgressos from "@/components/Admin/CardProgressos";
 import PrivateRoute from "@/components/Admin/privateRouter";
-import { useDecodedToken } from "@/services/decodeToken";
 import "@/components/Admin/css/Dashboard.css";
 import Loading from "../loading";
 import Link from "next/link";
 
 export default function Dashboard() {
-  const decodedToken = useDecodedToken();
-  const [informacao, setInformacao] = useState([]);
+  const [unidadesDeSaude, setUniidadesDeSaude] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [useToken, setUseToken] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      if (decodedToken) {
+      
         const token = localStorage.getItem("token");
         setUseToken(token);
         try {
           const response = await fetch(
-            `https://api-web-saude.vercel.app/usuario/unidades-desaude/${decodedToken}`,
+            `https://api-web-saude.vercel.app/usuario/unidades-de-saude/`,
             {
               headers: {
                 "Content-Type": "application/json",
@@ -31,17 +29,16 @@ export default function Dashboard() {
             }
           );
           const data = await response.json();
-          setInformacao(data);
+          setUniidadesDeSaude(data);
         } catch (error) {
           console.error("Error fetching data:", error);
         } finally {
           setIsLoading(false);
         }
       }
-    };
-
+  
     fetchData();
-  }, [decodedToken]);
+  }, []);
 
   useEffect(() => {});
   if (isLoading && useToken) {
@@ -51,7 +48,6 @@ export default function Dashboard() {
       </div>
     );
   }
-
   return (
     <PrivateRoute>
       <div className="main-content">
@@ -76,7 +72,7 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
-          <CardAdmin informacao={informacao} />
+          <CardAdmin informacao={unidadesDeSaude} />
         </div>
       </div>
     </PrivateRoute>
