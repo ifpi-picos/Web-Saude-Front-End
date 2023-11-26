@@ -31,7 +31,7 @@ export default function NovaSenhaForm({ nome }) {
 
   const onSubmit = async formData => {
     const token = localStorage.getItem("token");
-    console.log("nome",nome)
+    console.log("nome", nome);
     try {
       const response = await fetch(
         `https://api-web-saude.vercel.app/usuario/nova-senha/${nome}`,
@@ -43,18 +43,21 @@ export default function NovaSenhaForm({ nome }) {
           },
           body: JSON.stringify({
             senha: formData.senha,
-            confirmarSenha:formData.confirmarSenha
-
+            confirmarSenha: formData.confirmarSenha,
           }),
         }
       );
       if (response.ok) {
         const responseData = await response.json();
-        console.log('Resposta da API:', responseData);
+        console.log("Resposta da API:", responseData);
         setShowModal(true);
         window.location.href = "/dashboard";
       } else {
-        console.error('Erro na chamada à API:', response.status, response.statusText);
+        console.error(
+          "Erro na chamada à API:",
+          response.status,
+          response.statusText
+        );
       }
     } catch (error) {
       console.error(error);
@@ -74,7 +77,7 @@ export default function NovaSenhaForm({ nome }) {
               height: "100%",
               transform: "translate(-50%,-50%)",
               marginTop: "0px",
-              marginBottom:"0px"
+              marginBottom: "0px",
             }}
           >
             <form onSubmit={handleSubmit(onSubmit)}>

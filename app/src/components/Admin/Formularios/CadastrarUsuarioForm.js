@@ -85,8 +85,7 @@ export default function CadstrarUsuarioForm() {
               height: "100%",
               transform: "translate(-50%,-50%)",
               marginTop: "0px",
-              marginBottom:"0px"
-
+              marginBottom: "0px",
             }}
           >
             <form onSubmit={handleSubmit(onSubmit)}>
