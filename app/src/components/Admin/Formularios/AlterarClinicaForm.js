@@ -11,24 +11,55 @@ import Link from "next/link";
 import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
-  nome: yup.string().required("nome obrigatório").max(255,"tamanho muito longo"),
+  nome: yup
+    .string()
+    .required("nome obrigatório")
+    .max(255, "tamanho muito longo"),
   imagem: yup.string(),
   horarioSemana: yup.object().shape({
     open: yup.string().required("horário obrigatório").nullable(),
     close: yup.string().required("horário obrigatório").nullable(),
   }),
-  email: yup.string().email("Informe um e-mail válido").max(255,"e-mail muito longo"),
+  email: yup
+    .string()
+    .email("Informe um e-mail válido")
+    .max(255, "e-mail muito longo"),
   whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
-  instagram: yup.string().max(255,"tamanho muito longo"),
+  instagram: yup.string().max(255, "tamanho muito longo"),
   descricao: yup.string(),
-  longitude: yup.string().required("A longitude é obrigatória").max(10,"tamanho muito longo"),
-  latitude: yup.string().required("A latitude é obrigatória").max(10,"tamanho muito longo"),
-  cep: yup.string().required("O CEP é obrigatório").max(10,"tamanho muito longo"),
-  rua: yup.string().required("A rua é obrigatória").max(255,"tamanho muito longa"),
-  numero: yup.string().required("O número é obrigatório").max(10,"tamanho muito longo"),
-  bairro: yup.string().required("O bairro é obrigatório").max(255,"tamanho muito longo"),
-  cidade: yup.string().required("A cidade é obrigatória").max(255,"tamanho muito lomgo"),
-  uf: yup.string().required("O estado (UF) é obrigatório").min(2,"tamanho muito curto").max(2,"tamanho muito longo"),
+  longitude: yup
+    .string()
+    .required("A longitude é obrigatória")
+    .max(10, "tamanho muito longo"),
+  latitude: yup
+    .string()
+    .required("A latitude é obrigatória")
+    .max(10, "tamanho muito longo"),
+  cep: yup
+    .string()
+    .required("O CEP é obrigatório")
+    .max(10, "tamanho muito longo"),
+  rua: yup
+    .string()
+    .required("A rua é obrigatória")
+    .max(255, "tamanho muito longa"),
+  numero: yup
+    .string()
+    .required("O número é obrigatório")
+    .max(10, "tamanho muito longo"),
+  bairro: yup
+    .string()
+    .required("O bairro é obrigatório")
+    .max(255, "tamanho muito longo"),
+  cidade: yup
+    .string()
+    .required("A cidade é obrigatória")
+    .max(255, "tamanho muito lomgo"),
+  uf: yup
+    .string()
+    .required("O estado (UF) é obrigatório")
+    .min(2, "tamanho muito curto")
+    .max(2, "tamanho muito longo"),
   especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
 });
 

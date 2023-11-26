@@ -5,7 +5,7 @@ import CardAdmin from "@/components/Admin/CardAdmin";
 import CardProgressos from "@/components/Admin/CardProgressos";
 import PrivateRoute from "@/components/Admin/privateRouter";
 import Loading from "../loading";
-import Link from "next/link"
+import Link from "next/link";
 import "@/components/Admin/css/Dashboard.css";
 
 export default function Funcionario() {

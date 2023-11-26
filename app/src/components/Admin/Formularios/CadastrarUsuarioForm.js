@@ -17,7 +17,8 @@ const schema = yup.object().shape({
     .max(50, "tamanho muito grande"),
   email: yup
     .string()
-    .email("Informe um e-mail válido").max(255,"e-mail muito longo"),
+    .email("Informe um e-mail válido")
+    .max(255, "e-mail muito longo"),
   senha: yup
     .string()
     .required("senha obrigatória")
@@ -83,9 +84,7 @@ export default function CadstrarUsuarioForm() {
               top: "50%",
               height: "100%",
               transform: "translate(-50%,-50%)",
-              marginTop: "0px"
-
-              
+              marginTop: "0px",
             }}
           >
             <form onSubmit={handleSubmit(onSubmit)}>

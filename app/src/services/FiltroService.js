@@ -90,7 +90,6 @@ class FiltroSeerrvice {
       console.error(error);
     }
   }
-  
 }
 
 export default new FiltroSeerrvice();

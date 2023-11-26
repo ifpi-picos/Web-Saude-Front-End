@@ -20,7 +20,7 @@ const schema = yup.object().shape({
     .oneOf([yup.ref("senha"), null], "As senhas devem coincidir")
     .required("Confirmação obrigatória"),
 });
-export default function NovaSenha({params}) {
+export default function NovaSenha({ params }) {
   const {
     control,
     handleSubmit,
@@ -52,7 +52,6 @@ export default function NovaSenha({params}) {
         setShowModal(true);
         window.location.href = "/dashboard";
       }
-    
     } catch (error) {
       console.error(error);
     }
@@ -70,8 +69,7 @@ export default function NovaSenha({params}) {
               top: "50%",
               height: "100%",
               transform: "translate(-50%,-50%)",
-              marginTop: "0px"
-
+              marginTop: "0px",
             }}
           >
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -88,7 +86,6 @@ export default function NovaSenha({params}) {
               </div>
               <h2 className="title">Nova Senha</h2>
               <div className="div-inputs">
-              
                 <label>Senha</label>
                 <Controller
                   control={control}

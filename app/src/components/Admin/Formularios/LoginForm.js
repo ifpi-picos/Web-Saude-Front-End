@@ -1,5 +1,5 @@
 "use client";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -11,7 +11,8 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .email("Informe um e-mail válido")
-    .required("O e-mail é obrigatório").max(255,"e-mail muito longo"),
+    .required("O e-mail é obrigatório")
+    .max(255, "e-mail muito longo"),
   senha: yup
     .string()
     .required("A senha é obrigatória")
@@ -68,8 +69,7 @@ export default function LoginForm() {
           bottom: "0",
           left: "50%",
           transform: "translate(-50%,-50%)",
-          marginTop: "0px"
-
+          marginTop: "0px",
         }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -123,15 +123,12 @@ export default function LoginForm() {
             {errors.senha && (
               <div className="error">{errors.senha.message}</div>
             )}
-
           </div>
 
           <div className="div-button-submit">
             <button type="submit">Entrar</button>
-
           </div>
           {errorMessage && <div className="error">{errorMessage}</div>}
-
         </form>
       </div>
     </section>
