@@ -4,13 +4,12 @@ import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import CardAdmin from "@/components/Admin/CardAdmin";
 import CardProgressos from "@/components/Admin/CardProgressos";
 import PrivateRoute from "@/components/Admin/privateRouter";
-import "@/components/Admin/css/Dashboard.css";
 import Loading from "../loading";
-import Link from "next/link";
-import Usuarios from "@/components/Admin/Usuarios";
+import Link from "next/link"
+import "@/components/Admin/css/Dashboard.css";
 
-export default function Dashboard() {
-  const [usuarios, setUsuarios] = useState([]);
+export default function Funcionario() {
+  const [unidadesDeSaude, setUniidadesDeSaude] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [useToken, setUseToken] = useState(null);
 
@@ -20,7 +19,7 @@ export default function Dashboard() {
       setUseToken(token);
       try {
         const response = await fetch(
-          `https://api-web-saude.vercel.app/usuarios/`,
+          `https://api-web-saude.vercel.app/usuario/unidades-de-saude/`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -29,7 +28,7 @@ export default function Dashboard() {
           }
         );
         const data = await response.json();
-        setUsuarios(data);
+        setUniidadesDeSaude(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -48,9 +47,6 @@ export default function Dashboard() {
       </div>
     );
   }
-  if (usuarios.length > 0) {
-    console.log(usuarios);
-  }
   return (
     <PrivateRoute>
       <div className="main-content">
@@ -68,14 +64,15 @@ export default function Dashboard() {
             <div className="registro-header">
               <p>
                 <strong>
-                  <h3 className="titulo-usuarios">Usuários</h3>
+                  Clique no botão ver mais para ver as imfoamções do seu
+                  estabelecimento!
                 </strong>
               </p>
             </div>
           </div>
+          <CardAdmin informacao={unidadesDeSaude} />
         </div>
       </div>
-      <Usuarios usuarios={usuarios} />
     </PrivateRoute>
   );
 }

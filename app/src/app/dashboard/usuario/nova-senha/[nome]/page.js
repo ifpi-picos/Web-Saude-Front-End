@@ -6,18 +6,10 @@ import { Modal, Button } from "react-bootstrap";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import PrivateRoute from "../privateRouter";
+import PrivateRoute from "@/components/Admin/privateRouter";
 import "@/components/Admin/Formularios/css/Form.css";
-
+//npm run start:dev
 const schema = yup.object().shape({
-  nome: yup
-    .string()
-    .required("nome obirgatário")
-    .min(3, "tamanho muito grande")
-    .max(50, "tamanho muito grande"),
-  email: yup
-    .string()
-    .email("Informe um e-mail válido").max(255,"e-mail muito longo"),
   senha: yup
     .string()
     .required("senha obrigatória")
@@ -28,7 +20,7 @@ const schema = yup.object().shape({
     .oneOf([yup.ref("senha"), null], "As senhas devem coincidir")
     .required("Confirmação obrigatória"),
 });
-export default function CadstrarUsuarioForm() {
+export default function NovaSenha({params}) {
   const {
     control,
     handleSubmit,
@@ -37,23 +29,20 @@ export default function CadstrarUsuarioForm() {
     resolver: yupResolver(schema),
   });
   const [showModal, setShowModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async formData => {
     const token = localStorage.getItem("token");
 
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/novo-usuario`,
+        `https://api-web-saude.vercel.app/usuario/nova-senha/${params.nome}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             "x-access-token": token,
           },
           body: JSON.stringify({
-            nome: formData.nome,
-            email: formData.email,
             senha: formData.senha,
           }),
         }
@@ -61,11 +50,9 @@ export default function CadstrarUsuarioForm() {
       if (response.ok) {
         const responseData = await response.json();
         setShowModal(true);
-        window.location.href = "/dashbord";
+        window.location.href = "/dashboard";
       }
-      if (response.status === 400) {
-        setErrorMessage("Email ou senha incorretos");
-      }
+    
     } catch (error) {
       console.error(error);
     }
@@ -85,7 +72,6 @@ export default function CadstrarUsuarioForm() {
               transform: "translate(-50%,-50%)",
               marginTop: "0px"
 
-              
             }}
           >
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -100,42 +86,9 @@ export default function CadstrarUsuarioForm() {
                   />
                 </Link>
               </div>
-              <h2 className="title">Cadastrar Usuário</h2>
+              <h2 className="title">Nova Senha</h2>
               <div className="div-inputs">
-                <label>Nome</label>
-                <Controller
-                  name="nome"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      className={errors.nome ? "erro" : ""}
-                      type="text"
-                      name="nome"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.nome && (
-                  <div className="error">{errors.nome.message}</div>
-                )}
-                <label>Email</label>
-                <Controller
-                  name="email"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      className={errors.email ? "erro" : ""}
-                      type="email"
-                      name="email"
-                      value={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-                {errors.email && (
-                  <div className="error">{errors.email.message}</div>
-                )}
+              
                 <label>Senha</label>
                 <Controller
                   control={control}
@@ -172,16 +125,16 @@ export default function CadstrarUsuarioForm() {
                 )}
               </div>
               <div className="div-button-submit">
-                <button type="submit">Cadastrar</button>
+                <button type="submit">Alterar Senha</button>
               </div>
             </form>
           </div>
         </section>
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
-            <Modal.Title>Usuário Cadastrado com Sucesso</Modal.Title>
+            <Modal.Title>Senha Alterada com Sucesso</Modal.Title>
           </Modal.Header>
-          <Modal.Body>O Usuário foi Cadastrado com sucesso.</Modal.Body>
+          <Modal.Body>A Senha Foi Alterada com Sucesso.</Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={() => setShowModal(false)}>
               Fechar

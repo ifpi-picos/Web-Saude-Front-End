@@ -15,7 +15,6 @@ import "../../../components/Usuarios/css/verMais.css";
 
 export default async function verMais({ params }) {
   const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(params.nome);
-
   if (unidadesdeSaude.length === 0) {
     return <NotFound />;
   }

@@ -1,5 +1,6 @@
 .error {
   color: #f00;
+  text-align: center;
 }
 .select {
   width: 400px;
@@ -16,7 +17,7 @@
 .div-logo .image-logo {
   width: 100px;
   height: 100px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .div-form {
   display: flex;
@@ -25,8 +26,13 @@
   width: 700px;
   background-color: var(--primary-color);
   border-radius: 20px;
-  margin-top: 10px;
+  margin-top: 130px;
   margin-bottom: 10px;
+  position: "absolute";
+  bottom: 0px;
+  left: 50%;
+  top: 50%;
+  height: 100%;
 }
 .div-inputs,
 .div-horario {
@@ -48,8 +54,8 @@
   outline-color: var(--primary-color);
   height: 25px;
   margin-bottom: 5px;
-  border-radius: 5px;
-  border: solid 1px;
+  border-radius: 7px;
+  border: none;
 }
 
 .div-inputs label {
@@ -58,20 +64,21 @@
 }
 .div-inputs .div-horarios .div-horario input {
   max-width: 100%;
-  outline: none;
+  outline-color: var(--primary-color);
+  height: 25px;
   width: 100%;
+  border-radius: 7px;
 }
 .upload {
   max-width: 100%;
   width: 100%;
   height: 30px;
   margin-bottom: 5px;
-  border-radius: 5px;
+  border-radius: 7px;
 }
 .div-inputs textarea {
   width: 400px;
-  outline-color: var(--primary-color);
-  border-radius: 5px;
+  border-radius: 7px;
 }
 .div-inputs textarea::placeholder {
   position: absolute;
@@ -87,7 +94,28 @@
   border: none;
 }
 button:hover {
-  background-color: var(--secundary-color);
+  opacity: 0.8;
+}
+.div-inputs input.erro,
+.div-inputs .div-horarios .div-horario input.erro,
+.div-inputs input.erro,
+.div-inputs .div-horarios .div-horario input.erro {
+  border: 2px solid #f00;
+  outline: none;
+}
+
+.div-inputs input:focus,
+.div-inputs .div-horarios .div-horario input:focus,
+.div-inputs input.erro:focus,
+.div-inputs .div-horarios .div-horario input.erro:focus {
+  border: 2px solid #f00;
+  outline: none;
+}
+
+.div-inputs input:focus,.div-inputs textarea:focus
+{
+  border: 2px solid #07a;
+  outline: none;
 }
 .div-button-submit {
   display: flex;
@@ -102,35 +130,46 @@ button:hover {
   margin-top: 10px;
   color: white;
 }
-
+.div-button-submit button {
+  width: 400px;
+}
 @media (max-width: 768px) {
   .section-form {
     width: 100%;
   }
   .div-form {
-    width: 320px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0px;
+    border-radius: 0px;
   }
-  .div-logo img {
-    width: 100px;
+  .div-logo .image-logo {
+    width: 85px;
+    height: 85px;
+    margin-top: 5px;
   }
   .div-inputs input {
     border: none;
-    outline: none;
     height: 25px;
     margin-bottom: 5px;
     width: 215px;
   }
-
+  .div-button input:focus {
+    background-color: #f00;
+  }
   .div-inputs .div-horarios .div-horario input {
     border: none;
     outline: none;
     width: 215px;
   }
   .div-inputs textarea {
-    width: 200px;
+    width: 215px;
     height: 200px;
   }
   .select {
+    width: 215px;
+  }
+  .div-button-submit button {
     width: 215px;
   }
 }

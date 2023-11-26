@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import { useForm, Controller, set } from "react-hook-form";
+import React, { useState,useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
@@ -11,7 +11,7 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .email("Informe um e-mail válido")
-    .required("O e-mail é obrigatório"),
+    .required("O e-mail é obrigatório").max(255,"e-mail muito longo"),
   senha: yup
     .string()
     .required("A senha é obrigatória")
@@ -29,6 +29,10 @@ export default function LoginForm() {
   });
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    setErrorMessage("");
+  }, [errors.email, errors.senha]);
+
   const onSubmit = async data => {
     try {
       const response = await fetch(`https://api-web-saude.vercel.app/login`, {
@@ -45,7 +49,7 @@ export default function LoginForm() {
 
         localStorage.setItem("token", token);
 
-        window.location.href = "/dashboard";
+        window.location.href = "/funcionario";
       }
 
       if (response.status === 401) {
@@ -64,6 +68,8 @@ export default function LoginForm() {
           bottom: "0",
           left: "50%",
           transform: "translate(-50%,-50%)",
+          marginTop: "0px"
+
         }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -88,6 +94,7 @@ export default function LoginForm() {
               control={control}
               render={({ field }) => (
                 <input
+                  className={errors.email ? "erro" : ""}
                   type="email"
                   name="email"
                   value={field.value}
@@ -105,6 +112,7 @@ export default function LoginForm() {
               control={control}
               render={({ field }) => (
                 <input
+                  className={errors.senha ? "erro" : ""}
                   type="password"
                   name="senha"
                   value={field.value}
@@ -116,12 +124,14 @@ export default function LoginForm() {
               <div className="error">{errors.senha.message}</div>
             )}
 
-            {errorMessage && <div className="error">{errorMessage}</div>}
           </div>
 
           <div className="div-button-submit">
             <button type="submit">Entrar</button>
+
           </div>
+          {errorMessage && <div className="error">{errorMessage}</div>}
+
         </form>
       </div>
     </section>

@@ -31,7 +31,8 @@ export default function HeaderAdmin() {
       expand="lg"
       expanded={expanded}
       variant="white"
-      style={{ backgroundColor: "#00285f" }}
+      style={{ backgroundColor: "#00285f", position: "fixed", width: "100%", top: 0, zIndex: 1000 }}
+
     >
       <Container fluid className="conatainer w-100 m-4">
         <Navbar.Brand href="/dashboard" className="me-auto">

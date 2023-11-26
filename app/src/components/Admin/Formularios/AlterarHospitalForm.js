@@ -11,20 +11,20 @@ import Link from "next/link";
 import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
-  nome: yup.string().required("O nome do hospital é obrigatório"),
+  nome: yup.string().required("nome obrigatório").max(255,"tamanho muito longo"),
   imagem: yup.string(),
-  email: yup.string().email("Informe um e-mail válido"),
+  email: yup.string().email("Informe um e-mail válido").max(255,"e-mail muito longo"),
   whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
-  instagram: yup.string(),
+  instagram: yup.string().max(255,"tamanho muito longo"),
   descricao: yup.string(),
-  longitude: yup.string().required("A longitude é obrigatória"),
-  latitude: yup.string().required("A latitude é obrigatória"),
-  cep: yup.string().required("O CEP é obrigatório"),
-  rua: yup.string().required("A rua é obrigatória"),
-  numero: yup.string().required("O número é obrigatório"),
-  bairro: yup.string().required("O bairro é obrigatório"),
-  cidade: yup.string().required("A cidade é obrigatória"),
-  uf: yup.string().required("O estado (UF) é obrigatório"),
+  longitude: yup.string().required("A longitude é obrigatória").max(10,"tamanho muito longo"),
+  latitude: yup.string().required("A latitude é obrigatória").max(10,"tamanho muito longo"),
+  cep: yup.string().required("O CEP é obrigatório").max(10,"tamanho muito longo"),
+  rua: yup.string().required("A rua é obrigatória").max(255,"tamanho muito longa"),
+  numero: yup.string().required("O número é obrigatório").max(10,"tamanho muito longo"),
+  bairro: yup.string().required("O bairro é obrigatório").max(255,"tamanho muito longo"),
+  cidade: yup.string().required("A cidade é obrigatória").max(255,"tamanho muito lomgo"),
+  uf: yup.string().required("O estado (UF) é obrigatório").min(2,"tamanho muito curto").max(2,"tamanho muito longo"),
   especialidades: yup.array().min(1, "Selecione pelo menos uma especialidade"),
 });
 export default function AlterarHospitalForm({ hospitalData, nome }) {
@@ -112,6 +112,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.nome ? "erro" : ""}
                     type="text"
                     name="nome"
                     value={field.value}
@@ -146,6 +147,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.email ? "erro" : ""}
                     type="email"
                     name="email"
                     value={field.value}
@@ -163,6 +165,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.whatsapp ? "erro" : ""}
                     type="tel"
                     name="whatsapp"
                     value={field.value}
@@ -216,6 +219,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.longitude ? "erro" : ""}
                     type="text"
                     name="longitude"
                     value={field.value}
@@ -233,6 +237,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.latitude ? "erro" : ""}
                     type="text"
                     name="latitude"
                     value={field.value}
@@ -251,6 +256,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.cep ? "erro" : ""}
                     type="text"
                     name="cep"
                     value={field.value}
@@ -266,6 +272,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.rua ? "erro" : ""}
                     type="text"
                     name="rua"
                     value={field.value}
@@ -281,6 +288,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.numero ? "erro" : ""}
                     type="text"
                     name="numero"
                     value={field.value}
@@ -298,6 +306,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.bairro ? "erro" : ""}
                     type="text"
                     name="bairro"
                     value={field.value}
@@ -315,6 +324,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.cidade ? "erro" : ""}
                     type="text"
                     name="cidade"
                     value={field.value}
@@ -332,6 +342,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
+                    className={errors.uf ? "erro" : ""}
                     type="text"
                     name="uf"
                     value={field.value}
@@ -342,7 +353,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
               {errors.uf && <div className="error">{errors.uf.message}</div>}
             </div>
             <div className="div-button-submit">
-              <button type="submit">Enviar</button>
+              <button type="submit">Alterar</button>
             </div>
           </form>
         </div>

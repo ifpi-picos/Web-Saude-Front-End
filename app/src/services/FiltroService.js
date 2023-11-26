@@ -73,18 +73,12 @@ class FiltroSeerrvice {
       console.error(error);
     }
   }
-  async pegarUnidadedeSaudeDoUsuario(id) {
+  async unidadesdeSaudePaginadas(number) {
     try {
-      const token = localStorage.getItem("token");
-
       const res = await fetch(
-        `https://api-web-saude.vercel.app/usuario/unidades-desaude/${id}`,
+        `https://api-web-saude.vercel.app/buscarPorPagina/${number}`,
         {
           cache: "no-store",
-          headers: {
-            "Content-Type": "application/json",
-            "x-access-token": token,
-          },
         }
       );
       if (!res.ok) {
@@ -96,6 +90,7 @@ class FiltroSeerrvice {
       console.error(error);
     }
   }
+  
 }
 
 export default new FiltroSeerrvice();

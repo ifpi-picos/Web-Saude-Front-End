@@ -62,7 +62,6 @@ export default function SelectEspecialidadesSalvar({
     });
     setRemovedSpecialtyIds(removedIds);
     esepecialidadesSelecionadas = selectedOptions.map(option => option.value);
-    console.log("especialidades selecionadas:", esepecialidadesSelecionadas);
   };
 
   useEffect(() => {
