@@ -137,7 +137,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
         <div className="div-form">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="div-logo">
-            {decodedToken === "admin" ? (
+              {decodedToken === "admin" ? (
                 <Link href="/dashboard">
                   <Image
                     className="image-logo"

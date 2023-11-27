@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import isTokenValid from "@/services/IsvalidToken";
@@ -17,7 +17,7 @@ const PrivateRoute = ({ children }) => {
       setLoading(false);
       router.push("/login");
     } else if (decodedToken === "funcionario") {
-      const allowedFuncionarioRoutes = ["/novo-usuario","/dashboard"];
+      const allowedFuncionarioRoutes = ["/novo-usuario", "/dashboard"];
 
       const currentPath = window.location.pathname;
 
@@ -38,7 +38,11 @@ const PrivateRoute = ({ children }) => {
   }, [decodedToken, router]);
 
   if (loading) {
-    return <div><Loading /></div>;
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   }
 
   return children;

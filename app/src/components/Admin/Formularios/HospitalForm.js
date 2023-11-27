@@ -127,7 +127,7 @@ export default function HospitalForm() {
         <div className="div-form">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="div-logo">
-            {decodedToken === "admin" ? (
+              {decodedToken === "admin" ? (
                 <Link href="/dashboard">
                   <Image
                     className="image-logo"

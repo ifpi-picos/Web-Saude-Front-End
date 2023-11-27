@@ -1,8 +1,32 @@
 import React from "react";
-import Link from "next/link";
 import "@/components/Admin/css/Usuarios.css";
 
 export default function Usuarios({ usuarios }) {
+  const HandleDeletar = async userId => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch(
+        `https://api-web-saude.vercel.app/deletar-usuario/${userId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": token,
+          },
+        }
+      );
+
+      if (response.ok) {
+        window.location.href = "/dashboard";
+      } else {
+        console.error("Erro ao enviar os dados.");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <table>
@@ -22,12 +46,23 @@ export default function Usuarios({ usuarios }) {
                 <a
                   href={`/dashboard/usuario/nova-senha/${info.nome}`}
                   className="button-usuarios"
-                 >
+                >
                   Nova Senha
                 </a>
-                <a href={"/"} className="redButton">
+                <button
+                  className="redButton"
+                  onClick={e => {
+                    e.preventDefault();
+                    const confirmDelete = window.confirm(
+                      `Tem certeza que deseja deletar o usuário ${info.nome}?`
+                    );
+                    if (confirmDelete) {
+                      HandleDeletar(info._id);
+                    }
+                  }}
+                >
                   Deletar
-                </a>
+                </button>
               </td>
             </tr>
           ))}
