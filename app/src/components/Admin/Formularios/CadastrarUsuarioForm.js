@@ -1,69 +1,89 @@
-"use client";
+// ... (importações existentes)
+import { useState } from "react";
+import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Modal, Button } from "react-bootstrap";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import PrivateRoute from "../privateRouter";
 import "@/components/Admin/Formularios/css/Form.css";
+
+const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    marginTop: "8px",
+    height:"12px",
+    borderRadius:"7px"
+  }),
+  indicatorSeparator: (provided, state) => ({
+    ...provided,
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected ? "blue" : "#00285f",
+    color: "white",
+    
+  }),
+  menu: (provided, state) => ({
+    ...provided,
+    backgroundColor: "white",
+
+  }),
+
+};
 
 const schema = yup.object().shape({
   nome: yup
     .string()
-    .required("nome obirgatário")
-    .min(3, "tamanho muito grande")
-    .max(50, "tamanho muito grande"),
-  email: yup
-    .string()
-    .email("Informe um e-mail válido")
-    .max(255, "e-mail muito longo"),
-  senha: yup
-    .string()
-    .required("senha obrigatória")
-    .min(6, "min 6 caracteres")
-    .max(12, "max 12 caracteres"),
-  confirmarSenha: yup
-    .string()
-    .oneOf([yup.ref("senha"), null], "As senhas devem coincidir")
-    .required("Confirmação obrigatória"),
+    .required("Nome obrigatório")
+    .min(3, "Tamanho muito grande")
+    .max(50, "Tamanho muito grande"),
+  email: yup.string().email("Informe um e-mail válido").max(255, "E-mail muito longo"),
+  senha: yup.string().required("Senha obrigatória").min(6, "Mínimo de 6 caracteres").max(12, "Máximo de 12 caracteres"),
+  confirmarSenha: yup.string().oneOf([yup.ref("senha"), null], "As senhas devem coincidir").required("Confirmação obrigatória"),
+  tipo: yup.string().required("Selecione o tipo"),
 });
-export default function CadstrarUsuarioForm() {
+
+export default function CadastrarUsuarioForm() {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    
   });
-  const [showModal, setShowModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
-  const onSubmit = async formData => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedType, setSelectedType] = useState(null);
+  const onSubmit = async (formData) => {
     const token = localStorage.getItem("token");
+    console.log("nome",selectedType.value)
 
     try {
-      const response = await fetch(
-        `https://api-web-saude.vercel.app/novo-usuario`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-access-token": token,
-          },
-          body: JSON.stringify({
-            nome: formData.nome,
-            email: formData.email,
-            senha: formData.senha,
-          }),
-        }
-      );
+      const response = await fetch(`https://api-web-saude.vercel.app/novo-usuario`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": token,
+        },
+        body: JSON.stringify({
+          nome: formData.nome,
+          email: formData.email,
+          senha: formData.senha,
+          confirmarSenha: formData.confirmarSenha,
+          tipo: selectedType.value,
+        }),
+      });
+
       if (response.ok) {
         const responseData = await response.json();
         setShowModal(true);
-        window.location.href = "/dashbord";
+        window.location.href = "/dashboard";
       }
+
       if (response.status === 400) {
         setErrorMessage("Email ou senha incorretos");
       }
@@ -71,6 +91,7 @@ export default function CadstrarUsuarioForm() {
       console.error(error);
     }
   };
+
   return (
     <PrivateRoute>
       <>
@@ -169,6 +190,31 @@ export default function CadstrarUsuarioForm() {
                 />
                 {errors.confirmarSenha && (
                   <div className="error">{errors.confirmarSenha.message}</div>
+                )}
+
+                <label>Tipo</label>
+                <Controller
+  name="tipo"
+  control={control}
+  render={({ field }) => (
+    <Select
+      className="select"
+      styles={customStyles}
+      options={[
+        { value: "admin", label: "Admin" },
+        { value: "funcionario", label: "Funcionário" },
+      ]}
+      value={selectedType}
+      onChange={(selectedOption) => {
+        setSelectedType(selectedOption);
+        field.onChange(selectedOption ? selectedOption.value : ''); // Atualize para passar apenas o valor
+      }}
+      getOptionValue={(option) => option.value} // Adicione esta linha para garantir que apenas o valor seja retornado
+    />
+  )}
+/>
+                {errors.tipo && (
+                  <div className="error">{errors.tipo.message}</div>
                 )}
               </div>
               <div className="div-button-submit">

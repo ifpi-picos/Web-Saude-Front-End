@@ -109,9 +109,9 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
         console.log(responseData);
         setShowModal(true);
         if (decodedToken === "admin") {
-          router.push("/dashboard");
+          window.location.href = ("/dashboard");
         } else {
-          router.push("/funcionario");
+          window.location.href = ("/funcionario");
         }
       } else {
         const errorData = await response.json();

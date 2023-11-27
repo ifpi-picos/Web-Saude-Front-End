@@ -73,9 +73,14 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
+               
         </div>
+        <div className="button-novo-usuario">
+        <a  className="button-usuarios"> Novo Usuário</a>
+        </div>
+
+        <Usuarios usuarios={usuarios} />
       </div>
-      <Usuarios usuarios={usuarios} />
     </PrivateRoute>
   );
 }

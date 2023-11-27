@@ -31,7 +31,6 @@ export default function NovaSenhaForm({ nome }) {
 
   const onSubmit = async formData => {
     const token = localStorage.getItem("token");
-    console.log("nome", nome);
     try {
       const response = await fetch(
         `https://api-web-saude.vercel.app/usuario/nova-senha/${nome}`,

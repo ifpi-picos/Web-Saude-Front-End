@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import Link from "next/link";
+import { jwtDecode } from "jwt-decode";
 import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
@@ -46,11 +47,17 @@ export default function LoginForm() {
 
       if (response.status === 200) {
         const responseData = await response.json();
+
         const token = responseData.token;
 
         localStorage.setItem("token", token);
-
-        window.location.href = "/funcionario";
+        const decoded = jwtDecode(token);
+        if (decoded.userType === "admin") {
+          window.location.href = ("/dashboard");
+        } if (decoded.userType === "funcionario") {
+          window.location.href = ("/funcionario");
+        }
+      
       }
 
       if (response.status === 401) {

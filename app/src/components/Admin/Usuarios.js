@@ -28,46 +28,47 @@ export default function Usuarios({ usuarios }) {
   };
 
   return (
-    <div>
       <table>
         <thead>
           <tr>
             <th>Nome</th>
             <th>Email</th>
+            <th>Tipo</th>
             <th>Opções</th>
           </tr>
         </thead>
         <tbody>
           {usuarios.map(info => (
             <tr key={info.id}>
-              <td>{info.nome}</td>
-              <td>{info.email}</td>
+              <td>{info?.nome}</td>
+              <td>{info?.email}</td>
+              <td>{info?.tipo}</td>
+
               <td>
                 <a
-                  href={`/dashboard/usuario/nova-senha/${info.nome}`}
+                  href={`/dashboard/usuario/nova-senha/${info?.nome}`}
                   className="button-usuarios"
                 >
                   Nova Senha
                 </a>
-                <button
+                <a href="/novo-usuario"
                   className="redButton"
                   onClick={e => {
                     e.preventDefault();
                     const confirmDelete = window.confirm(
-                      `Tem certeza que deseja deletar o usuário ${info.nome}?`
+                      `Tem certeza que deseja deletar o usuário ${info?.nome}?`
                     );
                     if (confirmDelete) {
-                      HandleDeletar(info._id);
+                      HandleDeletar(info?._id);
                     }
                   }}
                 >
-                  Deletar
-                </button>
+                  Excluir
+                </a>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
   );
 }

@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import Link from "next/link";
+import { useDecodedToken } from "@/services/decodeToken";
 import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
@@ -102,9 +103,9 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
         console.log(responseData);
         setShowModal(true);
         if (decodedToken === "admin") {
-          router.push("/dashboard");
+          window.location.href = ("/dashboard");
         } else {
-          router.push("/funcionario");
+          window.location.href = ("/funcionario");
         }
       }
     } catch (error) {

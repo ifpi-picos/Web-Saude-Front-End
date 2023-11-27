@@ -1,7 +1,5 @@
 .main-content {
-  margin-left: 165px;
-  width: calc(100% - 165px);
-  transition: margin-left 300ms;
+  width: 100%;
   margin-top: 135px;
 }
 .analytics {
@@ -77,6 +75,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .add,
@@ -111,27 +110,9 @@ select {
   color: #666;
 }
 
-.add button {
-  background-color: var(--primary-color);
-  color: var(--secundary-color);
-  height: 37px;
-  border-radius: 4px;
-  padding: 0rem 1rem;
-  border: none;
-  font-weight: 600;
-}
-
-.browse input {
-  width: 100px;
-}
-
-.browse select {
-  width: 100px;
-}
 
 .table-responsive {
   width: 100%;
-  overflow: auto;
 }
 
 /*buttons do catálogo*/
@@ -192,16 +173,15 @@ select {
   background-color: gray;
 }
 
-.sidebar {
-  left: -165px;
-  z-index: 90;
-}
 
 .main-content {
   margin-left: 0;
   width: 100%;
 }
-
+.button-novo-usuario{
+  margin-top:20px;
+  width: 200px;
+}
 @media only screen and (max-width: 1200px) {
   .analytics {
     grid-template-columns: repeat(2, 1fr);
@@ -214,10 +194,11 @@ select {
   }
 
   .main-content {
-    margin-left: 0;
     width: 100%;
   }
-
+  .button-novo-usuario{
+    width: 110px;
+  }
   /* buttons do catalógo*/
   .div-buttons-catalogo .buuton-prox-ant {
     width: 73px;

@@ -98,9 +98,9 @@ export default function HospitalForm() {
         const responseData = await response.json();
         setShowModal(true);
         if (decodedToken === "admin") {
-          router.push("/dashboard");
+          window.location.href = ("/dashboard");
         } else {
-          router.push("/funcionario");
+          window.location.href = ("/funcionario");
         }
       } else {
         console.error("Erro ao enviar os dados.");

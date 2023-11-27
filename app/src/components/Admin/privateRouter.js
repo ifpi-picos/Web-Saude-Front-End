@@ -8,6 +8,7 @@ import Loading from "@/app/loading";
 const PrivateRoute = ({ children }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+
   const decodedToken = useDecodedToken();
 
   useEffect(() => {
@@ -17,17 +18,15 @@ const PrivateRoute = ({ children }) => {
       setLoading(false);
       router.push("/login");
     } else if (decodedToken === "funcionario") {
-      const allowedFuncionarioRoutes = ["/novo-usuario", "/dashboard"];
-
+      const allowedFuncionarioRoutes = [ ""];
       const currentPath = window.location.pathname;
-
+      
       if (currentPath.startsWith("/dashboard/usuario/nova-senha/")) {
         setLoading(false);
         router.push("/login");
         return;
       } else if (allowedFuncionarioRoutes.includes(currentPath)) {
-        setLoading(false);
-        router.push("/login");
+          router.push("/login");
         return;
       } else {
         setLoading(false);

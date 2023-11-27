@@ -46,7 +46,7 @@ table td {
 @media (max-width: 768px) {
   .button-usuarios,
   .redButton {
-    width: 100px;
+    width: 100%;
     display: block;
     margin-bottom: 5px;
     font-size: 12px;
@@ -55,8 +55,7 @@ table td {
     width: 100%;
   }
   td {
-    max-width: 150px;
-
+    max-width: 90px;
     word-wrap: break-word;
   }
 }

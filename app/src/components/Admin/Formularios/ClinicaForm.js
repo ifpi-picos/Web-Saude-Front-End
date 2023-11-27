@@ -9,7 +9,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import Link from "next/link";
 import { useDecodedToken } from "@/services/decodeToken";
-
 import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
@@ -82,7 +81,7 @@ export default function ClinicaForm() {
   const [imageLink, setImageLink] = useState("");
 
   const decodedToken = useDecodedToken();
-
+  console.log(decodedToken)
   const onSubmit = async formData => {
     formData.imagem = imageLink;
     formData.especialidades = selectedSpecialtyIds;
@@ -105,9 +104,9 @@ export default function ClinicaForm() {
         const responseData = await response.json();
         setShowModal(true);
         if (decodedToken === "admin") {
-          router.push("/dashboard");
+          window.location.href = ("/dashboard");
         } else {
-          router.push("/funcionario");
+          window.location.href = ("/funcionario");
         }
       } else {
         console.error("Erro ao enviar os dados.");
