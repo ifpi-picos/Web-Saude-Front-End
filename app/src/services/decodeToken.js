@@ -9,8 +9,8 @@ export function useDecodedToken() {
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        if (decoded && decoded.sub) {
-          setDecodedToken(decoded.sub);
+        if (decoded && decoded.userType) {
+          setDecodedToken(decoded.userType);
         }
       } catch (error) {
         console.error("Erro ao decodificar o token:", error);

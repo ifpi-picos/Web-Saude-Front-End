@@ -19,15 +19,15 @@ export default function Usuarios({ usuarios }) {
               <td>{info.nome}</td>
               <td>{info.email}</td>
               <td>
-                <Link
+                <a
                   href={`/dashboard/usuario/nova-senha/${info.nome}`}
                   className="button-usuarios"
-                >
+                 >
                   Nova Senha
-                </Link>
-                <Link href={"/"} className="redButton">
+                </a>
+                <a href={"/"} className="redButton">
                   Deletar
-                </Link>
+                </a>
               </td>
             </tr>
           ))}

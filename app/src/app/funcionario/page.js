@@ -64,7 +64,7 @@ export default function Funcionario() {
             <div className="registro-header">
               <p>
                 <strong>
-                  Clique no botão ver mais para ver as imfoamções do seu
+                  Clique no botão ver mais para ver as informações do seu
                   estabelecimento!
                 </strong>
               </p>

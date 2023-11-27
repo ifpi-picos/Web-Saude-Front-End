@@ -4,10 +4,10 @@ import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import CardAdmin from "@/components/Admin/CardAdmin";
 import CardProgressos from "@/components/Admin/CardProgressos";
 import PrivateRoute from "@/components/Admin/privateRouter";
-import "@/components/Admin/css/Dashboard.css";
 import Loading from "../loading";
 import Link from "next/link";
 import Usuarios from "@/components/Admin/Usuarios";
+import "@/components/Admin/css/Dashboard.css";
 
 export default function Dashboard() {
   const [usuarios, setUsuarios] = useState([]);

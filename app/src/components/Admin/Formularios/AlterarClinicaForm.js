@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import Link from "next/link";
+import { useDecodedToken } from "@/services/decodeToken";
 import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
@@ -79,6 +80,8 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
   const [imageURL, setImageURL] = useState("");
   const [imageLink, setImageLink] = useState("");
 
+  const decodedToken = useDecodedToken();
+
   const onSubmit = async formData => {
     formData.imagem = imageLink || clinicaData.imagem;
     if (selectedSpecialtyIds.length === 0) {
@@ -105,7 +108,11 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
         const responseData = await response.json();
         console.log(responseData);
         setShowModal(true);
-        window.location.href = "/dashboard";
+        if (decodedToken === "admin") {
+          router.push("/dashboard");
+        } else {
+          router.push("/funcionario");
+        }
       } else {
         const errorData = await response.json();
         console.error("Erro ao enviar os dados:", errorData);
@@ -130,15 +137,27 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
         <div className="div-form">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="div-logo">
-              <Link href="/dashboard">
-                <Image
-                  className="image-logo"
-                  src="/imgs/logo.png"
-                  alt="logo"
-                  width={200}
-                  height={200}
-                />
-              </Link>
+            {decodedToken === "admin" ? (
+                <Link href="/dashboard">
+                  <Image
+                    className="image-logo"
+                    src="/imgs/logo.png"
+                    alt="logo"
+                    width={200}
+                    height={200}
+                  />
+                </Link>
+              ) : (
+                <Link href="/funcionario">
+                  <Image
+                    className="image-logo"
+                    src="/imgs/logo.png"
+                    alt="logo"
+                    width={200}
+                    height={200}
+                  />
+                </Link>
+              )}
             </div>
 
             <h2 className="title">Alterar Clínica</h2>

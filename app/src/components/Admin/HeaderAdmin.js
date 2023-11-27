@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import Image from "next/image";
+import { useDecodedToken } from "@/services/decodeToken";
+
 import "../Admin/css/HeaderAdmin.css";
 
 export default function HeaderAdmin() {
@@ -25,6 +27,8 @@ export default function HeaderAdmin() {
     localStorage.removeItem("token");
     window.location.href = "/login";
   };
+  
+  const decodedToken = useDecodedToken();
 
   return (
     <Navbar
@@ -40,15 +44,15 @@ export default function HeaderAdmin() {
       }}
     >
       <Container fluid className="conatainer w-100 m-4">
-        <Navbar.Brand href="/dashboard" className="me-auto">
-          <Image
-            src="/imgs/logo.png"
-            alt="logo"
-            width={200}
-            height={200}
-            className="customisar-imagem"
-          />
-        </Navbar.Brand>
+        <Navbar.Brand href={decodedToken === "admin" ? "/dashboard" : "/funcionario"} className="me-auto">
+            <Image
+              src="/imgs/logo.png"
+              alt="logo"
+              width={200}
+              height={200}
+              className="customisar-imagem"
+            />
+          </Navbar.Brand>
 
         <Navbar.Toggle
           onClick={handleToggle}

@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import Link from "next/link";
+import { useDecodedToken } from "@/services/decodeToken";
 import "@/components/Admin/Formularios/css/Form.css";
 
 const schema = yup.object().shape({
@@ -74,6 +75,8 @@ export default function HospitalForm() {
   const [imageURL, setImageURL] = useState("");
   const [imageLink, setImageLink] = useState("");
 
+  const decodedToken = useDecodedToken();
+
   const onSubmit = async formData => {
     formData.imagem = imageLink;
     formData.especialidades = selectedSpecialtyIds;
@@ -94,7 +97,11 @@ export default function HospitalForm() {
       if (response.ok) {
         const responseData = await response.json();
         setShowModal(true);
-        window.location.href = "/dashboard";
+        if (decodedToken === "admin") {
+          router.push("/dashboard");
+        } else {
+          router.push("/funcionario");
+        }
       } else {
         console.error("Erro ao enviar os dados.");
       }
@@ -120,15 +127,27 @@ export default function HospitalForm() {
         <div className="div-form">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="div-logo">
-              <Link href="/dashboard">
-                <Image
-                  className="image-logo"
-                  src="/imgs/logo.png"
-                  alt="logo"
-                  width={200}
-                  height={200}
-                />
-              </Link>
+            {decodedToken === "admin" ? (
+                <Link href="/dashboard">
+                  <Image
+                    className="image-logo"
+                    src="/imgs/logo.png"
+                    alt="logo"
+                    width={200}
+                    height={200}
+                  />
+                </Link>
+              ) : (
+                <Link href="/funcionario">
+                  <Image
+                    className="image-logo"
+                    src="/imgs/logo.png"
+                    alt="logo"
+                    width={200}
+                    height={200}
+                  />
+                </Link>
+              )}
             </div>
 
             <h2 className="title">Cadastrar Hospital</h2>

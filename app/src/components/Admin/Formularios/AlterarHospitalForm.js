@@ -73,6 +73,8 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
   const [imageURL, setImageURL] = useState("");
   const [imageLink, setImageLink] = useState("");
 
+  const decodedToken = useDecodedToken();
+
   const onSubmit = async formData => {
     formData.imagem = imageLink || hospitalData.imagem;
     if (selectedSpecialtyIds.length === 0) {
@@ -99,7 +101,11 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
         const responseData = await response.json();
         console.log(responseData);
         setShowModal(true);
-        window.location.href = "/dashboard";
+        if (decodedToken === "admin") {
+          router.push("/dashboard");
+        } else {
+          router.push("/funcionario");
+        }
       }
     } catch (error) {
       console.error(error);
@@ -123,15 +129,27 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
         <div className="div-form">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="div-logo">
-              <Link href="/dashboard">
-                <Image
-                  className="image-logo"
-                  src="/imgs/logo.png"
-                  alt="logo"
-                  width={200}
-                  height={200}
-                />
-              </Link>
+            {decodedToken === "admin" ? (
+                <Link href="/dashboard">
+                  <Image
+                    className="image-logo"
+                    src="/imgs/logo.png"
+                    alt="logo"
+                    width={200}
+                    height={200}
+                  />
+                </Link>
+              ) : (
+                <Link href="/funcionario">
+                  <Image
+                    className="image-logo"
+                    src="/imgs/logo.png"
+                    alt="logo"
+                    width={200}
+                    height={200}
+                  />
+                </Link>
+              )}
             </div>
 
             <h2 className="title">Alterar Hospital</h2>

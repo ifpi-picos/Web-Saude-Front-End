@@ -74,7 +74,7 @@ export default function NovaSenhaForm({ nome }) {
               bottom: "0",
               left: "50%",
               top: "50%",
-              height: "100%",
+              height: "100vh",
               transform: "translate(-50%,-50%)",
               marginTop: "0px",
               marginBottom: "0px",

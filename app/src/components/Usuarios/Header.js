@@ -22,13 +22,13 @@ export default function Header() {
         <nav>
           <ul>
             <div className="button-entrar">
-              <Link href="/login">ENTRAR</Link>
+              <a href="/login">ENTRAR</a>
             </div>
             <li>
-              <Link href="/">Home</Link>
+              <a href="/">Home</a>
             </li>
             <li>
-              <Link href="/sobre">Sobre</Link>
+              <a href="/sobre">Sobre</a>
             </li>
           </ul>
         </nav>
@@ -37,15 +37,15 @@ export default function Header() {
       <div className="burgerVisible">
         <Menu right>
           <div className="button-entrar">
-            <Link href="/login">ENTRAR</Link>
+            <a href="/login">ENTRAR</a>
           </div>
 
-          <Link href="/" className="menu-items">
+          <a href="/" className="menu-items">
             Home
-          </Link>
-          <Link href="/sobre" className="menu-items">
+          </a>
+          <a href="/sobre" className="menu-items">
             Sobre
-          </Link>
+          </a>
         </Menu>
       </div>
     </header>
