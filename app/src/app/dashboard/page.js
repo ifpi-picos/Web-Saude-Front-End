@@ -76,7 +76,7 @@ export default function Dashboard() {
                
         </div>
         <div className="button-novo-usuario">
-        <a  className="button-usuarios"> Novo Usuário</a>
+        <a href="/novo-usuario"  className="button-usuarios"> Novo Usuário</a>
         </div>
 
         <Usuarios usuarios={usuarios} />
