@@ -137,7 +137,7 @@ class ConsultasService {
     const info = await res.json();
     return info;
   }
- 
+
   async pegarUsuarioPeloNome(nome) {
     const res = await fetch(
       `https://api-web-saude.vercel.app/usuario/${nome}`,
@@ -145,11 +145,10 @@ class ConsultasService {
         cache: "no-store",
       }
     );
-    
+
     const info = await res.json();
     return info;
   }
- 
 }
 
 export default new ConsultasService();

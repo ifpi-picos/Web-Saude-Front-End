@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import CloudinaryUploadWidget from "../../UsuariosAndAdmin/Upload";
-import SelectEspecialidadesSalvar from "@/components/UsuariosAndAdmin/SelectEspecialidadesSalvar";
+import CloudinaryUploadWidget from "../Upload";
+import SelectEspecialidadesSalvar from "@/components/Admin/SelectEspecialidadesSalvar";
 import { Modal, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
@@ -20,7 +20,8 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .email("Informe um e-mail válido")
-    .max(255, "e-mail muito longo").matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/,"e-mail inválido"),
+    .max(255, "e-mail muito longo")
+    .matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/, "e-mail inválido"),
   whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
   instagram: yup.string().max(255, "tamanho muito longo"),
   descricao: yup.string(),
@@ -162,21 +163,24 @@ export default function HospitalForm() {
                     type="text"
                     name="nome"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 255) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 255) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -204,21 +208,24 @@ export default function HospitalForm() {
                     type="email"
                     name="email"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 255) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 255) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -238,21 +245,24 @@ export default function HospitalForm() {
                     type="tel"
                     name="whatsapp"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 11) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 11) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -271,21 +281,24 @@ export default function HospitalForm() {
                     type="text"
                     name="instagram"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 255) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 255) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -323,21 +336,24 @@ export default function HospitalForm() {
                     type="text"
                     name="longitude"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 10) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 10) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -357,21 +373,24 @@ export default function HospitalForm() {
                     type="text"
                     name="latitude"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 10) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 10) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -392,21 +411,24 @@ export default function HospitalForm() {
                     type="text"
                     name="cep"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 10) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 10) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -424,21 +446,24 @@ export default function HospitalForm() {
                     type="text"
                     name="rua"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 255) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 255) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -456,21 +481,24 @@ export default function HospitalForm() {
                     type="text"
                     name="numero"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 10) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 10) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -490,21 +518,24 @@ export default function HospitalForm() {
                     type="text"
                     name="bairro"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 255) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 255) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -524,21 +555,24 @@ export default function HospitalForm() {
                     type="text"
                     name="cidade"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 255) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 255) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}
@@ -558,21 +592,24 @@ export default function HospitalForm() {
                     type="text"
                     name="uf"
                     value={field.value}
-                    onChange={(e) => {
+                    onChange={e => {
                       if (e.target.value.length <= 2) {
                         field.onChange(e);
                       }
                     }}
-                    onPaste={async (e) => {
-                      e.preventDefault(); 
-              
+                    onPaste={async e => {
+                      e.preventDefault();
+
                       try {
                         const pastedText = await navigator.clipboard.readText();
                         if (pastedText.length <= 2) {
                           field.onChange({ target: { value: pastedText } });
                         }
                       } catch (error) {
-                        console.error('Erro ao ler dados da área de transferência:', error);
+                        console.error(
+                          "Erro ao ler dados da área de transferência:",
+                          error
+                        );
                       }
                     }}
                     {...field}

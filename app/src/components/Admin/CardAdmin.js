@@ -7,7 +7,6 @@ import Paginacao from "../UsuariosAndAdmin/Paginacao";
 import { useDecodedToken } from "@/services/decodeToken";
 import "../Admin/css/CardAdmin.css";
 
-
 export default function CardAdmin({ pageNumber, informacao }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemStates, setItemStates] = useState([]);

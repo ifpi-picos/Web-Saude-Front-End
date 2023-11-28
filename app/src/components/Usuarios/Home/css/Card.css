@@ -13,8 +13,6 @@
   box-shadow: 20px 20px 50px -30px #4169e1;
   margin: 40px;
   border-radius: 6px;
-  fill: white;
-  filter: brightness(110%);
 }
 
 .section-card .card-container .div-button-ver-mais:hover {

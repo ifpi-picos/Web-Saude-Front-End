@@ -1,4 +1,6 @@
 import ConsultasService from "@/services/ConsultasService";
+import Card from "react-bootstrap/Card";
+
 import "@/components/Usuarios/Ver-Mais/css/Horario.css";
 
 export default async function Horario({ nome }) {
@@ -76,12 +78,14 @@ export default async function Horario({ nome }) {
     );
   } else {
     return (
-      <section id="horario" className="section-horario">
-        <p>
-          Este estabelecimento oferece atendimento 24 horas por dia, 7 dias por
-          semana.
-        </p>
-      </section>
+      <Card className="sobre mb-4" id="horario">
+        <Card.Body>
+          <p>
+            Este estabelecimento oferece atendimento 24 horas por dia, 7 dias
+            por semana.
+          </p>
+        </Card.Body>
+      </Card>
     );
   }
 }

@@ -13,7 +13,8 @@ const schema = yup.object().shape({
     .string()
     .email("Informe um e-mail válido")
     .required("O e-mail é obrigatório")
-    .max(255, "e-mail muito longo").matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/,"e-mail inválido"),
+    .max(255, "e-mail muito longo")
+    .matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/, "e-mail inválido"),
   senha: yup
     .string()
     .required("A senha é obrigatória")
@@ -105,21 +106,24 @@ export default function LoginForm() {
                   type="email"
                   name="email"
                   value={field.value}
-                  onChange={(e) => {
+                  onChange={e => {
                     if (e.target.value.length <= 255) {
                       field.onChange(e);
                     }
                   }}
-                  onPaste={async (e) => {
-                    e.preventDefault(); 
-            
+                  onPaste={async e => {
+                    e.preventDefault();
+
                     try {
                       const pastedText = await navigator.clipboard.readText();
                       if (pastedText.length <= 255) {
                         field.onChange({ target: { value: pastedText } });
                       }
                     } catch (error) {
-                      console.error('Erro ao ler dados da área de transferência:', error);
+                      console.error(
+                        "Erro ao ler dados da área de transferência:",
+                        error
+                      );
                     }
                   }}
                   {...field}
@@ -140,23 +144,26 @@ export default function LoginForm() {
                   type="password"
                   name="senha"
                   value={field.value}
-                  onChange={(e) => {
+                  onChange={e => {
                     if (e.target.value.length <= 12) {
                       field.onChange(e);
                     }
-                  }} 
-                  onPaste={async (e) => {
-                    e.preventDefault(); 
-            
+                  }}
+                  onPaste={async e => {
+                    e.preventDefault();
+
                     try {
                       const pastedText = await navigator.clipboard.readText();
                       if (pastedText.length <= 12) {
                         field.onChange({ target: { value: pastedText } });
                       }
                     } catch (error) {
-                      console.error('Erro ao ler dados da área de transferência:', error);
+                      console.error(
+                        "Erro ao ler dados da área de transferência:",
+                        error
+                      );
                     }
-                  }}                 
+                  }}
                 />
               )}
             />

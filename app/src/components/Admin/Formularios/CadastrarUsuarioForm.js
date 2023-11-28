@@ -36,11 +36,12 @@ const schema = yup.object().shape({
     .string()
     .required("Nome obrigatório")
     .min(3, "Tamanho muito grande")
-    .max(50, "Tamanho muito grande"),
+    .max(255, "Tamanho muito grande"),
   email: yup
     .string()
     .email("Informe um e-mail válido")
-    .max(255, "E-mail muito longo").matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/,"e-mail inválido"),
+    .max(255, "E-mail muito longo")
+    .matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/, "e-mail inválido"),
   senha: yup
     .string()
     .required("Senha obrigatória")
@@ -90,7 +91,7 @@ export default function CadastrarUsuarioForm() {
       if (response.ok) {
         const responseData = await response.json();
         setShowModal(true);
-        window.location.href = "/dashboard";
+        window.location.href = "/";
       }
 
       if (response.status === 400) {
@@ -142,21 +143,25 @@ export default function CadastrarUsuarioForm() {
                       type="text"
                       name="nome"
                       value={field.value}
-                      onChange={(e) => {
+                      onChange={e => {
                         if (e.target.value.length <= 255) {
                           field.onChange(e);
                         }
                       }}
-                      onPaste={async (e) => {
-                        e.preventDefault(); 
-                
+                      onPaste={async e => {
+                        e.preventDefault();
+
                         try {
-                          const pastedText = await navigator.clipboard.readText();
+                          const pastedText =
+                            await navigator.clipboard.readText();
                           if (pastedText.length <= 255) {
                             field.onChange({ target: { value: pastedText } });
                           }
                         } catch (error) {
-                          console.error('Erro ao ler dados da área de transferência:', error);
+                          console.error(
+                            "Erro ao ler dados da área de transferência:",
+                            error
+                          );
                         }
                       }}
                       {...field}
@@ -176,21 +181,25 @@ export default function CadastrarUsuarioForm() {
                       type="email"
                       name="email"
                       value={field.value}
-                      onChange={(e) => {
+                      onChange={e => {
                         if (e.target.value.length <= 255) {
                           field.onChange(e);
                         }
                       }}
-                      onPaste={async (e) => {
-                        e.preventDefault(); 
-                
+                      onPaste={async e => {
+                        e.preventDefault();
+
                         try {
-                          const pastedText = await navigator.clipboard.readText();
+                          const pastedText =
+                            await navigator.clipboard.readText();
                           if (pastedText.length <= 255) {
                             field.onChange({ target: { value: pastedText } });
                           }
                         } catch (error) {
-                          console.error('Erro ao ler dados da área de transferência:', error);
+                          console.error(
+                            "Erro ao ler dados da área de transferência:",
+                            error
+                          );
                         }
                       }}
                       {...field}
@@ -210,21 +219,25 @@ export default function CadastrarUsuarioForm() {
                       type="password"
                       name="senha"
                       value={field.value}
-                      onChange={(e) => {
+                      onChange={e => {
                         if (e.target.value.length <= 12) {
                           field.onChange(e);
                         }
                       }}
-                      onPaste={async (e) => {
-                        e.preventDefault(); 
-                
+                      onPaste={async e => {
+                        e.preventDefault();
+
                         try {
-                          const pastedText = await navigator.clipboard.readText();
+                          const pastedText =
+                            await navigator.clipboard.readText();
                           if (pastedText.length <= 12) {
                             field.onChange({ target: { value: pastedText } });
                           }
                         } catch (error) {
-                          console.error('Erro ao ler dados da área de transferência:', error);
+                          console.error(
+                            "Erro ao ler dados da área de transferência:",
+                            error
+                          );
                         }
                       }}
                       {...field}
@@ -244,21 +257,25 @@ export default function CadastrarUsuarioForm() {
                       type="password"
                       name="confirmarSenha"
                       value={field.value}
-                      onChange={(e) => {
+                      onChange={e => {
                         if (e.target.value.length <= 12) {
                           field.onChange(e);
                         }
                       }}
-                      onPaste={async (e) => {
-                        e.preventDefault(); 
-                
+                      onPaste={async e => {
+                        e.preventDefault();
+
                         try {
-                          const pastedText = await navigator.clipboard.readText();
+                          const pastedText =
+                            await navigator.clipboard.readText();
                           if (pastedText.length <= 12) {
                             field.onChange({ target: { value: pastedText } });
                           }
                         } catch (error) {
-                          console.error('Erro ao ler dados da área de transferência:', error);
+                          console.error(
+                            "Erro ao ler dados da área de transferência:",
+                            error
+                          );
                         }
                       }}
                       {...field}
@@ -286,9 +303,9 @@ export default function CadastrarUsuarioForm() {
                         setSelectedType(selectedOption);
                         field.onChange(
                           selectedOption ? selectedOption.value : ""
-                        ); 
+                        );
                       }}
-                      getOptionValue={option => option.value} 
+                      getOptionValue={option => option.value}
                     />
                   )}
                 />

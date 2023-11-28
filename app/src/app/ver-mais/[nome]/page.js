@@ -30,7 +30,7 @@ export default async function verMais({ params }) {
             </li>
             <li>/</li>
             <li>
-              <Link href="#especialidades"> Especialidades </Link>
+              <Link href="/sobre"> Sobre </Link>
             </li>
           </ul>
         </div>

@@ -64,7 +64,10 @@ export default function HeaderAdmin() {
         />
         <Navbar.Collapse id="navbar-nav" className="justify-content-end">
           <Nav>
-            <Nav.Link className="painel" href={decodedToken === "admin" ? "/dashboard" : "/funcionario"}>
+            <Nav.Link
+              className="painel"
+              href={decodedToken === "admin" ? "/dashboard" : "/funcionario"}
+            >
               Dashboard
             </Nav.Link>
             <NavDropdown

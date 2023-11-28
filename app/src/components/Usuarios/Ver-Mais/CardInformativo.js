@@ -42,7 +42,7 @@ export default async function CardInformativo({ nome }) {
                 </Link>
               </li>
               <li>
-                <Link className="btn" href="#contato">
+                <Link className="btn" href="#contatos">
                   Contato
                 </Link>
               </li>

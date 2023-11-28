@@ -39,7 +39,6 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  
 }
 .div-horarios {
   display: flex;
@@ -68,7 +67,6 @@
   width: 100%;
   border-radius: 7px;
   height: 35px;
-
 }
 .upload {
   max-width: 100%;

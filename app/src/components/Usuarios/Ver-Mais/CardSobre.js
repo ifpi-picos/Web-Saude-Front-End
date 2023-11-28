@@ -6,7 +6,7 @@ export default async function CardSobre({ nome }) {
   const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
 
   return (
-    <Card className="sobre">
+    <Card className="sobre" id="sobre">
       <Card.Header>Sobre</Card.Header>
       <Card.Body>
         <section className="mb-0">

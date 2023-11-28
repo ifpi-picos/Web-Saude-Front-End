@@ -21,7 +21,6 @@ export default function SelectEspecialidadesSalvar({
     control: (provided, state) => ({
       ...provided,
       borderRadius: "7px",
-
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,

@@ -10,24 +10,7 @@
   margin-top: 50px;
   border-radius: 6px;
 }
-/*.card-container:hover , .card-container:hover .button{
-    transition: .3s ease;
-    background-color:  var(--primary-color);
-    color: var(--secundary-color);
-}
 
-.card-container:hover .btn, .card-container:hover h4,.card-container:hover h3,.card-container:hover p {
-    transition: .4s ease;
-    color: var(--secundary-color);
-
-}
-.card-container:hover .button .div-ver-mais .div-button-ver-mais,.card-container:hover .button .div-ver-mais .div-button-ver-mais a{
-    background-color: var(--secundary-color);
-    color: var(--primary-color);
-    border-radius: var(--button-radius);
-
-
-}*/
 .section-informações .card-informacoes .top {
   height: 100px;
   border-radius: 6px;
@@ -62,7 +45,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  padding-top: 40px;
+  padding-top: 60px;
   text-align: center;
 }
 
@@ -95,6 +78,7 @@
 .section-informações .card-informacoes .button hr {
   width: 100%;
   margin-top: 50px;
+  border: solid 2px var(--primary-color);
 }
 .section-informações .card-informacoes .button .div-atalhos {
   margin-top: 40px;
@@ -103,6 +87,8 @@
   display: flex;
   justify-content: center;
   list-style: none;
+  margin-right: 5px;
+  margin-left: 5px;
   margin-bottom: 15px;
 }
 .section-informações .card-informacoes .button .div-atalhos ul li .btn {
@@ -113,7 +99,7 @@
 
 .section-informações .card-informacoes .button .div-atalhos ul li .btn:hover {
   text-decoration: underline;
-  text-decoration-color: red;
+  text-decoration-color: var(--primary-color);
 }
 
 @media (max-width: 768px) {
