@@ -1,13 +1,13 @@
 import AlterarClincaForm from "@/components/Admin/Formularios/AlterarClinicaForm";
 import PrivateRoute from "@/components/Admin/privateRouter";
-import ClinicaService from "@/services/ClinicaService";
+import ConsultasService from "@/services/ConsultasService";
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
-import FiltroService from "@/services/FiltroService";
 import NotFound from "@/app/not-found";
 export default async function AlterarClinica({ params }) {
-  const clinicaData = await ClinicaService.pegarClinica(params.nome);
-
-  const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(params.nome);
+  const clinicaData = await new ConsultasService.pegarClinica(params.nome);
+  const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(
+    params.nome
+  );
 
   if (unidadesdeSaude.length === 0) {
     return <NotFound />;

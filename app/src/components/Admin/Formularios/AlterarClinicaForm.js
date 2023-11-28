@@ -24,7 +24,7 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .email("Informe um e-mail válido")
-    .max(255, "e-mail muito longo"),
+    .max(255, "e-mail muito longo").matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/,"e-mail inválido"),
   whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
   instagram: yup.string().max(255, "tamanho muito longo"),
   descricao: yup.string(),
@@ -109,9 +109,9 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
         console.log(responseData);
         setShowModal(true);
         if (decodedToken === "admin") {
-          window.location.href = ("/dashboard");
+          window.location.href = "/dashboard";
         } else {
-          window.location.href = ("/funcionario");
+          window.location.href = "/funcionario";
         }
       } else {
         const errorData = await response.json();

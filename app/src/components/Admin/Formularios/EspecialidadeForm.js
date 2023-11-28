@@ -2,8 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaSave, FaEdit, FaTrash } from "react-icons/fa";
 import "@/components/Admin/css/EspecialidadeForm.css";
-import EspecialidadeService from "@/services/EspecialidadeService";
-
+import ConsultasService from "@/services/ConsultasService";
 export default function EspecialidadeForm() {
   const [especialidades, setEspecialidades] = useState([]);
   const [novaEspecialidade, setNovaEspecialidade] = useState("");
@@ -17,7 +16,7 @@ export default function EspecialidadeForm() {
 
   const listarEspecialidades = async () => {
     try {
-      const espe = await EspecialidadeService.pegarEspecialidades();
+      const espe = await ConsultasService.pegarEspecialidades();
       setEspecialidades(espe);
     } catch (error) {
       console.error(error);

@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
-import CardAdmin from "@/components/Admin/CardAdmin";
 import CardProgressos from "@/components/Admin/CardProgressos";
 import PrivateRoute from "@/components/Admin/privateRouter";
 import Loading from "../loading";
@@ -73,10 +72,12 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
-               
         </div>
         <div className="button-novo-usuario">
-        <a href="/novo-usuario"  className="button-usuarios"> Novo Usuário</a>
+          <a href="/novo-usuario" className="button-usuarios">
+            {" "}
+            Novo Usuário
+          </a>
         </div>
 
         <Usuarios usuarios={usuarios} />

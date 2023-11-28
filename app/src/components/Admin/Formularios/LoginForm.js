@@ -13,7 +13,7 @@ const schema = yup.object().shape({
     .string()
     .email("Informe um e-mail válido")
     .required("O e-mail é obrigatório")
-    .max(255, "e-mail muito longo"),
+    .max(255, "e-mail muito longo").matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/,"e-mail inválido"),
   senha: yup
     .string()
     .required("A senha é obrigatória")
@@ -53,11 +53,11 @@ export default function LoginForm() {
         localStorage.setItem("token", token);
         const decoded = jwtDecode(token);
         if (decoded.userType === "admin") {
-          window.location.href = ("/dashboard");
-        } if (decoded.userType === "funcionario") {
-          window.location.href = ("/funcionario");
+          window.location.href = "/dashboard";
         }
-      
+        if (decoded.userType === "funcionario") {
+          window.location.href = "/funcionario";
+        }
       }
 
       if (response.status === 401) {
@@ -105,7 +105,11 @@ export default function LoginForm() {
                   type="email"
                   name="email"
                   value={field.value}
-                  onChange={field.onChange}
+                  onChange={(e) => {
+                    if (e.target.value.length <= 255) {
+                      field.onChange(e);
+                    }
+                  }}
                 />
               )}
             />
@@ -123,7 +127,11 @@ export default function LoginForm() {
                   type="password"
                   name="senha"
                   value={field.value}
-                  onChange={field.onChange}
+                  onChange={(e) => {
+                    if (e.target.value.length <= 12) {
+                      field.onChange(e);
+                    }
+                  }}                  
                 />
               )}
             />

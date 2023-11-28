@@ -6,13 +6,13 @@ import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
 import "@/components/Usuarios/Home/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
-import FiltroService from "@/services/FiltroService";
+import ConsultasService from "@/services/ConsultasService";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 
 export default async function Pesquisa({ params }) {
   const busca = decodeURIComponent(params.busca.replace(/-/g, " "));
 
-  const informacao = await FiltroService.filtrarUnidadesDeSaude(busca);
+  const informacao = await ConsultasService.filtrarUnidadesDeSaude(busca);
   return (
     <>
       <Header />

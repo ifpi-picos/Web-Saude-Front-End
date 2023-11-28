@@ -110,7 +110,6 @@ select {
   color: #666;
 }
 
-
 .table-responsive {
   width: 100%;
 }
@@ -173,13 +172,12 @@ select {
   background-color: gray;
 }
 
-
 .main-content {
   margin-left: 0;
   width: 100%;
 }
-.button-novo-usuario{
-  margin-top:20px;
+.button-novo-usuario {
+  margin-top: 20px;
   width: 200px;
 }
 @media only screen and (max-width: 1200px) {
@@ -196,7 +194,7 @@ select {
   .main-content {
     width: 100%;
   }
-  .button-novo-usuario{
+  .button-novo-usuario {
     width: 110px;
   }
   /* buttons do catalógo*/

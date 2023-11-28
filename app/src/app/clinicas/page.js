@@ -7,10 +7,9 @@ import Footer from "@/components/Usuarios/Footer";
 import "@/components/Usuarios/Home/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
-import ClinicaService from "@/services/ClinicaService";
-
+import ConsultasService from "@/services/ConsultasService";
 export default async function filtroClinicas() {
-  const informacao = await ClinicaService.pegarClinicas();
+  const informacao = await ConsultasService.pegarClinicas();
 
   return (
     <>

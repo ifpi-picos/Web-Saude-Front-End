@@ -1,11 +1,11 @@
 import { FaEnvelopeOpen } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
-import FiltroService from "@/services/FiltroService";
+import ConsultasService from "@/services/ConsultasService";
 import "@/components/Usuarios/Ver-Mais/css/Contato.css";
 
 export default async function Contato({ nome }) {
-  const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(nome);
+  const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
 
   return (
     <div id="contatos" className="contact-info">

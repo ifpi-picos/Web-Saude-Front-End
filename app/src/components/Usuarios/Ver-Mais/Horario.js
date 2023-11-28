@@ -1,8 +1,8 @@
-import FiltroService from "@/services/FiltroService";
+import ConsultasService from "@/services/ConsultasService";
 import "@/components/Usuarios/Ver-Mais/css/Horario.css";
 
 export default async function Horario({ nome }) {
-  const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(nome);
+  const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
 
   const isHorarioDiferenteDe24Horas =
     unidadesdeSaude.horario !== "Atendimento 24 Horas";

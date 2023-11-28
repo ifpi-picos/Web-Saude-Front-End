@@ -1,4 +1,4 @@
-class FiltroSeerrvice {
+class ConsultasService {
   async unidadesdeSaude() {
     try {
       const res = await fetch(
@@ -90,6 +90,66 @@ class FiltroSeerrvice {
       console.error(error);
     }
   }
+  async pegarClinicas() {
+    const res = await fetch(`https://api-web-saude.vercel.app/clinicas`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error(`houve um erro no servidor! ${res.status}`);
+    }
+
+    const info = await res.json();
+
+    return info;
+  }
+  async pegarHospital(nome) {
+    const res = await fetch(
+      `https://api-web-saude.vercel.app/hospital/${nome}`,
+      {
+        cache: "no-store",
+      }
+    );
+    const info = await res.json();
+    return info;
+  }
+
+  async pegarHospitais() {
+    const res = await fetch(`https://api-web-saude.vercel.app/hospitais`, {
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      throw new Error(`houve um erro no servidor! ${res.status}`);
+    }
+
+    const info = await res.json();
+
+    return info;
+  }
+  async pegarClinica(nome) {
+    const res = await fetch(
+      `https://api-web-saude.vercel.app/clinica/${nome}`,
+      {
+        cache: "no-store",
+      }
+    );
+    const info = await res.json();
+    return info;
+  }
+ 
+  async pegarUsuarioPeloNome(nome) {
+    const res = await fetch(
+      `https://api-web-saude.vercel.app/usuario/${nome}`,
+      {
+        cache: "no-store",
+      }
+    );
+    
+    const info = await res.json();
+    return info;
+  }
+ 
 }
 
-export default new FiltroSeerrvice();
+export default new ConsultasService();

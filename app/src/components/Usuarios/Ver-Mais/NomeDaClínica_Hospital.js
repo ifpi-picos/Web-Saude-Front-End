@@ -1,8 +1,8 @@
 import Image from "next/image";
-import FiltroService from "@/services/FiltroService";
+import ConsultasService from "@/services/ConsultasService";
 import "@/components/Usuarios/Ver-Mais/css/NomeUnidadeDeSaude.css";
 export default async function NomeDaClinica_Hospital({ nome }) {
-  const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(nome);
+  const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
 
   return (
     <section className="section-clinica-hospital">

@@ -14,8 +14,8 @@ const customStyles = {
   control: (provided, state) => ({
     ...provided,
     marginTop: "8px",
-    height:"12px",
-    borderRadius:"7px"
+    height: "12px",
+    borderRadius: "7px",
   }),
   indicatorSeparator: (provided, state) => ({
     ...provided,
@@ -24,14 +24,11 @@ const customStyles = {
     ...provided,
     backgroundColor: state.isSelected ? "blue" : "#00285f",
     color: "white",
-    
   }),
   menu: (provided, state) => ({
     ...provided,
     backgroundColor: "white",
-
   }),
-
 };
 
 const schema = yup.object().shape({
@@ -40,9 +37,19 @@ const schema = yup.object().shape({
     .required("Nome obrigatório")
     .min(3, "Tamanho muito grande")
     .max(50, "Tamanho muito grande"),
-  email: yup.string().email("Informe um e-mail válido").max(255, "E-mail muito longo"),
-  senha: yup.string().required("Senha obrigatória").min(6, "Mínimo de 6 caracteres").max(12, "Máximo de 12 caracteres"),
-  confirmarSenha: yup.string().oneOf([yup.ref("senha"), null], "As senhas devem coincidir").required("Confirmação obrigatória"),
+  email: yup
+    .string()
+    .email("Informe um e-mail válido")
+    .max(255, "E-mail muito longo").matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/,"e-mail inválido"),
+  senha: yup
+    .string()
+    .required("Senha obrigatória")
+    .min(6, "Mínimo de 6 caracteres")
+    .max(12, "Máximo de 12 caracteres"),
+  confirmarSenha: yup
+    .string()
+    .oneOf([yup.ref("senha"), null], "As senhas devem coincidir")
+    .required("Confirmação obrigatória"),
   tipo: yup.string().required("Selecione o tipo"),
 });
 
@@ -53,30 +60,32 @@ export default function CadastrarUsuarioForm() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    
   });
 
   const [showModal, setShowModal] = useState(false);
   const [selectedType, setSelectedType] = useState(null);
-  const onSubmit = async (formData) => {
+  const onSubmit = async formData => {
     const token = localStorage.getItem("token");
-    console.log("nome",selectedType.value)
+    console.log("nome", selectedType.value);
 
     try {
-      const response = await fetch(`https://api-web-saude.vercel.app/novo-usuario`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-access-token": token,
-        },
-        body: JSON.stringify({
-          nome: formData.nome,
-          email: formData.email,
-          senha: formData.senha,
-          confirmarSenha: formData.confirmarSenha,
-          tipo: selectedType.value,
-        }),
-      });
+      const response = await fetch(
+        `https://api-web-saude.vercel.app/novo-usuario`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": token,
+          },
+          body: JSON.stringify({
+            nome: formData.nome,
+            email: formData.email,
+            senha: formData.senha,
+            confirmarSenha: formData.confirmarSenha,
+            tipo: selectedType.value,
+          }),
+        }
+      );
 
       if (response.ok) {
         const responseData = await response.json();
@@ -194,25 +203,27 @@ export default function CadastrarUsuarioForm() {
 
                 <label>Tipo</label>
                 <Controller
-  name="tipo"
-  control={control}
-  render={({ field }) => (
-    <Select
-      className="select"
-      styles={customStyles}
-      options={[
-        { value: "admin", label: "Admin" },
-        { value: "funcionario", label: "Funcionário" },
-      ]}
-      value={selectedType}
-      onChange={(selectedOption) => {
-        setSelectedType(selectedOption);
-        field.onChange(selectedOption ? selectedOption.value : ''); // Atualize para passar apenas o valor
-      }}
-      getOptionValue={(option) => option.value} // Adicione esta linha para garantir que apenas o valor seja retornado
-    />
-  )}
-/>
+                  name="tipo"
+                  control={control}
+                  render={({ field }) => (
+                    <Select
+                      className="select"
+                      styles={customStyles}
+                      options={[
+                        { value: "admin", label: "Admin" },
+                        { value: "funcionario", label: "Funcionário" },
+                      ]}
+                      value={selectedType}
+                      onChange={selectedOption => {
+                        setSelectedType(selectedOption);
+                        field.onChange(
+                          selectedOption ? selectedOption.value : ""
+                        ); // Atualize para passar apenas o valor
+                      }}
+                      getOptionValue={option => option.value} // Adicione esta linha para garantir que apenas o valor seja retornado
+                    />
+                  )}
+                />
                 {errors.tipo && (
                   <div className="error">{errors.tipo.message}</div>
                 )}

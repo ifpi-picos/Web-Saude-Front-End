@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FiltroService from "@/services/FiltroService";
+import ConsultasService from "@/services/ConsultasService";
 import "@/components/Usuarios/Ver-Mais/css/Mapa.css";
 
 export default function Mapa({ nome }) {
@@ -8,7 +8,7 @@ export default function Mapa({ nome }) {
 
   useEffect(() => {
     async function fetchUnidadesDeSaude() {
-      const unidades = await FiltroService.pegarUnidadedeSaude(nome);
+      const unidades = await ConsultasService.pegarUnidadedeSaude(nome);
       setUnidadesDeSaude(unidades);
     }
 

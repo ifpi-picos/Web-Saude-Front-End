@@ -25,7 +25,7 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .email("Informe um e-mail válido")
-    .max(255, "e-mail muito longo"),
+    .max(255, "e-mail muito longo").matches(/@(gmail\.com|hotmail\.com|outlook\.com)$/,"e-mail inválido"),
   whatsapp: yup.string().matches(/^\d{10,11}$/, "Informe um número válido"),
   instagram: yup.string().max(255, "tamanho muito longo"),
   descricao: yup.string(),
@@ -81,7 +81,7 @@ export default function ClinicaForm() {
   const [imageLink, setImageLink] = useState("");
 
   const decodedToken = useDecodedToken();
-  console.log(decodedToken)
+  console.log(decodedToken);
   const onSubmit = async formData => {
     formData.imagem = imageLink;
     formData.especialidades = selectedSpecialtyIds;
@@ -104,9 +104,9 @@ export default function ClinicaForm() {
         const responseData = await response.json();
         setShowModal(true);
         if (decodedToken === "admin") {
-          window.location.href = ("/dashboard");
+          window.location.href = "/dashboard";
         } else {
-          window.location.href = ("/funcionario");
+          window.location.href = "/funcionario";
         }
       } else {
         console.error("Erro ao enviar os dados.");
@@ -166,7 +166,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="nome"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                     {...field}
                   />
                 )}
@@ -263,7 +267,11 @@ export default function ClinicaForm() {
                     type="email"
                     name="email"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -280,7 +288,11 @@ export default function ClinicaForm() {
                     type="tel"
                     name="whatsapp"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 11) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -296,7 +308,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="instagram"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -331,7 +347,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="longitude"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 10) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -348,7 +368,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="latitude"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 10) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -366,7 +390,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="cep"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                    if (e.target.value.length <= 10) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -381,7 +409,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="rua"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -396,7 +428,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="numero"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 10) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -413,7 +449,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="bairro"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -430,7 +470,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="cidade"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -447,7 +491,11 @@ export default function ClinicaForm() {
                     type="text"
                     name="uf"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 2) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />

@@ -9,7 +9,7 @@ import Especialidades from "@/components/Usuarios/Ver-Mais/Especialidades";
 import Mapa from "@/components/Usuarios/Ver-Mais/Mapa";
 import Footer from "@/components/Usuarios/Footer";
 import Link from "next/link";
-import FiltroService from "@/services/FiltroService";
+import FiltroService from "@/services/ConsultasService";
 import NotFound from "@/app/not-found";
 import "../../../components/Usuarios/css/verMais.css";
 

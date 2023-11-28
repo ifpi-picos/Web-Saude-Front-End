@@ -28,47 +28,48 @@ export default function Usuarios({ usuarios }) {
   };
 
   return (
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Tipo</th>
-            <th>Opções</th>
-          </tr>
-        </thead>
-        <tbody>
-          {usuarios.map(info => (
-            <tr key={info.id}>
-              <td>{info?.nome}</td>
-              <td>{info?.email}</td>
-              <td>{info?.tipo}</td>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Tipo</th>
+          <th>Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        {usuarios.map(info => (
+          <tr key={info.id}>
+            <td>{info?.nome}</td>
+            <td>{info?.email}</td>
+            <td>{info?.tipo}</td>
 
-              <td>
-                <a
-                  href={`/dashboard/usuario/nova-senha/${info?.nome}`}
-                  className="button-usuarios"
-                >
-                  Nova Senha
-                </a>
-                <a href="/novo-usuario"
-                  className="redButton"
-                  onClick={e => {
-                    e.preventDefault();
-                    const confirmDelete = window.confirm(
-                      `Tem certeza que deseja deletar o usuário ${info?.nome}?`
-                    );
-                    if (confirmDelete) {
-                      HandleDeletar(info?._id);
-                    }
-                  }}
-                >
-                  Excluir
-                </a>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            <td>
+              <a
+                href={`/dashboard/usuario/nova-senha/${info?.nome}`}
+                className="button-usuarios"
+              >
+                Nova Senha
+              </a>
+              <a
+                href="/novo-usuario"
+                className="redButton"
+                onClick={e => {
+                  e.preventDefault();
+                  const confirmDelete = window.confirm(
+                    `Tem certeza que deseja deletar o usuário ${info?.nome}?`
+                  );
+                  if (confirmDelete) {
+                    HandleDeletar(info?._id);
+                  }
+                }}
+              >
+                Excluir
+              </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }

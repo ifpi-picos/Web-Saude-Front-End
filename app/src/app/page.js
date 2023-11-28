@@ -5,7 +5,7 @@ import Filtros from "@/components/Usuarios/Home/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
-import FiltroService from "@/services/FiltroService";
+import FiltroService from "@/services/ConsultasService";
 import "../components/Usuarios/Home/css/Home.css";
 
 export default async function CorpoHome() {
