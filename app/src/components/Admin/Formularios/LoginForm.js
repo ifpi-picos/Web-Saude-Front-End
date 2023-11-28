@@ -110,6 +110,19 @@ export default function LoginForm() {
                       field.onChange(e);
                     }
                   }}
+                  onPaste={async (e) => {
+                    e.preventDefault(); 
+            
+                    try {
+                      const pastedText = await navigator.clipboard.readText();
+                      if (pastedText.length <= 255) {
+                        field.onChange({ target: { value: pastedText } });
+                      }
+                    } catch (error) {
+                      console.error('Erro ao ler dados da área de transferência:', error);
+                    }
+                  }}
+                  {...field}
                 />
               )}
             />
@@ -131,7 +144,19 @@ export default function LoginForm() {
                     if (e.target.value.length <= 12) {
                       field.onChange(e);
                     }
-                  }}                  
+                  }} 
+                  onPaste={async (e) => {
+                    e.preventDefault(); 
+            
+                    try {
+                      const pastedText = await navigator.clipboard.readText();
+                      if (pastedText.length <= 12) {
+                        field.onChange({ target: { value: pastedText } });
+                      }
+                    } catch (error) {
+                      console.error('Erro ao ler dados da área de transferência:', error);
+                    }
+                  }}                 
                 />
               )}
             />
