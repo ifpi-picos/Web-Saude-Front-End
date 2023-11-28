@@ -20,6 +20,8 @@ export default function SelectEspecialidadesSalvar({
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
+      borderRadius: "7px",
+
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,

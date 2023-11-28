@@ -147,6 +147,19 @@ export default function CadastrarUsuarioForm() {
                           field.onChange(e);
                         }
                       }}
+                      onPaste={async (e) => {
+                        e.preventDefault(); 
+                
+                        try {
+                          const pastedText = await navigator.clipboard.readText();
+                          if (pastedText.length <= 255) {
+                            field.onChange({ target: { value: pastedText } });
+                          }
+                        } catch (error) {
+                          console.error('Erro ao ler dados da área de transferência:', error);
+                        }
+                      }}
+                      {...field}
                     />
                   )}
                 />
@@ -168,6 +181,19 @@ export default function CadastrarUsuarioForm() {
                           field.onChange(e);
                         }
                       }}
+                      onPaste={async (e) => {
+                        e.preventDefault(); 
+                
+                        try {
+                          const pastedText = await navigator.clipboard.readText();
+                          if (pastedText.length <= 255) {
+                            field.onChange({ target: { value: pastedText } });
+                          }
+                        } catch (error) {
+                          console.error('Erro ao ler dados da área de transferência:', error);
+                        }
+                      }}
+                      {...field}
                     />
                   )}
                 />
@@ -185,10 +211,23 @@ export default function CadastrarUsuarioForm() {
                       name="senha"
                       value={field.value}
                       onChange={(e) => {
-                        if (e.target.value.length <= 255) {
+                        if (e.target.value.length <= 12) {
                           field.onChange(e);
                         }
                       }}
+                      onPaste={async (e) => {
+                        e.preventDefault(); 
+                
+                        try {
+                          const pastedText = await navigator.clipboard.readText();
+                          if (pastedText.length <= 12) {
+                            field.onChange({ target: { value: pastedText } });
+                          }
+                        } catch (error) {
+                          console.error('Erro ao ler dados da área de transferência:', error);
+                        }
+                      }}
+                      {...field}
                     />
                   )}
                 />
@@ -206,10 +245,23 @@ export default function CadastrarUsuarioForm() {
                       name="confirmarSenha"
                       value={field.value}
                       onChange={(e) => {
-                        if (e.target.value.length <= 255) {
+                        if (e.target.value.length <= 12) {
                           field.onChange(e);
                         }
                       }}
+                      onPaste={async (e) => {
+                        e.preventDefault(); 
+                
+                        try {
+                          const pastedText = await navigator.clipboard.readText();
+                          if (pastedText.length <= 12) {
+                            field.onChange({ target: { value: pastedText } });
+                          }
+                        } catch (error) {
+                          console.error('Erro ao ler dados da área de transferência:', error);
+                        }
+                      }}
+                      {...field}
                     />
                   )}
                 />
@@ -234,9 +286,9 @@ export default function CadastrarUsuarioForm() {
                         setSelectedType(selectedOption);
                         field.onChange(
                           selectedOption ? selectedOption.value : ""
-                        ); // Atualize para passar apenas o valor
+                        ); 
                       }}
-                      getOptionValue={option => option.value} // Adicione esta linha para garantir que apenas o valor seja retornado
+                      getOptionValue={option => option.value} 
                     />
                   )}
                 />

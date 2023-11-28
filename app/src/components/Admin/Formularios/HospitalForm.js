@@ -167,6 +167,18 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 255) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
                     {...field}
                   />
                 )}
@@ -197,6 +209,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 255) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -218,6 +243,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 11) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -238,6 +276,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 255) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -277,6 +328,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 10) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -298,6 +362,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 10) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -320,6 +397,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 10) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -339,6 +429,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 255) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -358,6 +461,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 10) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -379,6 +495,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 255) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -400,6 +529,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 255) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />
@@ -421,6 +563,19 @@ export default function HospitalForm() {
                         field.onChange(e);
                       }
                     }}
+                    onPaste={async (e) => {
+                      e.preventDefault(); 
+              
+                      try {
+                        const pastedText = await navigator.clipboard.readText();
+                        if (pastedText.length <= 2) {
+                          field.onChange({ target: { value: pastedText } });
+                        }
+                      } catch (error) {
+                        console.error('Erro ao ler dados da área de transferência:', error);
+                      }
+                    }}
+                    {...field}
                   />
                 )}
               />

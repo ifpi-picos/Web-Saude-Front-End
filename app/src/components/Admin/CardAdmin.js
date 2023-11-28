@@ -3,12 +3,16 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaCog } from "react-icons/fa";
 import { Button, Modal } from "react-bootstrap";
-import "../Admin/css/CardAdmin.css";
 import Paginacao from "../UsuariosAndAdmin/Paginacao";
+import { useDecodedToken } from "@/services/decodeToken";
+import "../Admin/css/CardAdmin.css";
+
 
 export default function CardAdmin({ pageNumber, informacao }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemStates, setItemStates] = useState([]);
+
+  const decodedToken = useDecodedToken();
 
   useEffect(() => {
     if (pageNumber) {
@@ -66,7 +70,6 @@ export default function CardAdmin({ pageNumber, informacao }) {
           tipoEstabelecimento === "Atendimento 24 Horas"
             ? `https://api-web-saude.vercel.app/admin/deletar-hospital/${itemId}`
             : `https://api-web-saude.vercel.app/admin/deletar-clinica/${itemId}`;
-        console.log("DELETE endpoint:", deleteEndpoint);
 
         fetch(deleteEndpoint, {
           method: "DELETE",
@@ -78,7 +81,11 @@ export default function CardAdmin({ pageNumber, informacao }) {
           .then(response => {
             if (response.ok) {
               handleCloseModal(index);
-              window.location.href = "/dashboard";
+              if (decodedToken === "admin") {
+                window.location.href = "/dashboard";
+              } else {
+                window.location.href = "/funcionario";
+              }
             } else {
               console.error("Erro ao excluir o estabelecimento.");
             }

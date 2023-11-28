@@ -81,7 +81,7 @@ export default function ClinicaForm() {
   const [imageLink, setImageLink] = useState("");
 
   const decodedToken = useDecodedToken();
-  console.log(decodedToken);
+
   const onSubmit = async formData => {
     formData.imagem = imageLink;
     formData.especialidades = selectedSpecialtyIds;
