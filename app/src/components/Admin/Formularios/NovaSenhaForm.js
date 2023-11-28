@@ -103,7 +103,11 @@ export default function NovaSenhaForm({ nome }) {
                       type="password"
                       name="senha"
                       value={field.value}
-                      onChange={field.onChange}
+                      onChange={(e) => {
+                        if (e.target.value.length <= 255) {
+                          field.onChange(e);
+                        }
+                      }}
                     />
                   )}
                 />
@@ -120,7 +124,11 @@ export default function NovaSenhaForm({ nome }) {
                       type="password"
                       name="confirmarSenha"
                       value={field.value}
-                      onChange={field.onChange}
+                      onChange={(e) => {
+                        if (e.target.value.length <= 255) {
+                          field.onChange(e);
+                        }
+                      }}
                     />
                   )}
                 />

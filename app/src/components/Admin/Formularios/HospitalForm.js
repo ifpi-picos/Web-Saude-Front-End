@@ -162,7 +162,11 @@ export default function HospitalForm() {
                     type="text"
                     name="nome"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                     {...field}
                   />
                 )}
@@ -188,7 +192,11 @@ export default function HospitalForm() {
                     type="email"
                     name="email"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -205,7 +213,11 @@ export default function HospitalForm() {
                     type="tel"
                     name="whatsapp"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 11) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -221,7 +233,11 @@ export default function HospitalForm() {
                     type="text"
                     name="instagram"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -256,7 +272,11 @@ export default function HospitalForm() {
                     type="text"
                     name="longitude"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 10) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -273,7 +293,11 @@ export default function HospitalForm() {
                     type="text"
                     name="latitude"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 10) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -291,7 +315,11 @@ export default function HospitalForm() {
                     type="text"
                     name="cep"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 10) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -306,7 +334,11 @@ export default function HospitalForm() {
                     type="text"
                     name="rua"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -321,7 +353,11 @@ export default function HospitalForm() {
                     type="text"
                     name="numero"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 10) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -338,7 +374,11 @@ export default function HospitalForm() {
                     type="text"
                     name="bairro"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -355,7 +395,11 @@ export default function HospitalForm() {
                     type="text"
                     name="cidade"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 255) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />
@@ -372,7 +416,11 @@ export default function HospitalForm() {
                     type="text"
                     name="uf"
                     value={field.value}
-                    onChange={field.onChange}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 2) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 )}
               />

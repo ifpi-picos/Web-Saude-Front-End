@@ -142,7 +142,11 @@ export default function CadastrarUsuarioForm() {
                       type="text"
                       name="nome"
                       value={field.value}
-                      onChange={field.onChange}
+                      onChange={(e) => {
+                        if (e.target.value.length <= 255) {
+                          field.onChange(e);
+                        }
+                      }}
                     />
                   )}
                 />
@@ -159,7 +163,11 @@ export default function CadastrarUsuarioForm() {
                       type="email"
                       name="email"
                       value={field.value}
-                      onChange={field.onChange}
+                      onChange={(e) => {
+                        if (e.target.value.length <= 255) {
+                          field.onChange(e);
+                        }
+                      }}
                     />
                   )}
                 />
@@ -176,7 +184,11 @@ export default function CadastrarUsuarioForm() {
                       type="password"
                       name="senha"
                       value={field.value}
-                      onChange={field.onChange}
+                      onChange={(e) => {
+                        if (e.target.value.length <= 255) {
+                          field.onChange(e);
+                        }
+                      }}
                     />
                   )}
                 />
@@ -193,7 +205,11 @@ export default function CadastrarUsuarioForm() {
                       type="password"
                       name="confirmarSenha"
                       value={field.value}
-                      onChange={field.onChange}
+                      onChange={(e) => {
+                        if (e.target.value.length <= 255) {
+                          field.onChange(e);
+                        }
+                      }}
                     />
                   )}
                 />

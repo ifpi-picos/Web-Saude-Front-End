@@ -4,7 +4,7 @@ import ConsultasService from "@/services/ConsultasService";
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import NotFound from "@/app/not-found";
 export default async function AlterarClinica({ params }) {
-  const clinicaData = await new ConsultasService.pegarClinica(params.nome);
+  const clinicaData = await ConsultasService.pegarClinica(params.nome);
   const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(
     params.nome
   );

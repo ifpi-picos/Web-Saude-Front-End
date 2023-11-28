@@ -1,11 +1,11 @@
 "use client";
-import CadstrarUsuarioForm from "@/components/Admin/Formularios/CadastrarUsuarioForm";
+import CadastrarUsuarioForm from "@/components/Admin/Formularios/CadastrarUsuarioForm";
 import PrivateRoute from "@/components/Admin/privateRouter";
 
 export default function NovoUsuario() {
   return (
     <PrivateRoute>
-      <CadstrarUsuarioForm />;
+      <CadastrarUsuarioForm />;
     </PrivateRoute>
   );
 }
