@@ -1,5 +1,8 @@
+import PrivateRoute from "./privateRouter";
+
 export default function CardProgressos() {
   return (
+    <PrivateRoute>
     <div className="analytics">
       <div className="card">
         <div className="card-head">
@@ -27,5 +30,6 @@ export default function CardProgressos() {
         </div>
       </div>
     </div>
+    </PrivateRoute>
   );
 }

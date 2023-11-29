@@ -48,7 +48,6 @@ export default function Dashboard() {
     );
   }
   if (usuarios.length > 0) {
-    console.log(usuarios);
   }
   return (
     <PrivateRoute>

@@ -1,5 +1,6 @@
 import React from "react";
 import "@/components/Admin/css/Usuarios.css";
+import PrivateRoute from "./privateRouter";
 
 export default function Usuarios({ usuarios }) {
   const HandleDeletar = async userId => {
@@ -28,11 +29,11 @@ export default function Usuarios({ usuarios }) {
   };
 
   return (
+    <PrivateRoute>
     <table>
       <thead>
         <tr>
           <th>Nome</th>
-          <th>Email</th>
           <th>Tipo</th>
           <th>Opções</th>
         </tr>
@@ -41,7 +42,6 @@ export default function Usuarios({ usuarios }) {
         {usuarios.map(info => (
           <tr key={info.id}>
             <td>{info?.nome}</td>
-            <td>{info?.email}</td>
             <td>{info?.tipo}</td>
 
             <td>
@@ -71,5 +71,6 @@ export default function Usuarios({ usuarios }) {
         ))}
       </tbody>
     </table>
+    </PrivateRoute>
   );
 }

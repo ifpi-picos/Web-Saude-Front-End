@@ -95,10 +95,17 @@ export default function CardAdmin({ pageNumber, informacao }) {
       }
     }
   };
-  const handleUpdateItem = index => {
-    handleCloseModal(index);
-  };
+ 
+  const handleUpdateItem = (index, nome, horario) => {
+    const url = horario === "Atendimento 24 Horas"
+      ? `/alterar-hospital/${nome}`
+      : `/alterar-clinica/${nome}`;
+  
+      window.location.href = url;
 
+      handleCloseModal(index);
+  };
+  
   return (
     <section className="section-card-admin">
       {limitedPosts.length === 0 ? (
@@ -117,20 +124,13 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 <Modal.Body>
                   <p className="opcoes">Escolha uma opção:</p>
                   <Button
-                    className="buttons-model"
-                    variant="success"
-                    onClick={() => handleUpdateItem(index)}
-                  >
-                    <a
-                      href={
-                        info.horario === "Atendimento 24 Horas"
-                          ? `/alterar-hospital/${info.nome}`
-                          : `/alterar-clinica/${info.nome}`
-                      }
-                    >
+                      className="buttons-model"
+                      variant="success"
+                      onClick={() => handleUpdateItem(index, info.nome, info.horario)}
+                      >
                       Alterar
-                    </a>
-                  </Button>
+                    </Button>
+
                   <Button
                     className="buttons-model"
                     variant="danger"

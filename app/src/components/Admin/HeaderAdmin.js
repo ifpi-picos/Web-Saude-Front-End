@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useDecodedToken } from "@/services/decodeToken";
 
 import "../Admin/css/HeaderAdmin.css";
+import PrivateRoute from "./privateRouter";
 
 export default function HeaderAdmin() {
   const [expanded, setExpanded] = useState(false);
@@ -31,6 +32,7 @@ export default function HeaderAdmin() {
   const decodedToken = useDecodedToken();
 
   return (
+    <PrivateRoute>
     <Navbar
       expand="lg"
       expanded={expanded}
@@ -95,5 +97,6 @@ export default function HeaderAdmin() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </PrivateRoute>
   );
 }
