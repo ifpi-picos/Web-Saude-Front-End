@@ -1,7 +1,7 @@
 export default function CardsSobres() {
   return (
     <>
-      <section className="section-sobre">
+      <section className="section-sobre-titulo">
         <div class="card">
           <div class="card-header">Hospitais</div>
           <div className="card-body">
@@ -22,7 +22,7 @@ export default function CardsSobres() {
           </div>
         </div>
       </section>
-      <section className="section-sobre">
+      <section className="section-sobre-titulo">
         <div className="card">
           <div className="card-header">Clínicas</div>
           <div className="card-body">
@@ -44,7 +44,7 @@ export default function CardsSobres() {
           </div>
         </div>
       </section>
-      <section className="section-sobre">
+      <section className="section-sobre-titulo">
         <div className="card">
           <div className="card-header">Especialidades</div>
           <div className="card-body">

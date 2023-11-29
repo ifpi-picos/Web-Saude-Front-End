@@ -1,7 +1,24 @@
+import "@/components/Usuarios/css/Sobre.css"
+import Image from "next/image"
 export default function TituloSobre() {
   return (
+    <>
+    <section className="section-sobre" style={{marginTop:"120px"}}>
+    <div className="div-sobre">
+        <h1>Sobre</h1>
+      </div>
+      <div className="img-sobre">
+        <Image
+          src="/imgs/sobre.svg"
+          alt="img-sobre"
+          width={200}
+          height={200}
+        />
+      </div>
+      </section>
+
     <section className="section-titulo">
-      <h1>A saúde mais perto de você</h1>
+     
       <h2>Quem Somos?</h2>
       <p>
         Somos a plataforma dedicada a fornecer informações essenciais sobre as
@@ -24,5 +41,7 @@ export default function TituloSobre() {
         presentes na cidade de Picos-PI.
       </p>
     </section>
+    </>
+
   );
 }

@@ -12,8 +12,8 @@ export default function Especialidades({ nome }) {
 
   return (
     <Card className="card-especialidades">
+     <Card.Header>Especialidades</Card.Header>
       <Card.Body>
-        <Card.Title style={{ textAlign: "center" }}>Especialidades</Card.Title>
         <Card.Text>
           {especialidades.map((especialidade, index) => (
             <span key={index}>
