@@ -1,5 +1,6 @@
 import NotFound from "@/app/not-found";
 import NovaSenhaForm from "@/components/Admin/Formularios/NovaSenhaForm";
+import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import PrivateRoute from "@/components/Admin/privateRouter";
 import ConsultasService from "@/services/ConsultasService";
 export default async function NovaSenha({ params }) {
@@ -10,6 +11,7 @@ export default async function NovaSenha({ params }) {
   }
   return (
     <PrivateRoute>
+      <HeaderAdmin/>
       <NovaSenhaForm nome={params.nome} />
     </PrivateRoute>
   );

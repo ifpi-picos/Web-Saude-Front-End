@@ -73,10 +73,10 @@ export default function NovaSenhaForm({ nome }) {
               bottom: "0",
               left: "50%",
               top: "50%",
-              height: "100vh",
               transform: "translate(-50%,-50%)",
-              marginTop: "0px",
+              marginTop: "70px",
               marginBottom: "0px",
+              
             }}
           >
             <form onSubmit={handleSubmit(onSubmit)}>

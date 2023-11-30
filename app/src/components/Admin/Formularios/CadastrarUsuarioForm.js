@@ -90,13 +90,12 @@ export default function CadastrarUsuarioForm() {
 
       if (response.ok) {
         const responseData = await response.json();
+        console.log(responseData)
         setShowModal(true);
-        window.location.href = "/";
+       window.location.href = "/dashboard";
       }
 
-      if (response.status === 400) {
-        setErrorMessage("Email ou senha incorretos");
-      }
+     
     } catch (error) {
       console.error(error);
     }
@@ -115,7 +114,6 @@ export default function CadastrarUsuarioForm() {
               top: "50%",
               height: "100%",
               transform: "translate(-50%,-50%)",
-              marginTop: "0px",
               marginBottom: "0px",
             }}
           >
