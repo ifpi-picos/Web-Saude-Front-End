@@ -128,7 +128,7 @@ export default function ClinicaForm() {
   };
   return (
     <>
-      <section className="section-form">
+      <section className="section-form" style={{height:"100%"}}>
         <div className="div-form">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="div-logo">

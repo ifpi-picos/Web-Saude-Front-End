@@ -107,15 +107,7 @@ export default function CadastrarUsuarioForm() {
         <section className="section-form">
           <div
             className="div-form"
-            style={{
-              position: "absolute",
-              bottom: "0",
-              left: "50%",
-              top: "50%",
-              height: "100%",
-              transform: "translate(-50%,-50%)",
-              marginBottom: "0px",
-            }}
+            
           >
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">

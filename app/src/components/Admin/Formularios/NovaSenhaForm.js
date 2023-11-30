@@ -68,16 +68,7 @@ export default function NovaSenhaForm({ nome }) {
         <section className="section-form">
           <div
             className="div-form"
-            style={{
-              position: "absolute",
-              bottom: "0",
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%,-50%)",
-              marginTop: "70px",
-              marginBottom: "0px",
-              
-            }}
+            
           >
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">
