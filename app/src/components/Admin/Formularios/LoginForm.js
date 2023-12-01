@@ -78,6 +78,7 @@ export default function LoginForm() {
           left: "50%",
           transform: "translate(-50%,-50%)",
           marginTop: "0px",
+          height: "100vh"
         }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,14 +1,10 @@
-import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
+import ConsultasService from "@/services/ConsultasService";
 import "@/components/Usuarios/Ver-Mais/css/Especialidades.css";
-export default function Especialidades({ nome }) {
-  const [especialidades, setEspecialidades] = useState([]);
+export default async function Especialidades({ nome }) {
 
-  useEffect(() => {
-    fetch(`https://api-web-saude.vercel.app/especialidades/${nome}`)
-      .then(response => response.json())
-      .then(data => setEspecialidades(data));
-  }, [nome]);
+  const especialidades = await ConsultasService.pegarEspecialidadesPeloNomeDaUnidadeDeSaude(nome)
+ 
 
   return (
     <Card className="card-especialidades">
