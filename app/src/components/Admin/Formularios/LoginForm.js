@@ -69,12 +69,11 @@ export default function LoginForm() {
     }
   };
   return (
-    <section className="section-form" style={{height:"0px"}}>
+    <section className="section-form" style={{height:"100%"}}>
       <div
         className="div-form"
         style={{
           position: "absolute",
-          bottom: "0",
           left: "50%",
           transform: "translate(-50%,-50%)",
           marginTop: "0px",
