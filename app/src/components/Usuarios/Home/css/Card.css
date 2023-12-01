@@ -1,4 +1,12 @@
 /*card*/
+.div-endereco{
+  display: flex;
+  justify-content: center;
+}
+.div-endereco .endereco-icon{
+  margin-top: 55px;
+
+}
 .section-card {
   display: flex;
   justify-content: center;
@@ -47,11 +55,6 @@
   height: auto;
 }
 
-/*.section-card .card-container .top .image-container img:hover{
-    transform: scale(1.0);
-    margin-bottom: 40px;
-  
-  } */
 /* endereço e horario */
 .section-card .card-container .button {
   background-color: var(--secundary-color);
@@ -146,10 +149,16 @@
   .section-card .card-container .button .btn-margin {
     margin-top: -40px;
   }
+  .div-endereco .endereco-icon{
+    margin-top: 21px;  
+    margin-right: -17px;
+    font-size: 12px;
+  }
   .section-card .card-container .button p {
     margin: 20px;
     font-size: 12px;
   }
+  
   /* imagem*/
   .section-card .card-container .top .image-container {
     width: 100px;

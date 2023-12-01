@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Paginacao from "../../UsuariosAndAdmin/Paginacao";
 import Link from "next/link";
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import "@/components/Usuarios/Home/css/Card.css";
 
 export default function Card({ pageNumber, informacao }) {
@@ -39,11 +40,14 @@ export default function Card({ pageNumber, informacao }) {
               </div>
               <div className="button">
                 <h3>{info.nome}</h3>
+                <div className="div-endereco">
+                  <FaMapMarkerAlt className="endereco-icon" />
                 <p>
                   {info.endereco.rua}, {info.endereco.numero} -{" "}
                   {info.endereco.bairro}, {info.endereco.cidade} -
                   {info.endereco.uf}, {info.endereco.cep}
                 </p>
+                </div>
                 {info.horario === "Atendimento 24 Horas" ? (
                   <p>Atendimento 24 horas</p>
                 ) : (
