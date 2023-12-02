@@ -151,9 +151,10 @@
   }
   
   .div-endereco .endereco-icon{
+    position: relative;
     margin-top: 21px;  
-    font-size: 14px;
-    margin-left: 15px;
+    font-size: 16px;
+    left: 15px;
   }
   .section-card .card-container .button p {
     margin: 20px;

@@ -13,33 +13,32 @@ export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [useToken, setUseToken] = useState(null);
 
+  const fetchData = async () => {
+    const token = localStorage.getItem("token");
+    setUseToken(token);
+    try {
+      const response = await fetch(
+        `https://api-web-saude.vercel.app/usuarios/`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": token,
+          },
+        }
+      );
+      const data = await response.json();
+      setUsuarios(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Erro ao obter dados:", error);
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const token = localStorage.getItem("token");
-      setUseToken(token);
-      try {
-        const response = await fetch(
-          `https://api-web-saude.vercel.app/usuarios/`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "x-access-token": token,
-            },
-          }
-        );
-        const data = await response.json();
-        setUsuarios(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     fetchData();
-  }, []);
+  }, []); 
 
-  useEffect(() => {});
   if (isLoading && useToken) {
     return (
       <div>
@@ -47,8 +46,7 @@ export default function Dashboard() {
       </div>
     );
   }
-  if (usuarios.length > 0) {
-  }
+
   return (
     <PrivateRoute>
       <div className="main-content">

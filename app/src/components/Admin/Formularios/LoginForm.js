@@ -69,7 +69,7 @@ export default function LoginForm() {
     }
   };
   return (
-    <section className="section-form" style={{height:"100%"}}>
+    <section className="section-form">
       <div
         className="div-form"
         style={{
