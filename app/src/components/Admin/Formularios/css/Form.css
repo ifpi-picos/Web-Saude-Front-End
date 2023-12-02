@@ -122,6 +122,7 @@ button:hover {
 }
 .div-button-submit button {
   width: 400px;
+  margin-bottom: 20px;
 }
 
 .title {
@@ -134,6 +135,8 @@ button:hover {
 @media (max-width: 768px) {
   .section-form {
     width: 100%;
+    background-color: var(--primary-color);
+
   }
   .div-form {
     width: 100%;

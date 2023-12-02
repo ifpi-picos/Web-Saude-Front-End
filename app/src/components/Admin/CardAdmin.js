@@ -153,7 +153,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 </div>
               </div>
               <div className="button">
-                <div className="icone">
+                <div className="icon">
                   <FaCog
                     size={30}
                     className="config-icon"
