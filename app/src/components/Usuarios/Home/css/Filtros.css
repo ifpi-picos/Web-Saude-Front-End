@@ -13,7 +13,10 @@
   margin-top: 2.5rem;
 }
 
-.select-element-filtros {
+.select-element-filtros-1 {
+  width: 120px;
+}
+.select-element-filtros-2 {
   width: 160px;
 }
 

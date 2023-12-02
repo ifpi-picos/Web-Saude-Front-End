@@ -90,12 +90,10 @@ export default function CadastrarUsuarioForm() {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData)
+        console.log(responseData);
         setShowModal(true);
-       window.location.href = "/dashboard";
+        window.location.href = "/dashboard";
       }
-
-     
     } catch (error) {
       console.error(error);
     }
@@ -105,10 +103,7 @@ export default function CadastrarUsuarioForm() {
     <PrivateRoute>
       <>
         <section className="section-form">
-          <div
-            className="div-form"
-            
-          >
+          <div className="div-form">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">
                 <Link href="/dashboard">

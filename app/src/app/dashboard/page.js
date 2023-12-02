@@ -37,7 +37,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchData();
-  }, []); 
+  }, []);
 
   if (isLoading && useToken) {
     return (

@@ -7,7 +7,7 @@
 }
 .section-form {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   height: 100vh;
 }
 .div-logo {
@@ -65,7 +65,6 @@
   border-radius: 7px;
   height: 35px;
   outline-color: var(--primary-color);
-
 }
 .upload {
   max-width: 100%;
@@ -136,7 +135,6 @@ button:hover {
   .section-form {
     width: 100%;
     background-color: var(--primary-color);
-
   }
   .div-form {
     width: 100%;

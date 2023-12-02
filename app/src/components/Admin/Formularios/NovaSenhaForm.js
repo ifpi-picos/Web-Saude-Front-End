@@ -66,10 +66,7 @@ export default function NovaSenhaForm({ nome }) {
     <PrivateRoute>
       <>
         <section className="section-form">
-          <div
-            className="div-form"
-            
-          >
+          <div className="div-form">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">
                 <Link href="/dashboard">

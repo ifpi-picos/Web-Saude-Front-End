@@ -69,7 +69,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .registro-header {
@@ -199,9 +198,8 @@ select {
   .button-novo-usuario {
     width: 110px;
   }
-  .card{
+  .card {
     margin-left: 0px;
-
   }
   /* buttons do catalógo*/
   .div-buttons-catalogo .buuton-prox-ant {

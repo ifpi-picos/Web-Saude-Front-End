@@ -11,7 +11,7 @@ export default async function NovaSenha({ params }) {
   }
   return (
     <PrivateRoute>
-      <HeaderAdmin/>
+      <HeaderAdmin />
       <NovaSenhaForm nome={params.nome} />
     </PrivateRoute>
   );
