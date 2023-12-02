@@ -28,7 +28,6 @@
   border-radius: 20px;
   margin-top: 140px;
   position: "absolute";
-  bottom: 0px;
   left: 50%;
   top: 50%;
 }
@@ -91,7 +90,6 @@
   cursor: pointer;
   border-radius: 8px;
   border: none;
-  margin-bottom: 10px;
 }
 button:hover {
   opacity: 0.8;
@@ -121,7 +119,9 @@ button:hover {
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  margin-bottom: 15px;
+}
+.div-button-submit button {
+  width: 400px;
 }
 
 .title {
@@ -130,9 +130,7 @@ button:hover {
   margin-top: 10px;
   color: white;
 }
-.div-button-submit button {
-  width: 400px;
-}
+
 @media (max-width: 768px) {
   .section-form {
     width: 100%;

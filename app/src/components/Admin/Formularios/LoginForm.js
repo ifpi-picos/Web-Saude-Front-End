@@ -74,10 +74,10 @@ export default function LoginForm() {
         className="div-form"
         style={{
           position: "absolute",
-          zIndex:"1000",
           left: "50%",
           transform: "translate(-50%,-50%)",
           marginTop: "0px",
+          height:"100vh"
         }}
       >
         <form onSubmit={handleSubmit(onSubmit)}>

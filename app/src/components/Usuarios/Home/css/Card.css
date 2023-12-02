@@ -1,10 +1,13 @@
 /*card*/
-.div-endereco{
+.div-endereco ,.div-horario-icon{
   display: flex;
   justify-content: center;
+
 }
-.div-endereco .endereco-icon{
+.div-endereco .endereco-icon , .div-horario-icon .horario-icon,.div-horario-icon .horario-icon-sabado{
+  font-size: 16px; 
   margin-top: 55px;
+  margin-right: 5px;
 
 }
 .section-card {
@@ -137,8 +140,8 @@
   /* nome */
   .section-card .card-container .button h3 {
     font-size: 13px;
-    margin-bottom: 40px;
-    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-top: 35px;
   }
   /* endereço e horario */
 
@@ -150,11 +153,16 @@
     margin-top: -40px;
   }
   
-  .div-endereco .endereco-icon{
+  .div-endereco .endereco-icon, .div-horario-icon .horario-icon{
     position: relative;
-    margin-top: 21px;  
-    font-size: 16px;
+    margin-top: 20px;  
     left: 15px;
+  }
+ .div-horario-icon .horario-icon-sabado{
+    position: relative;
+    margin-top: 20px;  
+    left: 15px;
+    font-size: 14px;
   }
   .section-card .card-container .button p {
     margin: 20px;
