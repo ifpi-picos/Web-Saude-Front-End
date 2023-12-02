@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import "@/components/Usuarios/Home/css/ButtonSearch.css";
@@ -7,17 +7,14 @@ export default function ButtonSearch() {
   const [searchValue, setSearchValue] = useState("");
   const router = useRouter();
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     const inputValue = event.target.value;
-    const formattedValue = inputValue;
-    setSearchValue(formattedValue);
+    setSearchValue(inputValue);
   };
-  const handleSearch = event => {
-    event.preventDefault();
-    const formattedSearchValue = encodeURIComponent(
-      searchValue.replace(/ /g, "-")
-    );
 
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const formattedSearchValue = encodeURIComponent(searchValue.replace(/ /g, "-"));
     router.push(`/pesquisa/${formattedSearchValue}`);
   };
 

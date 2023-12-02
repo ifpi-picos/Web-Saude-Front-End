@@ -1,17 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import "@/components/Usuarios/css/Footer.css";
 import Image from "next/image";
+import "@/components/Usuarios/css/Footer.css";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="footer-distributed">
       <div className="footer-left">
         <Image src="/imgs/logo.png" width={200} height={200} alt="Logo" />
-        <p className="footer-links">
-          <Link href="/faleconosco" className="link-1">
-            Fale Conosco
-          </Link>
+        <p>
+          <Link href="/faleconosco">Fale Conosco</Link>
         </p>
         <p>Web Saúde © 2023</p>
       </div>
@@ -27,15 +25,14 @@ export default function Footer() {
 
       <div className="footer-right">
         <h3>Sobre Nós</h3>
-
         <p>
-          O Web Saúde é uma plataforma que serve para auxiliar as pessoas que
-          desconhecem informações essenciais sobre os hospitais ou clínicas que
-          estão localizados na região de Picos - PI, mostrando as especialidades
-          disponíveis, horário de atendimento ou até mesmo sua localização
-          exata.
+          O Web Saúde é uma plataforma que auxilia as pessoas que desconhecem
+          informações essenciais sobre hospitais ou clínicas em Picos - PI,
+          mostrando especialidades, horários e localizações.
         </p>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

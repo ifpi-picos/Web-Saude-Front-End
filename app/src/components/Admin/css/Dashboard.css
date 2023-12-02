@@ -15,6 +15,7 @@
   background-color: var(--secundary-color);
   padding: 1rem;
   border-radius: 3px;
+  margin-left: 3.5px;
 }
 
 .card-head {
@@ -64,10 +65,11 @@
 .registros {
   box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
   background: var(--secundary-color);
-  border-radius: 3px;
+  border-radius: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .registro-header {
@@ -196,6 +198,10 @@ select {
   }
   .button-novo-usuario {
     width: 110px;
+  }
+  .card{
+    margin-left: 0px;
+
   }
   /* buttons do catalógo*/
   .div-buttons-catalogo .buuton-prox-ant {

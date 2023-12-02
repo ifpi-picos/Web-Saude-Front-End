@@ -1,15 +1,4 @@
-/*card*/
-.div-endereco ,.div-horario-icon{
-  display: flex;
-  justify-content: center;
-
-}
-.div-endereco .endereco-icon , .div-horario-icon .horario-icon,.div-horario-icon .horario-icon-sabado{
-  font-size: 16px; 
-  margin-top: 55px;
-  margin-right: 5px;
-
-}
+/* Estilos comuns para ambas as versões (desktop e mobile) */
 .section-card {
   display: flex;
   justify-content: center;
@@ -17,29 +6,41 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
-.section-card .card-container {
+.div-endereco,
+.div-horario-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.div-endereco .endereco-icon,
+.div-horario-icon .horario-icon,
+.div-horario-icon .horario-icon-sabado {
+  font-size: 16px;
+  margin-top: 55px;
+  margin-right: 5px;
+}
+.card-container {
   width: 900px;
   height: 100%;
   border-radius: 6px;
   box-shadow: 20px 20px 50px -30px #4169e1;
   margin: 40px;
-  border-radius: 6px;
 }
 
-.section-card .card-container .div-button-ver-mais:hover {
+.card-container:hover .div-button-ver-mais {
   mix-blend-mode: hard-light;
   cursor: pointer;
 }
 
-.section-card .card-container .top {
+.card-container .top {
   height: 100px;
   border-radius: 6px;
   background-color: var(--primary-color);
   display: flex;
   justify-content: center;
 }
-/* imagem*/
-.section-card .card-container .top .image-container {
+
+.card-container .top .image-container {
   background-color: var(--secundary-color);
   width: 150px;
   height: 150px;
@@ -50,7 +51,7 @@
   transition: 0.5s ease;
 }
 
-.section-card .card-container .top .image-container img {
+.card-container .top .image-container img {
   background-color: var(--secundary-color);
   width: 100%;
   border-radius: 50%;
@@ -58,67 +59,51 @@
   height: auto;
 }
 
-/* endereço e horario */
-.section-card .card-container .button {
+.card-container .button {
   background-color: var(--secundary-color);
   padding: 20px;
   padding-top: 60px;
   text-align: center;
 }
 
-/* nome */
-.section-card .card-container .button h3 {
+.card-container .button h3 {
   font-size: 1.6rem;
   color: rgba(0, 0, 0, 0.9);
   margin-bottom: 40px;
   margin-top: 55px;
 }
-/* hórario e endereço */
 
-.section-card .card-container .button p {
+.card-container .button p {
   color: rgba(0, 0, 0, 0.7);
   margin-top: 50px;
   font-size: 20px;
 }
 
-/* button ver mais */
-.section-card .card-container .button .div-ver-mais {
+.card-container .button .div-ver-mais {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 15px;
 }
 
-/*.div-button-ver-mais:hover,.div-button-ver-mais-hospitais:hover{
-    background-color: var(--secundary-color);
-    opacity: 100%;
-    cursor: pointer;
-  }
-  */
-.section-card .card-container .button .div-button-ver-mais,
-.section-card
-  .card-container
-  .button
-  .div-ver-mais
-  .div-button-ver-mais-hospitais {
+.card-container .button .div-button-ver-mais,
+.card-container .button .div-ver-mais .div-button-ver-mais-hospitais {
   width: 150px;
   height: 30px;
   border-radius: var(--button-radius);
   background-color: var(--primary-color);
 }
-.section-card .card-container .button .div-ver-mais .div-button-ver-mais {
+
+.card-container .button .div-ver-mais .div-button-ver-mais {
   margin-top: 50px;
 }
-.section-card
-  .card-container
-  .button
-  .div-ver-mais
-  .div-button-ver-mais-hospitais {
+
+.card-container .button .div-ver-mais .div-button-ver-mais-hospitais {
   margin-top: 35px;
 }
 
-.section-card .card-container .button .div-ver-mais .div-button-ver-mais a,
-.div-ver-mais .div-button-ver-mais-hospitais a {
+.card-container .button .div-ver-mais .div-button-ver-mais a,
+.card-container .button .div-ver-mais .div-button-ver-mais-hospitais a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,90 +114,81 @@
   font-size: 20px;
 }
 
-/*------------------RESPONSIVIDADE------------------*/
+/* Responsividade */
 @media (max-width: 768px) {
-  /* card */
-  .section-card .card-container {
+  .card-container {
     width: 300px;
     height: 100%;
     border-radius: 20px;
   }
-  /* nome */
-  .section-card .card-container .button h3 {
+
+  .card-container .button h3 {
     font-size: 13px;
     margin-bottom: 20px;
     margin-top: 35px;
   }
-  /* endereço e horario */
 
-  .section-card .card-container .button {
+  .card-container .button {
     padding-top: 50px;
     text-align: center;
   }
-  .section-card .card-container .button .btn-margin {
+
+  .card-container .button .btn-margin {
     margin-top: -40px;
   }
-  
-  .div-endereco .endereco-icon, .div-horario-icon .horario-icon{
+
+  .div-endereco .endereco-icon,
+  .div-horario-icon .horario-icon {
     position: relative;
-    margin-top: 20px;  
+    margin-top: 20px;
     left: 15px;
   }
- .div-horario-icon .horario-icon-sabado{
+
+  .div-horario-icon .horario-icon-sabado {
     position: relative;
-    margin-top: 20px;  
+    margin-top: 20px;
     left: 15px;
     font-size: 14px;
   }
-  .section-card .card-container .button p {
+
+  .card-container .button p {
     margin: 20px;
     font-size: 12px;
   }
-  
-  /* imagem*/
-  .section-card .card-container .top .image-container {
+
+  .card-container .top .image-container {
     width: 100px;
     height: 100px;
     margin-top: 20px;
   }
-  .section-card .card-container .top {
+
+  .card-container .top {
     height: 60px;
   }
-  /* button ver mais */
 
-  .section-card .card-container .button .div-ver-mais .div-button-ver-mais,
-  .section-card
-    .card-container
-    .button
-    .div-ver-mais
-    .div-button-ver-mais-hospitais {
+  .card-container .button .div-ver-mais .div-button-ver-mais,
+  .card-container .button .div-ver-mais .div-button-ver-mais-hospitais {
     width: 120px;
     height: 25px;
   }
-  .section-card .card-container .button .div-ver-mais .div-button-ver-mais {
+
+  .card-container .button .div-ver-mais .div-button-ver-mais {
     margin-top: 40px;
   }
-  .section-card
-    .card-container
-    .button
-    .div-ver-mais
-    .div-button-ver-mais-hospitais {
+
+  .card-container .button .div-ver-mais .div-button-ver-mais-hospitais {
     margin-top: 25px;
   }
 
-  .section-card .card-container .button .div-ver-mais .div-button-ver-mais a,
-  .section-card
-    .card-container
-    .button
-    .div-ver-mais
-    .div-button-ver-mais-hospitais
-    a {
+  .card-container .button .div-ver-mais .div-button-ver-mais a,
+  .card-container .button .div-ver-mais .div-button-ver-mais-hospitais a {
     font-size: 15px;
   }
 }
 
 @media (max-width: 361px) {
-  .section-card .card-container {
+  .card-container {
     width: 265px;
   }
 }
+
