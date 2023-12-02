@@ -73,7 +73,8 @@ export default function LoginForm() {
       <div
         className="div-form"
         style={{
-          position: "absolute",
+          position: "fixed",
+          zIndex:"1000",
           left: "50%",
           transform: "translate(-50%,-50%)",
           marginTop: "0px",
