@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import ConsultasService from "@/services/ConsultasService";
 import "@/components/Usuarios/Ver-Mais/css/Mapa.css";

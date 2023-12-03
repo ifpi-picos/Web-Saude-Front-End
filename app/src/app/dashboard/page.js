@@ -46,7 +46,7 @@ export default function Dashboard() {
     return (
       <div>
         <PrivateRoute>
-        <Loading />
+          <Loading />
         </PrivateRoute>
       </div>
     );

@@ -44,7 +44,7 @@ export default function Funcionario() {
     return (
       <div>
         <PrivateRoute>
-        <Loading />
+          <Loading />
         </PrivateRoute>
       </div>
     );
