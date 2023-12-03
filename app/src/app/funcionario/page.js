@@ -79,6 +79,4 @@ export default function Funcionario() {
   );
 }
 
-export const metadata = {
-  title: "Funcionário",
-};
+
