@@ -8,6 +8,10 @@ import "@/components/Usuarios/Home/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import ConsultasService from "@/services/ConsultasService";
+
+export const metadata = {
+  title: "Clínicas",
+};
 export default async function filtroClinicas() {
   const informacao = await ConsultasService.pegarClinicas();
 

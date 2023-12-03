@@ -9,6 +9,9 @@ import ConsultasService from "@/services/ConsultasService";
 import "@/components/Usuarios/Home/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 
+export const metadata = {
+  title: "Hospitais",
+};
 export default async function filtroHospitais() {
   const informacao = await ConsultasService.pegarHospitais();
 

@@ -8,6 +8,10 @@ import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import FiltroService from "@/services/ConsultasService";
 import "../components/Usuarios/Home/css/Home.css";
 
+export const metadata = {
+  title: "Home",
+};
+
 export default async function CorpoHome() {
   const informacao = await FiltroService.unidadesdeSaude();
 

@@ -3,6 +3,9 @@ import Footer from "@/components/Usuarios/Footer";
 import Header from "@/components/Usuarios/Header";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Fale Conosco",
+};
 export default function FaleConosco() {
   return (
     <>

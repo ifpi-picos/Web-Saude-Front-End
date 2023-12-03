@@ -8,6 +8,9 @@ import Link from "next/link";
 import Usuarios from "@/components/Admin/Usuarios";
 import "@/components/Admin/css/Dashboard.css";
 
+export const metadata = {
+  title: "Painel De Controle",
+};
 export default function Dashboard() {
   const [usuarios, setUsuarios] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

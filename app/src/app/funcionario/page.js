@@ -78,3 +78,7 @@ export default function Funcionario() {
     </PrivateRoute>
   );
 }
+
+export const metadata = {
+  title: "Funcionário",
+};

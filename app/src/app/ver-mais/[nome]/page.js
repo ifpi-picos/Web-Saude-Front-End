@@ -13,6 +13,9 @@ import FiltroService from "@/services/ConsultasService";
 import NotFound from "@/app/not-found";
 import "../../../components/Usuarios/css/verMais.css";
 
+export const metadata = {
+  title: "Ver Mais",
+};
 export default async function verMais({ params }) {
   const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(params.nome);
   if (unidadesdeSaude.length === 0) {
