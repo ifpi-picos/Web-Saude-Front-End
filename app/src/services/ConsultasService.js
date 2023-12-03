@@ -2,7 +2,7 @@ class ConsultasService {
   async unidadesdeSaude() {
     try {
       const res = await fetch(
-        `${NEXT_PUBLIC_BACK_END}unidades-de-saude`,
+        `https://api-web-saude.vercel.app/unidades-de-saude`,
         {
           cache: "no-store",
         }
