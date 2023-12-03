@@ -43,7 +43,9 @@ export default function Funcionario() {
   if (isLoading && useToken) {
     return (
       <div>
+        <PrivateRoute>
         <Loading />
+        </PrivateRoute>
       </div>
     );
   }

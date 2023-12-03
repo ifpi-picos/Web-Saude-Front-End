@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import Image from "next/image";
 import { useDecodedToken } from "@/services/decodeToken";
-
 import "../Admin/css/HeaderAdmin.css";
 import PrivateRoute from "./privateRouter";
 

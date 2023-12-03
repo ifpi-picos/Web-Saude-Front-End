@@ -75,7 +75,7 @@ const Filtros = () => {
           value={selectedFiltro}
           options={[
             { value: "Hospitais", label: "Hospitais" },
-            { value: "Clínicas", label: "Clínicas" },
+            { value: "Clinicas", label: "Clínicas" },
           ]}
           onChange={handleFiltroChange}
           styles={customStyles}

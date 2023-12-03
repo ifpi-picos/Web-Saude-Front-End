@@ -42,7 +42,9 @@ export default function Dashboard() {
   if (isLoading && useToken) {
     return (
       <div>
+        <PrivateRoute>
         <Loading />
+        </PrivateRoute>
       </div>
     );
   }
