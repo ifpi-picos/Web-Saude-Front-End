@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import "@/app/not-found.css";
 
+export const metadata = {
+  title: "Not FOund",
+};
 export default function NotFound() {
   return (
     <section className="section-erro">
