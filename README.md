@@ -28,3 +28,10 @@ Lista de pessoas que fizeram parte do projeto:
 - Next.js (Javascript)
 - Bootstrap (CSS)
 
+### para acessa painel do admin
+- email: yuckgabriel@hotmail.com
+- senha: yuckguedes
+
+### para acessa painel do funcionário
+- email: ericspsantos@gmail.com
+- senha: ericspfc

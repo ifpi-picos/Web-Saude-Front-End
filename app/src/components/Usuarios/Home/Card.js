@@ -69,8 +69,8 @@ export default function Card({ pageNumber, informacao }) {
                     <div className="div-horario-icon">
                       <FaClock className="horario-icon-sabado" />
                       <p>
-                        Aberto aos sábados das{" "}
-                        <strong>{info.sabado.open}</strong> até as{" "}
+                        Aberto aos sábados das
+                        <strong>{info.sabado.open}</strong> até as
                         <strong>{info.sabado.close}</strong>
                       </p>
                     </div>

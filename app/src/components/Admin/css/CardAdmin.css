@@ -6,6 +6,19 @@
   flex-wrap: wrap;
 }
 
+.div-endereco,
+.div-horario-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.div-endereco .endereco-icon,
+.div-horario-icon .horario-icon,
+.div-horario-icon .horario-icon-sabado {
+  font-size: 16px;
+  margin-top: 55px;
+  margin-right: 5px;
+}
 .card-container {
   width: 900px;
   height: 100%;

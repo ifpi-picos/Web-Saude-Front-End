@@ -5,6 +5,7 @@ import { FaCog } from "react-icons/fa";
 import { Button, Modal } from "react-bootstrap";
 import Paginacao from "../UsuariosAndAdmin/Paginacao";
 import { useDecodedToken } from "@/services/decodeToken";
+import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import "../Admin/css/CardAdmin.css";
 
 export default function CardAdmin({ pageNumber, informacao }) {
@@ -164,26 +165,39 @@ export default function CardAdmin({ pageNumber, informacao }) {
                   />
                 </div>
                 <h3>{info.nome}</h3>
-                <p>
-                  {info.endereco.rua}, {info.endereco.numero} -{" "}
-                  {info.endereco.bairro}, {info.endereco.cidade} -{" "}
-                  {info.endereco.uf}, {info.endereco.cep}
-                </p>
-                {info.horario === "Atendimento 24 Horas" ? (
-                  <p>Atendimento 24 horas</p>
-                ) : (
+                <div className="div-endereco">
+                  <FaMapMarkerAlt className="endereco-icon" />
                   <p>
-                    Aberto de Segunda a Sexta das{" "}
-                    <strong>{info.horarioSemana.open}</strong> até as{" "}
-                    <strong>{info.horarioSemana.close}</strong>
+                    {info.endereco.rua}, {info.endereco.numero} -
+                    {info.endereco.bairro}, {info.endereco.cidade} -
+                    {info.endereco.uf}, {info.endereco.cep}
                   </p>
+                </div>
+                {info.horario === "Atendimento 24 Horas" ? (
+                   <div className="div-horario-icon">
+                   <FaClock className="horario-icon" />
+                   <p>Atendimento 24 horas</p>
+                 </div>
+                ) : (
+                  <div className="div-horario-icon">
+                    <FaClock className="horario-icon" />
+                    <p>
+                      Aberto de Segunda a Sexta das{" "}
+                      <strong>{info.horarioSemana.open}</strong> até as{" "}
+                      <strong>{info.horarioSemana.close}</strong>
+                    </p>
+                  </div>
                 )}
                 {info.sabado ? (
                   info.sabado.open && info.sabado.close ? (
+                    <div className="div-horario-icon">
+                    <FaClock className="horario-icon-sabado" />
                     <p>
-                      Aberto aos sábados das <strong>{info.sabado.open}</strong>{" "}
-                      até as <strong>{info.sabado.close}</strong>
+                      Aberto aos sábados das{" "}
+                      <strong>{info.sabado.open}</strong> até as{" "}
+                      <strong>{info.sabado.close}</strong>
                     </p>
+                  </div>
                   ) : (
                     <p>Fechado aos sábados</p>
                   )
