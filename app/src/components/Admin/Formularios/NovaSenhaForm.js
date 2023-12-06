@@ -19,7 +19,7 @@ const schema = yup.object().shape({
     .oneOf([yup.ref("senha"), null], "As senhas devem coincidir")
     .required("Confirmação obrigatória"),
 });
-export default function NovaSenhaForm({ nome }) {
+export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
   const {
     control,
     handleSubmit,
@@ -28,10 +28,11 @@ export default function NovaSenhaForm({ nome }) {
     resolver: yupResolver(schema),
   });
   const [showModal, setShowModal] = useState(false);
-
+  
   const onSubmit = async formData => {
     const token = localStorage.getItem("token");
     try {
+      
       const response = await fetch(
         `https://api-web-saude.vercel.app/usuario/nova-senha/${nome}`,
         {
@@ -50,7 +51,9 @@ export default function NovaSenhaForm({ nome }) {
         const responseData = await response.json();
         console.log("Resposta da API:", responseData);
         setShowModal(true);
-        window.location.href = "/dashboard";
+        atualizarUsuarios();
+        onClose(); 
+
       } else {
         console.error(
           "Erro na chamada à API:",
@@ -65,8 +68,8 @@ export default function NovaSenhaForm({ nome }) {
   return (
     <PrivateRoute>
       <>
-        <section className="section-form">
-          <div className="div-form">
+        <section className="section-form" style={{height:"100%"}}>
+          <div className="div-form" style={{marginTop:"0px"}}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">
                 <Link href="/dashboard">

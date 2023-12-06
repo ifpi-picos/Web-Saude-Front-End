@@ -1,4 +1,3 @@
-// ... (importações existentes)
 import { useState } from "react";
 import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
@@ -54,7 +53,7 @@ const schema = yup.object().shape({
   tipo: yup.string().required("Selecione o tipo"),
 });
 
-export default function CadastrarUsuarioForm() {
+export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
   const {
     control,
     handleSubmit,
@@ -92,7 +91,8 @@ export default function CadastrarUsuarioForm() {
         const responseData = await response.json();
         console.log(responseData);
         setShowModal(true);
-        window.location.href = "/dashboard";
+        atualizarUsuarios();
+        onClose(); 
       }
     } catch (error) {
       console.error(error);
@@ -102,8 +102,8 @@ export default function CadastrarUsuarioForm() {
   return (
     <PrivateRoute>
       <>
-        <section className="section-form">
-          <div className="div-form">
+        <section className="section-form" style={{height:"100%"}}>
+          <div className="div-form" style={{marginTop:"0px"}}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">
                 <Link href="/dashboard">
