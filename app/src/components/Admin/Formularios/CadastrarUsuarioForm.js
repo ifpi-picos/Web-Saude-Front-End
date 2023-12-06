@@ -4,7 +4,6 @@ import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Modal, Button } from "react-bootstrap";
-import Link from "next/link";
 import Image from "next/image";
 import PrivateRoute from "../privateRouter";
 import "@/components/Admin/Formularios/css/Form.css";
@@ -103,10 +102,9 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
     <PrivateRoute>
       <>
         <section className="section-form" style={{height:"100%"}}>
-          <div className="div-form" style={{marginTop:"0px"}}>
+          <div className="div-form" style={{marginTop:"0px",borderRadius:"20px"}}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">
-                <Link href="/dashboard">
                   <Image
                     className="image-logo"
                     src="/imgs/logo.png"
@@ -114,7 +112,6 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                     width={200}
                     height={200}
                   />
-                </Link>
               </div>
               <h2 className="title">Cadastrar Usuário</h2>
               <div className="div-inputs">

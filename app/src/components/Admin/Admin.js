@@ -12,7 +12,7 @@ import CadastrarUsuarioForm from "@/components/Admin/Formularios/CadastrarUsuari
 
 export default function Admin() {
   const [showNovaSenhaForm, setShowNovaSenhaForm] = useState(false);
-  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [nomeUsuario, setNomeUsuario] = useState(null);
   const [usuarios, setUsuarios] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [useToken, setUseToken] = useState(null);
@@ -42,9 +42,9 @@ export default function Admin() {
       console.error(error);
     }
   };
-  const handleNovaSenhaClick = userId => {
-    setSelectedUserId(userId)
-    setShowNovaSenhaForm(true, userId);
+  const handleNovaSenhaClick = nome => {
+    setNomeUsuario(nome)
+    setShowNovaSenhaForm(true, nome);
   };
   const fetchData = async () => {
     const token = localStorage.getItem("token");
@@ -167,13 +167,13 @@ export default function Admin() {
       </table>
       <Modal  show={showNovaSenhaForm} onHide={() => setShowNovaSenhaForm(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Cadastrar Novo Usuário</Modal.Title>
+          <Modal.Title>Nova Senha do(a) {nomeUsuario}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <NovaSenhaForm
             atualizarUsuarios={atualizarUsuarios}
             onClose ={() => setShowNovaSenhaForm(false)}
-            nome={selectedUserId}
+            nome={nomeUsuario}
           />
         </Modal.Body>
       </Modal>

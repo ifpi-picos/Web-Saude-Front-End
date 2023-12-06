@@ -69,10 +69,9 @@ export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
     <PrivateRoute>
       <>
         <section className="section-form" style={{height:"100%"}}>
-          <div className="div-form" style={{marginTop:"0px"}}>
+          <div className="div-form" style={{marginTop:"0px",borderRadius:"20px"}}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">
-                <Link href="/dashboard">
                   <Image
                     className="image-logo"
                     src="/imgs/logo.png"
@@ -80,7 +79,6 @@ export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
                     width={200}
                     height={200}
                   />
-                </Link>
               </div>
               <h2 className="title">Nova Senha</h2>
               <div className="div-inputs">
