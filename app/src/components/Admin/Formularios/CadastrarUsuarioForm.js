@@ -12,7 +12,6 @@ const customStyles = {
   control: (provided, state) => ({
     ...provided,
     marginTop: "8px",
-    height: "12px",
     borderRadius: "7px",
   }),
   indicatorSeparator: (provided, state) => ({
@@ -101,7 +100,7 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
   return (
     <PrivateRoute>
       <>
-        <section className="section-form" style={{height:"100%"}}>
+        <section className="section-form" style={{height:"100%",backgroundColor:"#eeeeee"}}>
           <div className="div-form" style={{marginTop:"0px",borderRadius:"20px"}}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">

@@ -19,6 +19,7 @@ const schema = yup.object().shape({
     .oneOf([yup.ref("senha"), null], "As senhas devem coincidir")
     .required("Confirmação obrigatória"),
 });
+
 export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
   const {
     control,
@@ -68,7 +69,7 @@ export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
   return (
     <PrivateRoute>
       <>
-        <section className="section-form" style={{height:"100%"}}>
+        <section className="section-form" style={{height:"100%",backgroundColor:"#eeeeee"}}>
           <div className="div-form" style={{marginTop:"0px",borderRadius:"20px"}}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="div-logo">
