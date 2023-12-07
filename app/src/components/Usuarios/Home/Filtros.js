@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Select from "react-select";
 import "@/components/Usuarios/Home/css/Filtros.css";
 
-const Filtros = () => {
+export default function Filtros () {
   const router = useRouter();
   const [selectedFiltro, setSelectedFiltro] = useState(null);
   const [selectedEspecialidade, setSelectedEspecialidade] = useState(null);
@@ -96,4 +96,3 @@ const Filtros = () => {
   );
 };
 
-export default Filtros;

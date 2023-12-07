@@ -1,12 +1,12 @@
-"use client";
+"use client"
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaCog } from "react-icons/fa";
 import { Button, Modal } from "react-bootstrap";
-import Paginacao from "../UsuariosAndAdmin/Paginacao";
+import Paginacao from "./Paginacao";
 import { useDecodedToken } from "@/services/decodeToken";
 import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
-import "../Admin/css/CardAdmin.css";
+import "@/components/UsuariosAndAdmin/css/Card.css";
 
 export default function CardAdmin({ pageNumber, informacao }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -46,7 +46,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
     setItemStates(newStates);
   };
 
-  const handleCloseModal = index => {
+  const handleCloseModal = (index) => {
     const newStates = [...itemStates];
     newStates[index] = {
       showModal: false,
@@ -78,7 +78,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
             "x-access-token": token,
           },
         })
-          .then(response => {
+          .then((response) => {
             if (response.ok) {
               handleCloseModal(index);
               if (decodedToken === "admin") {
@@ -90,7 +90,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
               console.error("Erro ao excluir o estabelecimento.");
             }
           })
-          .catch(error => {
+          .catch((error) => {
             console.error(error);
           });
       }
@@ -108,8 +108,10 @@ export default function CardAdmin({ pageNumber, informacao }) {
     handleCloseModal(index);
   };
 
+  const isAdminPage = typeof window !== 'undefined' && window.location.pathname.startsWith("/funcionario");
+
   return (
-    <section className="section-card-admin">
+    <section className="section-card">
       {limitedPosts.length === 0 ? (
         <p className="mt-3">Nenhum resultado encontrado.</p>
       ) : (
@@ -158,11 +160,17 @@ export default function CardAdmin({ pageNumber, informacao }) {
               </div>
               <div className="button">
                 <div className="icon">
-                  <FaCog
-                    size={30}
-                    className="config-icon"
-                    onClick={() => handleShowModal(info, index)}
-                  />
+                  {/* 
+                    Verificar se o usuário é admin ou funcionario 
+                    E se está na página de administração
+                  */}
+                  {decodedToken === "admin" || decodedToken === "funcionario" && isAdminPage ? (
+                    <FaCog
+                      size={30}
+                      className="config-icon"
+                      onClick={() => handleShowModal(info, index)}
+                    />
+                  ) : null}
                 </div>
                 <h3>{info.nome}</h3>
                 <div className="div-endereco">
@@ -174,10 +182,10 @@ export default function CardAdmin({ pageNumber, informacao }) {
                   </p>
                 </div>
                 {info.horario === "Atendimento 24 Horas" ? (
-                   <div className="div-horario-icon">
-                   <FaClock className="horario-icon" />
-                   <p>Atendimento 24 horas</p>
-                 </div>
+                  <div className="div-horario-icon">
+                    <FaClock className="horario-icon" />
+                    <p>Atendimento 24 horas</p>
+                  </div>
                 ) : (
                   <div className="div-horario-icon">
                     <FaClock className="horario-icon" />
@@ -191,13 +199,13 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 {info.sabado ? (
                   info.sabado.open && info.sabado.close ? (
                     <div className="div-horario-icon">
-                    <FaClock className="horario-icon-sabado" />
-                    <p>
-                      Aberto aos sábados das{" "}
-                      <strong>{info.sabado.open}</strong> até as{" "}
-                      <strong>{info.sabado.close}</strong>
-                    </p>
-                  </div>
+                      <FaClock className="horario-icon-sabado" />
+                      <p>
+                        Aberto aos sábados das{" "}
+                        <strong>{info.sabado.open}</strong> até as{" "}
+                        <strong>{info.sabado.close}</strong>
+                      </p>
+                    </div>
                   ) : (
                     <p>Fechado aos sábados</p>
                   )

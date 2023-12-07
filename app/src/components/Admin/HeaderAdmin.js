@@ -37,7 +37,8 @@ export default function HeaderAdmin() {
         expanded={expanded}
         variant="white"
         style={{
-          backgroundColor: "#4682B4",
+          backgroundColor: "#00285f",
+          borderBottom: "3px solid #07a",
           position: "fixed",
           width: "100%",
           top: 0,

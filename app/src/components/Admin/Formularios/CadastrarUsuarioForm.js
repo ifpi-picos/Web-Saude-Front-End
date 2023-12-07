@@ -21,10 +21,13 @@ const customStyles = {
     ...provided,
     backgroundColor: state.isSelected ? "blue" : "#00285f",
     color: "white",
+
   }),
   menu: (provided, state) => ({
     ...provided,
     backgroundColor: "white",
+    marginTop: "-50px",
+
   }),
 };
 

@@ -65,6 +65,10 @@
   text-align: center;
 }
 
+.card-container .button .icon {
+  margin-top: 35px;
+  margin-bottom: -25px;
+}
 .card-container .button h3 {
   font-size: 1.6rem;
   margin-bottom: 20px;

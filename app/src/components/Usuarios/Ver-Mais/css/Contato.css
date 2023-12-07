@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
@@ -62,7 +62,6 @@
   }
   .contact-info .card {
     width: 100%;
-    max-width: 300px;
     margin: 10px 0;
   }
 }

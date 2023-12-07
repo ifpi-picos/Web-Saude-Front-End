@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "@/components/Usuarios/Home/Card";
+import Card from "@/components/UsuariosAndAdmin/Card";
 import Slogan from "@/components/Usuarios/Home/Slogan";
 import Filtros from "@/components/Usuarios/Home/Filtros";
 import Header from "@/components/Usuarios/Header";
