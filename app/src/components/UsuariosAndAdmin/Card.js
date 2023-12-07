@@ -108,7 +108,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
     handleCloseModal(index);
   };
 
-  const isAdminPage = typeof window !== 'undefined' && window.location.pathname.startsWith("/funcionario");
+  const isAdminPage = typeof window !== "undefined" && window.location.pathname.startsWith("/funcionario");
 
   return (
     <section className="section-card">
@@ -160,10 +160,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
               </div>
               <div className="button">
                 <div className="icon">
-                  {/* 
-                    Verificar se o usuário é admin ou funcionario 
-                    E se está na página de administração
-                  */}
+                 
                   {decodedToken === "admin" || decodedToken === "funcionario" && isAdminPage ? (
                     <FaCog
                       size={30}
