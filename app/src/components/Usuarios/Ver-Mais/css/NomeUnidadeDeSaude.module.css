@@ -48,7 +48,7 @@
 @media (max-width: 768px) {
   .sectionClinicaHospital {
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     height: 450px;
   }
   .sectionClinicaHospital .divClinicaHospital h1 {

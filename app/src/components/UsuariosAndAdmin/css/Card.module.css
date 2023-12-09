@@ -24,13 +24,13 @@
   width: 900px;
   height: 100%;
   border-radius: 6px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: 40px;
   transition: box-shadow 0.3s ease-in-out;
 }
 
 .cardContainer:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .cardContainer .top {
@@ -61,7 +61,7 @@
 }
 
 .cardContainer .button {
-  background-color: #f8f8f8;
+  background-color:  #FFFFFF;
   padding: 20px;
   padding-top: 50px;
   text-align: center;
