@@ -1,12 +1,14 @@
+import React from "react";
 import Card from "react-bootstrap/Card";
 import ConsultasService from "@/services/ConsultasService";
-import "@/components/Usuarios/Ver-Mais/css/Especialidades.css";
+import styles from "@/components/Usuarios/Ver-Mais/css/Especialidades.module.css";
+
 export default async function Especialidades({ nome }) {
   const especialidades =
     await ConsultasService.pegarEspecialidadesPeloNomeDaUnidadeDeSaude(nome);
 
   return (
-    <Card className="card-especialidades">
+    <Card className={styles.cardEspecialidades}>
       <Card.Header>Especialidades</Card.Header>
       <Card.Body>
         <Card.Text>

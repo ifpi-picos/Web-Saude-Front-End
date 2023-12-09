@@ -1,5 +1,4 @@
-/*contato */
-.contact-info {
+.contactInfo {
   display: flex;
   width: 100%;
   max-width: 900px;
@@ -10,7 +9,7 @@
   margin-bottom: 20px;
 }
 
-.contact-info .card {
+.contactInfo .card {
   background-color: var(--primary-color);
   padding: 0 20px;
   margin: 0 10px;
@@ -25,7 +24,7 @@
   cursor: pointer;
 }
 
-.contact-info .card .icon {
+.contactInfo .card .icon {
   font-size: 50px;
   text-align: center;
   border-radius: 50%;
@@ -33,10 +32,10 @@
   filter: invert(0);
 }
 
-.contact-info .card h4 {
+.contactInfo .card h4 {
   margin-bottom: 10px;
 }
-.contact-info .card p {
+.contactInfo .card p {
   margin-top: 25px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -46,21 +45,21 @@
   font-size: 13px;
 }
 
-.contact-info .card p {
+.contactInfo .card p {
   max-height: 40px;
   opacity: 1;
 }
-.button-especialidades {
+.buttonEspecialidades {
   margin-top: 20px;
   margin-bottom: 30px;
 }
 
 @media (max-width: 768px) {
   /* contato */
-  .contact-info {
+  .contactInfo {
     flex-direction: column;
   }
-  .contact-info .card {
+  .contactInfo .card {
     width: 100%;
     margin: 10px 0;
   }

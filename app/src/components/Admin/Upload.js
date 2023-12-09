@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CldUploadWidget } from "next-cloudinary";
+import styles from "@/components/Admin/Formularios/css/Form.module.css";
 import Image from "next/image";
 
 function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
@@ -47,7 +48,11 @@ function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
           }
 
           return (
-            <button className="upload" type="button" onClick={handleOnClick}>
+            <button
+              className={styles.upload}
+              type="button"
+              onClick={handleOnClick}
+            >
               Enviar imagem
             </button>
           );

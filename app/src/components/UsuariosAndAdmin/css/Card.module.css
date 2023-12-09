@@ -1,0 +1,215 @@
+.sectionCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.divEndereco,
+.divHorarioIcon {
+  display: flex;
+  justify-content: center;
+}
+
+.divEndereco .enderecoIcon,
+.divHorarioIcon .horarioIcon,
+.divHorarioIcon .horarioIconSabado {
+  font-size: 16px;
+  margin-top: 40px;
+  margin-right: 5px;
+}
+
+.cardContainer {
+  width: 900px;
+  height: 100%;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  margin: 40px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.cardContainer:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.cardContainer .top {
+  height: 80px;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+}
+
+.cardContainer .top .imageContainer {
+  background-color: var(--secundary-color);
+  width: 120px;
+  height: 120px;
+  padding: 5px;
+  border-radius: 50%;
+  transition: 0.1s ease;
+  margin-top: 30px;
+  transition: 0.5s ease;
+}
+
+.cardContainer .top .imageContainer img {
+  background-color: var(--secundary-color);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  max-width: 100%;
+}
+
+.cardContainer .button {
+  background-color: #f8f8f8;
+  padding: 20px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.cardContainer .button .icon {
+  margin-bottom: -60px;
+  margin-top: -42px;
+  margin-left: 200px;
+  font-size: 25px;
+  transition: color 0.3s ease-in-out;
+}
+.status {
+  display: flex;
+  position: relative;
+  margin-bottom: -60px;
+  font-weight: 600;
+  left: 150px;
+  top: 40px;
+  transition: color 0.3s ease-in-out;
+}
+.cardContainer .button .icon:hover {
+  color: var(--primary-color);
+}
+
+.cardContainer .button h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  margin-top: 110px;
+  font-weight: bold;
+}
+
+.cardContainer .button p {
+  color: rgba(0, 0, 0, 0.7);
+  margin-top: 35px;
+  font-size: 20px;
+}
+
+.cardContainer .button .divVerMais {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardContainer .button .divButtonVerMais {
+  width: 150px;
+  height: 30px;
+  border-radius: var(--button-radius);
+  background-color: var(--primary-color);
+}
+
+.cardContainer:hover .divButtonVerMais {
+  mix-blend-mode: hard-light;
+  cursor: pointer;
+}
+
+.cardContainer .button .divVerMais .divButtonVerMais {
+  margin-top: 10px;
+}
+
+.cardContainer .button .divVerMais .divButtonVerMais a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: var(--secundary-color);
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.cardContainer .button .divVerMais .divButtonVerMais a:hover {
+  color: var(--secundary-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .cardContainer {
+    width: 300px;
+    height: 100%;
+    border-radius: 20px;
+  }
+  .status {
+    left: -10px;
+    top: 45px;
+  }
+  .cardContainer .button h3 {
+    font-size: 13px;
+    margin-bottom: 10px;
+    margin-top: 60px;
+  }
+
+  .cardContainer .button {
+    padding-top: 50px;
+    text-align: center;
+  }
+  .cardContainer .button .icon {
+    margin-bottom: -30px;
+    font-size: 22px;
+  }
+  .cardContainer .button .btnMargin {
+    margin-top: -40px;
+  }
+
+  .divEndereco .enderecoIcon,
+  .divHorarioIcon .horarioIcon {
+    position: relative;
+    margin-top: 20px;
+    left: 15px;
+  }
+
+  .divEndereco .enderecoIcon,
+  .divHorarioIcon .horarioIconSabado {
+    position: relative;
+    margin-top: 20px;
+    left: 15px;
+    font-size: 14px;
+  }
+
+  .cardContainer .button p {
+    margin: 18.5px;
+    font-size: 12px;
+  }
+
+  .cardContainer .top .imageContainer {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+  }
+
+  .cardContainer .top {
+    height: 60px;
+  }
+
+  .cardContainer .button .divVerMais .divButtonVerMais {
+    width: 120px;
+    height: 25px;
+    margin-top: 10px;
+  }
+
+  .cardContainer .button .divVerMais .divButtonVerMais a {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 361px) {
+  .cardContainer {
+    width: 265px;
+  }
+}

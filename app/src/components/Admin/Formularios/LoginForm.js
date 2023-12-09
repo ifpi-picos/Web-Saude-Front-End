@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import Link from "next/link";
 import { jwtDecode } from "jwt-decode";
-import "@/components/Admin/Formularios/css/Form.css";
+import styles from "@/components/Admin/Formularios/css/Form.module.css";
 
 const schema = yup.object().shape({
   email: yup
@@ -68,24 +68,15 @@ export default function LoginForm() {
       console.error("Erro ao fazer login: Status inesperado", error);
     }
   };
+
   return (
-    <section className="section-form">
-      <div
-        className="div-form"
-        style={{
-          position: "absolute",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-          marginTop: "0px",
-          height: "100vh",
-          
-        }}
-      >
+    <section className={styles.sectionForm}>
+      <div className={styles.divForm}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="div-logo">
+          <div className={styles.divLogo}>
             <Link href="/">
               <Image
-                className="image-logo"
+                className={styles.imageLogo}
                 src="/imgs/logo.png"
                 alt="logo"
                 width={200}
@@ -94,8 +85,8 @@ export default function LoginForm() {
             </Link>
           </div>
 
-          <h2 className="title">Login</h2>
-          <div className="div-inputs">
+          <h2 className={styles.title}>Login</h2>
+          <div className={styles.divInputs}>
             <label htmlFor="email">Email</label>
 
             <Controller
@@ -103,7 +94,7 @@ export default function LoginForm() {
               control={control}
               render={({ field }) => (
                 <input
-                  className={errors.email ? "erro" : ""}
+                  className={errors.email ? styles.erro : ""}
                   type="email"
                   name="email"
                   value={field.value}
@@ -118,7 +109,9 @@ export default function LoginForm() {
                     try {
                       const pastedText = await navigator.clipboard.readText();
                       if (pastedText.length <= 255) {
-                        field.onChange({ target: { value: pastedText } });
+                        field.onChange({
+                          target: { value: pastedText },
+                        });
                       }
                     } catch (error) {
                       console.error(
@@ -132,7 +125,7 @@ export default function LoginForm() {
               )}
             />
             {errors.email && (
-              <div className="error">{errors.email.message}</div>
+              <div className={styles.error}>{errors.email.message}</div>
             )}
 
             <label htmlFor="senha">Senha</label>
@@ -141,7 +134,7 @@ export default function LoginForm() {
               control={control}
               render={({ field }) => (
                 <input
-                  className={errors.senha ? "erro" : ""}
+                  className={errors.senha ? styles.erro : ""}
                   type="password"
                   name="senha"
                   value={field.value}
@@ -156,7 +149,9 @@ export default function LoginForm() {
                     try {
                       const pastedText = await navigator.clipboard.readText();
                       if (pastedText.length <= 12) {
-                        field.onChange({ target: { value: pastedText } });
+                        field.onChange({
+                          target: { value: pastedText },
+                        });
                       }
                     } catch (error) {
                       console.error(
@@ -169,14 +164,16 @@ export default function LoginForm() {
               )}
             />
             {errors.senha && (
-              <div className="error">{errors.senha.message}</div>
+              <div className={styles.error}>{errors.senha.message}</div>
             )}
           </div>
 
-          <div className="div-button-submit">
-            <button type="submit">Entrar</button>
+          <div className={styles.divButtonSubmit}>
+            <button className={styles.button} type="submit">
+              Entrar
+            </button>
           </div>
-          {errorMessage && <div className="error">{errorMessage}</div>}
+          {errorMessage && <div className={styles.error}>{errorMessage}</div>}
         </form>
       </div>
     </section>

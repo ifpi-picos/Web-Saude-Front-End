@@ -2,52 +2,63 @@
   color: #f00;
   text-align: center;
 }
+
 .select {
   width: 400px;
 }
-.section-form {
+
+.sectionForm {
   display: flex;
   justify-content: center;
   height: 100vh;
 }
-.div-logo {
+
+.divLogo {
   display: flex;
   justify-content: center;
 }
-.div-logo .image-logo {
+
+.divLogo .imageLogo {
   width: 100px;
   height: 100px;
   margin-top: 20px;
 }
-.div-form {
+
+.divForm,
+.divFormUnidadesDeSaude {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 700px;
   background-color: var(--primary-color);
   border-radius: 20px;
-  margin-top: 140px;
   position: "absolute";
   left: 50%;
   top: 50%;
 }
-.div-inputs,
-.div-horario {
+.divFormUnidadesDeSaude {
+  margin-top: 144px;
+}
+.divInputs,
+.divHorario {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 100%;
 }
-.div-horarios {
+
+.divHorarios {
   display: flex;
   justify-content: space-between;
 }
-.div-inputs input,
-.div-inputs textarea,
-.div-button button {
+
+.divInputs input,
+.divInputs textarea,
+.divButton button {
   margin-top: 30px;
 }
-.div-inputs input {
+
+.divInputs input {
   outline-color: var(--primary-color);
   margin-bottom: 5px;
   border-radius: 7px;
@@ -55,17 +66,19 @@
   border: none;
 }
 
-.div-inputs label {
+.divInputs label {
   margin-bottom: -26px;
   color: var(--secundary-color);
 }
-.div-inputs .div-horarios .div-horario input {
+
+.divInputs .divHorarios .divHorario input {
   max-width: 100%;
   width: 100%;
   border-radius: 7px;
   height: 35px;
   outline-color: var(--primary-color);
 }
+
 .upload {
   max-width: 100%;
   width: 100%;
@@ -73,57 +86,59 @@
   margin-bottom: 5px;
   border-radius: 7px;
 }
-.div-inputs textarea {
+
+.divInputs textarea {
   width: 400px;
   border-radius: 7px;
 }
-.div-inputs textarea::placeholder {
+
+.divInputs textarea::placeholder {
   position: absolute;
   left: 5px;
   top: 3px;
   font-size: 20px;
 }
-.div-button-submit button {
-  width: 200px;
-  height: 35px;
-  cursor: pointer;
-  border-radius: 8px;
-  border: none;
-}
-button:hover {
-  opacity: 0.8;
-}
-.div-inputs input.erro,
-.div-inputs .div-horarios .div-horario input.erro,
-.div-inputs input.erro,
-.div-inputs .div-horarios .div-horario input.erro {
+
+.divInputs input.erro,
+.divInputs .divHorarios .divHorario input.erro,
+.divInputs input.erro,
+.divInputs .divHorarios .divHorario input.erro {
   border: 2px solid #f00;
   outline: none;
 }
 
-.div-inputs input:focus,
-.div-inputs .div-horarios .div-horario input:focus,
-.div-inputs input.erro:focus,
-.div-inputs .div-horarios .div-horario input.erro:focus {
+.divInputs input:focus,
+.divInputs .divHorarios .divHorario input:focus,
+.divInputs input.erro:focus,
+.divInputs .divHorarios .divHorario input.erro:focus {
   border: 2px solid #f00;
   outline: none;
 }
 
-.div-inputs input:focus,
-.div-inputs textarea:focus {
+.divInputs input:focus,
+.divInputs textarea:focus {
   border: 2px solid #07a;
   outline: none;
 }
-.div-button-submit {
+
+.divButtonSubmit {
   display: flex;
   justify-content: center;
   margin-top: 10px;
 }
-.div-button-submit button {
+
+.divButtonSubmit .button {
   width: 400px;
+  height: 35px;
   margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
 }
 
+.button:hover {
+  opacity: 0.8;
+}
 .title {
   text-align: center;
   margin-bottom: 30px;
@@ -132,43 +147,41 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-  .section-form {
+  .sectionForm {
     width: 100%;
     background-color: var(--primary-color);
   }
-  .div-form {
+  .divForm {
     width: 100%;
     height: 100%;
-    margin-top: 132px;
-    margin-bottom: 0px;
     border-radius: 0px;
   }
-  .div-logo .image-logo {
+  .divLogo .imageLogo {
     width: 85px;
     height: 85px;
   }
-  .div-inputs input {
+  .divInputs input {
     border: none;
     margin-bottom: 5px;
     width: 220px;
   }
-  .div-button input:focus {
+  .divButton input:focus {
     background-color: #f00;
   }
-  .div-inputs .div-horarios .div-horario input {
+  .divInputs .divHorarios .divHorario input {
     border: none;
     outline: none;
     width: 220px;
   }
-  .div-inputs textarea {
+  .divInputs textarea {
     width: 215px;
     height: 220px;
   }
   .select {
     width: 220px;
   }
-  .div-button-submit button {
+  .divButtonSubmit .button {
     width: 220px;
-    
+    margin-bottom: 30px;
   }
 }

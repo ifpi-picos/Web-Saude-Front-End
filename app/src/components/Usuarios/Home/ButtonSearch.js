@@ -1,7 +1,8 @@
 "use client";
+/* ButtonSearch.js */
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import "@/components/Usuarios/Home/css/ButtonSearch.css";
+import styles from "@/components/Usuarios/Home/css/ButtonSearch.module.css";
 
 export default function ButtonSearch() {
   const [searchValue, setSearchValue] = useState("");
@@ -21,9 +22,9 @@ export default function ButtonSearch() {
   };
 
   return (
-    <div className="div-search">
+    <div className={styles.divSearch}>
       <form onSubmit={handleSearch}>
-        <div className="input-search">
+        <div className={styles.inputSearch}>
           <input
             type="search"
             placeholder="Hospital/Clínica ou Especialidade"
@@ -31,7 +32,7 @@ export default function ButtonSearch() {
             onChange={handleInputChange}
             required
           />
-          <div className="button-search">
+          <div className={styles.buttonSearch}>
             <button type="submit">Buscar</button>
           </div>
         </div>

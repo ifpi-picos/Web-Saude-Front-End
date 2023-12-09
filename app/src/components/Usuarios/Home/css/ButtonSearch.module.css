@@ -1,10 +1,11 @@
-.div-search {
+/* ButtonSearch.module.css */
+.divSearch {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.div-search .input-search {
+.divSearch .inputSearch {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +17,7 @@
   margin-top: 2.5rem;
 }
 
-.div-search .input-search input {
+.divSearch .inputSearch input {
   width: 35rem;
   height: 3rem;
   background-color: #eeeeee;
@@ -25,11 +26,11 @@
   border: none;
 }
 
-.div-search .input-search input::placeholder {
+.divSearch .inputSearch input::placeholder {
   color: gray;
 }
 
-.div-search .input-search .button-search button {
+.divSearch .inputSearch .buttonSearch button {
   width: 9rem;
   height: 3rem;
   border-radius: var(--button-radius);
@@ -43,38 +44,38 @@
   text-decoration: none;
 }
 
-.div-search .input-search .button-search button:hover {
+.divSearch .inputSearch .buttonSearch button:hover {
   mix-blend-mode: hard-light;
   opacity: 100%;
   cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  .div-search .input-search {
+  .divSearch .inputSearch {
     width: 310px;
     height: 70px;
     border-radius: 50px;
   }
 
-  .div-search .input-search input {
+  .divSearch .inputSearch input {
     width: 180px;
     height: 30px;
     background-color: #eeeeee;
     border-radius: 8px;
   }
 
-  .div-search .input-search .button-search {
+  .divSearch .inputSearch .buttonSearch {
     width: 70px;
     height: 30px;
   }
 
-  .div-search .input-search .button-search button {
+  .divSearch .inputSearch .buttonSearch button {
     width: 80px;
     height: 30px;
     font-size: 15px;
   }
 
-  .div-search .input-search input::placeholder {
+  .divSearch .inputSearch input::placeholder {
     font-size: 10px;
   }
 }

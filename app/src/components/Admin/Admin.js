@@ -1,5 +1,5 @@
-"use client"
-import React,{useState,useEffect} from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import "@/components/Admin/css/Usuarios.css";
 import PrivateRoute from "./privateRouter";
 import { Modal, Button } from "react-bootstrap";
@@ -43,7 +43,7 @@ export default function Admin() {
     }
   };
   const handleNovaSenhaClick = nome => {
-    setNomeUsuario(nome)
+    setNomeUsuario(nome);
     setShowNovaSenhaForm(true, nome);
   };
   const fetchData = async () => {
@@ -78,7 +78,7 @@ export default function Admin() {
 
   const atualizarUsuarios = async () => {
     await fetchData();
-    setShowCadastroForm(false); 
+    setShowCadastroForm(false);
   };
 
   if (isLoading && useToken) {
@@ -92,7 +92,7 @@ export default function Admin() {
   }
   return (
     <PrivateRoute>
-       <div className="main-content">
+      <div className="main-content">
         <HeaderAdmin />
         <div className="page-header">
           <h1>Dashboard</h1>
@@ -107,21 +107,17 @@ export default function Admin() {
             <div className="registro-header">
               <p>
                 <strong>
-                  <h3 className="titulo-usuarios">Usuários</h3>
+                  <h2 className="titulo-usuarios">Usuários</h2>
                 </strong>
               </p>
             </div>
           </div>
         </div>
         <div className="button-novo-usuario">
-          <button
-            className="button-usuarios"
-            onClick={handleNovoUsuarioClick}
-          >
+          <button className="button-usuarios" onClick={handleNovoUsuarioClick}>
             Novo Usuário
           </button>
         </div>
-
       </div>
       <table>
         <thead>
@@ -132,8 +128,8 @@ export default function Admin() {
           </tr>
         </thead>
         <tbody>
-          {usuarios.map(info => (
-            <tr key={info.id}>
+          {usuarios.map((info, index) => (
+            <tr key={index}>
               <td>{info?.nome}</td>
               <td>{info?.tipo}</td>
 
@@ -141,7 +137,6 @@ export default function Admin() {
                 <button
                   className="button-usuarios"
                   onClick={() => handleNovaSenhaClick(info.nome)}
-
                 >
                   Nova Senha
                 </button>
@@ -165,25 +160,28 @@ export default function Admin() {
           ))}
         </tbody>
       </table>
-      <Modal  show={showNovaSenhaForm} onHide={() => setShowNovaSenhaForm(false)}>
+      <Modal
+        show={showNovaSenhaForm}
+        onHide={() => setShowNovaSenhaForm(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Nova Senha do(a) {nomeUsuario}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <NovaSenhaForm
             atualizarUsuarios={atualizarUsuarios}
-            onClose ={() => setShowNovaSenhaForm(false)}
+            onClose={() => setShowNovaSenhaForm(false)}
             nome={nomeUsuario}
           />
         </Modal.Body>
       </Modal>
-      <Modal  show={showCadastroForm} onHide={() => setShowCadastroForm(false)}>
+      <Modal show={showCadastroForm} onHide={() => setShowCadastroForm(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Cadastrar Novo Usuário</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CadastrarUsuarioForm 
-            onClose ={() => setShowCadastroForm(false)}
+          <CadastrarUsuarioForm
+            onClose={() => setShowCadastroForm(false)}
             atualizarUsuarios={atualizarUsuarios}
           />
         </Modal.Body>

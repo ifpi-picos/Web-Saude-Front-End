@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { FaSave, FaEdit, FaTrash } from "react-icons/fa";
-import "@/components/Admin/css/EspecialidadeForm.css";
+import "@/components/Admin/Formularios/css/EspecialidadeForm.css";
 import ConsultasService from "@/services/ConsultasService";
 export default function EspecialidadeForm() {
   const [especialidades, setEspecialidades] = useState([]);

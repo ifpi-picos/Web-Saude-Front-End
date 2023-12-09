@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Modal, Button } from "react-bootstrap";
 import Image from "next/image";
 import PrivateRoute from "../privateRouter";
-import "@/components/Admin/Formularios/css/Form.css";
+import styles from "@/components/Admin/Formularios/css/Form.module.css";
 
 const customStyles = {
   control: (provided, state) => ({
@@ -21,13 +21,11 @@ const customStyles = {
     ...provided,
     backgroundColor: state.isSelected ? "blue" : "#00285f",
     color: "white",
-
   }),
   menu: (provided, state) => ({
     ...provided,
     backgroundColor: "white",
     marginTop: "-50px",
-
   }),
 };
 
@@ -93,7 +91,7 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
         console.log(responseData);
         setShowModal(true);
         atualizarUsuarios();
-        onClose(); 
+        onClose();
       }
     } catch (error) {
       console.error(error);
@@ -103,27 +101,33 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
   return (
     <PrivateRoute>
       <>
-        <section className="section-form" style={{height:"100%",backgroundColor:"#eeeeee"}}>
-          <div className="div-form" style={{marginTop:"0px",borderRadius:"20px"}}>
+        <section
+          className={styles.sectionForm}
+          style={{ height: "100%", backgroundColor: "#eeeeee" }}
+        >
+          <div
+            className={styles.divForm}
+            style={{ marginTop: "0px", borderRadius: "20px" }}
+          >
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="div-logo">
-                  <Image
-                    className="image-logo"
-                    src="/imgs/logo.png"
-                    alt="logo"
-                    width={200}
-                    height={200}
-                  />
+              <div className={styles.divLogo}>
+                <Image
+                  className={styles.imageLogo}
+                  src="/imgs/logo.png"
+                  alt="logo"
+                  width={200}
+                  height={200}
+                />
               </div>
-              <h2 className="title">Cadastrar Usuário</h2>
-              <div className="div-inputs">
+              <h2 className={styles.title}>Cadastrar Usuário</h2>
+              <div className={styles.divInputs}>
                 <label>Nome</label>
                 <Controller
                   name="nome"
                   control={control}
                   render={({ field }) => (
                     <input
-                      className={errors.nome ? "erro" : ""}
+                      className={errors.nome ? styles.erro : ""}
                       type="text"
                       name="nome"
                       value={field.value}
@@ -153,7 +157,7 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                   )}
                 />
                 {errors.nome && (
-                  <div className="error">{errors.nome.message}</div>
+                  <div className={styles.error}>{errors.nome.message}</div>
                 )}
                 <label>Email</label>
                 <Controller
@@ -161,7 +165,7 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                   control={control}
                   render={({ field }) => (
                     <input
-                      className={errors.email ? "erro" : ""}
+                      className={errors.email ? styles.erro : ""}
                       type="email"
                       name="email"
                       value={field.value}
@@ -191,7 +195,7 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                   )}
                 />
                 {errors.email && (
-                  <div className="error">{errors.email.message}</div>
+                  <div className={styles.error}>{errors.email.message}</div>
                 )}
                 <label>Senha</label>
                 <Controller
@@ -199,7 +203,7 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                   name="senha"
                   render={({ field }) => (
                     <input
-                      className={errors.senha ? "erro" : ""}
+                      className={errors.senha ? styles.erro : ""}
                       type="password"
                       name="senha"
                       value={field.value}
@@ -229,7 +233,7 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                   )}
                 />
                 {errors.senha && (
-                  <div className="error">{errors.senha.message} </div>
+                  <div className={styles.error}>{errors.senha.message} </div>
                 )}
                 <label>Confirmar Senha</label>
                 <Controller
@@ -237,7 +241,7 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                   name="confirmarSenha"
                   render={({ field }) => (
                     <input
-                      className={errors.confirmarSenha ? "erro" : ""}
+                      className={errors.confirmarSenha ? styles.erro : ""}
                       type="password"
                       name="confirmarSenha"
                       value={field.value}
@@ -267,7 +271,9 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                   )}
                 />
                 {errors.confirmarSenha && (
-                  <div className="error">{errors.confirmarSenha.message}</div>
+                  <div className={styles.error}>
+                    {errors.confirmarSenha.message}
+                  </div>
                 )}
 
                 <label>Tipo</label>
@@ -276,7 +282,7 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                   control={control}
                   render={({ field }) => (
                     <Select
-                      className="select"
+                      className={styles.select}
                       styles={customStyles}
                       options={[
                         { value: "admin", label: "Admin" },
@@ -294,11 +300,13 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
                   )}
                 />
                 {errors.tipo && (
-                  <div className="error">{errors.tipo.message}</div>
+                  <div className={styles.error}>{errors.tipo.message}</div>
                 )}
               </div>
-              <div className="div-button-submit">
-                <button type="submit">Cadastrar</button>
+              <div className={styles.divButtonSubmit}>
+                <button className={styles.button} type="submit">
+                  Cadastrar
+                </button>
               </div>
             </form>
           </div>

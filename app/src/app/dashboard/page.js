@@ -6,10 +6,9 @@ export const metadata = {
   title: "Admin",
 };
 export default function PainelAdmin() {
- 
   return (
     <PrivateRoute>
-      <Admin/>
+      <Admin />
     </PrivateRoute>
   );
 }

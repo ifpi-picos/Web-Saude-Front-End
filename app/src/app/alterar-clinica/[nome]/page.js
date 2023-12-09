@@ -7,6 +7,7 @@ import NotFound from "@/app/not-found";
 export const metadata = {
   title: "Alterar Clínica",
 };
+
 export default async function AlterarClinica({ params }) {
   const clinicaData = await ConsultasService.pegarClinica(params.nome);
   const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(

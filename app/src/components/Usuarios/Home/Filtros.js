@@ -2,9 +2,9 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Select from "react-select";
-import "@/components/Usuarios/Home/css/Filtros.css";
+import styles from "@/components/Usuarios/Home/css/Filtros.module.css";
 
-export default function Filtros () {
+export default function Filtros() {
   const router = useRouter();
   const [selectedFiltro, setSelectedFiltro] = useState(null);
   const [selectedEspecialidade, setSelectedEspecialidade] = useState(null);
@@ -68,10 +68,10 @@ export default function Filtros () {
   };
 
   return (
-    <div className="div-select-filtros">
-      <div className="div-button">
+    <div className={styles.divSelectFiltros}>
+      <div className={styles.divButton}>
         <Select
-          className="select-element-filtros-1"
+          className={styles.selectElementFiltros1}
           value={selectedFiltro}
           options={[
             { value: "Hospitais", label: "Hospitais" },
@@ -82,9 +82,9 @@ export default function Filtros () {
           placeholder="Filtros"
         />
       </div>
-      <div className="div-button">
+      <div className={styles.divButton}>
         <Select
-          className="select-element-filtros-2"
+          className={styles.selectElementFiltros2}
           value={selectedEspecialidade}
           options={especialidades}
           onChange={handleEspecialidadeChange}
@@ -94,5 +94,4 @@ export default function Filtros () {
       </div>
     </div>
   );
-};
-
+}

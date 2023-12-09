@@ -1,4 +1,4 @@
-.section-slogan {
+.sectionSlogan {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,61 +10,61 @@
   margin-top: 120px;
 }
 
-.section-slogan .div-content {
+.sectionSlogan .divContent {
   margin-left: 5rem;
 }
 
-.section-slogan .div-content h1 {
+.sectionSlogan .divContent h1 {
   font-size: 3rem;
 }
 
-.section-slogan .div-content h1,
-.section-slogan .div-content p {
+.sectionSlogan .divContent h1,
+.sectionSlogan .divContent p {
   color: var(--secundary-color);
 }
 
-.section-slogan .div-content img {
+.sectionSlogan .divContent img {
   font-size: 3rem;
   margin-bottom: 15px;
 }
 
-.section-slogan .div-content p {
+.sectionSlogan .divContent p {
   font-size: 2em;
 }
 
-.img-slogan img {
+.imgSlogan img {
   width: 263.04px;
   height: 203.61px;
   margin-right: 30px;
 }
 
 @media (max-width: 768px) {
-  .section-slogan {
+  .sectionSlogan {
     flex-direction: column;
     width: 300px;
     height: 350px;
     position: relative;
   }
 
-  .section-slogan .div-content {
+  .sectionSlogan .divContent {
     margin-left: 0;
     margin-bottom: 0;
   }
 
-  .section-slogan .div-content h1 {
+  .sectionSlogan .divContent h1 {
     margin-top: 30px;
     text-align: center;
     font-size: 25px;
     padding: 10px;
   }
 
-  .section-slogan .div-content p {
+  .sectionSlogan .divContent p {
     text-align: center;
     font-size: 20px;
     margin-top: 10px;
   }
 
-  .section-slogan .img-slogan img {
+  .sectionSlogan .imgSlogan img {
     width: 180px;
     height: 180px;
     margin-right: 0;

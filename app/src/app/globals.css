@@ -3,7 +3,7 @@
   --secundary-color: #f9f9f1;
   --card-radius: 15px;
   --button-radius: 7px;
-  --shadow: box-shadow: 20px 20px 50px -30px #4169e1;
+  --shadow: box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 * {

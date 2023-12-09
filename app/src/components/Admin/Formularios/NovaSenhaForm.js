@@ -3,11 +3,11 @@ import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Modal, Button } from "react-bootstrap";
-import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import PrivateRoute from "@/components/Admin/privateRouter";
-import "@/components/Admin/Formularios/css/Form.css";
+import styles from "@/components/Admin/Formularios/css/Form.module.css";
+
 const schema = yup.object().shape({
   senha: yup
     .string()
@@ -20,7 +20,7 @@ const schema = yup.object().shape({
     .required("Confirmação obrigatória"),
 });
 
-export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
+export default function NovaSenhaForm({ nome, onClose, atualizarUsuarios }) {
   const {
     control,
     handleSubmit,
@@ -29,11 +29,10 @@ export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
     resolver: yupResolver(schema),
   });
   const [showModal, setShowModal] = useState(false);
-  
+
   const onSubmit = async formData => {
     const token = localStorage.getItem("token");
     try {
-      
       const response = await fetch(
         `https://api-web-saude.vercel.app/usuario/nova-senha/${nome}`,
         {
@@ -53,8 +52,7 @@ export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
         console.log("Resposta da API:", responseData);
         setShowModal(true);
         atualizarUsuarios();
-        onClose(); 
-
+        onClose();
       } else {
         console.error(
           "Erro na chamada à API:",
@@ -69,27 +67,33 @@ export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
   return (
     <PrivateRoute>
       <>
-        <section className="section-form" style={{height:"100%",backgroundColor:"#eeeeee"}}>
-          <div className="div-form" style={{marginTop:"0px",borderRadius:"20px"}}>
+        <section
+          className={styles.sectionForm}
+          style={{ height: "100%", backgroundColor: "#eeeeee" }}
+        >
+          <div
+            className={styles.divForm}
+            style={{ marginTop: "0px", borderRadius: "20px" }}
+          >
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="div-logo">
-                  <Image
-                    className="image-logo"
-                    src="/imgs/logo.png"
-                    alt="logo"
-                    width={200}
-                    height={200}
-                  />
+              <div className={styles.divLogo}>
+                <Image
+                  className={styles.imageLogo}
+                  src="/imgs/logo.png"
+                  alt="logo"
+                  width={200}
+                  height={200}
+                />
               </div>
-              <h2 className="title">Nova Senha</h2>
-              <div className="div-inputs">
+              <h2 className={styles.title}>Nova Senha</h2>
+              <div className={styles.divInputs}>
                 <label>Senha</label>
                 <Controller
                   control={control}
                   name="senha"
                   render={({ field }) => (
                     <input
-                      className={errors.senha ? "erro" : ""}
+                      className={errors.senha ? styles.erro : ""}
                       type="password"
                       name="senha"
                       value={field.value}
@@ -119,7 +123,7 @@ export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
                   )}
                 />
                 {errors.senha && (
-                  <div className="error">{errors.senha.message} </div>
+                  <div className={styles.error}>{errors.senha.message} </div>
                 )}
                 <label>Confirmar Senha</label>
                 <Controller
@@ -127,7 +131,7 @@ export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
                   name="confirmarSenha"
                   render={({ field }) => (
                     <input
-                      className={errors.confirmarSenha ? "erro" : ""}
+                      className={errors.confirmarSenha ? styles.erro : ""}
                       type="password"
                       name="confirmarSenha"
                       value={field.value}
@@ -157,11 +161,15 @@ export default function NovaSenhaForm({nome, onClose, atualizarUsuarios} ) {
                   )}
                 />
                 {errors.confirmarSenha && (
-                  <div className="error">{errors.confirmarSenha.message}</div>
+                  <div className={styles.error}>
+                    {errors.confirmarSenha.message}
+                  </div>
                 )}
               </div>
-              <div className="div-button-submit">
-                <button type="submit">Alterar Senha</button>
+              <div className={styles.divButtonSubmit}>
+                <button className={styles.button} type="submit">
+                  Alterar Senha
+                </button>
               </div>
             </form>
           </div>

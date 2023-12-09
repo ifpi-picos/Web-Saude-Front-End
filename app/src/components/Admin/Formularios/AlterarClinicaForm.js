@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import Link from "next/link";
 import { useDecodedToken } from "@/services/decodeToken";
-import "@/components/Admin/Formularios/css/Form.css";
+import styles from "@/components/Admin/Formularios/css/Form.module.css";
 
 const schema = yup.object().shape({
   nome: yup
@@ -134,14 +134,14 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
   };
   return (
     <>
-      <section className="section-form" style={{ height: "100%" }}>
-        <div className="div-form">
+      <section className={styles.sectionForm} style={{ height: "100%" }}>
+        <div className={styles.divFormUnidadesDeSaude}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="div-logo">
+            <div className={styles.divLogo}>
               {decodedToken === "admin" ? (
                 <Link href="/dashboard">
                   <Image
-                    className="image-logo"
+                    className={styles.imageLogo}
                     src="/imgs/logo.png"
                     alt="logo"
                     width={200}
@@ -151,7 +151,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
               ) : (
                 <Link href="/funcionario">
                   <Image
-                    className="image-logo"
+                    className={styles.imageLogo}
                     src="/imgs/logo.png"
                     alt="logo"
                     width={200}
@@ -161,8 +161,8 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
               )}
             </div>
 
-            <h2 className="title">Alterar Clínica</h2>
-            <div className="div-inputs">
+            <h2 className={styles.title}>Alterar Clínica</h2>
+            <div className={styles.divInputs}>
               <label>Nome</label>
               <Controller
                 name="nome"
@@ -170,7 +170,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.nome ? "erro" : ""}
+                    className={errors.nome ? styles.erro : ""}
                     type="text"
                     name="nome"
                     value={field.value}
@@ -199,14 +199,14 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.nome && (
-                <div className="error">{errors.nome.message}</div>
+                <div className={styles.error}>{errors.nome.message}</div>
               )}
               <CloudinaryUploadWidget
                 onURLChange={handleImageURLChange}
                 defaultImage={clinicaData.imagem}
               />
               {errors.imagem && (
-                <div className="error">{errors.imagem.message}</div>
+                <div className={styles.error}>{errors.imagem.message}</div>
               )}
 
               <SelectEspecialidadesUpdate
@@ -214,7 +214,9 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 nome={nome}
               />
               {errors.especialidades && (
-                <div className="error">{errors.especialidades.message}</div>
+                <div className={styles.error}>
+                  {errors.especialidades.message}
+                </div>
               )}
               <label htmlFor="horarioSemanaAbertura">
                 Horário Semana Abertura
@@ -225,7 +227,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.horarioSemana?.message ? "erro" : ""}
+                    className={errors.horarioSemana?.message ? styles.erro : ""}
                     type="time"
                     name="horarioSemana.open"
                     value={field.value}
@@ -234,7 +236,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.horarioSemana?.open && (
-                <div className="error">
+                <div className={styles.error}>
                   {errors.horarioSemana?.open.message}
                 </div>
               )}
@@ -247,7 +249,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.horarioSemana?.close ? "erro" : ""}
+                    className={errors.horarioSemana?.close ? styles.erro : ""}
                     type="time"
                     name="horarioSemana.close"
                     value={field.value}
@@ -256,7 +258,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.horarioSemana?.close && (
-                <div className="error">
+                <div className={styles.error}>
                   {errors.horarioSemana?.close.message}
                 </div>
               )}
@@ -297,7 +299,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.email ? "erro" : ""}
+                    className={errors.email ? styles.erro : ""}
                     type="email"
                     name="email"
                     value={field.value}
@@ -326,7 +328,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.email && (
-                <div className="error">{errors.email.message}</div>
+                <div className={styles.error}>{errors.email.message}</div>
               )}
               <label htmlFor="whatsapp">Whatsapp (opcional)</label>
               <Controller
@@ -336,6 +338,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 render={({ field }) => (
                   <input
                     type="tel"
+                    className={errors.whatsapp ? styles.erro : ""}
                     name="whatsapp"
                     value={field.value}
                     onChange={e => {
@@ -363,7 +366,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.whatsapp && (
-                <div className="error">{errors.whatsapp.message}</div>
+                <div className={styles.error}>{errors.whatsapp.message}</div>
               )}
               <label htmlFor="instagram">Instagram (opcional)</label>
               <Controller
@@ -419,7 +422,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.descricao && (
-                <div className="error">{errors.descricao.message}</div>
+                <div className={styles.error}>{errors.descricao.message}</div>
               )}
               <label htmlFor="longitude">Longitude</label>
               <Controller
@@ -428,7 +431,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.longitude ? "erro" : ""}
+                    className={errors.longitude ? styles.erro : ""}
                     type="text"
                     name="longitude"
                     value={field.value}
@@ -457,7 +460,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.longitude && (
-                <div className="error">{errors.longitude.message}</div>
+                <div className={styles.error}>{errors.longitude.message}</div>
               )}
               <label htmlFor="latitude">Latitude</label>
               <Controller
@@ -466,7 +469,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.latitude ? "erro" : ""}
+                    className={errors.latitude ? styles.erro : ""}
                     type="text"
                     name="latitude"
                     value={field.value}
@@ -495,7 +498,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.latitude && (
-                <div className="error">{errors.latitude.message}</div>
+                <div className={styles.error}>{errors.latitude.message}</div>
               )}
 
               <label htmlFor="cep">CEP</label>
@@ -505,7 +508,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.cep ? "erro" : ""}
+                    className={errors.cep ? styles.erro : ""}
                     type="text"
                     name="cep"
                     value={field.value}
@@ -533,7 +536,9 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                   />
                 )}
               />
-              {errors.cep && <div className="error">{errors.cep.message}</div>}
+              {errors.cep && (
+                <div className={styles.error}>{errors.cep.message}</div>
+              )}
               <label htmlFor="rua">Rua</label>
               <Controller
                 name="rua"
@@ -541,7 +546,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.rua ? "erro" : ""}
+                    className={errors.rua ? styles.erro : ""}
                     type="text"
                     name="rua"
                     value={field.value}
@@ -569,7 +574,9 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                   />
                 )}
               />
-              {errors.rua && <div className="error">{errors.rua.message}</div>}
+              {errors.rua && (
+                <div className={styles.error}>{errors.rua.message}</div>
+              )}
               <label htmlFor="numero">Número</label>
               <Controller
                 name="numero"
@@ -577,7 +584,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.numero ? "erro" : ""}
+                    className={errors.numero ? styles.erro : ""}
                     type="text"
                     name="numero"
                     value={field.value}
@@ -606,7 +613,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.numero && (
-                <div className="error">{errors.numero.message}</div>
+                <div className={styles.error}>{errors.numero.message}</div>
               )}
               <label htmlFor="bairro">Bairro</label>
               <Controller
@@ -615,7 +622,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.bairro ? "erro" : ""}
+                    className={errors.bairro ? styles.erro : ""}
                     type="text"
                     name="bairro"
                     value={field.value}
@@ -644,7 +651,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.bairro && (
-                <div className="error">{errors.bairro.message}</div>
+                <div className={styles.error}>{errors.bairro.message}</div>
               )}
               <label htmlFor="cidade">Cidade</label>
               <Controller
@@ -653,7 +660,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.cidade ? "erro" : ""}
+                    className={errors.cidade ? styles.erro : ""}
                     type="text"
                     name="cidade"
                     value={field.value}
@@ -682,7 +689,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 )}
               />
               {errors.cidade && (
-                <div className="error">{errors.cidade.message}</div>
+                <div className={styles.error}>{errors.cidade.message}</div>
               )}
               <label htmlFor="uf">Estado</label>
               <Controller
@@ -691,7 +698,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 control={control}
                 render={({ field }) => (
                   <input
-                    className={errors.uf ? "erro" : ""}
+                    className={errors.uf ? styles.erro : ""}
                     type="text"
                     name="uf"
                     value={field.value}
@@ -719,13 +726,17 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                   />
                 )}
               />
-              {errors.uf && <div className="error">{errors.uf.message}</div>}
+              {errors.uf && (
+                <div className={styles.error}>{errors.uf.message}</div>
+              )}
             </div>
             <div
-              className="div-button-submit"
+              className={styles.divButtonSubmit}
               style={{ display: "flex", justifyContent: "center" }}
             >
-              <button type="submit">Alterar</button>
+              <button className={styles.button} type="submit">
+                Alterar
+              </button>
             </div>
           </form>
         </div>

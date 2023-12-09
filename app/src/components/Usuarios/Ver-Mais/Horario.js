@@ -1,18 +1,18 @@
 import ConsultasService from "@/services/ConsultasService";
 import Card from "react-bootstrap/Card";
-
-import "@/components/Usuarios/Ver-Mais/css/Horario.css";
+import styles from "@/components/Usuarios/Ver-Mais/css/Horario.module.css";
 
 export default async function Horario({ nome }) {
   const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
-
   const isHorarioDiferenteDe24Horas =
     unidadesdeSaude.horario !== "Atendimento 24 Horas";
 
   if (isHorarioDiferenteDe24Horas) {
     return (
-      <section id="horario" className="section-horario">
-        <table className="table table-light table-striped table-bordered">
+      <section id="horario" className={styles.sectionHorario}>
+        <table
+          className={`table table-light table-striped table-bordered ${styles.table}`}
+        >
           <thead>
             <tr>
               <th
@@ -78,7 +78,7 @@ export default async function Horario({ nome }) {
     );
   } else {
     return (
-      <Card className="sobre mb-4" id="horario">
+      <Card className={`${styles.sobre} mb-4`} id="horario">
         <Card.Body>
           <p>
             Este estabelecimento oferece atendimento 24 horas por dia, 7 dias
