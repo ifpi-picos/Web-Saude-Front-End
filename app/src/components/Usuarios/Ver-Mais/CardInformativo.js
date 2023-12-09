@@ -19,7 +19,7 @@ export default async function CardInformativo({ nome }) {
         </div>
         <div className="button">
           <h3>
-            <Link href="#mapa">Mapa</Link>
+            {unidadesdeSaude?.nome}
           </h3>
           <p>
             {unidadesdeSaude?.endereco?.rua},{" "}
@@ -33,17 +33,12 @@ export default async function CardInformativo({ nome }) {
             <ul>
               <li>
                 <Link className="btn" href="#sobre">
-                  Sobre
-                </Link>
-              </li>
-              <li>
-                <Link className="btn" href="#horario">
-                  Horário
+                  Comentários
                 </Link>
               </li>
               <li>
                 <Link className="btn" href="#contatos">
-                  Contato
+                  Galeria
                 </Link>
               </li>
             </ul>

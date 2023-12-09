@@ -60,7 +60,7 @@
     flex-direction: column;
   }
   .contactInfo .card {
-    width: 100%;
+    width: 90%;
     margin: 10px 0;
   }
 }

@@ -105,7 +105,7 @@
 @media (max-width: 768px) {
   /* card */
   .section-informações .card-informacoes {
-    width: 95%;
+    width: 100%;
     height: 520px;
   }
   .section-informações .card-informacoes .top .image-container {
@@ -123,8 +123,8 @@
   }
   .section-informações .card-informacoes .button .div-atalhos .btn {
     position: relative;
-    right: 10px;
     font-size: 10px;
+    right: 13px;
   }
   .section-informações .card-informacoes .button .div-atalhos ul li .btn:hover {
     text-decoration: underline;
