@@ -1,9 +1,15 @@
 /* card infromações*/
+.section-informações{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 .section-informações .card-informacoes {
   width: 900px;
   height: 550px;
   background-color: white;
-  fill: white;
   border-radius: 6px;
   box-shadow: 20px 20px 50px -30px #4169e1;
   margin-bottom: 70px;
@@ -50,7 +56,6 @@
 }
 
 .section-informações .card-informacoes .button .div-atalhos .btn {
-  background: none;
   color: var(--primary-color);
   font-size: 0.9rem;
   text-decoration: none;
@@ -61,7 +66,6 @@
 
 /* nome */
 .section-informações .card-informacoes .button h3 {
-  line-height: 0.4;
   font-size: 1.6rem;
   color: rgba(0, 0, 0, 0.9);
   margin-bottom: 40px;
@@ -81,14 +85,17 @@
   border: solid 2px var(--primary-color);
 }
 .section-informações .card-informacoes .button .div-atalhos {
-  margin-top: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  top: 20px;
+  right: 20px;
 }
 .section-informações .card-informacoes .button .div-atalhos ul {
   display: flex;
   justify-content: center;
   list-style: none;
-  margin-right: 5px;
-  margin-left: 5px;
   margin-bottom: 15px;
 }
 .section-informações .card-informacoes .button .div-atalhos ul li .btn {
@@ -105,13 +112,14 @@
 @media (max-width: 768px) {
   /* card */
   .section-informações .card-informacoes {
-    width: 100%;
+    width: 90%;
     height: 520px;
   }
   .section-informações .card-informacoes .top .image-container {
     width: 130px;
     height: 130px;
   }
+  
   .section-informações .card-informacoes .button p {
     font-size: 16px;
   }
@@ -123,13 +131,12 @@
   }
   .section-informações .card-informacoes .button .div-atalhos .btn {
     position: relative;
-    font-size: 10px;
-    right: 13px;
+    font-size: 12px;
   }
   .section-informações .card-informacoes .button .div-atalhos ul li .btn:hover {
     text-decoration: underline;
   }
   .section-informações .card-informacoes .button .div-atalhos {
-    margin-top: 0px;
+    top: -10px;
   }
 }

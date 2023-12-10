@@ -166,7 +166,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                     />
                   ) : null}
                 </div>
-                <p className={styles.status}>Status: Fechado</p>
+                <p className={styles.status}>Status: {info.status === true ? "Aberto" : "Fechado"}</p>
                 <h3>{info.nome}</h3>
                 <div className={styles.divEndereco}>
                   <FaMapMarkerAlt className={styles.enderecoIcon} />
