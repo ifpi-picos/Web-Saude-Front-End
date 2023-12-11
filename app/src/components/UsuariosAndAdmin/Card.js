@@ -166,7 +166,12 @@ export default function CardAdmin({ pageNumber, informacao }) {
                     />
                   ) : null}
                 </div>
-                <p className={styles.status}>Status: {info.status === true ? "Aberto" : "Fechado"}</p>
+                <p className={styles.status}>
+                  Status:
+                  <span className={info.status === true ? styles.statusAberto : styles.statusFechado}>
+                    {info.status === true ? "Aberto" : "Fechado"}
+                  </span>
+                </p>
                 <h3>{info.nome}</h3>
                 <div className={styles.divEndereco}>
                   <FaMapMarkerAlt className={styles.enderecoIcon} />
@@ -202,12 +207,21 @@ export default function CardAdmin({ pageNumber, informacao }) {
                       </p>
                     </div>
                   ) : (
-                    <p>Fechado aos sábados</p>
+                    <div className={styles.divHorarioIcon}>
+                      <FaClock className={styles.horarioIconSabado} />
+                      <p>Fechado aos sábados</p>
+                    </div>
                   )
                 ) : info.horario === "Atendimento 24 Horas" ? (
-                  <p>Abre todos os dias</p>
+                  <div className={styles.divHorarioIcon}>
+                    <FaClock className={styles.horarioIcon} />
+                    <p>Atendimento 24 horas</p>
+                  </div>
                 ) : (
-                  <p>Fechado aos sábados</p>
+                  <div className={styles.divHorarioIcon}>
+                    <FaClock className={styles.horarioIconSabado}  />
+                    <p>Fechado aos sábados</p>
+                  </div>
                 )}
                 <div className={styles.divVerMais}>
                   <div className={styles.divButtonVerMais}>

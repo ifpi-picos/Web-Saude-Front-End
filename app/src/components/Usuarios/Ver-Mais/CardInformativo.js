@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import ConsultasService from "@/services/ConsultasService";
+import {FaMapMarkerAlt } from "react-icons/fa";
 import "@/components/Usuarios/Ver-Mais/css/CardInformativo.css";
 export default async function CardInformativo({ nome }) {
   const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
@@ -18,9 +19,13 @@ export default async function CardInformativo({ nome }) {
           </div>
         </div>
         <div className="button">
+        <p className={"status"}>Status:
+            <span className={unidadesdeSaude.status === true ? "statusAberto" : "statusFechado"}> {unidadesdeSaude.status === true ? "Aberto" : "Fechado"}</span></p>
           <h3>
             {unidadesdeSaude?.nome}
           </h3>
+          <div className="divEndereco">
+               <FaMapMarkerAlt className="enderecoIcon" />
           <p>
             {unidadesdeSaude?.endereco?.rua},{" "}
             {unidadesdeSaude?.endereco?.numero} -{" "}
@@ -28,6 +33,7 @@ export default async function CardInformativo({ nome }) {
             {unidadesdeSaude?.endereco?.cidade} -{" "}
             {unidadesdeSaude?.endereco?.uf}, {unidadesdeSaude?.endereco?.cep}
           </p>
+          </div>
           <hr />
           <div className="div-atalhos">
             <ul>
