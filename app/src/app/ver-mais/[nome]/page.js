@@ -12,6 +12,7 @@ import Link from "next/link";
 import FiltroService from "@/services/ConsultasService";
 import NotFound from "@/app/not-found";
 import "../../../components/Usuarios/css/verMais.css";
+import Galeria from "@/components/Usuarios/Ver-Mais/Galeria";
 
 export default async function verMais({ params }) {
   const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(params.nome);
@@ -40,6 +41,7 @@ export default async function verMais({ params }) {
         <Especialidades nome={params?.nome} />
         <Horario nome={params?.nome} />
         <Contato nome={params?.nome} />
+        <Galeria/>
         <Mapa nome={params?.nome} />
       </main>
       <Footer />
