@@ -27,6 +27,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: 40px;
   transition: box-shadow 0.3s ease-in-out;
+
 }
 
 .cardContainer:hover {

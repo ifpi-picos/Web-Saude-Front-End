@@ -189,8 +189,8 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 </div>
                 {info.horario === "Atendimento 24 Horas" ? (
                   <div className={styles.divHorarioIcon}>
-                    <FaClock className={styles.horarioIcon} size={12} />
-                    <p>Atendimento 24 horas</p>
+                    <FaClock className={styles.horarioIcon} />
+                    <p>Oferecemos assistência médica constante, 24 horas por dia</p>
                   </div>
                 ) : (
                   <div className={styles.divHorarioIcon}>
@@ -205,7 +205,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 {info.sabado ? (
                   info.sabado.open && info.sabado.close ? (
                     <div className={styles.divHorarioIcon}>
-                      <FaClock className={styles.horarioIconSabado} />
+                      <FaClock className={styles.horarioIcon} />
                       <p>
                         Aberto aos sábados das{" "}
                         <strong>{info.sabado.open}</strong> até as{" "}
@@ -214,19 +214,19 @@ export default function CardAdmin({ pageNumber, informacao }) {
                     </div>
                   ) : (
                     <div className={styles.divHorarioIcon}>
-                      <FaClock className={styles.horarioIconSabado} />
-                      <p>Fechado aos sábados</p>
+                      <FaClock className={styles.horarioIcon} />
+                      <p>Fechado aos fins de semana para descanso</p>
                     </div>
                   )
                 ) : info.horario === "Atendimento 24 Horas" ? (
                   <div className={styles.divHorarioIcon}>
-                    <FaClock className={styles.horarioIcon} size={12} />
-                    <p>Abre todos os dias</p>
+                    <FaClock className={styles.horarioIcon}  />
+                    <p>Estamos aqui todos os dias da semana para atendê-lo..</p>
                   </div>
                 ) : (
                   <div className={styles.divHorarioIcon}>
                     <FaClock className={styles.horarioIconSabado} />
-                    <p>Fechado aos sábados</p>
+                    <p>Fechado aos fins de semana para descanso</p>
                   </div>
                 )}
                 <div className={styles.divVerMais}>
