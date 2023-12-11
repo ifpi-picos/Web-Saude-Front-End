@@ -12,7 +12,10 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 }
+.horario{
+  width: 900px;
 
+}
 .sectionHorario .table {
   margin-top: 15px;
 }
@@ -23,5 +26,8 @@
     width: 90%;
     height: 100%;
     padding: 30px;
+  }
+  .horario{
+    width: 90%;
   }
 }

@@ -117,14 +117,14 @@
 .section-informações .card-informacoes .button hr {
   width: 100%;
   margin-top: 30px;
-  border: solid 2px var(--primary-color);
+  border: solid 4px var(--primary-color);
 }
 .section-informações .card-informacoes .button .div-atalhos {
   position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
-  right: 20px;
+  right: 25px;
 }
 .section-informações .card-informacoes .button .div-atalhos ul {
   display: flex;
@@ -165,7 +165,7 @@
   .section-informações .card-informacoes .button hr {
     width: 100%;
     margin-top: 30px;
-    border: solid 2px var(--primary-color);
+    border: solid 3px var(--primary-color);
   }
   .section-informações .card-informacoes .button .div-atalhos .btn {
     position: relative;

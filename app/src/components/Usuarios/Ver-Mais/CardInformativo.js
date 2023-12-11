@@ -4,6 +4,7 @@ import ConsultasService from "@/services/ConsultasService";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import "@/components/Usuarios/Ver-Mais/css/CardInformativo.css";
 export default async function CardInformativo({ nome }) {
+  
   const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
   return (
     <section className="section-informações">
@@ -52,7 +53,7 @@ export default async function CardInformativo({ nome }) {
                 </Link>
               </li>
               <li>
-                <Link className="btn" href="#contatos">
+                <Link className="btn" href="#galeria">
                   Galeria
                 </Link>
               </li>

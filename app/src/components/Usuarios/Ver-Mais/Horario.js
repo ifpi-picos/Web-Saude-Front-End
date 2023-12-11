@@ -78,7 +78,8 @@ export default async function Horario({ nome }) {
     );
   } else {
     return (
-      <Card className={`${styles.sobre} mb-4`} id="horario">
+      <Card className={`${styles.horario} mb-4`} id="horario">
+        <Card.Header>Horário</Card.Header>
         <Card.Body>
           <p>
             Este estabelecimento oferece atendimento 24 horas por dia, 7 dias
