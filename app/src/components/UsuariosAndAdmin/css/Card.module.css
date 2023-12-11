@@ -27,7 +27,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: 40px;
   transition: box-shadow 0.3s ease-in-out;
-  
 }
 
 .cardContainer:hover {
@@ -62,7 +61,7 @@
 }
 
 .cardContainer .button {
-  background-color:  #FFFFFF;
+  background-color: #ffffff;
   padding: 20px;
   padding-top: 50px;
   text-align: center;
@@ -100,11 +99,11 @@
   margin-top: 35px;
   font-size: 20px;
 }
-.statusAberto{
+.statusAberto {
   color: green;
   margin-left: 7px;
 }
-.statusFechado{
+.statusFechado {
   color: red;
   margin-left: 7px;
 }
@@ -180,6 +179,7 @@
     position: relative;
     margin-top: 18px;
     left: 15px;
+    font-size: 14px;
   }
 
   .divEndereco .enderecoIcon,

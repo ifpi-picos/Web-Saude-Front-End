@@ -168,7 +168,13 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 </div>
                 <p className={styles.status}>
                   Status:
-                  <span className={info.status === true ? styles.statusAberto : styles.statusFechado}>
+                  <span
+                    className={
+                      info.status === true
+                        ? styles.statusAberto
+                        : styles.statusFechado
+                    }
+                  >
                     {info.status === true ? "Aberto" : "Fechado"}
                   </span>
                 </p>
@@ -183,7 +189,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 </div>
                 {info.horario === "Atendimento 24 Horas" ? (
                   <div className={styles.divHorarioIcon}>
-                    <FaClock className={styles.horarioIcon} />
+                    <FaClock className={styles.horarioIcon} size={12} />
                     <p>Atendimento 24 horas</p>
                   </div>
                 ) : (
@@ -214,12 +220,12 @@ export default function CardAdmin({ pageNumber, informacao }) {
                   )
                 ) : info.horario === "Atendimento 24 Horas" ? (
                   <div className={styles.divHorarioIcon}>
-                    <FaClock className={styles.horarioIcon} />
-                    <p>Atendimento 24 horas</p>
+                    <FaClock className={styles.horarioIcon} size={12} />
+                    <p>Abre todos os dias</p>
                   </div>
                 ) : (
                   <div className={styles.divHorarioIcon}>
-                    <FaClock className={styles.horarioIconSabado}  />
+                    <FaClock className={styles.horarioIconSabado} />
                     <p>Fechado aos sábados</p>
                   </div>
                 )}
