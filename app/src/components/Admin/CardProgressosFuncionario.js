@@ -12,7 +12,7 @@ export default function CardProgressosFuncionario() {
           <div className="card-progress">
             <small>visualizações total de seus estabelecimentos</small>
             <div className="card-indicator">
-              <div className="indicator two" style={{ width: "80%" }}></div>
+              <div className="indicator verde" style={{ width: "80%" }}></div>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@ export default function CardProgressosFuncionario() {
           <div className="card-progress">
             <small>visualizações mensal</small>
             <div className="card-indicator">
-              <div className="indicator four" style={{ width: "80%" }}></div>
+              <div className="indicator azul" style={{ width: "80%" }}></div>
             </div>
           </div>
         </div>
