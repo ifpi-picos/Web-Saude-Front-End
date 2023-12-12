@@ -54,12 +54,16 @@
   border-radius: 4px;
 }
 
-.indicator.two {
-  background-color: #22baa0;
+.indicator.roxo {
+  background-color: purple;
 }
 
-.indicator.four {
-  background-color: #f25656;
+.indicator.verde {
+  background-color: green;
+}
+
+.indicator.azul {
+  background-color: blue;
 }
 /* registros */
 .registros {

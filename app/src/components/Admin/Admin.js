@@ -5,7 +5,7 @@ import PrivateRoute from "./privateRouter";
 import { Modal, Button } from "react-bootstrap";
 import NovaSenhaForm from "./Formularios/NovaSenhaForm";
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
-import CardProgressos from "@/components/Admin/CardProgressos";
+import CardProgressosAdmin from "./CardProgressosAdmin";
 import Loading from "@/app/loading";
 import Link from "next/link";
 import CadastrarUsuarioForm from "@/components/Admin/Formularios/CadastrarUsuarioForm";
@@ -102,7 +102,7 @@ export default function Admin() {
         </div>
 
         <div className="page-content">
-          <CardProgressos />
+          <CardProgressosAdmin/>
           <div className="registros table-responsive">
             <div className="registro-header">
               <p>

@@ -89,6 +89,11 @@ export default function HeaderAdmin() {
                 <Nav.Link className={styles.cadastro} href="/especialidades">
                   Cadastrar Especialidades
                 </Nav.Link>
+                {decodedToken === "admin" ? 
+                  <Nav.Link className={styles.cadastro} href="/">
+                   Unidades De Saúde
+                </Nav.Link>
+                : null}
               </NavDropdown>
               <Nav.Link className={styles.logout} onClick={handleLogout}>
                 Logout

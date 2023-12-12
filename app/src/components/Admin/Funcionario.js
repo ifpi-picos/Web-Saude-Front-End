@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import CardAdmin from "@/components/UsuariosAndAdmin/Card";
-import CardProgressos from "@/components/Admin/CardProgressos";
+import CardProgressosFuncionario from "./CardProgressosFuncionario";
 import PrivateRoute from "@/components/Admin/privateRouter";
 import Loading from "@/app/loading";
 import Link from "next/link";
@@ -61,7 +61,7 @@ export default function Funcionario() {
         </div>
 
         <div className="page-content">
-          <CardProgressos />
+          <CardProgressosFuncionario />
           <div className="registros table-responsive">
             <div className="registro-header">
               <p>

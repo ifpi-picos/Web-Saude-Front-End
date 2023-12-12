@@ -4,7 +4,7 @@ class ConsultasService {
       const res = await fetch(
         `https://api-web-saude.vercel.app/unidades-de-saude`,
         {
-          cache:"default"
+          cache: "no-store",
           
         }
       );

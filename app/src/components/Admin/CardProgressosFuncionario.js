@@ -1,6 +1,6 @@
 import PrivateRoute from "./privateRouter";
 
-export default function CardProgressos() {
+export default function CardProgressosFuncionario() {
   return (
     <PrivateRoute>
       <div className="analytics">
