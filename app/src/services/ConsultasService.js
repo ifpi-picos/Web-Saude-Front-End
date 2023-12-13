@@ -5,7 +5,6 @@ class ConsultasService {
         `https://api-web-saude.vercel.app/unidades-de-saude`,
         {
           cache: "no-store",
-          
         }
       );
 
@@ -150,31 +149,33 @@ class ConsultasService {
     const info = await res.json();
     return info;
   }
-  async pegarEspecialidades() 
-  {
+  async pegarEspecialidades() {
     const res = await fetch(`https://api-web-saude.vercel.app/especialidades`, {
       cache: "no-store",
     });
     const info = await res.json();
     return info;
   }
-  
-  async pegarTotalDasUnidadesDeSaude(){
-    const res = await fetch(`https://api-web-saude.vercel.app/total-unidades-de-saude`,{
-      cache:"no-store"
-    })
-    
+
+  async pegarTotalDasUnidadesDeSaude() {
+    const res = await fetch(
+      `https://api-web-saude.vercel.app/total-unidades-de-saude`,
+      {
+        cache: "no-store",
+      }
+    );
+
     const total = await res.json();
-    return total
+    return total;
   }
 
-  async pegarTotalDeUsuarios(){
-    const res = await fetch(`https://api-web-saude.vercel.app/total-usuarios`,{
-      cache:"no-store"
-    })
-    
+  async pegarTotalDeUsuarios() {
+    const res = await fetch(`https://api-web-saude.vercel.app/total-usuarios`, {
+      cache: "no-store",
+    });
+
     const total = await res.json();
-    return total
+    return total;
   }
 }
 

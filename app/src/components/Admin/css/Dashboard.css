@@ -190,7 +190,9 @@ select {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
+.titulo {
+  margin-top: 15px;
+}
 @media only screen and (max-width: 768px) {
   .analytics {
     grid-template-columns: 100%;

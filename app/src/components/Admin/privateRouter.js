@@ -17,7 +17,11 @@ const PrivateRoute = ({ children }) => {
       router.push("/login");
     } else {
       if (decodedToken === "funcionario") {
-        const allowedFuncionarioRoutes = ["/novo-usuario", "/dashboard"];
+        const allowedFuncionarioRoutes = [
+          "/novo-usuario",
+          "/dashboard",
+          "/dashboard/unidades-de-saude",
+        ];
         const currentPath = window.location.pathname;
 
         if (currentPath.startsWith("/dashboard/usuario/nova-senha/")) {

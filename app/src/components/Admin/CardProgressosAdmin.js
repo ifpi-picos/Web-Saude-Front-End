@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+"use client";
+import React, { Component } from "react";
 import PrivateRoute from "./privateRouter";
 import ConsultasService from "@/services/ConsultasService";
 
@@ -8,12 +9,11 @@ class CardProgressosAdmin extends Component {
 
     this.state = {
       totalUnidadesDeSaude: 0,
-      totalUsuarios: 0, 
+      totalUsuarios: 0,
     };
 
-    this.fetchDataUsuarios(); 
+    this.fetchDataUsuarios();
     this.fetchDataUnidadesDeSaude();
-
   }
 
   async fetchDataUnidadesDeSaude() {
@@ -21,7 +21,7 @@ class CardProgressosAdmin extends Component {
       const result = await ConsultasService.pegarTotalDasUnidadesDeSaude();
       this.setState({ totalUnidadesDeSaude: result.total });
     } catch (error) {
-      console.error('Erro ao obter dados de unidades de saúde:', error);
+      console.error("Erro ao obter dados de unidades de saúde:", error);
     }
   }
 
@@ -30,7 +30,7 @@ class CardProgressosAdmin extends Component {
       const result = await ConsultasService.pegarTotalDeUsuarios();
       this.setState({ totalUsuarios: result.total });
     } catch (error) {
-      console.error('Erro ao obter dados de usuários:', error);
+      console.error("Erro ao obter dados de usuários:", error);
     }
   }
 
@@ -39,6 +39,10 @@ class CardProgressosAdmin extends Component {
   }
 
   render() {
+    const isAdminPage =
+      typeof window !== "undefined" &&
+      window.location.pathname === "/dashboard";
+
     return (
       <PrivateRoute>
         <div className="analytics">
@@ -52,26 +56,39 @@ class CardProgressosAdmin extends Component {
               <div className="card-indicator">
                 <div
                   className="indicator verde"
-                  style={{ width: `${this.calcularPorcentagem(this.state.totalUnidadesDeSaude, 100)}%` }}
+                  style={{
+                    width: `${this.calcularPorcentagem(
+                      this.state.totalUnidadesDeSaude,
+                      100
+                    )}%`,
+                  }}
                 ></div>
               </div>
             </div>
           </div>
-          <div className="card">
-            <div className="card-head">
-              <h2>{this.state.totalUsuarios}</h2>
-              <span className="las la-envelope"></span>
-            </div>
-            <div className="card-progress">
-              <small>Usuários Ativos</small>
-              <div className="card-indicator">
-                <div
-                  className="indicator azul"
-                  style={{ width: `${this.calcularPorcentagem(this.state.totalUsuarios, 100)}%` }}
-                ></div>
+          {isAdminPage && (
+            <div className="card">
+              <div className="card-head">
+                <h2>{this.state.totalUsuarios}</h2>
+                <span className="las la-envelope"></span>
+              </div>
+              {}
+              <div className="card-progress">
+                <small>Usuários Ativos</small>
+                <div className="card-indicator">
+                  <div
+                    className="indicator azul"
+                    style={{
+                      width: `${this.calcularPorcentagem(
+                        this.state.totalUsuarios,
+                        100
+                      )}%`,
+                    }}
+                  ></div>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </PrivateRoute>
     );

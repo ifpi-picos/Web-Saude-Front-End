@@ -7,7 +7,7 @@ import Paginacao from "./Paginacao";
 import { useDecodedToken } from "@/services/decodeToken";
 import styles from "@/components/UsuariosAndAdmin/css/Card.module.css";
 
-export default function CardAdmin({ pageNumber, informacao }) {
+export default function CardAdmin({ pageNumber, informacao, params }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemStates, setItemStates] = useState([]);
 
@@ -108,7 +108,8 @@ export default function CardAdmin({ pageNumber, informacao }) {
 
   const isAdminPage =
     typeof window !== "undefined" &&
-    window.location.pathname.startsWith("/funcionario");
+    (window.location.pathname.startsWith("/funcionario") ||
+      window.location.pathname.startsWith("/dashboard/unidades-de-saude"));
 
   return (
     <section className={styles.sectionCard}>
@@ -159,12 +160,12 @@ export default function CardAdmin({ pageNumber, informacao }) {
               </div>
               <div className={styles.button}>
                 <div className={styles.icon}>
-                  {decodedToken === "funcionario" && isAdminPage ? (
+                  {isAdminPage && (
                     <FaCog
                       className={styles.configIcon}
                       onClick={() => handleShowModal(info, index)}
                     />
-                  ) : null}
+                  )}
                 </div>
                 <p className={styles.status}>
                   Status:
@@ -190,7 +191,9 @@ export default function CardAdmin({ pageNumber, informacao }) {
                 {info.horario === "Atendimento 24 Horas" ? (
                   <div className={styles.divHorarioIcon}>
                     <FaClock className={styles.horarioIcon} />
-                    <p>Oferecemos assistência médica constante, 24 horas por dia</p>
+                    <p>
+                      Oferecemos assistência médica constante, 24 horas por dia
+                    </p>
                   </div>
                 ) : (
                   <div className={styles.divHorarioIcon}>
@@ -220,7 +223,7 @@ export default function CardAdmin({ pageNumber, informacao }) {
                   )
                 ) : info.horario === "Atendimento 24 Horas" ? (
                   <div className={styles.divHorarioIcon}>
-                    <FaClock className={styles.horarioIcon}  />
+                    <FaClock className={styles.horarioIcon} />
                     <p>Estamos aqui todos os dias da semana para atendê-lo..</p>
                   </div>
                 ) : (

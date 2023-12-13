@@ -9,7 +9,7 @@ const allImages = [
   "/imgs/medicina3.jpg",
   "/imgs/medicina1.jpg",
   "/imgs/medicina2.jpg",
-  "/imgs/medicina3.jpg"
+  "/imgs/medicina3.jpg",
 ];
 
 export default class Galeria extends Component {
@@ -19,22 +19,22 @@ export default class Galeria extends Component {
     this.state = {
       showModal: false,
       selectedImageIndex: 0,
-      showAllImages: false
+      showAllImages: false,
     };
 
     this.galleryRef = React.createRef();
   }
 
-  openLightbox = (index) => {
+  openLightbox = index => {
     this.setState({
       selectedImageIndex: index,
-      showModal: true
+      showModal: true,
     });
   };
 
   closeLightbox = () => {
     this.setState({
-      showModal: false
+      showModal: false,
     });
   };
 
@@ -43,14 +43,14 @@ export default class Galeria extends Component {
 
     if (showAllImages) {
       this.setState({
-        selectedImageIndex: 0
+        selectedImageIndex: 0,
       });
 
       this.galleryRef.current.scrollIntoView({ behavior: "smooth" });
     }
 
     this.setState({
-      showAllImages: !showAllImages
+      showAllImages: !showAllImages,
     });
   };
 
@@ -95,7 +95,7 @@ export default class Galeria extends Component {
             <Modal.Body>
               <Carousel
                 activeIndex={selectedImageIndex}
-                onSelect={(selectedIndex) =>
+                onSelect={selectedIndex =>
                   this.setState({ selectedImageIndex: selectedIndex })
                 }
                 interval={null}
@@ -117,4 +117,3 @@ export default class Galeria extends Component {
     );
   }
 }
-

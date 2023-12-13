@@ -102,7 +102,7 @@ export default function Admin() {
         </div>
 
         <div className="page-content">
-          <CardProgressosAdmin/>
+          <CardProgressosAdmin />
           <div className="registros table-responsive">
             <div className="registro-header">
               <p>
