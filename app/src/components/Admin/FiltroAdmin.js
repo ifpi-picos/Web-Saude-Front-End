@@ -13,12 +13,10 @@ export default function FiltroAdmin({ onFilterChange }) {
   };
 
   useEffect(() => {
-    // Aqui você pode fazer a requisição à API com base no filtro selecionado
     if (selectedFilter) {
       fetch(`https://api-web-saude.vercel.app/${selectedFilter}`)
         .then(response => response.json())
         .then(data => {
-          // Faça algo com os dados recebidos da API, por exemplo, atualize o estado da sua aplicação
           console.log(data);
         })
         .catch(error => {
