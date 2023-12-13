@@ -31,12 +31,12 @@ export default async function unidadesDeSaude() {
           <div className="registros table-responsive">
             <div className="registro-header">
               <p className="titulo">
-                <strong>Unidades De Saúde</strong>
+                <strong><h2>Unidades De Saúde</h2></strong>
               </p>
             </div>
           </div>
           <FiltroAdmin />
-          <PesquisaAdmin/>
+          <PesquisaAdmin />
           <CardAdmin informacao={unidadesDeSaude} />
         </div>
       </div>

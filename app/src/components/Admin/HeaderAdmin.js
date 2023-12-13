@@ -90,7 +90,10 @@ export default function HeaderAdmin() {
                   Cadastrar Especialidades
                 </Nav.Link>
                 {decodedToken === "admin" ? (
-                  <Nav.Link className={styles.cadastro} href="/">
+                  <Nav.Link
+                    className={styles.cadastro}
+                    href="/dashboard/unidades-de-saude"
+                  >
                     Unidades De Saúde
                   </Nav.Link>
                 ) : null}

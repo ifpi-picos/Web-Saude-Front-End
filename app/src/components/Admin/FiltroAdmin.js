@@ -27,8 +27,7 @@ export default function FiltroAdmin({ onFilterChange }) {
 
   return (
     <div className="d-flex justify-content-center align-items-center">
-      <div className="mt-3">
-        <h5>Filtrar por:</h5>
+      <div className="mt-5">
         <ButtonGroup>
           <Button
             variant={selectedFilter === "clinicas" ? "primary" : "secondary"}

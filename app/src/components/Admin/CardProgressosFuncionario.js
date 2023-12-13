@@ -1,3 +1,5 @@
+import React from "react";
+import { FaEye} from "react-icons/fa";
 import PrivateRoute from "./privateRouter";
 
 export default function CardProgressosFuncionario() {
@@ -7,10 +9,10 @@ export default function CardProgressosFuncionario() {
         <div className="card">
           <div className="card-head">
             <h2>340</h2>
-            <span className="las la-eye"></span>
+            <FaEye className="icon" size={25}/>
           </div>
           <div className="card-progress">
-            <small>visualizações total de seus estabelecimentos</small>
+            <small>Visualizações total de seus Estabelecimentos</small>
             <div className="card-indicator">
               <div className="indicator verde" style={{ width: "80%" }}></div>
             </div>
@@ -20,10 +22,10 @@ export default function CardProgressosFuncionario() {
         <div className="card">
           <div className="card-head">
             <h2>47</h2>
-            <span className="las la-envelope"></span>
+            <FaEye className="icon" size={25}/>
           </div>
           <div className="card-progress">
-            <small>visualizações mensal</small>
+            <small>Visualizações mensais</small>
             <div className="card-indicator">
               <div className="indicator azul" style={{ width: "80%" }}></div>
             </div>
