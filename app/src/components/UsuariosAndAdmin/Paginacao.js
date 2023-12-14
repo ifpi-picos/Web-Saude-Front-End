@@ -1,5 +1,6 @@
 import React from "react";
 import "@/components/UsuariosAndAdmin/css/Paginacao.css";
+
 export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
   const maxPageButtons = 4;
 
@@ -38,7 +39,13 @@ export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
               className={currentPage === pageNumber ? "active" : ""}
               onClick={() => {
                 setCurrentPage(pageNumber);
-                window.history.pushState({}, "", `${pageNumber}`);
+                const path =
+                  document.title === "Clínicas"
+                    ? "clinicas"
+                    : document.title === "Hospital"
+                    ? "hospitais"
+                    : "page";
+                window.history.pushState({}, "", `/${path}/${pageNumber}`);
               }}
             >
               {pageNumber}
@@ -53,7 +60,13 @@ export default function Paginacao({ currentPage, totalPages, setCurrentPage }) {
               if (currentPage < totalPages) {
                 const newPage = currentPage + 1;
                 setCurrentPage(newPage);
-                window.history.pushState({}, "", `/page/${newPage}`);
+                const path =
+                  document.title === "Clínicas"
+                    ? "clinicas"
+                    : document.title === "Hospitais"
+                    ? "hospitais"
+                    : "page";
+                window.history.pushState({}, "", `/${path}/${newPage}`);
               }
             }}
           >

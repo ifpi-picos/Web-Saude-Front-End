@@ -31,7 +31,9 @@ export default async function unidadesDeSaude() {
           <div className="registros table-responsive">
             <div className="registro-header">
               <p className="titulo">
-                <strong><h2>Unidades De Saúde</h2></strong>
+                <strong>
+                  <h2>Unidades De Saúde</h2>
+                </strong>
               </p>
             </div>
           </div>

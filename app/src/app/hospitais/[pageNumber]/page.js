@@ -9,8 +9,12 @@ import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import "@/components/Usuarios/Home/css/Home.css";
 import "@/components/Usuarios/css/Layout.css";
 
-export default async function PageNumber({ params }) {
-  const informacao = await ConsultasService.unidadesdeSaude();
+export const metadata = {
+  title: "Hospitais",
+};
+
+export default async function PageHospitais({ params }) {
+  const informacao = await ConsultasService.pegarHospitais();
 
   return (
     <>
