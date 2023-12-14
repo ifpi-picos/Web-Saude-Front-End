@@ -6,7 +6,7 @@
   height: 22rem;
   background-color: var(--primary-color);
   border-radius: var(--card-radius);
-  box-shadow: var(--shadow);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin-top: 120px;
 }
 

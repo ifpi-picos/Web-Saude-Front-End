@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEye } from "react-icons/fa";
 import PrivateRoute from "./privateRouter";
+import "@/components/Admin/Progresso.css"
 
 export default function CardProgressosFuncionario() {
   return (

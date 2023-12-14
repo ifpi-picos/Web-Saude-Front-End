@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { FaBuilding, FaUser, FaEye } from "react-icons/fa";
 import PrivateRoute from "./privateRouter";
 import ConsultasService from "@/services/ConsultasService";
+import "@/components/Admin/Progresso.css"
+
 
 class CardProgressosAdmin extends Component {
   constructor(props) {

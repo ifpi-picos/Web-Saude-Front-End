@@ -37,8 +37,8 @@ export default async function unidadesDeSaude() {
               </p>
             </div>
           </div>
-          <FiltroAdmin />
           <PesquisaAdmin />
+          <FiltroAdmin />
           <CardAdmin informacao={unidadesDeSaude} />
         </div>
       </div>

@@ -17,19 +17,25 @@ export default function PesquisaAdmin({ onSearch }) {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center">
-      <Form onSubmit={handleSearchSubmit} className="mt-3 w-0">
+    <div className="d-flex justify-content-center align-items-center" >
+      <Form onSubmit={handleSearchSubmit} className="mt-5 ">
         <InputGroup>
           <Form.Control
             type="text"
             placeholder="Digite sua pesquisa..."
             value={searchTerm}
             onChange={handleSearchChange}
+            style={{
+              boxShadow: 'none',
+              width:"170px",
+              height:"40px",
+              border:"1px solid black"
+            }}
           />
           <Button
             type="submit"
             variant="outline-secondary"
-            style={{ backgroundColor: "#00285f" }}
+            style={{ backgroundColor: "#00285f",height:"40px" }}
           >
             Pesquisar
           </Button>
