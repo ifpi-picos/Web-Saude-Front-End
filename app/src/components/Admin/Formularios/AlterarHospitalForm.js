@@ -154,7 +154,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
               )}
             </div>
 
-            <h2 className={styles.title}>Alterar Clínica</h2>
+            <h2 className={styles.title}>Alterar Hospital</h2>
             <div className={styles.divInputs}>
               <label>Nome</label>
               <Controller

@@ -1,14 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import "@/components/Admin/css/Usuarios.css";
 import PrivateRoute from "./privateRouter";
 import { Modal } from "react-bootstrap";
 import NovaSenhaForm from "./Formularios/NovaSenhaForm";
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
-import CardProgressosAdmin from "./CardProgressosAdmin";
+import CardProgressos from "./CardProgressos";
 import Loading from "@/app/loading";
 import Link from "next/link";
 import CadastrarUsuarioForm from "@/components/Admin/Formularios/CadastrarUsuarioForm";
+import "@/components/Admin/css/Usuarios.css";
 
 export default function Admin() {
   const [showNovaSenhaForm, setShowNovaSenhaForm] = useState(false);
@@ -102,16 +102,7 @@ export default function Admin() {
         </div>
 
         <div className="page-content">
-          <CardProgressosAdmin />
-          <div className="registros table-responsive">
-            <div className="registro-header">
-              <p>
-                <strong>
-                  <h2 className="titulo-usuarios">Usuários</h2>
-                </strong>
-              </p>
-            </div>
-          </div>
+          <CardProgressos />
         </div>
         <div className="button-novo-usuario">
           <button className="button-usuarios" onClick={handleNovoUsuarioClick}>

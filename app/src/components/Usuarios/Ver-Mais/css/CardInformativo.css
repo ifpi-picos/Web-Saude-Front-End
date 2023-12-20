@@ -14,7 +14,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
   margin-bottom: 70px;
-  margin-top: 50px;
+  margin-top: 40px;
   border-radius: 6px;
 }
 .section-informações .card-informacoes:hover {
@@ -145,7 +145,8 @@
   /* card */
   .section-informações .card-informacoes {
     width: 90%;
-    height: 450px;
+    height: 500px;
+    margin-top: 30px;
   }
   .section-informações .card-informacoes .top .image-container {
     width: 130px;
@@ -155,20 +156,21 @@
     left: 5px;
   }
   .divEndereco .enderecoIcon {
-    margin-top: 33px;
+    margin-top: 47px;
   }
   .section-informações .card-informacoes .button p {
     font-size: 16px;
+    margin-top: 45px;
   }
   /* atalhos */
   .section-informações .card-informacoes .button hr {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 40px;
     border: solid 3px var(--primary-color);
   }
   .section-informações .card-informacoes .button .div-atalhos .btn {
     position: relative;
-    font-size: 12px;
+    font-size: 13px;
   }
   .section-informações .card-informacoes .button .div-atalhos ul li .btn:hover {
     text-decoration: underline;

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import CardAdmin from "@/components/UsuariosAndAdmin/Card";
-import CardProgressosFuncionario from "./CardProgressosFuncionario";
+import CardProgressos from "./CardProgressos";
 import PrivateRoute from "@/components/Admin/privateRouter";
 import Loading from "@/app/loading";
 import Link from "next/link";
@@ -61,17 +61,8 @@ export default function Funcionario() {
         </div>
 
         <div className="page-content">
-          <CardProgressosFuncionario />
-          <div className="registros table-responsive">
-            <div className="registro-header">
-              <p>
-                <strong>
-                  Clique no botão ver mais para ver as informações do seu
-                  estabelecimento!
-                </strong>
-              </p>
-            </div>
-          </div>
+          <CardProgressos />
+          <div className="registros table-responsive"></div>
           <CardAdmin informacao={unidadesDeSaude} />
         </div>
       </div>

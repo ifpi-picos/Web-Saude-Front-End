@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import Image from "next/image";
 import { useDecodedToken } from "@/services/decodeToken";
+import { FaSignOutAlt } from "react-icons/fa"; // Importando o ícone de logout
 import styles from "../Admin/css/HeaderAdmin.module.css";
 import PrivateRoute from "./privateRouter";
 
@@ -99,7 +100,7 @@ export default function HeaderAdmin() {
                 ) : null}
               </NavDropdown>
               <Nav.Link className={styles.logout} onClick={handleLogout}>
-                Logout
+                Logout <FaSignOutAlt className="icon" />
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

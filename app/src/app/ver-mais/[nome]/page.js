@@ -35,7 +35,6 @@ export default async function verMais({ params }) {
             </li>
           </ul>
         </div>
-        <NomeDaClinica_Hospital nome={params?.nome} />
         <CardInformativo nome={params?.nome} />
         <CardSobre nome={params?.nome} />
         <Especialidades nome={params?.nome} />

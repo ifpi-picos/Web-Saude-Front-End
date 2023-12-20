@@ -10,23 +10,12 @@
 .titulo {
   margin-top: 20px;
 }
-@media only screen and (max-width: 1200px) {
-  .analytics {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 @media only screen and (max-width: 768px) {
-  .analytics {
-    grid-template-columns: 100%;
-  }
-
   .main-content {
     width: 100%;
   }
   .button-novo-usuario {
     width: 110px;
   }
-  
- 
 }

@@ -1,6 +1,6 @@
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import CardAdmin from "@/components/UsuariosAndAdmin/Card";
-import CardProgressosAdmin from "@/components/Admin/CardProgressosAdmin";
+import CardProgressos from "@/components/Admin/CardProgressos";
 import PrivateRoute from "@/components/Admin/privateRouter";
 import Link from "next/link";
 import ConsultasService from "@/services/ConsultasService";
@@ -27,16 +27,7 @@ export default async function unidadesDeSaude() {
         </div>
 
         <div className="page-content">
-          <CardProgressosAdmin />
-          <div className="registros table-responsive">
-            <div className="registro-header">
-              <p className="titulo">
-                <strong>
-                  <h2>Unidades De Saúde</h2>
-                </strong>
-              </p>
-            </div>
-          </div>
+          <CardProgressos />
           <PesquisaAdmin />
           <FiltroAdmin />
           <CardAdmin informacao={unidadesDeSaude} />
