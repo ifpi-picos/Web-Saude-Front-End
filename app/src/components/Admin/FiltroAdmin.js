@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
+import styles from "@/components/Admin/css/FiltrosAdmin.module.css"; // Import the CSS module
 
 export default function FiltroAdmin({ onFilterChange }) {
   const [selectedFilter, setSelectedFilter] = useState(null);
@@ -27,37 +28,29 @@ export default function FiltroAdmin({ onFilterChange }) {
 
   return (
     <div className="d-flex justify-content-center align-items-center">
-      <div className="mt-3">
-        <ButtonGroup>
+      <div className="mt-4">
+        <ButtonGroup className={styles.buttonGroup}>
           <Button
             variant="primary"
-            style={{
-              backgroundColor:
-                selectedFilter === "clinicas" ? "#007bff" : "white",
-              color: selectedFilter === "clinicas" ? "white" : "black",
-            }}
+            className={
+              selectedFilter === "clinicas" ? styles.buttonPrimary : ""
+            }
             onClick={() => handleFilterChange("clinicas")}
           >
             Clínicas
           </Button>
           <Button
             variant="success"
-            style={{
-              backgroundColor:
-                selectedFilter === "hospitais" ? "#28a745" : "white",
-              color: selectedFilter === "hospitais" ? "white" : "black",
-            }}
+            className={
+              selectedFilter === "hospitais" ? styles.buttonSuccess : ""
+            }
             onClick={() => handleFilterChange("hospitais")}
           >
             Hospitais
           </Button>
           <Button
             variant="danger"
-            style={{
-              backgroundColor:
-                selectedFilter === "pedidos" ? "#dc3545" : "white",
-              color: selectedFilter === "pedidos" ? "white" : "black",
-            }}
+            className={selectedFilter === "pedidos" ? styles.buttonDanger : ""}
             onClick={() => handleFilterChange("pedidos")}
           >
             Pedidos

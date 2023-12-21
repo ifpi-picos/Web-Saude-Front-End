@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
-import styles from "@/components/Admin/css/HeaderAdmin.module.css";
+import styles from "@/components/Admin/css/PesquisaAdmin.module.css";
+
 export default function PesquisaAdmin({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -19,7 +20,7 @@ export default function PesquisaAdmin({ onSearch }) {
   return (
     <div className="d-flex justify-content-center align-items-center">
       <Form onSubmit={handleSearchSubmit}>
-        <InputGroup>
+        <InputGroup className={styles.inputGroup}>
           <Form.Control
             className={styles.pesquisaForm}
             type="text"
@@ -27,7 +28,11 @@ export default function PesquisaAdmin({ onSearch }) {
             value={searchTerm}
             onChange={handleSearchChange}
           />
-          <Button type="submit" variant="outline-secondary">
+          <Button
+            type="submit"
+            variant="outline-secondary"
+            className={styles.buttonPesquisa}
+          >
             Pesquisar
           </Button>
         </InputGroup>

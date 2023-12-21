@@ -1,0 +1,23 @@
+.buttonGroup {
+  width: 400px;
+}
+.buttonPrimary {
+  background-color: #007bff;
+  color: white;
+}
+
+.buttonSuccess {
+  background-color: #28a745;
+  color: white;
+}
+
+.buttonDanger {
+  background-color: #dc3545;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .buttonGroup {
+    width: 300px;
+  }
+}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import ConsultasService from "@/services/ConsultasService";
-import { FaMapMarkerAlt} from "react-icons/fa";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import "@/components/Usuarios/Ver-Mais/css/CardInformativo.css";
 export default async function CardInformativo({ nome }) {
   const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
@@ -33,7 +33,7 @@ export default async function CardInformativo({ nome }) {
             </span>
           </p>
           <div>
-          <h3>{unidadesdeSaude?.nome}</h3>
+            <h3>{unidadesdeSaude?.nome}</h3>
           </div>
           <div className="divEndereco">
             <FaMapMarkerAlt className="enderecoIcon" />
