@@ -10,9 +10,14 @@
   box-shadow: none;
 }
 .buttonPesquisa {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 12px;
   background-color: var(--primary-color);
   color: white;
+  text-decoration: none;
 }
 .buttonPesquisa {
   border-radius: 8px;

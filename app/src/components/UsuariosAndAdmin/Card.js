@@ -95,7 +95,43 @@ export default function CardAdmin({ pageNumber, informacao, params }) {
       }
     }
   };
+  const handleAprovarUnidadeDeSaude = (selectedItem, index) => {
+    if (selectedItem) {
+      const confirmation = window.confirm(
+        "Tem certeza que deseja aprovar esta unidade de saúde?"
+      );
 
+      if (confirmation) {
+        const itemId = selectedItem._id;
+        const tipoEstabelecimento = selectedItem.horario;
+
+        const token = localStorage.getItem("token");
+        const deleteEndpoint =
+          tipoEstabelecimento === "Atendimento 24 Horas"
+            ? `https://api-web-saude.vercel.app/aprovar-hospital/${itemId}`
+            : `https://api-web-saude.vercel.app/aprovar-clinica/${itemId}`;
+
+        fetch(deleteEndpoint, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": token,
+          },
+        })
+          .then(response => {
+            if (response.ok) {
+              handleCloseModal(index);
+              window.location.href = "/dashboard/unidades-de-saude/pedidos";
+            } else {
+              console.error("Erro ao aprovar a unidade de saúde.");
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
+    }
+  };
   const handleUpdateItem = (index, nome, horario) => {
     const url =
       horario === "Atendimento 24 Horas"
@@ -180,6 +216,17 @@ export default function CardAdmin({ pageNumber, informacao, params }) {
                   </span>
                 </p>
                 <h3>{info.nome}</h3>
+                {info.aprovado === false && decodedToken === "admin" ? (
+                  <div className="btn-warning">
+                    <Button
+                      className={styles.buttonsModel}
+                      variant="warning"
+                      onClick={() => handleAprovarUnidadeDeSaude(info, index)}
+                    >
+                      Aprovar
+                    </Button>
+                  </div>
+                ) : null}
                 <div className={styles.divEndereco}>
                   <FaMapMarkerAlt className={styles.enderecoIcon} />
                   <p>

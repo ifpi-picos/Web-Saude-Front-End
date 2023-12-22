@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import styles from "@/components/Admin/css/PesquisaAdmin.module.css";
+import { useRouter } from "next/navigation";
 
-export default function PesquisaAdmin({ onSearch }) {
+export default function PesquisaAdmin() {
   const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
 
   const handleSearchChange = event => {
     setSearchTerm(event.target.value);
@@ -12,9 +14,10 @@ export default function PesquisaAdmin({ onSearch }) {
 
   const handleSearchSubmit = event => {
     event.preventDefault();
-    if (onSearch) {
-      onSearch(searchTerm);
-    }
+    const formattedSearchTerm = encodeURIComponent(
+      searchTerm.replace(/ /g, "-")
+    );
+    router.push(`/dashboard/unidades-de-saude/pesquisa/${formattedSearchTerm}`);
   };
 
   return (

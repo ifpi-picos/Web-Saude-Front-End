@@ -1,5 +1,5 @@
-.buttonGroup {
-  width: 400px;
+.buttonGroup a {
+  width: 100%;
 }
 .buttonPrimary {
   background-color: #007bff;
@@ -14,10 +14,4 @@
 .buttonDanger {
   background-color: #dc3545;
   color: white;
-}
-
-@media (max-width: 768px) {
-  .buttonGroup {
-    width: 300px;
-  }
 }

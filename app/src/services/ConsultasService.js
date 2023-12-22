@@ -177,6 +177,19 @@ class ConsultasService {
     const total = await res.json();
     return total;
   }
+
+  async pedidos() {
+    const res = await fetch(`https://api-web-saude.vercel.app/pedidos`, {
+      cache: "no-store",
+    });
+    const data = await res.json();
+    if (!data.Message || !Array.isArray(data.Message)) {
+      throw new Error("Resposta inválida da API");
+    }
+
+    const unidades = data.Message;
+    return unidades;
+  }
 }
 
 export default new ConsultasService();

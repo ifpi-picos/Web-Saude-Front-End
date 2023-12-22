@@ -9,11 +9,11 @@ import PesquisaAdmin from "@/components/Admin/PesquisaAdmin";
 import "@/components/Admin/css/Dashboard.css";
 
 export const metadata = {
-  title: "Unidades De Saude",
+  title: "Clínicas",
 };
 
-export default async function unidadesDeSaude() {
-  const unidadesDeSaude = await ConsultasService.unidadesdeSaude();
+export default async function Clinicas() {
+  const clinicas = await ConsultasService.pegarClinicas();
 
   return (
     <PrivateRoute>
@@ -30,7 +30,7 @@ export default async function unidadesDeSaude() {
           <CardProgressos />
           <PesquisaAdmin />
           <FiltroAdmin />
-          <CardAdmin informacao={unidadesDeSaude} />
+          <CardAdmin informacao={clinicas} />
         </div>
       </div>
     </PrivateRoute>
