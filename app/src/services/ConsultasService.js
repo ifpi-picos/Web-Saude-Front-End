@@ -28,7 +28,7 @@ class ConsultasService {
   async pegarUnidadedeSaude(nome) {
     try {
       const res = await fetch(
-        `https://api-web-saude.vercel.app/hospital-ou-clinica/${nome}`,
+        `https://api-web-saude.vercel.app/unidade-de-saude/${nome}`,
         {
           cache: "no-store",
         }

@@ -40,7 +40,7 @@ export default async function verMais({ params }) {
         <Especialidades nome={params?.nome} />
         <Horario nome={params?.nome} />
         <Contato nome={params?.nome} />
-        <Galeria />
+        <Galeria nome={params?.nome} />
         <Mapa nome={params?.nome} />
       </main>
       <Footer />

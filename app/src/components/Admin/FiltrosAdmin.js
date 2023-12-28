@@ -6,7 +6,7 @@ import styles from "@/components/Admin/css/FiltrosAdmin.module.css";
 export default function FiltrosAdmin() {
   return (
     <div className="d-flex justify-content-center align-items-center">
-      <div className="mt-4">
+      <div className="mt-4 mb-2">
         <ButtonGroup className={styles.buttonGroup}>
           <Link href="/dashboard/unidades-de-saude/clinicas">
             <Button variant="primary">Clínicas</Button>

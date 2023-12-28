@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useDecodedToken } from "@/services/decodeToken";
 import styles from "@/components/Admin/Formularios/css/Form.module.css";
+import Imagens from "../Imagens";
 
 const schema = yup.object().shape({
   nome: yup
@@ -78,13 +79,13 @@ export default function ClinicaForm() {
 
   const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [imageURL, setImageURL] = useState("");
   const [imageLink, setImageLink] = useState("");
-
+  const [imagensLink, setImagensLink] = useState([]);
   const decodedToken = useDecodedToken();
 
   const onSubmit = async formData => {
     formData.imagem = imageLink;
+    formData.imagens = imagensLink;
     formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
     try {
@@ -117,9 +118,12 @@ export default function ClinicaForm() {
   };
 
   const handleImageURLChange = imageUrl => {
-    setImageURL(imageUrl);
     setImageLink(imageUrl);
   };
+  const handleImagensURLChange = imageUrl => {
+    setImagensLink(imageUrl);
+  };
+
   const handleSpecialtyChange = selectedSpecialties => {
     setError("especialidades", "");
     const selectedIds = selectedSpecialties.map(specialty => specialty.value);
@@ -700,6 +704,7 @@ export default function ClinicaForm() {
                 <div className={styles.error}>{errors.uf.message}</div>
               )}
             </div>
+            <Imagens onURLChange={handleImagensURLChange} />
             <div className={styles.divButtonSubmit}>
               <button className={styles.button} type="submit">
                 Cadastrar

@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import Link from "next/link";
 import { useDecodedToken } from "@/services/decodeToken";
+import Imagens from "../Imagens";
 import styles from "@/components/Admin/Formularios/css/Form.module.css";
 
 const schema = yup.object().shape({
@@ -73,13 +74,14 @@ export default function HospitalForm() {
 
   const [selectedSpecialtyIds, setSelectedSpecialtyIds] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [imageURL, setImageURL] = useState("");
   const [imageLink, setImageLink] = useState("");
+  const [imagensLink, setImagensLink] = useState([]);
 
   const decodedToken = useDecodedToken();
 
   const onSubmit = async formData => {
     formData.imagem = imageLink;
+    formData.imagens = imagensLink;
     formData.especialidades = selectedSpecialtyIds;
     const token = localStorage.getItem("token");
 
@@ -112,10 +114,11 @@ export default function HospitalForm() {
   };
 
   const handleImageURLChange = imageUrl => {
-    setImageURL(imageUrl);
     setImageLink(imageUrl);
   };
-
+  const handleImagensURLChange = imageUrl => {
+    setImagensLink(imageUrl);
+  };
   const handleSpecialtyChange = selectedSpecialties => {
     setError("especialidades", "");
     const selectedIds = selectedSpecialties.map(specialty => specialty.value);
@@ -628,6 +631,7 @@ export default function HospitalForm() {
                 <div className={styles.error}>{errors.uf.message}</div>
               )}
             </div>
+            <Imagens onURLChange={handleImagensURLChange} />
             <div className={styles.divButtonSubmit}>
               <button className={styles.button} type="submit">
                 Cadastrar

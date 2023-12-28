@@ -74,23 +74,28 @@ function CardProgressosAdmin() {
           </div>
 
           {isAdminPage && (
-            <div className={styles.card}>
-              <div className={styles.cardHead}>
-                <h2>{totalNotificacoes}</h2>
-                <FaBell className="icon" size={25} />
-              </div>
-              <div className={styles.cardProgress}>
-                <small>Notificações</small>
-                <div className={styles.cardIndicator}>
-                  <div
-                    className={`${styles.indicator} ${styles.indicatorAmarelo}`}
-                    style={{
-                      width: `${calcularPorcentagem(totalNotificacoes, 100)}%`,
-                    }}
-                  ></div>
+            <Link href="/dashboard/notificacoes" className={styles.link}>
+              <div className={styles.card}>
+                <div className={styles.cardHead}>
+                  <h2>{totalNotificacoes}</h2>
+                  <FaBell className="icon" size={25} />
+                </div>
+                <div className={styles.cardProgress}>
+                  <small>Notificações</small>
+                  <div className={styles.cardIndicator}>
+                    <div
+                      className={`${styles.indicator} ${styles.indicatorAmarelo}`}
+                      style={{
+                        width: `${calcularPorcentagem(
+                          totalNotificacoes,
+                          100
+                        )}%`,
+                      }}
+                    ></div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           )}
 
           <Link href="/dashboard/unidades-de-saude" className={styles.link}>

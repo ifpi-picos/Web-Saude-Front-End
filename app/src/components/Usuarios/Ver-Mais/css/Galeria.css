@@ -5,9 +5,13 @@
   margin-bottom: 20px;
   margin-top: 35px;
   width: 900px;
-  border-radius: 6px;
+  border-radius: 7px;
 }
-
+.imagens {
+  border-radius: 12px;
+  width: 100%;
+  height: 400px;
+}
 .photo-gallery p {
   color: #7d8285;
 }
