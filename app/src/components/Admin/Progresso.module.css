@@ -10,7 +10,7 @@
 }
 
 .card {
-  border: 0.2rem solid hsl(211, 68%, 94%);
+  border: 4px solid hsl(211, 68%, 94%);
   background-color: #ffffff;
   padding: 1rem;
   border-radius: 7px;
@@ -19,7 +19,8 @@
 }
 
 .card:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
 .cardHead {

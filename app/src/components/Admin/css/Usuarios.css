@@ -4,13 +4,14 @@ table {
   margin-top: 20px;
   background-color: #ffffff;
   margin-bottom: 1px;
+
 }
 
 table th,
 table td {
   font-size: 14px;
   padding: 10px 15px;
-  border: solid 1px #ccc;
+  border: 3px solid hsl(211, 68%, 94%);
 }
 .titulo-usuarios {
   margin-top: 15px;
