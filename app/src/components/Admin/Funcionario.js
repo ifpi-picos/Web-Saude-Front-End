@@ -6,10 +6,11 @@ import CardProgressos from "./CardProgressos";
 import PrivateRoute from "@/components/Admin/privateRouter";
 import Loading from "@/app/loading";
 import Link from "next/link";
+import { FaCheckCircle } from "react-icons/fa"; // Importe o ícone desejado do React Icons
 import "@/components/Admin/css/Dashboard.css";
 
 export default function Funcionario() {
-  const [unidadesDeSaude, setUniidadesDeSaude] = useState([]);
+  const [unidadesDeSaude, setUnidadesDeSaude] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [useToken, setUseToken] = useState(null);
 
@@ -28,7 +29,7 @@ export default function Funcionario() {
           }
         );
         const data = await response.json();
-        setUniidadesDeSaude(data);
+        setUnidadesDeSaude(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -40,6 +41,7 @@ export default function Funcionario() {
   }, []);
 
   useEffect(() => {});
+
   if (isLoading && useToken) {
     return (
       <div>
@@ -49,10 +51,16 @@ export default function Funcionario() {
       </div>
     );
   }
+
+  const unidadesNaoAprovadas = unidadesDeSaude.filter(
+    unidade => !unidade.aprovado
+  );
+
   return (
     <PrivateRoute>
       <div className="main-content">
         <HeaderAdmin />
+
         <div className="page-header">
           <h1>Dashboard</h1>
           <small>
@@ -63,6 +71,40 @@ export default function Funcionario() {
         <div className="page-content">
           <CardProgressos />
           <div className="registros table-responsive"></div>
+
+          {unidadesNaoAprovadas.length > 0 && (
+            <div className="alert alert-success mt-3" role="alert">
+              <div className="d-flex align-items-center justify-content-center m-2">
+                <p className="mb-0">
+                  <FaCheckCircle size={35} />
+                  {unidadesNaoAprovadas.length === 1 ? (
+                    <>
+                      O cadastro da unidade de saúde{" "}
+                      <strong>{unidadesNaoAprovadas[0].nome}</strong> foi
+                      realizado com <strong>sucesso!</strong> No entanto, ela
+                      está aguardando aprovação.
+                    </>
+                  ) : (
+                    <>
+                      Os cadastros das unidades de saúde{" "}
+                      <strong>
+                        (
+                        {unidadesNaoAprovadas
+                          .map(unidade => unidade.nome)
+                          .join(", ")}
+                        )
+                      </strong>{" "}
+                      foram realizados com <strong>sucesso!</strong> No entanto,
+                      elas estão aguardando aprovação.
+                    </>
+                  )}
+                  Entraremos em contato dentro de <strong>24 horas</strong> para
+                  confirmar e liberar o acesso aos visitantes.
+                </p>
+              </div>
+            </div>
+          )}
+
           <CardAdmin informacao={unidadesDeSaude} />
         </div>
       </div>
