@@ -9,6 +9,7 @@ import Link from "next/link";
 export default function Notificacoes() {
   const [notificacoes, setNotificacoes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [notificacoesLidas, setNotificacoesLidas] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,13 +27,13 @@ export default function Notificacoes() {
         );
         const responseData = await response.json();
 
-        // Verifique se responseData.Message é um array
         if (
           responseData &&
           responseData.Message &&
           Array.isArray(responseData.Message)
         ) {
           setNotificacoes(responseData.Message);
+          setNotificacoesLidas(false);
         } else {
           console.error(
             "Invalid data format. Expected an array in responseData.Message."
@@ -44,8 +45,36 @@ export default function Notificacoes() {
         setIsLoading(false);
       }
     };
+
     fetchData();
-  }, []);
+  }, [notificacoesLidas]);
+
+  const marcarComoLidas = async () => {
+    try {
+      const response = await fetch(
+        `https://api-web-saude.vercel.app/marcar-como-lidas`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        const resposta = await response.json();
+        setNotificacoesLidas(true); // Atualiza o estado para refetch as notificações
+        return resposta;
+      } else {
+        console.error(
+          "Erro ao marcar notificações como lidas:",
+          response.statusText
+        );
+      }
+    } catch (error) {
+      console.error("Erro ao marcar notificações como lidas:", error);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -66,13 +95,18 @@ export default function Notificacoes() {
           <h1>
             Notificações <button id={styles.number}></button>
           </h1>
-          <button className={`btn btn-primary ${styles.panelButton}`}>
-            Marcar todos como lidos
+          <button
+            className={`btn btn-primary ${styles.panelButton}`}
+            onClick={marcarComoLidas}
+          >
+            Marcar como lidas
           </button>
         </div>
         {notificacoes.map(notificacao => (
           <div
-            className={`${styles.notification} ${styles.new}`}
+            className={` ${styles.notification} ${
+              notificacao.lida === true ? styles.lida : styles.new
+            }`}
             key={notificacao._id}
           >
             <Link
@@ -98,7 +132,13 @@ export default function Notificacoes() {
                     <span className={styles.article}>
                       {notificacao.mensagem}
                     </span>
-                    <button className={styles.circle}></button>
+                    <button
+                      className={
+                        notificacao.lida === true
+                          ? styles.circleNone
+                          : styles.circle
+                      }
+                    ></button>
                   </p>
                   <p className={styles.time}>
                     {notificacao.dataCriacaoFormatada}
