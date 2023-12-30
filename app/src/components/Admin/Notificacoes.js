@@ -63,7 +63,7 @@ export default function Notificacoes() {
 
       if (response.ok) {
         const resposta = await response.json();
-        setNotificacoesLidas(true); // Atualiza o estado para refetch as notificações
+        setNotificacoesLidas(true); 
         return resposta;
       } else {
         console.error(
