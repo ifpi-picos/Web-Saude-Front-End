@@ -3,7 +3,6 @@ import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Modal, Button } from "react-bootstrap";
 import Image from "next/image";
 import PrivateRoute from "../privateRouter";
 import styles from "@/components/Admin/Formularios/css/Form.module.css";
@@ -61,11 +60,9 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
     resolver: yupResolver(schema),
   });
 
-  const [showModal, setShowModal] = useState(false);
   const [selectedType, setSelectedType] = useState(null);
   const onSubmit = async formData => {
     const token = localStorage.getItem("token");
-    console.log("nome", selectedType.value);
 
     try {
       const response = await fetch(
@@ -88,8 +85,6 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
-        setShowModal(true);
         atualizarUsuarios();
         onClose();
       }
@@ -311,17 +306,6 @@ export default function CadastrarUsuarioForm({ onClose, atualizarUsuarios }) {
             </form>
           </div>
         </section>
-        <Modal show={showModal} onHide={() => setShowModal(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Usuário Cadastrado com Sucesso</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>O Usuário foi Cadastrado com sucesso.</Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={() => setShowModal(false)}>
-              Fechar
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </>
     </PrivateRoute>
   );

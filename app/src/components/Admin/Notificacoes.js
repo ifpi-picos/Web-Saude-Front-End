@@ -63,7 +63,7 @@ export default function Notificacoes() {
 
       if (response.ok) {
         const resposta = await response.json();
-        setNotificacoesLidas(true); 
+        setNotificacoesLidas(true);
         return resposta;
       } else {
         console.error(
@@ -86,69 +86,69 @@ export default function Notificacoes() {
     );
   }
 
-  console.log(notificacoes);
-
   return (
-    <section className={styles.sectionNotificacoes}>
-      <main className={styles.container}>
-        <div className={styles.panel}>
-          <h1>
-            Notificações <button id={styles.number}></button>
-          </h1>
-          <button
-            className={`btn btn-primary ${styles.panelButton}`}
-            onClick={marcarComoLidas}
-          >
-            Marcar como lidas
-          </button>
-        </div>
-        {notificacoes.map(notificacao => (
-          <div
-            className={` ${styles.notification} ${
-              notificacao.lida === true ? styles.lida : styles.new
-            }`}
-            key={notificacao._id}
-          >
-            <Link
-              className={styles.link}
-              href={
-                notificacao.tipo === "pedido"
-                  ? "/dashboard/unidades-de-saude/pedidos"
-                  : "/dashboard/unidades-de-saude/"
-              }
+    <PrivateRoute>
+      <section className={styles.sectionNotificacoes}>
+        <main className={styles.container}>
+          <div className={styles.panel}>
+            <h1>
+              Notificações <button id={styles.number}></button>
+            </h1>
+            <button
+              className={`btn btn-primary ${styles.panelButton}`}
+              onClick={marcarComoLidas}
             >
-              <div className={styles.block}>
-                <Image
-                  src="/assets/images/avatar-mark-webber.webp"
-                  alt="MarkWebber avatar"
-                  width={40}
-                  height={40}
-                />
-                <div className={styles.description}>
-                  <h3 className={styles.mensagem}>
-                    <span className={styles.article}>{notificacao.tipo}</span>
-                  </h3>
-                  <p className={styles.mensagem}>
-                    <span className={styles.article}>
-                      {notificacao.mensagem}
-                    </span>
-                    <button
-                      className={
-                        notificacao.lida === true
-                          ? styles.circleNone
-                          : styles.circle
-                      }
-                    ></button>
-                  </p>
-                  <p className={styles.time}>
-                    {notificacao.dataCriacaoFormatada}
-                  </p>
-                </div>
-              </div>
-            </Link>
+              Marcar como lidas
+            </button>
           </div>
-        ))}
-      </main>
-    </section>
+          {notificacoes.map(notificacao => (
+            <div
+              className={` ${styles.notification} ${
+                notificacao.lida === true ? styles.lida : styles.new
+              }`}
+              key={notificacao._id}
+            >
+              <Link
+                className={styles.link}
+                href={
+                  notificacao.tipo === "Pedido"
+                    ? "/dashboard/unidades-de-saude/pedidos"
+                    : "/dashboard/unidades-de-saude/"
+                }
+              >
+                <div className={styles.block}>
+                  <Image
+                    src="/assets/images/avatar-mark-webber.webp"
+                    alt="MarkWebber avatar"
+                    width={40}
+                    height={40}
+                  />
+                  <div className={styles.description}>
+                    <h3 className={styles.mensagem}>
+                      <span className={styles.article}>{notificacao.tipo}</span>
+                    </h3>
+                    <p className={styles.mensagem}>
+                      <span className={styles.article}>
+                        {notificacao.mensagem}
+                      </span>
+                      <button
+                        className={
+                          notificacao.lida === true
+                            ? styles.circleNone
+                            : styles.circle
+                        }
+                      ></button>
+                    </p>
+                    <p className={styles.time}>
+                      {notificacao.dataCriacaoFormatada}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </main>
+      </section>
+    </PrivateRoute>
   );
 }

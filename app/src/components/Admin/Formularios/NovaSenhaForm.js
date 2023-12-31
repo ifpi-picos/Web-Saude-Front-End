@@ -2,7 +2,6 @@
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Modal, Button } from "react-bootstrap";
 import Image from "next/image";
 import { useState } from "react";
 import PrivateRoute from "@/components/Admin/privateRouter";
@@ -28,7 +27,6 @@ export default function NovaSenhaForm({ nome, onClose, atualizarUsuarios }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const [showModal, setShowModal] = useState(false);
 
   const onSubmit = async formData => {
     const token = localStorage.getItem("token");
@@ -50,7 +48,6 @@ export default function NovaSenhaForm({ nome, onClose, atualizarUsuarios }) {
       if (response.ok) {
         const responseData = await response.json();
         console.log("Resposta da API:", responseData);
-        setShowModal(true);
         atualizarUsuarios();
         onClose();
       } else {
@@ -174,17 +171,6 @@ export default function NovaSenhaForm({ nome, onClose, atualizarUsuarios }) {
             </form>
           </div>
         </section>
-        <Modal show={showModal} onHide={() => setShowModal(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Senha Alterada com Sucesso</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>A Senha Foi Alterada com Sucesso.</Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={() => setShowModal(false)}>
-              Fechar
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </>
     </PrivateRoute>
   );

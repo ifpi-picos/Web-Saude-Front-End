@@ -152,7 +152,7 @@
   }
   .container {
     border-radius: 0;
-    padding: 3rem 1rem 1rem;
+    padding: 2.5rem 0.5rem 1rem;
     margin-top: 0;
   }
   .notification img {
@@ -164,5 +164,4 @@
   .panelButton {
     font-size: 12px;
   }
- 
 }

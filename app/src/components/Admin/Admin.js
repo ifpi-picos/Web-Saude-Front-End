@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import PrivateRoute from "./privateRouter";
-import { Modal } from "react-bootstrap";
+import { Modal, Alert } from "react-bootstrap";
 import NovaSenhaForm from "./Formularios/NovaSenhaForm";
 import HeaderAdmin from "@/components/Admin/HeaderAdmin";
 import CardProgressos from "./CardProgressos";
@@ -17,6 +17,7 @@ export default function Admin() {
   const [isLoading, setIsLoading] = useState(true);
   const [useToken, setUseToken] = useState(null);
   const [showCadastroForm, setShowCadastroForm] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   const HandleDeletar = async userId => {
     const token = localStorage.getItem("token");
@@ -34,18 +35,37 @@ export default function Admin() {
       );
 
       if (response.ok) {
-        window.location.href = "/dashboard";
+        await fetchData();
+        setSuccessMessage("Usuário excluído com sucesso!");
       } else {
-        console.error("Erro ao enviar os dados.");
+        console.error("Erro ao excluir o usuário.");
       }
     } catch (error) {
       console.error(error);
     }
   };
+
   const handleNovaSenhaClick = nome => {
     setNomeUsuario(nome);
-    setShowNovaSenhaForm(true, nome);
+    setShowNovaSenhaForm(true);
   };
+
+  const handleNovoUsuarioClick = () => {
+    setShowCadastroForm(true);
+  };
+
+  const atualizarUsuarios = async tipo => {
+    await fetchData();
+    setShowCadastroForm(false);
+    setShowNovaSenhaForm(false);
+
+    if (tipo === "senha") {
+      setSuccessMessage("Nova senha definida com sucesso!");
+    } else if (tipo === "cadastro") {
+      setSuccessMessage("Usuário cadastrado com sucesso!");
+    }
+  };
+
   const fetchData = async () => {
     const token = localStorage.getItem("token");
     setUseToken(token);
@@ -72,15 +92,6 @@ export default function Admin() {
     fetchData();
   }, []);
 
-  const handleNovoUsuarioClick = () => {
-    setShowCadastroForm(true);
-  };
-
-  const atualizarUsuarios = async () => {
-    await fetchData();
-    setShowCadastroForm(false);
-  };
-
   if (isLoading && useToken) {
     return (
       <div>
@@ -90,11 +101,12 @@ export default function Admin() {
       </div>
     );
   }
+
   return (
     <PrivateRoute>
       <div className="main-content">
         <HeaderAdmin />
-        <div className="page-header">
+        <div className="page-header m-lg-1">
           <h1>Dashboard</h1>
           <small>
             <Link href="/">Home</Link> / <strong>Dashboard</strong>
@@ -104,53 +116,64 @@ export default function Admin() {
         <div className="page-content">
           <CardProgressos />
         </div>
+
         <div className="button-novo-usuario">
           <button className="button-usuarios" onClick={handleNovoUsuarioClick}>
             Novo Usuário
           </button>
         </div>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Tipo</th>
-            <th>Opções</th>
-          </tr>
-        </thead>
-        <tbody>
-          {usuarios.map((info, index) => (
-            <tr key={index}>
-              <td>{info?.nome}</td>
-              <td>{info?.tipo}</td>
 
-              <td>
-                <button
-                  className="button-usuarios"
-                  onClick={() => handleNovaSenhaClick(info.nome)}
-                >
-                  Nova Senha
-                </button>
-                <a
-                  href="/novo-usuario"
-                  className="redButton"
-                  onClick={e => {
-                    e.preventDefault();
-                    const confirmDelete = window.confirm(
-                      `Tem certeza que deseja deletar o usuário ${info?.nome}?`
-                    );
-                    if (confirmDelete) {
-                      HandleDeletar(info?._id);
-                    }
-                  }}
-                >
-                  Excluir
-                </a>
-              </td>
+        {successMessage && (
+          <Alert
+            variant="success"
+            onClose={() => setSuccessMessage(null)}
+            dismissible
+            className="mt-3"
+          >
+            {successMessage}
+          </Alert>
+        )}
+
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Tipo</th>
+              <th>Opções</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {usuarios.map((info, index) => (
+              <tr key={index}>
+                <td>{info?.nome}</td>
+                <td>{info?.tipo}</td>
+                <td>
+                  <button
+                    className="button-usuarios"
+                    onClick={() => handleNovaSenhaClick(info.nome)}
+                  >
+                    Nova Senha
+                  </button>
+                  <button
+                    className="redButton"
+                    onClick={() => {
+                      const confirmDelete = window.confirm(
+                        `Tem certeza que deseja deletar o usuário ${info?.nome}?`
+                      );
+                      if (confirmDelete) {
+                        HandleDeletar(info?._id);
+                      }
+                    }}
+                  >
+                    Excluir
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
       <Modal
         show={showNovaSenhaForm}
         onHide={() => setShowNovaSenhaForm(false)}
@@ -160,12 +183,13 @@ export default function Admin() {
         </Modal.Header>
         <Modal.Body>
           <NovaSenhaForm
-            atualizarUsuarios={atualizarUsuarios}
+            atualizarUsuarios={() => atualizarUsuarios("senha")}
             onClose={() => setShowNovaSenhaForm(false)}
             nome={nomeUsuario}
           />
         </Modal.Body>
       </Modal>
+
       <Modal show={showCadastroForm} onHide={() => setShowCadastroForm(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Cadastrar Novo Usuário</Modal.Title>
@@ -173,7 +197,7 @@ export default function Admin() {
         <Modal.Body>
           <CadastrarUsuarioForm
             onClose={() => setShowCadastroForm(false)}
-            atualizarUsuarios={atualizarUsuarios}
+            atualizarUsuarios={() => atualizarUsuarios("cadastro")}
           />
         </Modal.Body>
       </Modal>

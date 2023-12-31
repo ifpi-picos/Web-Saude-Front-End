@@ -18,7 +18,6 @@ const PrivateRoute = ({ children }) => {
     } else {
       if (decodedToken === "funcionario") {
         const allowedFuncionarioRoutes = [
-          "/novo-usuario",
           "/dashboard",
           "/dashboard/unidades-de-saude",
         ];

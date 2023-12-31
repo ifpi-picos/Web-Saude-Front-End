@@ -61,7 +61,7 @@ export default function Funcionario() {
       <div className="main-content">
         <HeaderAdmin />
 
-        <div className="page-header">
+        <div className="page-header m-lg-1">
           <h1>Dashboard</h1>
           <small>
             <Link href="/">Home</Link> / <strong>Dashboard</strong>
