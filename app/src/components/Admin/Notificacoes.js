@@ -50,6 +50,8 @@ export default function Notificacoes() {
   }, [notificacoesLidas]);
 
   const marcarComoLidas = async () => {
+    const token = localStorage.getItem("token");
+
     try {
       const response = await fetch(
         `https://api-web-saude.vercel.app/marcar-como-lidas`,
@@ -57,6 +59,8 @@ export default function Notificacoes() {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            "x-access-token": token,
+
           },
         }
       );
@@ -75,6 +79,32 @@ export default function Notificacoes() {
       console.error("Erro ao marcar notificações como lidas:", error);
     }
   };
+
+  const marcarComoLidasPeloID =  async (id) =>{
+
+   const token = localStorage.getItem("token");
+
+   try {
+    const response = await fetch( `https://api-web-saude.vercel.app/marcar-como-lida/${id}`,{
+      method:"PUT",
+      headers:{
+        "Content-Type":"application/json",
+        "x-access-token": token
+      }
+       
+    },
+
+    )
+    
+    if(response.ok){
+      const resposta = await response.json();
+      return resposta
+    }
+   } catch (error) {
+    console.error("Erro ao marcar notificações como lidas:", error);
+
+   }
+  }
 
   if (isLoading) {
     return (
@@ -102,20 +132,23 @@ export default function Notificacoes() {
             </button>
           </div>
           {notificacoes.map(notificacao => (
+              <Link
+              onClick={() => marcarComoLidasPeloID(notificacao.id)}
+              className={styles.link}
+              href={
+                notificacao.tipo === "Pedido"
+                  ? "/dashboard/unidades-de-saude/pedidos"
+                  : "/dashboard/unidades-de-saude/"
+              }
+            >
             <div
+              
               className={` ${styles.notification} ${
                 notificacao.lida === true ? styles.lida : styles.new
               }`}
               key={notificacao._id}
             >
-              <Link
-                className={styles.link}
-                href={
-                  notificacao.tipo === "Pedido"
-                    ? "/dashboard/unidades-de-saude/pedidos"
-                    : "/dashboard/unidades-de-saude/"
-                }
-              >
+            
                 <div className={styles.block}>
                   <Image
                     src="/assets/images/avatar-mark-webber.webp"
@@ -144,8 +177,9 @@ export default function Notificacoes() {
                     </p>
                   </div>
                 </div>
-              </Link>
             </div>
+            </Link>
+
           ))}
         </main>
       </section>

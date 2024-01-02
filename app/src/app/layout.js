@@ -1,4 +1,7 @@
+"use client"
 import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect } from 'react';
+import { initGA, logPageView } from "@/services/analytics"
 import "./globals.css";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
@@ -8,6 +11,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+   useEffect(() => {
+    if (!window.GA_INITIALIZED) {
+      initGA();
+      window.GA_INITIALIZED = true;
+    }
+    logPageView();
+  }, []);
+
   return (
     <html lang="pt-BR">
       <head>
@@ -38,7 +49,9 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
+      
       <body style={{ backgroundColor: "#eeeeee" }} className={inter.className}>
+        
         {children}
       </body>
     </html>
