@@ -653,7 +653,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
                 <div className={styles.error}>{errors.uf.message}</div>
               )}
             </div>
-            <Imagens onURLChange={handleImagensURLChange} />
+            <Imagens onURLChange={handleImagensURLChange} defaultImages={hospitalData.imagens} />
             <div
               className={styles.divButtonSubmit}
               style={{ display: "flex", justifyContent: "center" }}

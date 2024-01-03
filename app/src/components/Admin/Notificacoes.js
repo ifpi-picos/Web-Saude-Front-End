@@ -133,6 +133,8 @@ export default function Notificacoes() {
           </div>
           {notificacoes.map(notificacao => (
               <Link
+              key={notificacao._id}
+
               onClick={() => marcarComoLidasPeloID(notificacao.id)}
               className={styles.link}
               href={
@@ -146,7 +148,6 @@ export default function Notificacoes() {
               className={` ${styles.notification} ${
                 notificacao.lida === true ? styles.lida : styles.new
               }`}
-              key={notificacao._id}
             >
             
                 <div className={styles.block}>

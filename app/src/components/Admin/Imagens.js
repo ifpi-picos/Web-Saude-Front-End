@@ -1,31 +1,41 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import styles from "@/components/Admin/Formularios/css/Form.module.css";
 import Image from "next/image";
 import { Carousel } from "react-bootstrap";
 
 function Imagens({ onURLChange, defaultImages }) {
-  const [imagesSelected, setImagesSelected] = useState(defaultImages || []);
+  const [imagesSelected, setImagesSelected] = useState([]);
   const imagesRef = useRef([]);
+
+  useEffect(() => {
+    // Adiciona as imagens padrão apenas se houver imagens no array defaultImages
+    if (defaultImages && defaultImages.length > 0) {
+      setImagesSelected(defaultImages);
+      imagesRef.current = defaultImages;
+    }
+  }, [defaultImages]);
 
   function handleUploadSuccess(result) {
     const imageUrl = result.info.secure_url;
 
+    // Adiciona a imagem atual à lista de imagens, se ainda não estiver presente
     if (!imagesRef.current.includes(imageUrl)) {
       imagesRef.current.push(imageUrl);
-    }
+      setImagesSelected([...imagesRef.current]);
 
-    setImagesSelected([...imagesRef.current]);
+      if (onURLChange) {
+        onURLChange([...imagesRef.current]);
+      } else {
+        console.warn(
+          "Você precisa passar a prop onChange para o formulário de cadastro"
+        );
+      }
 
-    if (onURLChange) {
-      onURLChange([...imagesRef.current]);
+      console.log("Upload bem-sucedido. URL da imagem:", imageUrl);
     } else {
-      console.warn(
-        "Você precisa passar a prop onChange para o formulário de cadastro"
-      );
+      console.log("Imagem já existe:", imageUrl);
     }
-
-    console.log("Upload bem-sucedido. URL da imagem:", imageUrl);
   }
 
   console.log("Images Selected:", imagesSelected);
