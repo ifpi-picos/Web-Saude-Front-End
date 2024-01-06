@@ -6,7 +6,6 @@ import Link from "next/link";
 import ConsultasService from "@/services/ConsultasService";
 import FiltroAdmin from "@/components/Admin/FiltrosAdmin";
 import PesquisaAdmin from "@/components/Admin/PesquisaAdmin";
-import "@/components/Admin/css/Dashboard.css";
 
 export const metadata = {
   title: "Unidades De Saude",

@@ -166,12 +166,15 @@ form {
   font-size: 1.3rem;
   outline: none;
 }
+
 .icones {
   display: flex;
 }
+
 .frm-linha button:hover {
   background: #3c3a3a;
 }
+
 @media (max-width: 768px) {
   .conteudo {
     height: 100vh;

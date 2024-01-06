@@ -8,7 +8,7 @@ import CardProgressos from "./CardProgressos";
 import Loading from "@/app/loading";
 import Link from "next/link";
 import CadastrarUsuarioForm from "@/components/Admin/Formularios/CadastrarUsuarioForm";
-import "@/components/Admin/css/Usuarios.css";
+import styles from "@/components/Admin/css/Usuarios.module.css";
 
 export default function Admin() {
   const [showNovaSenhaForm, setShowNovaSenhaForm] = useState(false);
@@ -104,21 +104,24 @@ export default function Admin() {
 
   return (
     <PrivateRoute>
-      <div className="main-content">
+     <div className={styles.mainContent}>
         <HeaderAdmin />
-        <div className="page-header m-lg-1">
+        <div className={styles.pageHeader}>
           <h1>Dashboard</h1>
           <small>
             <Link href="/">Home</Link> / <strong>Dashboard</strong>
           </small>
         </div>
 
-        <div className="page-content">
+        <div className={styles.pageContent}>
           <CardProgressos />
         </div>
 
-        <div className="button-novo-usuario">
-          <button className="button-usuarios" onClick={handleNovoUsuarioClick}>
+        <div className={styles.buttonNovoUsuario}>
+          <button
+            className={styles.buttonUsuarios}
+            onClick={handleNovoUsuarioClick}
+          >
             Novo Usuário
           </button>
         </div>
@@ -134,7 +137,7 @@ export default function Admin() {
           </Alert>
         )}
 
-        <table>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>Nome</th>
@@ -149,13 +152,13 @@ export default function Admin() {
                 <td>{info?.tipo}</td>
                 <td>
                   <button
-                    className="button-usuarios"
+                    className={styles.buttonUsuarios}
                     onClick={() => handleNovaSenhaClick(info.nome)}
                   >
                     Nova Senha
                   </button>
                   <button
-                    className="redButton"
+                    className={styles.redButton}
                     onClick={() => {
                       const confirmDelete = window.confirm(
                         `Tem certeza que deseja deletar o usuário ${info?.nome}?`

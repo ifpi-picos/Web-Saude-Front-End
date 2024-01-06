@@ -3,6 +3,7 @@ import React from 'react';
 import { initGA, logPageView } from "@/services/analytics"
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Script from 'next/script';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -43,6 +44,20 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap"
           rel="stylesheet"
         />
+         <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-LCHFKNEDK7"
+        strategy="beforeInteractive"
+      />
+      <Script id="google-analytics-config" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            window.dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', 'G-LCHFKNEDK7');
+        `}
+      </Script>
       </head>
       
       <body style={{ backgroundColor: "#eeeeee" }} className={inter.className}>

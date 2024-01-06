@@ -6,7 +6,7 @@ import Link from "next/link";
 import ConsultasService from "@/services/ConsultasService";
 import FiltroAdmin from "@/components/Admin/FiltrosAdmin";
 import PesquisaAdmin from "@/components/Admin/PesquisaAdmin";
-import "@/components/Admin/css/Dashboard.css";
+import styles from "@/components/Admin/css/Usuarios.module.css";
 
 export const metadata = {
   title: "Pedidos",
@@ -17,7 +17,7 @@ export default async function Pedidos() {
 
   return (
     <PrivateRoute>
-      <div className="main-content">
+      <div className={styles.mainContent}>
         <HeaderAdmin />
         <div className="page-header">
           <h1>Dashboard</h1>

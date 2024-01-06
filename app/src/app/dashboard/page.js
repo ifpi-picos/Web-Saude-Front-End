@@ -1,4 +1,3 @@
-import "@/components/Admin/css/Dashboard.css";
 import PrivateRoute from "@/components/Admin/privateRouter";
 import Admin from "@/components/Admin/Admin";
 

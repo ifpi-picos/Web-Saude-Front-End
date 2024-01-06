@@ -7,7 +7,6 @@ import PrivateRoute from "@/components/Admin/privateRouter";
 import Loading from "@/app/loading";
 import Link from "next/link";
 import { FaCheckCircle } from "react-icons/fa"; // Importe o ícone desejado do React Icons
-import "@/components/Admin/css/Dashboard.css";
 
 export default function Funcionario() {
   const [unidadesDeSaude, setUnidadesDeSaude] = useState([]);
@@ -58,7 +57,7 @@ export default function Funcionario() {
 
   return (
     <PrivateRoute>
-      <div className="main-content">
+      <div className="main-content" style={{marginTop:"135px"}}>
         <HeaderAdmin />
 
         <div className="page-header m-lg-1">
