@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from 'react';
-import { initGA, logPageView } from "@/services/analytics"
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Script from 'next/script';
@@ -11,10 +10,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  if (typeof window !== 'undefined') {
-    initGA();
-    logPageView();
-  }
+
+  
   return (
     <html lang="pt-BR">
       <head>

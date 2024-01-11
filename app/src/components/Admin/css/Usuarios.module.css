@@ -49,6 +49,11 @@
 }
 
 @media (max-width: 768px) {
+  .buttonNovoUsuario{
+   width: 120px;
+   margin-left: 3px;
+  }
+  
  .buttonUsuarios,
   .redButton {
     width: 100%;

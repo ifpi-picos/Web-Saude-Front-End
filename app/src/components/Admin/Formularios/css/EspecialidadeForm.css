@@ -48,7 +48,31 @@ body {
   background: #1f1e1e;
   cursor: pointer;
 }
+.pesquisa{
+  margin-bottom: 15px;
+  border-radius: 15px;
+}
+.divReset{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: -25px;
+}
+.buttonReset{
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #fff;
+  margin: 3px;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: black;
+}
 
+.buttonReset:hover {
+  opacity: 0.8;
+}
 #listarEspecialidades {
   height: 700px;
   list-style-type: none;
