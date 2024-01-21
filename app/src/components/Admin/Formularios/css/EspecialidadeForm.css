@@ -48,17 +48,17 @@ body {
   background: #1f1e1e;
   cursor: pointer;
 }
-.pesquisa{
+.pesquisa {
   margin-bottom: 15px;
   border-radius: 15px;
 }
-.divReset{
+.divReset {
   display: flex;
   justify-content: center;
   margin-top: 10px;
   margin-bottom: -25px;
 }
-.buttonReset{
+.buttonReset {
   border: none;
   border-radius: 7px;
   cursor: pointer;

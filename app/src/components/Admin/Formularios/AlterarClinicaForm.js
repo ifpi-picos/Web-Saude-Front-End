@@ -736,7 +736,10 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
                 <div className={styles.error}>{errors.uf.message}</div>
               )}
             </div>
-            <Imagens onURLChange={handleImagensURLChange} defaultImages={clinicaData.imagens} />
+            <Imagens
+              onURLChange={handleImagensURLChange}
+              defaultImages={clinicaData.imagens}
+            />
 
             <div
               className={styles.divButtonSubmit}

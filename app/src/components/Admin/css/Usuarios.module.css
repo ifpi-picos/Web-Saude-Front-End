@@ -49,22 +49,22 @@
 }
 
 @media (max-width: 768px) {
-  .buttonNovoUsuario{
-   width: 120px;
-   margin-left: 3px;
+  .buttonNovoUsuario {
+    width: 120px;
+    margin-left: 3px;
   }
-  
- .buttonUsuarios,
+
+  .buttonUsuarios,
   .redButton {
     width: 100%;
     display: block;
     margin-bottom: 5px;
     font-size: 12px;
   }
- .table {
+  .table {
     width: 100%;
   }
- .table td {
+  .table td {
     max-width: 90px;
     word-wrap: break-word;
   }

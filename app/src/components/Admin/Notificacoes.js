@@ -60,7 +60,6 @@ export default function Notificacoes() {
           headers: {
             "Content-Type": "application/json",
             "x-access-token": token,
-
           },
         }
       );
@@ -80,31 +79,29 @@ export default function Notificacoes() {
     }
   };
 
-  const marcarComoLidasPeloID =  async (id) =>{
+  const marcarComoLidasPeloID = async id => {
+    const token = localStorage.getItem("token");
 
-   const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(
+        `https://api-web-saude.vercel.app/marcar-como-lida/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-token": token,
+          },
+        }
+      );
 
-   try {
-    const response = await fetch( `https://api-web-saude.vercel.app/marcar-como-lida/${id}`,{
-      method:"PUT",
-      headers:{
-        "Content-Type":"application/json",
-        "x-access-token": token
+      if (response.ok) {
+        const resposta = await response.json();
+        return resposta;
       }
-       
-    },
-
-    )
-    
-    if(response.ok){
-      const resposta = await response.json();
-      return resposta
+    } catch (error) {
+      console.error("Erro ao marcar notificações como lidas:", error);
     }
-   } catch (error) {
-    console.error("Erro ao marcar notificações como lidas:", error);
-
-   }
-  }
+  };
 
   if (isLoading) {
     return (
@@ -131,57 +128,78 @@ export default function Notificacoes() {
               Marcar como lidas
             </button>
           </div>
-          {notificacoes.map(notificacao => (
-              <Link
-              key={notificacao._id}
+          {notificacoes.map(notificacao => {
+            let destinationRoute;
 
-              onClick={() => marcarComoLidasPeloID(notificacao.id)}
-              className={styles.link}
-              href={
-                notificacao.tipo === "Pedido"
-                  ? "/dashboard/unidades-de-saude/pedidos"
-                  : "/dashboard/unidades-de-saude/"
-              }
-            >
-            <div
-              
-              className={` ${styles.notification} ${
-                notificacao.lida === true ? styles.lida : styles.new
-              }`}
-            >
-            
-                <div className={styles.block}>
-                  <Image
-                    src="/assets/images/avatar-mark-webber.webp"
-                    alt="MarkWebber avatar"
-                    width={40}
-                    height={40}
-                  />
-                  <div className={styles.description}>
-                    <h3 className={styles.mensagem}>
-                      <span className={styles.article}>{notificacao.tipo}</span>
-                    </h3>
-                    <p className={styles.mensagem}>
-                      <span className={styles.article}>
-                        {notificacao.mensagem}
-                      </span>
-                      <button
-                        className={
-                          notificacao.lida === true
-                            ? styles.circleNone
-                            : styles.circle
-                        }
-                      ></button>
-                    </p>
-                    <p className={styles.time}>
-                      {notificacao.dataCriacaoFormatada}
-                    </p>
+            if (notificacao.tipo === "Pedido") {
+              destinationRoute = "/dashboard/unidades-de-saude/pedidos";
+            } else if (
+              notificacao.clinicaID &&
+              notificacao.clinicaID.aprovado === false
+            ) {
+              destinationRoute = "/dashboard/unidades-de-saude/pedidos";
+            } else if (
+              notificacao.clinicaID &&
+              notificacao.clinicaID.tipo === "clinica" &&
+              notificacao.clinicaID.aprovado === true
+            ) {
+              destinationRoute = "/dashboard/unidades-de-saude/clinicas";
+            } else if (
+              notificacao.hospitalID &&
+              notificacao.hospitalID.tipo === "hospital" &&
+              notificacao.hospitalID.aprovado === true
+            ) {
+              destinationRoute = "/dashboard/unidades-de-saude/hospitais";
+            } else {
+              destinationRoute = "/dashboard/unidades-de-saude/";
+            }
+
+            return (
+              <Link
+                key={notificacao._id}
+                onClick={() => marcarComoLidasPeloID(notificacao.id)}
+                className={styles.link}
+                href={destinationRoute}
+              >
+                <div
+                  className={` ${styles.notification} ${
+                    notificacao.lida === true ? styles.lida : styles.new
+                  }`}
+                >
+                  <div className={styles.block}>
+                    <Image
+                      src="/assets/images/avatar-mark-webber.webp"
+                      alt="MarkWebber avatar"
+                      width={40}
+                      height={40}
+                    />
+                    <div className={styles.description}>
+                      <h3 className={styles.mensagem}>
+                        <span className={styles.article}>
+                          {notificacao.tipo}
+                        </span>
+                      </h3>
+                      <p className={styles.mensagem}>
+                        <span className={styles.article}>
+                          {notificacao.mensagem}
+                        </span>
+                        <button
+                          className={
+                            notificacao.lida === true
+                              ? styles.circleNone
+                              : styles.circle
+                          }
+                        ></button>
+                      </p>
+                      <p className={styles.time}>
+                        {notificacao.dataCriacaoFormatada}
+                      </p>
+                    </div>
                   </div>
                 </div>
-            </div>
-            </Link>
-
-          ))}
+              </Link>
+            );
+          })}
         </main>
       </section>
     </PrivateRoute>

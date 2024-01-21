@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { FaSave, FaEdit, FaTrash } from "react-icons/fa";
 import "@/components/Admin/Formularios/css/EspecialidadeForm.css";
@@ -46,7 +46,7 @@ export default function EspecialidadeForm() {
     }
   };
 
-  const handleNovaEspecialidadeChange = (e) => {
+  const handleNovaEspecialidadeChange = e => {
     setNovaEspecialidade(e.target.value);
   };
 
@@ -58,7 +58,7 @@ export default function EspecialidadeForm() {
     }
   };
 
-  const cadastrarEspecialidade = (nomeEspecialidade) => {
+  const cadastrarEspecialidade = nomeEspecialidade => {
     const token = localStorage.getItem("token");
     fetch("https://api-web-saude.vercel.app/nova-especialidade", {
       method: "POST",
@@ -68,7 +68,7 @@ export default function EspecialidadeForm() {
       },
       body: JSON.stringify({ nome: nomeEspecialidade }),
     })
-      .then((response) => response.json())
+      .then(response => response.json())
       .then(() => {
         setNovaEspecialidade("");
         listarEspecialidades();
@@ -76,16 +76,15 @@ export default function EspecialidadeForm() {
           window.alert("Especialidade salva com sucesso!");
         }
       })
-      .catch((error) => console.error(error));
+      .catch(error => console.error(error));
   };
 
-  const editarEspecialidade = (index) => {
+  const editarEspecialidade = index => {
     setEditandoIndex(index);
   };
 
-  const salvarEspecialidade = (index) => {
-    const editedName =
-      editBoxRef.current.querySelector("input").value;
+  const salvarEspecialidade = index => {
+    const editedName = editBoxRef.current.querySelector("input").value;
     const id = especialidades[index]._id;
     const token = localStorage.getItem("token");
     fetch(`https://api-web-saude.vercel.app/alterar-especialidade/${id}`, {
@@ -96,7 +95,7 @@ export default function EspecialidadeForm() {
       },
       body: JSON.stringify({ nome: editedName }),
     })
-      .then((response) => response.json())
+      .then(response => response.json())
       .then(() => {
         setEditandoIndex(null);
         listarEspecialidades();
@@ -104,16 +103,14 @@ export default function EspecialidadeForm() {
           window.alert("Especialidade alterada com sucesso!");
         }
       })
-      .catch((error) => console.error(error));
+      .catch(error => console.error(error));
   };
 
-  const handleExcluirEspecialidade = (index) => {
+  const handleExcluirEspecialidade = index => {
     const id = especialidades[index]._id;
     const token = localStorage.getItem("token");
     if (
-      window.confirm(
-        "Tem certeza de que deseja excluir esta especialidade?"
-      )
+      window.confirm("Tem certeza de que deseja excluir esta especialidade?")
     ) {
       fetch(`https://api-web-saude.vercel.app/deletar-especialidade/${id}`, {
         method: "DELETE",
@@ -128,7 +125,7 @@ export default function EspecialidadeForm() {
           setEspecialidades(updatedEspecialidades);
           listarEspecialidades();
         })
-        .catch((error) => console.error(error));
+        .catch(error => console.error(error));
     }
   };
 
@@ -137,10 +134,12 @@ export default function EspecialidadeForm() {
   };
 
   const filterEspecialidades = () => {
-    return especialidades.filter((especialidade) =>
-      especialidade.nome.toLowerCase().includes(especialidadePesquisada.toLowerCase())
+    return especialidades.filter(especialidade =>
+      especialidade.nome
+        .toLowerCase()
+        .includes(especialidadePesquisada.toLowerCase())
     );
-  }
+  };
   const handleMostrarTodasEspecialidades = () => {
     setEspecialidadePesquisada("");
     setSelectValue(null); // Redefine o valor selecionado no Select
@@ -160,30 +159,35 @@ export default function EspecialidadeForm() {
           </button>
         </div>
         <div className="pesquisa">
-        <Select
-          placeholder="Pesquisar especialidade..."
-          isSearchable
-          options={especialidades.map((especialidade) => ({
-            value: especialidade.nome,
-            label: especialidade.nome,
-          }))}
-          onChange={(selectedOption) =>
-            setEspecialidadePesquisada(selectedOption ? selectedOption.value : "")
-          }
-          value={selectValue}
-          styles={customStyles}
-          components={{
-            IndicatorSeparator: () => null,
-            DropdownIndicator: () => null,
-          }}
-        />
-        {especialidadePesquisada && (
-          <div className="divReset">
-            <button className="buttonReset" onClick={() => handleMostrarTodasEspecialidades()}>
-              Mostrar todas as especialidades
-            </button>
-          </div>
-        )}
+          <Select
+            placeholder="Pesquisar especialidade..."
+            isSearchable
+            options={especialidades.map(especialidade => ({
+              value: especialidade.nome,
+              label: especialidade.nome,
+            }))}
+            onChange={selectedOption =>
+              setEspecialidadePesquisada(
+                selectedOption ? selectedOption.value : ""
+              )
+            }
+            value={selectValue}
+            styles={customStyles}
+            components={{
+              IndicatorSeparator: () => null,
+              DropdownIndicator: () => null,
+            }}
+          />
+          {especialidadePesquisada && (
+            <div className="divReset">
+              <button
+                className="buttonReset"
+                onClick={() => handleMostrarTodasEspecialidades()}
+              >
+                Mostrar todas as especialidades
+              </button>
+            </div>
+          )}
         </div>
 
         <ul

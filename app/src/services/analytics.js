@@ -1,13 +1,13 @@
-"use client"
-import ReactGA from 'react-ga';
+"use client";
+import ReactGA from "react-ga";
 
 export const initGA = () => {
-    console.log('Google Analytics está sendo inicializado...');
-  ReactGA.initialize('G-LCHFKNEDK7'); 
+  console.log("Google Analytics está sendo inicializado...");
+  ReactGA.initialize("G-LCHFKNEDK7");
 };
 
 export const logPageView = () => {
-    console.log('Página visualizada:', window.location.pathname);
+  console.log("Página visualizada:", window.location.pathname);
 
   ReactGA.set({ page: window.location.pathname });
   ReactGA.pageview(window.location.pathname);

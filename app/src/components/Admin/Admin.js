@@ -104,7 +104,7 @@ export default function Admin() {
 
   return (
     <PrivateRoute>
-     <div className={styles.mainContent}>
+      <div className={styles.mainContent}>
         <HeaderAdmin />
         <div className={styles.pageHeader}>
           <h1>Dashboard</h1>

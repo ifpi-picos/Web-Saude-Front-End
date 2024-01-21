@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FaBuilding, FaUser, FaEye, FaBell } from "react-icons/fa";
 import PrivateRoute from "./privateRouter";
 import ConsultasService from "@/services/ConsultasService";
-import styles from "@/components/Admin/css/Progresso.module.css"; 
+import styles from "@/components/Admin/css/Progresso.module.css";
 import { useDecodedToken } from "@/services/decodeToken";
 import Link from "next/link";
 
@@ -35,7 +35,7 @@ function CardProgressosAdmin() {
       const token = localStorage.getItem("token");
 
       try {
-        const result =  await fetch(
+        const result = await fetch(
           `https://api-web-saude.vercel.app/notificacoes-nao-lidas`,
           {
             method: "GET",
@@ -45,16 +45,15 @@ function CardProgressosAdmin() {
             },
           }
         );
-        if(result.ok){
-          const response = await result.json()
+        if (result.ok) {
+          const response = await result.json();
           setTotalNotificacoes(response.totalNaoLidas);
-
         }
       } catch (error) {
         console.error("Erro ao obter dados de notificações:", error);
       }
     }
- 
+
     fetchDataUnidadesDeSaude();
     fetchDataUsuarios();
     fetchDataNotificacoes();

@@ -17,7 +17,7 @@ export default async function Clinicas() {
 
   return (
     <PrivateRoute>
-       <div className={styles.mainContent}>
+      <div className={styles.mainContent}>
         <HeaderAdmin />
         <div className="page-header">
           <h1>Dashboard</h1>

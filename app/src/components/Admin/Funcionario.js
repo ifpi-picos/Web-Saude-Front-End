@@ -57,7 +57,7 @@ export default function Funcionario() {
 
   return (
     <PrivateRoute>
-      <div className="main-content" style={{marginTop:"135px"}}>
+      <div className="main-content" style={{ marginTop: "135px" }}>
         <HeaderAdmin />
 
         <div className="page-header m-lg-1">
