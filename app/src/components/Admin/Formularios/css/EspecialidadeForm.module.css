@@ -1,4 +1,4 @@
-body {
+.body {
   color: #fff;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -73,14 +73,14 @@ body {
 .buttonReset:hover {
   opacity: 0.8;
 }
-#listarEspecialidades {
+.listarEspecialidades {
   height: 700px;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-#listarEspecialidades li {
+.listarEspecialidades li {
   padding: 20px;
   background: #191818;
   border-radius: 12px;
@@ -88,6 +88,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+  color: white;
 }
 
 .icones button {
@@ -120,11 +121,11 @@ body {
   display: none;
 }
 
-#janelaEdicao.abrir {
+.janelaEdicao.abrir {
   display: block !important;
 }
 
-#janelaEdicaoFundo {
+.janelaEdicaoFundo {
   position: fixed;
   top: 0;
   background-color: #000;
@@ -136,11 +137,11 @@ body {
   display: none;
 }
 
-#janelaEdicaoFundo.abrir {
+.janelaEdicaoFundo.abrir {
   display: block !important;
 }
 
-#janelaEdicaoBtnFechar {
+.janelaEdicaoBtnFechar {
   position: absolute;
   top: -25px;
   right: -18px;
@@ -153,22 +154,22 @@ body {
   outline: none;
 }
 
-form {
+.form {
   width: 100%;
   margin-top: 20px;
 }
 
-.frm-linha {
+.formLinha {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-.frm-linha label {
+.formLinha label {
   margin-bottom: 7px;
 }
 
-.frm-linha input {
+.formLinha input {
   padding: 15px;
   border-radius: 12px;
   outline: none;
@@ -178,7 +179,7 @@ form {
   color: #fff;
 }
 
-.frm-linha button {
+.formLinha button {
   background: #2d2c2c;
   border: 1px solid #191818;
   padding: 7px;
@@ -195,7 +196,7 @@ form {
   display: flex;
 }
 
-.frm-linha button:hover {
+.formLinha button:hover {
   background: #3c3a3a;
 }
 
@@ -209,13 +210,13 @@ form {
   .topo button {
     width: 100px;
   }
-  #listarEspecialidades li {
+  .listarEspecialidades li {
     font-size: 12px;
   }
   .topo input {
     font-size: 11px;
   }
-  .frm-linha {
+  .formLinha {
     width: 200px;
   }
 }

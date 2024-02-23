@@ -7,7 +7,7 @@ import Footer from "@/components/Usuarios/Footer";
 import ConsultasService from "@/services/ConsultasService";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import "@/components/Usuarios/Home/css/Home.css";
-import "@/components/Usuarios/css/Layout.css";
+import styles from "@/components/Usuarios/css/Layout.module.css"
 
 export const metadata = {
   title: "Clínicas",
@@ -19,7 +19,7 @@ export default async function PageNumberClinicas({ params }) {
   return (
     <>
       <Header />
-      <div className="containers">
+      <div className={styles.containers}>
         <Slogan />
         <ButtonSearch />
         <Filtros />

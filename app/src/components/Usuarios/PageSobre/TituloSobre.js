@@ -1,13 +1,14 @@
-import "@/components/Usuarios/css/Sobre.css";
+import styles from "@/components/Usuarios/css/Sobre.module.css"; // Importando o CSS Module
 import Image from "next/image";
+
 export default function TituloSobre() {
   return (
     <>
-      <section className="section-sobre" style={{ marginTop: "120px" }}>
-        <div className="div-sobre">
+      <section className={styles.sectionSobre} style={{ marginTop: "120px" }}> {/* Usando a classe do CSS Module */}
+        <div className={styles.divSobre}> {/* Usando a classe do CSS Module */}
           <h1>Sobre</h1>
         </div>
-        <div className="img-sobre">
+        <div className={styles.imgSobre}> {/* Usando a classe do CSS Module */}
           <Image
             src="/imgs/sobre.svg"
             alt="img-sobre"
@@ -17,7 +18,7 @@ export default function TituloSobre() {
         </div>
       </section>
 
-      <section className="section-titulo">
+      <section className={styles.sectionTitulo}> {/* Usando a classe do CSS Module */}
         <h2>Quem Somos?</h2>
         <p>
           Somos a plataforma dedicada a fornecer informações essenciais sobre as

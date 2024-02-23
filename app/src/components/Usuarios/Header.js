@@ -2,7 +2,7 @@
 import { slide as Menu } from "react-burger-menu";
 import Link from "next/link";
 import Image from "next/image";
-import "../Usuarios/css/Header.css";
+import "@/components/Usuarios/css/Header.css"
 
 export default function Header() {
   return (

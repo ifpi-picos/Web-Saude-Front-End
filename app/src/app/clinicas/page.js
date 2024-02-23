@@ -5,7 +5,7 @@ import Filtros from "@/components/Usuarios/Home/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
 import "@/components/Usuarios/Home/css/Home.css";
-import "@/components/Usuarios/css/Layout.css";
+import styles from "@/components/Usuarios/css/Layout.module.css"
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import ConsultasService from "@/services/ConsultasService";
 
@@ -18,7 +18,7 @@ export default async function filtroClinicas() {
   return (
     <>
       <Header />
-      <div className="containers">
+      <div className={styles.containers}>
         <Slogan />
         <ButtonSearch />
         <Filtros />

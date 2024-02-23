@@ -1,21 +1,22 @@
-import "@/components/Usuarios/css/FaleConosco.css";
 import Footer from "@/components/Usuarios/Footer";
 import Header from "@/components/Usuarios/Header";
 import Image from "next/image";
+import styles from "@/components/Usuarios/css/FaleConosco.module.css"; // Importando o CSS Module
 
 export const metadata = {
   title: "Fale Conosco",
 };
+
 export default function FaleConosco() {
   return (
     <>
       <Header />
-      <section className="section-form">
-        <div className="div-form">
+      <section className={styles.sectionForm}> 
+        <div className={styles.divForm}>
           <form action="#">
-            <div className="div-logo">
+            <div className={styles.divLogo}>
               <Image
-                className="image-logo"
+                className={styles.imageLogo} 
                 src="/imgs/logo.png"
                 width={200}
                 height={200}
@@ -23,11 +24,11 @@ export default function FaleConosco() {
               />
             </div>
 
-            <h1 className="title">Fale Conosco</h1>
-            <div className="div-inputs">
-              <label for="nome">Nome</label>
+            <h1 className={styles.title}>Fale Conosco</h1> 
+            <div className={styles.divInputs}>
+              <label htmlFor="nome">Nome</label>
               <input type="text" name="" id="" />
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
               <input type="email" name="" id="" />
               <textarea
                 name=""
@@ -37,7 +38,7 @@ export default function FaleConosco() {
                 placeholder="Mensagem"
               ></textarea>
             </div>
-            <div className="div-button">
+            <div className={styles.divButton}> 
               <button type="submit">Enviar</button>
             </div>
           </form>

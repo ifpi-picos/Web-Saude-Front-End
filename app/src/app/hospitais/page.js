@@ -7,7 +7,7 @@ import Footer from "@/components/Usuarios/Footer";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import ConsultasService from "@/services/ConsultasService";
 import "@/components/Usuarios/Home/css/Home.css";
-import "@/components/Usuarios/css/Layout.css";
+import styles from "@/components/Usuarios/css/Layout.module.css"
 
 export const metadata = {
   title: "Hospitais",
@@ -18,7 +18,7 @@ export default async function filtroHospitais() {
   return (
     <>
       <Header />
-      <div className="containers">
+      <div className={styles.containers}>
         <Slogan />
         <ButtonSearch />
         <Filtros />

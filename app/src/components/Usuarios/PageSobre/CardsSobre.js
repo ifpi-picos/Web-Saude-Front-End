@@ -1,32 +1,14 @@
+import styles from "@/components/Usuarios/css/Sobre.module.css";
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importando o CSS do Bootstrap
+
 export default function CardsSobres() {
   return (
     <>
-      <section className="section-sobre-titulo">
-        <div class="card">
-          <div class="card-header">Hospitais</div>
-          <div className="card-body">
-            <div class="blockquote mb-0">
-              <p>
-                Hospitais são instituições de saúde mais abrangentes, oferecendo
-                uma ampla gama de serviços médicos e cirúrgicos. Ao contrário
-                das clínicas, os hospitais são estruturados para lidar com uma
-                variedade de condições de saúde e emergências. Eles possuem
-                departamentos especializados, salas de emergência, unidades de
-                internação e instalações para cirurgias complexas. Os hospitais
-                têm uma abordagem holística, proporcionando cuidados integrados
-                que abrangem múltiplas especialidades. Eles são essenciais para
-                casos mais graves, tratamentos prolongados e procedimentos
-                cirúrgicos que exigem uma infraestrutura mais ampla.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="section-sobre-titulo">
-        <div className="card">
-          <div className="card-header">Clínicas</div>
-          <div className="card-body">
-            <div class="blockquote mb-0">
+      <section className={styles.sectionSobreTitulo}> 
+        <div className={`card ${styles.card}`}> 
+          <div className={`card-header ${styles.cardHeader}`}>Clínicas</div> 
+          <div className={`card-body ${styles.cardBody}`}>
+            <div className={`blockquote mb-0 ${styles.blockquote}`}>
               <p>
                 Clínicas são unidades de saúde especializadas que oferecem
                 serviços médicos voltados para áreas específicas da medicina.
@@ -44,11 +26,32 @@ export default function CardsSobres() {
           </div>
         </div>
       </section>
-      <section className="section-sobre-titulo">
-        <div className="card">
-          <div className="card-header">Especialidades</div>
-          <div className="card-body">
-            <div className="blockquote mb-0">
+      <section className={styles.sectionSobreTitulo}> 
+        <div className={`card ${styles.card}`}> 
+          <div className={`card-header ${styles.cardHeader}`}>Hospitais</div> 
+          <div className={`card-body ${styles.cardBody}`}> 
+            <div className={`blockquote mb-0 ${styles.blockquote}`}>
+              <p>
+                Hospitais são instituições de saúde mais abrangentes, oferecendo
+                uma ampla gama de serviços médicos e cirúrgicos. Ao contrário
+                das clínicas, os hospitais são estruturados para lidar com uma
+                variedade de condições de saúde e emergências. Eles possuem
+                departamentos especializados, salas de emergência, unidades de
+                internação e instalações para cirurgias complexas. Os hospitais
+                têm uma abordagem holística, proporcionando cuidados integrados
+                que abrangem múltiplas especialidades. Eles são essenciais para
+                casos mais graves, tratamentos prolongados e procedimentos
+                cirúrgicos que exigem uma infraestrutura mais ampla.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className={styles.sectionSobreTitulo}> 
+        <div className={`card ${styles.card}`}> 
+          <div className={`card-header ${styles.cardHeader}`}>Especialidades</div> 
+          <div className={`card-body ${styles.cardBody}`}> 
+            <div className={`blockquote mb-0 ${styles.blockquote}`}> 
               <p>
                 Especialidades Médicas: As especialidades médicas referem-se a
                 campos específicos da prática médica que se concentram em

@@ -1,10 +1,12 @@
 "use client";
+// EspecialidadeForm.js
+
 import React, { useState, useEffect, useRef } from "react";
 import { FaSave, FaEdit, FaTrash } from "react-icons/fa";
-import "@/components/Admin/Formularios/css/EspecialidadeForm.css";
 import Select from "react-select";
 import ConsultasService from "@/services/ConsultasService";
-
+import styles from "@/components/Admin/Formularios/css/EspecialidadeForm.module.css"
+ 
 const customStyles = {
   control: (provided, state) => ({
     ...provided,
@@ -30,7 +32,6 @@ export default function EspecialidadeForm() {
   const [editandoIndex, setEditandoIndex] = useState(null);
   const [especialidadePesquisada, setEspecialidadePesquisada] = useState("");
   const [selectValue, setSelectValue] = useState(null);
-
   const editBoxRef = useRef(null);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export default function EspecialidadeForm() {
     }
   };
 
-  const handleNovaEspecialidadeChange = e => {
+  const handleNovaEspecialidadeChange = (e) => {
     setNovaEspecialidade(e.target.value);
   };
 
@@ -58,7 +59,7 @@ export default function EspecialidadeForm() {
     }
   };
 
-  const cadastrarEspecialidade = nomeEspecialidade => {
+  const cadastrarEspecialidade = (nomeEspecialidade) => {
     const token = localStorage.getItem("token");
     fetch("https://api-web-saude.vercel.app/nova-especialidade", {
       method: "POST",
@@ -68,7 +69,7 @@ export default function EspecialidadeForm() {
       },
       body: JSON.stringify({ nome: nomeEspecialidade }),
     })
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(() => {
         setNovaEspecialidade("");
         listarEspecialidades();
@@ -76,14 +77,14 @@ export default function EspecialidadeForm() {
           window.alert("Especialidade salva com sucesso!");
         }
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   };
 
-  const editarEspecialidade = index => {
+  const editarEspecialidade = (index) => {
     setEditandoIndex(index);
   };
 
-  const salvarEspecialidade = index => {
+  const salvarEspecialidade = (index) => {
     const editedName = editBoxRef.current.querySelector("input").value;
     const id = especialidades[index]._id;
     const token = localStorage.getItem("token");
@@ -95,7 +96,7 @@ export default function EspecialidadeForm() {
       },
       body: JSON.stringify({ nome: editedName }),
     })
-      .then(response => response.json())
+      .then((response) => response.json())
       .then(() => {
         setEditandoIndex(null);
         listarEspecialidades();
@@ -103,14 +104,16 @@ export default function EspecialidadeForm() {
           window.alert("Especialidade alterada com sucesso!");
         }
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   };
 
-  const handleExcluirEspecialidade = index => {
+  const handleExcluirEspecialidade = (index) => {
     const id = especialidades[index]._id;
     const token = localStorage.getItem("token");
     if (
-      window.confirm("Tem certeza de que deseja excluir esta especialidade?")
+      window.confirm(
+        "Tem certeza de que deseja excluir esta especialidade?"
+      )
     ) {
       fetch(`https://api-web-saude.vercel.app/deletar-especialidade/${id}`, {
         method: "DELETE",
@@ -125,7 +128,7 @@ export default function EspecialidadeForm() {
           setEspecialidades(updatedEspecialidades);
           listarEspecialidades();
         })
-        .catch(error => console.error(error));
+        .catch((error) => console.error(error));
     }
   };
 
@@ -134,20 +137,22 @@ export default function EspecialidadeForm() {
   };
 
   const filterEspecialidades = () => {
-    return especialidades.filter(especialidade =>
+    return especialidades.filter((especialidade) =>
       especialidade.nome
         .toLowerCase()
         .includes(especialidadePesquisada.toLowerCase())
     );
   };
+
   const handleMostrarTodasEspecialidades = () => {
     setEspecialidadePesquisada("");
-    setSelectValue(null); // Redefine o valor selecionado no Select
+    setSelectValue(null);
   };
+
   return (
     <>
-      <div className="conteudo">
-        <div className="topo">
+      <div className={styles.conteudo}>
+        <div className={styles.topo}>
           <input
             type="text"
             placeholder="Adicione uma nova especialidade"
@@ -158,15 +163,15 @@ export default function EspecialidadeForm() {
             <FaSave />
           </button>
         </div>
-        <div className="pesquisa">
+        <div className={styles.pesquisa}>
           <Select
             placeholder="Pesquisar especialidade..."
             isSearchable
-            options={especialidades.map(especialidade => ({
+            options={especialidades.map((especialidade) => ({
               value: especialidade.nome,
               label: especialidade.nome,
             }))}
-            onChange={selectedOption =>
+            onChange={(selectedOption) =>
               setEspecialidadePesquisada(
                 selectedOption ? selectedOption.value : ""
               )
@@ -179,9 +184,9 @@ export default function EspecialidadeForm() {
             }}
           />
           {especialidadePesquisada && (
-            <div className="divReset">
+            <div className={styles.divReset}>
               <button
-                className="buttonReset"
+                className={styles.buttonReset}
                 onClick={() => handleMostrarTodasEspecialidades()}
               >
                 Mostrar todas as especialidades
@@ -191,13 +196,13 @@ export default function EspecialidadeForm() {
         </div>
 
         <ul
-          id="listarEspecialidades"
+          className={styles.listarEspecialidades}
           style={{ maxHeight: "400px", overflowY: "auto" }}
         >
           {filterEspecialidades().map((especialidade, index) => (
             <li key={index}>
               {editandoIndex === index ? (
-                <div className="frm-linha" ref={editBoxRef}>
+                <div className={styles.formLinha} ref={editBoxRef}>
                   <label htmlFor="nome">Nome</label>
                   <input type="text" defaultValue={especialidade.nome} />
                   <div>
@@ -215,7 +220,7 @@ export default function EspecialidadeForm() {
               ) : (
                 <>
                   {especialidade.nome}
-                  <div className="icones">
+                  <div className={styles.icones}>
                     <button
                       style={{
                         background: "none",

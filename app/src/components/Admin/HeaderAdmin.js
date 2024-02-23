@@ -75,7 +75,7 @@ export default function HeaderAdmin() {
               </Nav.Link>
               <NavDropdown
                 className={styles.cadastros}
-                title={<span style={{ color: "white" }}>Cadastro</span>}
+                title={<span style={{ color: "white" }}>Opções</span>}
                 id="nav-dropdown"
                 onMouseOver={handleDropdownMouseOver}
                 onMouseOut={handleDropdownMouseOut}
@@ -90,6 +90,7 @@ export default function HeaderAdmin() {
                 <Nav.Link className={styles.cadastro} href="/especialidades">
                   Cadastrar Especialidades
                 </Nav.Link>
+                
                 {decodedToken === "admin" ? (
                   <Nav.Link
                     className={styles.cadastro}
@@ -98,6 +99,9 @@ export default function HeaderAdmin() {
                     Unidades De Saúde
                   </Nav.Link>
                 ) : null}
+                <Nav.Link className={styles.cadastro} href="/especialidades">
+                  Configurações
+                </Nav.Link>
               </NavDropdown>
               <Nav.Link className={styles.logout} onClick={handleLogout}>
                 Logout <FaSignOutAlt className="icon" />

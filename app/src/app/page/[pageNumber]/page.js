@@ -7,7 +7,7 @@ import Footer from "@/components/Usuarios/Footer";
 import ConsultasService from "@/services/ConsultasService";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import "@/components/Usuarios/Home/css/Home.css";
-import "@/components/Usuarios/css/Layout.css";
+import styles from "@/components/Usuarios/css/Layout.module.css"
 
 export default async function PageNumber({ params }) {
   const informacao = await ConsultasService.unidadesdeSaude();
@@ -15,7 +15,7 @@ export default async function PageNumber({ params }) {
   return (
     <>
       <Header />
-      <div className="containers">
+      <div className={styles.containers}>
         <Slogan />
         <ButtonSearch />
         <Filtros />
