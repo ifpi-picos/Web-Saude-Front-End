@@ -16,19 +16,29 @@ main {
 
 .top-atalhos ul {
   display: flex;
-  margin-left: 20px;
 }
 .top-atalhos li {
   list-style: none;
-}
-.top-atalhos li a {
-  text-decoration: none;
   margin: 5px;
-  color: var(--primary-color);
+  background-color: var(--primary-color);
+  border-radius: 12px;
+}
+
+.top-atalhos li a {
+  display: flex;
+  text-decoration: none;
+  color: white;
   font-size: 20px;
+  height: 100%;
+  background-color: var(--primary-color);
+  padding: 10px;
+  border-radius: 12px;
+
 }
 .top-atalhos li a:hover {
-  text-decoration: underline;
+  mix-blend-mode: hard-light;
+  opacity: 100%;
+  cursor: pointer;
 }
 
 /* mapa */
@@ -48,6 +58,7 @@ main {
   .top-atalhos {
     justify-content: center;
     margin-right: 30px;
+    
   }
 
   .top-atalhos ul {

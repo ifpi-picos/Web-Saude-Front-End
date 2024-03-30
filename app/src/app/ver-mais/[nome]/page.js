@@ -29,7 +29,6 @@ export default async function verMais({ params }) {
             <li>
               <Link href="/">Home Page </Link>
             </li>
-            <li>/</li>
             <li>
               <Link href="/sobre"> Sobre </Link>
             </li>
