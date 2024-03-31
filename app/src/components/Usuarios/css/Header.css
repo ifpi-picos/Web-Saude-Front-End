@@ -103,8 +103,6 @@
     color: white;
   }
 
-  /* The rest copied directly from react-burger-menu docs */
-
   /* Position and sizing of burger button */
   .bm-burger-button {
     position: absolute;

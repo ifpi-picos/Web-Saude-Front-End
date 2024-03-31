@@ -1,12 +1,12 @@
 import styles from "@/components/Usuarios/css/Sobre.module.css";
-import 'bootstrap/dist/css/bootstrap.min.css'; // Importando o CSS do Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"; // Importando o CSS do Bootstrap
 
 export default function CardsSobres() {
   return (
     <>
-      <section className={styles.sectionSobreTitulo}> 
-        <div className={`card ${styles.card}`}> 
-          <div className={`card-header ${styles.cardHeader}`}>Clínicas</div> 
+      <section className={styles.sectionSobreTitulo}>
+        <div className={`card ${styles.card}`}>
+          <div className={`card-header ${styles.cardHeader}`}>Clínicas</div>
           <div className={`card-body ${styles.cardBody}`}>
             <div className={`blockquote mb-0 ${styles.blockquote}`}>
               <p>
@@ -26,10 +26,10 @@ export default function CardsSobres() {
           </div>
         </div>
       </section>
-      <section className={styles.sectionSobreTitulo}> 
-        <div className={`card ${styles.card}`}> 
-          <div className={`card-header ${styles.cardHeader}`}>Hospitais</div> 
-          <div className={`card-body ${styles.cardBody}`}> 
+      <section className={styles.sectionSobreTitulo}>
+        <div className={`card ${styles.card}`}>
+          <div className={`card-header ${styles.cardHeader}`}>Hospitais</div>
+          <div className={`card-body ${styles.cardBody}`}>
             <div className={`blockquote mb-0 ${styles.blockquote}`}>
               <p>
                 Hospitais são instituições de saúde mais abrangentes, oferecendo
@@ -47,11 +47,13 @@ export default function CardsSobres() {
           </div>
         </div>
       </section>
-      <section className={styles.sectionSobreTitulo}> 
-        <div className={`card ${styles.card}`}> 
-          <div className={`card-header ${styles.cardHeader}`}>Especialidades</div> 
-          <div className={`card-body ${styles.cardBody}`}> 
-            <div className={`blockquote mb-0 ${styles.blockquote}`}> 
+      <section className={styles.sectionSobreTitulo}>
+        <div className={`card ${styles.card}`}>
+          <div className={`card-header ${styles.cardHeader}`}>
+            Especialidades
+          </div>
+          <div className={`card-body ${styles.cardBody}`}>
+            <div className={`blockquote mb-0 ${styles.blockquote}`}>
               <p>
                 Especialidades Médicas: As especialidades médicas referem-se a
                 campos específicos da prática médica que se concentram em

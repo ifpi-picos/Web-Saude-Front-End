@@ -4,11 +4,17 @@ import Image from "next/image";
 export default function TituloSobre() {
   return (
     <>
-      <section className={styles.sectionSobre} style={{ marginTop: "120px" }}> {/* Usando a classe do CSS Module */}
-        <div className={styles.divSobre}> {/* Usando a classe do CSS Module */}
+      <section className={styles.sectionSobre} style={{ marginTop: "120px" }}>
+        {" "}
+        {/* Usando a classe do CSS Module */}
+        <div className={styles.divSobre}>
+          {" "}
+          {/* Usando a classe do CSS Module */}
           <h1>Sobre</h1>
         </div>
-        <div className={styles.imgSobre}> {/* Usando a classe do CSS Module */}
+        <div className={styles.imgSobre}>
+          {" "}
+          {/* Usando a classe do CSS Module */}
           <Image
             src="/imgs/sobre.svg"
             alt="img-sobre"
@@ -18,7 +24,9 @@ export default function TituloSobre() {
         </div>
       </section>
 
-      <section className={styles.sectionTitulo}> {/* Usando a classe do CSS Module */}
+      <section className={styles.sectionTitulo}>
+        {" "}
+        {/* Usando a classe do CSS Module */}
         <h2>Quem Somos?</h2>
         <p>
           Somos a plataforma dedicada a fornecer informações essenciais sobre as

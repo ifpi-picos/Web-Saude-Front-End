@@ -130,15 +130,28 @@
   justify-content: center;
   list-style: none;
 }
+
+.section-informações .card-informacoes .button .div-atalhos ul li {
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
 .section-informações .card-informacoes .button .div-atalhos ul li .btn {
-  margin: 15px;
+  display: flex;
   text-decoration: none;
-  color: black;
+  color: white;
+  font-size: 17px;
+  height: 100%;
+  background-color: var(--primary-color);
+  padding: 10px;
+  border-radius: 12px;
 }
 
 .section-informações .card-informacoes .button .div-atalhos ul li .btn:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--primary-color);
+  mix-blend-mode: hard-light;
+  opacity: 100%;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -168,13 +181,13 @@
     margin-top: 40px;
     border: solid 3px var(--primary-color);
   }
-  .section-informações .card-informacoes .button .div-atalhos .btn {
-    position: relative;
+  .section-informações .card-informacoes .button .div-atalhos ul li {
+    margin-top: 10px;
+  }
+  .section-informações .card-informacoes .button .div-atalhos ul li .btn {
     font-size: 13px;
   }
-  .section-informações .card-informacoes .button .div-atalhos ul li .btn:hover {
-    text-decoration: underline;
-  }
+
   .section-informações .card-informacoes .button .div-atalhos {
     top: -10px;
   }

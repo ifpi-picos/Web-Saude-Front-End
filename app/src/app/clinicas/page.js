@@ -5,7 +5,7 @@ import Filtros from "@/components/Usuarios/Home/Filtros";
 import Header from "@/components/Usuarios/Header";
 import Footer from "@/components/Usuarios/Footer";
 import "@/components/Usuarios/Home/css/Home.css";
-import styles from "@/components/Usuarios/css/Layout.module.css"
+import styles from "@/components/Usuarios/css/Layout.module.css";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import ConsultasService from "@/services/ConsultasService";
 

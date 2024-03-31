@@ -7,7 +7,7 @@ import Footer from "@/components/Usuarios/Footer";
 import ButtonSearch from "@/components/Usuarios/Home/ButtonSearch";
 import ConsultasService from "@/services/ConsultasService";
 import "@/components/Usuarios/Home/css/Home.css";
-import styles from "@/components/Usuarios/css/Layout.module.css"
+import styles from "@/components/Usuarios/css/Layout.module.css";
 
 export const metadata = {
   title: "Hospitais",

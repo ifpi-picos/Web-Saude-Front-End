@@ -33,7 +33,6 @@ main {
   background-color: var(--primary-color);
   padding: 10px;
   border-radius: 12px;
-
 }
 .top-atalhos li a:hover {
   mix-blend-mode: hard-light;
@@ -54,11 +53,9 @@ main {
 }
 @media (max-width: 768px) {
   /* atalhos */
-
   .top-atalhos {
     justify-content: center;
     margin-right: 30px;
-    
   }
 
   .top-atalhos ul {

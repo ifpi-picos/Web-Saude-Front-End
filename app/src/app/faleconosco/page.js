@@ -11,12 +11,12 @@ export default function FaleConosco() {
   return (
     <>
       <Header />
-      <section className={styles.sectionForm}> 
+      <section className={styles.sectionForm}>
         <div className={styles.divForm}>
           <form action="#">
             <div className={styles.divLogo}>
               <Image
-                className={styles.imageLogo} 
+                className={styles.imageLogo}
                 src="/imgs/logo.png"
                 width={200}
                 height={200}
@@ -24,7 +24,7 @@ export default function FaleConosco() {
               />
             </div>
 
-            <h1 className={styles.title}>Fale Conosco</h1> 
+            <h1 className={styles.title}>Fale Conosco</h1>
             <div className={styles.divInputs}>
               <label htmlFor="nome">Nome</label>
               <input type="text" name="" id="" />
@@ -38,7 +38,7 @@ export default function FaleConosco() {
                 placeholder="Mensagem"
               ></textarea>
             </div>
-            <div className={styles.divButton}> 
+            <div className={styles.divButton}>
               <button type="submit">Enviar</button>
             </div>
           </form>
