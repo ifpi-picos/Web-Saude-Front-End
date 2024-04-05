@@ -1,5 +1,4 @@
 "use client";
-import NomeDaClinica_Hospital from "@/components/Usuarios/Ver-Mais/NomeDaClínica_Hospital";
 import Header from "@/components/Usuarios/Header";
 import CardInformativo from "@/components/Usuarios/Ver-Mais/CardInformativo";
 import Horario from "@/components/Usuarios/Ver-Mais/Horario";
@@ -9,17 +8,21 @@ import Especialidades from "@/components/Usuarios/Ver-Mais/Especialidades";
 import Mapa from "@/components/Usuarios/Ver-Mais/Mapa";
 import Footer from "@/components/Usuarios/Footer";
 import Link from "next/link";
-import FiltroService from "@/services/ConsultasService";
+import ConsultasService from "@/services/ConsultasService";
 import NotFound from "@/app/not-found";
 import "../../../components/Usuarios/css/verMais.css";
 import Galeria from "@/components/Usuarios/Ver-Mais/Galeria";
 
 export default async function verMais({ params }) {
-  const unidadesdeSaude = await FiltroService.pegarUnidadedeSaude(params.nome);
+  const unidadeDeSaude = await ConsultasService.pegarUnidadedeSaude(
+    params.nome
+  );
+  const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(
+    params.nome
+  );
   if (unidadesdeSaude.length === 0) {
     return <NotFound />;
   }
-
   return (
     <>
       <Header />
@@ -39,7 +42,7 @@ export default async function verMais({ params }) {
         <Especialidades nome={params?.nome} />
         <Horario nome={params?.nome} />
         <Contato nome={params?.nome} />
-        <Galeria nome={params?.nome} />
+        <Galeria unidadeDeSaude={unidadeDeSaude} />
         <Mapa nome={params?.nome} />
       </main>
       <Footer />

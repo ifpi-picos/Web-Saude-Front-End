@@ -2,7 +2,8 @@
   width: 900px;
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
+  border-radius: 15px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {

@@ -15,7 +15,7 @@
   margin: 0 10px;
   width: calc(33% - 20px);
   height: 200px;
-  border-radius: 10px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,6 +23,7 @@
   color: var(--secundary-color);
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .contactInfo .card .icon {
