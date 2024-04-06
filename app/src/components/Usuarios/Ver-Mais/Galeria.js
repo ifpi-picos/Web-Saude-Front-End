@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ConsultasService from "@/services/ConsultasService";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,6 +11,15 @@ import "@/components/Usuarios/Ver-Mais/css/Galeria.css";
 export default function Galeria({ unidadeDeSaude }) {
   const [showCarousel, setShowCarousel] = useState(false);
   const [visibleImages, setVisibleImages] = useState(2);
+  const [totalImages, setTotalImages] = useState(0);
+
+  useEffect(() => {
+    if (unidadeDeSaude && unidadeDeSaude.imagens) {
+      setTotalImages(unidadeDeSaude.imagens.length);
+      // Definir o número inicial de imagens visíveis ao montar o componente
+      setVisibleImages(Math.min(2, unidadeDeSaude.imagens.length));
+    }
+  }, [unidadeDeSaude]);
 
   const showMoreImages = () => {
     setShowCarousel(true);
@@ -35,7 +44,7 @@ export default function Galeria({ unidadeDeSaude }) {
           ))}
       </div>
 
-      {unidadeDeSaude.imagens.length > visibleImages && (
+      {totalImages > visibleImages && (
         <div className="buttonGaleria">
           <button onClick={showMoreImages}>Ver Mais</button>
         </div>

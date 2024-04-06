@@ -26,6 +26,7 @@
   background-color: var(--primary-color);
   display: flex;
   justify-content: center;
+  padding: 60px;
 }
 /* imagem*/
 .section-informações .card-informacoes .top .image-container {
@@ -35,7 +36,6 @@
   padding: 5px;
   border-radius: 50%;
   transition: 0.1s ease;
-  margin-top: 30px;
   transition: 0.5s ease;
 }
 .section-informações .card-informacoes .top .image-container img {
@@ -54,7 +54,6 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  padding-top: 60px;
   text-align: center;
 }
 
@@ -84,7 +83,7 @@
 
 .divEndereco .enderecoIcon {
   font-size: 16px;
-  margin-top: 37px;
+  margin-top: 28px;
   margin-right: 5px;
 }
 
@@ -100,15 +99,14 @@
 /* nome */
 .section-informações .card-informacoes .button h3 {
   font-size: 1.6rem;
-  margin-bottom: 17px;
-  margin-top: 55px;
+  margin-top: 80px;
   font-weight: 600;
 }
 
 /*endereço */
 
 .section-informações .card-informacoes .button p {
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 20px;
 }
 
@@ -146,6 +144,7 @@
   background-color: var(--primary-color);
   padding: 10px;
   border-radius: 12px;
+  padding: 20px;
 }
 
 .section-informações .card-informacoes .button .div-atalhos ul li .btn:hover {
@@ -158,7 +157,7 @@
   /* card */
   .section-informações .card-informacoes {
     width: 90%;
-    height: 500px;
+    height: 470px;
     margin-top: 5px;
   }
   .section-informações .card-informacoes .top .image-container {
@@ -166,20 +165,22 @@
     height: 130px;
   }
   .status {
-    left: 5px;
+    left: -15px;
   }
   .divEndereco .enderecoIcon {
-    margin-top: 47px;
+    margin-top: 25px;
   }
   .section-informações .card-informacoes .button p {
     font-size: 16px;
-    margin-top: 45px;
+    margin-top: 20px;
   }
   /* atalhos */
   .section-informações .card-informacoes .button hr {
     width: 100%;
-    margin-top: 40px;
+    height: 10px;
+    margin-top: 20px;
     border: solid 3px var(--primary-color);
+    background-color: var(--primary-color);
   }
   .section-informações .card-informacoes .button .div-atalhos ul li {
     margin-top: 10px;
@@ -189,6 +190,6 @@
   }
 
   .section-informações .card-informacoes .button .div-atalhos {
-    top: -10px;
+    top: 0px;
   }
 }
