@@ -1,15 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import ConsultasService from "@/services/ConsultasService";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import "@/components/Usuarios/Ver-Mais/css/CardInformativo.css";
+import { FaMapMarkerAlt, FaStar, FaLock } from "react-icons/fa";
+import styles from "@/components/Usuarios/Ver-Mais/css/CardInformativo.module.css"; // Importa o arquivo CSS Module
+
 export default async function CardInformativo({ nome }) {
   const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
+
   return (
-    <section className="section-informações">
-      <div className="card-informacoes">
-        <div className="top">
-          <div className="image-container">
+    <section className={styles.sectionInformacoes}>
+      <div className={styles.cardInformacoes}>
+        <div className={styles.top}>
+          <div className={styles.imageContainer}>
             <Image
               src={unidadesdeSaude.imagem}
               alt="Imagem da Clínica"
@@ -18,14 +20,18 @@ export default async function CardInformativo({ nome }) {
             />
           </div>
         </div>
-        <div className="button">
-          <p className={"status"}>
-            Status:
+        <div className={styles.button}>
+          <p className={styles.status}>
+            {unidadesdeSaude.status ? (
+              <FaStar className={styles.statusIcon} />
+            ) : (
+              <FaLock className={styles.statusIcon} />
+            )}
             <span
               className={
                 unidadesdeSaude.status === true
-                  ? "statusAberto"
-                  : "statusFechado"
+                  ? styles.statusAberto
+                  : styles.statusFechado
               }
             >
               {" "}
@@ -35,8 +41,8 @@ export default async function CardInformativo({ nome }) {
           <div>
             <h3>{unidadesdeSaude?.nome}</h3>
           </div>
-          <div className="divEndereco">
-            <FaMapMarkerAlt className="enderecoIcon" />
+          <div className={styles.divEndereco}>
+            <FaMapMarkerAlt className={styles.enderecoIcon} />
             <p>
               {unidadesdeSaude.endereco.rua}, {unidadesdeSaude.endereco.numero}{" "}
               - {unidadesdeSaude.endereco.bairro},{" "}
@@ -45,15 +51,15 @@ export default async function CardInformativo({ nome }) {
             </p>
           </div>
           <hr />
-          <div className="div-atalhos">
+          <div className={styles.divAtalhos}>
             <ul>
               <li>
-                <Link className="btn" href="#sobre">
+                <Link className={styles.btn} href="#sobre">
                   Comentários
                 </Link>
               </li>
               <li>
-                <Link className="btn" href="#galeria">
+                <Link className={styles.btn} href="#galeria">
                   Galeria
                 </Link>
               </li>

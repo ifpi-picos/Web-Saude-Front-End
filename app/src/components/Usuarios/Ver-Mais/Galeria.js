@@ -6,7 +6,7 @@ import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Carousel from "react-bootstrap/Carousel";
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Importa os ícones de fechar e de setas
-import "@/components/Usuarios/Ver-Mais/css/Galeria.css";
+import styles from "@/components/Usuarios/Ver-Mais/css/Galeria.module.css"; // Importa o arquivo CSS Module
 
 export default function Galeria({ unidadeDeSaude }) {
   const [showCarousel, setShowCarousel] = useState(false);
@@ -30,31 +30,31 @@ export default function Galeria({ unidadeDeSaude }) {
   };
 
   return (
-    <section className="sectionGaleria">
-      <h1 className="tituloGaleria">Galeria</h1>
+    <section className={styles.sectionGaleria}>
+      <h1 className={styles.tituloGaleria}>Galeria</h1>
 
-      <div className="galeria">
+      <div className={styles.galeria}>
         {unidadeDeSaude.imagens &&
           unidadeDeSaude.imagens.slice(0, visibleImages).map((src, index) => (
-            <div key={index} className="image">
+            <div key={index} className={styles.image}>
               <Link href={src}>
-                <Image src={src} width={200} height={200} className="imagens" />
+                <Image src={src} width={200} height={200} className={styles.imagens} />
               </Link>
             </div>
           ))}
       </div>
 
       {totalImages > visibleImages && (
-        <div className="buttonGaleria">
+        <div className={styles.buttonGaleria}>
           <button onClick={showMoreImages}>Ver Mais</button>
         </div>
       )}
 
       {showCarousel && (
-        <div className="carrosselOverlay">
+        <div className={styles.carrosselOverlay}>
           {/* Carrossel */}
           <Carousel
-            className="carouselContent"
+            className={styles.carouselContent}
             nextIcon={<FaChevronRight size={40} />}
             prevIcon={<FaChevronLeft size={40} />}
           >
@@ -68,7 +68,7 @@ export default function Galeria({ unidadeDeSaude }) {
               </Carousel.Item>
             ))}
           </Carousel>
-          <div className="closeIcon" onClick={closeCarousel}>
+          <div className={styles.closeIcon} onClick={closeCarousel}>
             <FaTimes color="red" size={50} />
           </div>
         </div>
