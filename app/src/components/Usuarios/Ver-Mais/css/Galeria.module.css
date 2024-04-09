@@ -1,9 +1,9 @@
 .sectionGaleria {
   background-color: white;
   width: 900px;
-  height: 500px; 
-  border: 1px solid rgba(0, 0, 0, 0.1); 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  height: 500px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   margin-top: 30px;
 }
@@ -29,8 +29,8 @@
   margin: 7px;
 }
 .imagens {
-  border: 1px solid #ddd; 
-  border-radius: 8px; 
+  border: 1px solid #ddd;
+  border-radius: 8px;
   width: 100%;
   height: 100%;
   object-fit: cover; /* Evita que a imagem se estique */
@@ -53,8 +53,7 @@
   margin-top: -100px;
   color: white;
   margin-bottom: 30px;
-  transition: background-color 0.3s ease; 
-
+  transition: background-color 0.3s ease;
 }
 
 .buttonGaleria button:hover {
@@ -63,7 +62,6 @@
   cursor: pointer;
 }
 .carrosselOverlay {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;

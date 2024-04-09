@@ -1,20 +1,27 @@
-import React, { useState } from "react";
-import ConsultasService from "@/services/ConsultasService";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Carousel from "react-bootstrap/Carousel";
-import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Importa os ícones de fechar e de setas
-import styles from "@/components/Usuarios/Ver-Mais/css/Galeria.module.css"; // Importa o arquivo CSS Module
+import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import styles from "@/components/Usuarios/Ver-Mais/css/Galeria.module.css";
 
 export default function Galeria({ unidadeDeSaude }) {
+  const [showCarousel, setShowCarousel] = useState(false);
+  const [images, setImages] = useState([]);
 
-  const showCarousel = () => {
-    document.getElementById("carrossel-overlay").style.display = "block";
+  useEffect(() => {
+    if (unidadeDeSaude.imagens && unidadeDeSaude.imagens.length > 0) {
+      setImages(unidadeDeSaude.imagens);
+    }
+  }, [unidadeDeSaude.imagens]);
+
+  const openCarousel = () => {
+    setShowCarousel(true);
   };
 
   const closeCarousel = () => {
-    document.getElementById("carrossel-overlay").style.display = "none";
+    setShowCarousel(false);
   };
 
   return (
@@ -22,43 +29,48 @@ export default function Galeria({ unidadeDeSaude }) {
       <h1 className={styles.tituloGaleria}>Galeria</h1>
 
       <div className={styles.galeria}>
-        {unidadeDeSaude.imagens &&
-          unidadeDeSaude.imagens.slice(0, 2).map((src, index) => (
-            <div key={index} className={styles.image}>
-              <Link href={src}>
-                <Image src={src} width={200} height={200} className={styles.imagens} />
-              </Link>
-            </div>
-          ))}
+        {images.slice(0, 2).map((src, index) => (
+          <div key={index} className={styles.image}>
+            <Link href={src}>
+              <Image
+                src={src}
+                width={200}
+                height={200}
+                className={styles.imagens}
+              />
+            </Link>
+          </div>
+        ))}
       </div>
 
-      {unidadeDeSaude.imagens.length > 2 && (
+      {images.length > 2 && (
         <div className={styles.buttonGaleria}>
-          <button onClick={showCarousel}>Ver Mais</button>
+          <button onClick={openCarousel}>Ver Mais</button>
         </div>
       )}
 
-      <div id="carrossel-overlay" className={styles.carrosselOverlay}>
-        {/* Carrossel */}
-        <Carousel
-          className={styles.carouselContent}
-          nextIcon={<FaChevronRight size={40} />}
-          prevIcon={<FaChevronLeft size={40} />}
-        >
-          {unidadeDeSaude.imagens.map((src, index) => (
-            <Carousel.Item key={index}>
-              <img
-                src={src}
-                className="d-block w-100"
-                alt={`Imagem ${index}`}
-              />
-            </Carousel.Item>
-          ))}
-        </Carousel>
-        <div className={styles.closeIcon} onClick={closeCarousel}>
-          <FaTimes color="red" size={50} />
+      {showCarousel && (
+        <div id="carrossel-overlay" className={styles.carrosselOverlay}>
+          <Carousel
+            className={styles.carouselContent}
+            nextIcon={<FaChevronRight size={40} />}
+            prevIcon={<FaChevronLeft size={40} />}
+          >
+            {images.map((src, index) => (
+              <Carousel.Item key={index}>
+                <img
+                  src={src}
+                  className="d-block w-100"
+                  alt={`Imagem ${index}`}
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+          <div className={styles.closeIcon} onClick={closeCarousel}>
+            <FaTimes color="red" size={50} />
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }
