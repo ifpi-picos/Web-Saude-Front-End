@@ -8,13 +8,6 @@ import styles from "@/components/Usuarios/Ver-Mais/css/Galeria.module.css";
 
 export default function Galeria({ unidadeDeSaude }) {
   const [showCarousel, setShowCarousel] = useState(false);
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    if (unidadeDeSaude.imagens && unidadeDeSaude.imagens.length > 0) {
-      setImages(unidadeDeSaude.imagens);
-    }
-  }, [unidadeDeSaude.imagens]);
 
   const openCarousel = () => {
     setShowCarousel(true);
@@ -29,11 +22,12 @@ export default function Galeria({ unidadeDeSaude }) {
       <h1 className={styles.tituloGaleria}>Galeria</h1>
 
       <div className={styles.galeria}>
-        {images.slice(0, 2).map((src, index) => (
+        {unidadeDeSaude.imagens.slice(0, 2).map((src, index) => (
           <div key={index} className={styles.image}>
             <Link href={src}>
               <Image
                 src={src}
+                alt={`Imagem ${index}`}
                 width={200}
                 height={200}
                 className={styles.imagens}
@@ -43,7 +37,7 @@ export default function Galeria({ unidadeDeSaude }) {
         ))}
       </div>
 
-      {images.length > 2 && (
+      {unidadeDeSaude.imagens.length > 2 && (
         <div className={styles.buttonGaleria}>
           <button onClick={openCarousel}>Ver Mais</button>
         </div>
@@ -56,7 +50,7 @@ export default function Galeria({ unidadeDeSaude }) {
             nextIcon={<FaChevronRight size={40} />}
             prevIcon={<FaChevronLeft size={40} />}
           >
-            {images.map((src, index) => (
+            {unidadeDeSaude.imagens.map((src, index) => (
               <Carousel.Item key={index}>
                 <img
                   src={src}
