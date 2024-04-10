@@ -39,7 +39,7 @@ export default async function CardInformativo({ nome }) {
             </span>
           </p>
           <div>
-            <h3>{unidadesdeSaude?.nome}</h3>
+            <h3>{unidadesdeSaude.nome}</h3>
           </div>
           <div className={styles.divEndereco}>
             <FaMapMarkerAlt className={styles.enderecoIcon} />

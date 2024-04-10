@@ -39,38 +39,38 @@ export default async function Horario({ nome }) {
             <tr>
               <th scope="row">2</th>
               <td>Segunda</td>
-              <td>{unidadesdeSaude.horarioSemana?.open}</td>
-              <td>{unidadesdeSaude.horarioSemana?.close}</td>
+              <td>{unidadesdeSaude.horarioSemana.open}</td>
+              <td>{unidadesdeSaude.horarioSemana.close}</td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td>Terça</td>
-              <td>{unidadesdeSaude.horarioSemana?.open}</td>
-              <td>{unidadesdeSaude.horarioSemana?.close}</td>
+              <td>{unidadesdeSaude.horarioSemana.open}</td>
+              <td>{unidadesdeSaude.horarioSemana.close}</td>
             </tr>
             <tr>
               <th scope="row">4</th>
               <td>Quarta</td>
-              <td>{unidadesdeSaude.horarioSemana?.open}</td>
-              <td>{unidadesdeSaude.horarioSemana?.close}</td>
+              <td>{unidadesdeSaude.horarioSemana.open}</td>
+              <td>{unidadesdeSaude.horarioSemana.close}</td>
             </tr>
             <tr>
               <th scope="row">5</th>
               <td>Quinta</td>
-              <td>{unidadesdeSaude.horarioSemana?.open}</td>
-              <td>{unidadesdeSaude.horarioSemana?.close}</td>
+              <td>{unidadesdeSaude.horarioSemana.open}</td>
+              <td>{unidadesdeSaude.horarioSemana.close}</td>
             </tr>
             <tr>
               <th scope="row">6</th>
               <td>Sexta</td>
-              <td>{unidadesdeSaude.horarioSemana?.open}</td>
-              <td>{unidadesdeSaude.horarioSemana?.close}</td>
+              <td>{unidadesdeSaude.horarioSemana.open}</td>
+              <td>{unidadesdeSaude.horarioSemana.close}</td>
             </tr>
             <tr>
               <th scope="row">7</th>
               <td>Sábado</td>
-              <td>{unidadesdeSaude.sabado?.open || "Fechado"}</td>
-              <td>{unidadesdeSaude.sabado?.close || "Fechado"}</td>
+              <td>{unidadesdeSaude.sabado.open || "Fechado"}</td>
+              <td>{unidadesdeSaude.sabado.close || "Fechado"}</td>
             </tr>
           </tbody>
         </table>

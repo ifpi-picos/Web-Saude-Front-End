@@ -15,8 +15,8 @@ import Galeria from "@/components/Usuarios/Ver-Mais/Galeria";
 import Comentarios from "@/components/Usuarios/Ver-Mais/Comentarios";
 
 export default async function VerMais({ nome }) {
-  const unidadeDeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
-  const unidadesdeSaude = await ConsultasService.pegarUnidadedeSaude(nome);
+  const unidadeDeSaude = await ConsultasService?.pegarUnidadedeSaude(nome);
+  const unidadesdeSaude = await ConsultasService?.pegarUnidadedeSaude(nome);
   if (unidadesdeSaude.length === 0) {
     return <NotFound />;
   }
