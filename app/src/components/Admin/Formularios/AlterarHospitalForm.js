@@ -89,7 +89,7 @@ export default function AlterarHospitalForm({ hospitalData, nome }) {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/admin/alterar-hospital/${hospitalData._id}`,
+        `https://web-saude-back-end-api.onrender.com/admin/alterar-hospital/${hospitalData._id}`,
         {
           method: "Put",
           headers: {

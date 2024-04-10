@@ -38,7 +38,7 @@ export default function LoginForm() {
 
   const onSubmit = async data => {
     try {
-      const response = await fetch(`https://api-web-saude.vercel.app/login`, {
+      const response = await fetch(`https://web-saude-back-end-api.onrender.com/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

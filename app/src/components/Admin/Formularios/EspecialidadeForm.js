@@ -61,7 +61,7 @@ export default function EspecialidadeForm() {
 
   const cadastrarEspecialidade = nomeEspecialidade => {
     const token = localStorage.getItem("token");
-    fetch("https://api-web-saude.vercel.app/nova-especialidade", {
+    fetch("https://web-saude-back-end-api.onrender.com/nova-especialidade", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +88,7 @@ export default function EspecialidadeForm() {
     const editedName = editBoxRef.current.querySelector("input").value;
     const id = especialidades[index]._id;
     const token = localStorage.getItem("token");
-    fetch(`https://api-web-saude.vercel.app/alterar-especialidade/${id}`, {
+    fetch(`https://web-saude-back-end-api.onrender.com/alterar-especialidade/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -113,7 +113,7 @@ export default function EspecialidadeForm() {
     if (
       window.confirm("Tem certeza de que deseja excluir esta especialidade?")
     ) {
-      fetch(`https://api-web-saude.vercel.app/deletar-especialidade/${id}`, {
+      fetch(`https://web-saude-back-end-api.onrender.com/deletar-especialidade/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

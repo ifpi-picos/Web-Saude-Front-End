@@ -97,7 +97,7 @@ export default function AlterarClincaForm({ clinicaData, nome }) {
 
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/admin/alterar-clinica/${clinicaData._id}`,
+        `https://web-saude-back-end-api.onrender.com/admin/alterar-clinica/${clinicaData._id}`,
         {
           method: "Put",
           headers: {

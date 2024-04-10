@@ -36,7 +36,7 @@ function CardProgressosAdmin() {
 
       try {
         const result = await fetch(
-          `https://api-web-saude.vercel.app/notificacoes-nao-lidas`,
+          `https://web-saude-back-end-api.onrender.com/notificacoes-nao-lidas`,
           {
             method: "GET",
             headers: {

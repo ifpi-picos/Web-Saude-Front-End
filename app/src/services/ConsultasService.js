@@ -2,7 +2,7 @@ class ConsultasService {
   async unidadesdeSaude() {
     try {
       const res = await fetch(
-        `https://api-web-saude.vercel.app/unidades-de-saude`,
+        `https://web-saude-back-end-api.onrender.com/unidades-de-saude`,
         {
           cache: "no-store",
         }
@@ -28,7 +28,26 @@ class ConsultasService {
   async pegarUnidadedeSaude(nome) {
     try {
       const res = await fetch(
-        `https://api-web-saude.vercel.app/unidade-de-saude/${nome}`,
+        `https://web-saude-back-end-api.onrender.com/unidade-de-saude/${nome}`,
+        {
+          cache:"force-cache",
+
+        }
+      );
+      if (!res.ok) {
+        throw new Error(`Houve um erro no servidor! ${res.status}`);
+      }
+      const info = await res.json();
+      return info;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async filtrarUnidadesDeSaude(nome) {
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/buscar/?nome=${nome}`,
         {
           cache: "no-store",
         }
@@ -42,24 +61,11 @@ class ConsultasService {
       console.error(error);
     }
   }
-  async filtrarUnidadesDeSaude(nome) {
-    const res = await fetch(
-      `https://api-web-saude.vercel.app/buscar/?nome=${nome}`,
-      {
-        cache: "no-store",
-      }
-    );
-    if (!res.ok) {
-      throw new Error(`Houve um erro no servidor! ${res.status}`);
-    }
-    const info = await res.json();
 
-    return info;
-  }
   async pegarEspecialidadesPeloNomeDaUnidadeDeSaude(nome) {
     try {
       const res = await fetch(
-        `https://api-web-saude.vercel.app/especialidades/${nome}`,
+        `https://web-saude-back-end-api.onrender.com/especialidades/${nome}`,
         {
           cache: "no-store",
         }
@@ -73,10 +79,11 @@ class ConsultasService {
       console.error(error);
     }
   }
+
   async unidadesdeSaudePaginadas(number) {
     try {
       const res = await fetch(
-        `https://api-web-saude.vercel.app/buscarPorPagina/${number}`,
+        `https://web-saude-back-end-api.onrender.com/buscarPorPagina/${number}`,
         {
           cache: "no-store",
         }
@@ -90,105 +97,156 @@ class ConsultasService {
       console.error(error);
     }
   }
+
   async pegarClinicas() {
-    const res = await fetch(`https://api-web-saude.vercel.app/clinicas`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error(`houve um erro no servidor! ${res.status}`);
-    }
-
-    const info = await res.json();
-
-    return info;
-  }
-  async pegarHospital(nome) {
-    const res = await fetch(
-      `https://api-web-saude.vercel.app/hospital/${nome}`,
-      {
-        cache: "no-store",
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/clinicas`,
+        {
+          cache: "no-store",
+        }
+      );
+      if (!res.ok) {
+        throw new Error(`Houve um erro no servidor! ${res.status}`);
       }
-    );
-    const info = await res.json();
-    return info;
+      const info = await res.json();
+      return info;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async pegarHospital(nome) {
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/hospital/${nome}`,
+        {
+          cache: "no-store",
+        }
+      );
+      if (!res.ok) {
+        throw new Error(`Houve um erro no servidor! ${res.status}`);
+      }
+      const info = await res.json();
+      return info;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async pegarHospitais() {
-    const res = await fetch(`https://api-web-saude.vercel.app/hospitais`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      throw new Error(`houve um erro no servidor! ${res.status}`);
-    }
-
-    const info = await res.json();
-
-    return info;
-  }
-  async pegarClinica(nome) {
-    const res = await fetch(
-      `https://api-web-saude.vercel.app/clinica/${nome}`,
-      {
-        cache: "no-store",
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/hospitais`,
+        {
+          cache: "no-store",
+        }
+      );
+      if (!res.ok) {
+        throw new Error(`Houve um erro no servidor! ${res.status}`);
       }
-    );
-    const info = await res.json();
-    return info;
+      const info = await res.json();
+      return info;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async pegarClinica(nome) {
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/clinica/${nome}`,
+        {
+          cache: "cache",
+        }
+      );
+      if (!res.ok) {
+        throw new Error(`Houve um erro no servidor! ${res.status}`);
+      }
+      const info = await res.json();
+      return info;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async pegarUsuarioPeloNome(nome) {
-    const res = await fetch(
-      `https://api-web-saude.vercel.app/usuario/${nome}`,
-      {
-        cache: "no-store",
-      }
-    );
-
-    const info = await res.json();
-    return info;
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/usuario/${nome}`,
+        {
+          cache: "no-store",
+        }
+      );
+      const info = await res.json();
+      return info;
+    } catch (error) {
+      console.error(error);
+    }
   }
+
   async pegarEspecialidades() {
-    const res = await fetch(`https://api-web-saude.vercel.app/especialidades`, {
-      cache: "no-store",
-    });
-    const info = await res.json();
-    return info;
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/especialidades`,
+        {
+          cache: "no-store",
+        }
+      );
+      const info = await res.json();
+      return info;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async pegarTotalDasUnidadesDeSaude() {
-    const res = await fetch(
-      `https://api-web-saude.vercel.app/total-unidades-de-saude`,
-      {
-        cache: "no-store",
-      }
-    );
-
-    const total = await res.json();
-    return total;
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/total-unidades-de-saude`,
+        {
+          cache: "no-store",
+        }
+      );
+      const total = await res.json();
+      return total;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async pegarTotalDeUsuarios() {
-    const res = await fetch(`https://api-web-saude.vercel.app/total-usuarios`, {
-      cache: "no-store",
-    });
-
-    const total = await res.json();
-    return total;
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/total-usuarios`,
+        {
+          cache: "no-store",
+        }
+      );
+      const total = await res.json();
+      return total;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async pedidos() {
-    const res = await fetch(`https://api-web-saude.vercel.app/pedidos`, {
-      cache: "no-store",
-    });
-    const data = await res.json();
-    if (!data.Message || !Array.isArray(data.Message)) {
-      throw new Error("Resposta inválida da API");
+    try {
+      const res = await fetch(
+        `https://web-saude-back-end-api.onrender.com/pedidos`,
+        {
+          cache: "no-store",
+        }
+      );
+      const data = await res.json();
+      if (!data.Message || !Array.isArray(data.Message)) {
+        throw new Error("Resposta inválida da API");
+      }
+      const unidades = data.Message;
+      return unidades;
+    } catch (error) {
+      console.error(error);
     }
-
-    const unidades = data.Message;
-    return unidades;
   }
 }
 

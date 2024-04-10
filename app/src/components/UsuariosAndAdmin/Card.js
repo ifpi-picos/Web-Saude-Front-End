@@ -67,8 +67,8 @@ export default function CardAdmin({ pageNumber, informacao, params }) {
         const token = localStorage.getItem("token");
         const deleteEndpoint =
           tipoEstabelecimento === "Atendimento 24 Horas"
-            ? `https://api-web-saude.vercel.app/admin/deletar-hospital/${itemId}`
-            : `https://api-web-saude.vercel.app/admin/deletar-clinica/${itemId}`;
+            ? `https://web-saude-back-end-api.onrender.com/admin/deletar-hospital/${itemId}`
+            : `https://web-saude-back-end-api.onrender.com/admin/deletar-clinica/${itemId}`;
 
         fetch(deleteEndpoint, {
           method: "DELETE",
@@ -108,8 +108,8 @@ export default function CardAdmin({ pageNumber, informacao, params }) {
         const token = localStorage.getItem("token");
         const deleteEndpoint =
           tipoEstabelecimento === "Atendimento 24 Horas"
-            ? `https://api-web-saude.vercel.app/aprovar-hospital/${itemId}`
-            : `https://api-web-saude.vercel.app/aprovar-clinica/${itemId}`;
+            ? `https://web-saude-back-end-api.onrender.com/aprovar-hospital/${itemId}`
+            : `https://web-saude-back-end-api.onrender.com/aprovar-clinica/${itemId}`;
 
         fetch(deleteEndpoint, {
           method: "PUT",

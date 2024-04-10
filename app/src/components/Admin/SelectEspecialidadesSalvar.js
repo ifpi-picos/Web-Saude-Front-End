@@ -67,7 +67,7 @@ export default function SelectEspecialidadesSalvar({
   };
 
   useEffect(() => {
-    fetch(`https://api-web-saude.vercel.app/especialidades/${nome}`)
+    fetch(`https://web-saude-back-end-api.onrender.com/especialidades/${nome}`)
       .then(response => response.json())
       .then(data => {
         const defaultSpecialties = data.map(specialty => ({
@@ -82,7 +82,7 @@ export default function SelectEspecialidadesSalvar({
   }, [nome]);
 
   useEffect(() => {
-    fetch("https://api-web-saude.vercel.app/especialidades")
+    fetch("https://web-saude-back-end-api.onrender.com/especialidades")
       .then(response => response.json())
       .then(data => {
         const specialtyOptionsFromAPI = data.map(specialty => ({

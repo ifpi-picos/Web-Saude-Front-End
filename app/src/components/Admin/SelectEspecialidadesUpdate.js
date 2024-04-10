@@ -67,7 +67,7 @@ export default function SelectEspecialidadesUpdate({
   };
 
   useEffect(() => {
-    fetch(`https://api-web-saude.vercel.app/especialidades/${nome}`)
+    fetch(`https://web-saude-back-end-api.onrender.com/especialidades/${nome}`)
       .then(response => response.json())
       .then(data => {
         const defaultSpecialties = data.map(specialty => ({

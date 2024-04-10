@@ -90,7 +90,7 @@ export default function ClinicaForm() {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        "https://api-web-saude.vercel.app/admin/nova-clinica",
+        "https://web-saude-back-end-api.onrender.com/admin/nova-clinica",
         {
           method: "POST",
           headers: {

@@ -39,7 +39,7 @@ export default async function VerMais({ nome }) {
         <Especialidades nome={nome} />
         <Horario nome={nome} />
         <Contato nome={nome} />
-        <Galeria unidadeDeSaude={unidadeDeSaude} />
+       <Galeria unidadeDeSaude={unidadeDeSaude}/>
         <Mapa nome={nome} />
         <Comentarios />
       </main>

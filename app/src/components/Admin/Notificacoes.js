@@ -54,7 +54,7 @@ export default function Notificacoes() {
 
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/marcar-como-lidas`,
+        `https://web-saude-back-end-api.onrender.com/marcar-como-lidas`,
         {
           method: "PUT",
           headers: {
@@ -84,7 +84,7 @@ export default function Notificacoes() {
 
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/marcar-como-lida/${id}`,
+        `https://web-saude-back-end-api.onrender.com/marcar-como-lida/${id}`,
         {
           method: "PUT",
           headers: {

@@ -32,7 +32,7 @@ export default function NovaSenhaForm({ nome, onClose, atualizarUsuarios }) {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/usuario/nova-senha/${nome}`,
+        `https://web-saude-back-end-api.onrender.com/usuario/nova-senha/${nome}`,
         {
           method: "PUT",
           headers: {

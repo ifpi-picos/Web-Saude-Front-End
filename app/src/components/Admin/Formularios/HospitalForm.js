@@ -87,7 +87,7 @@ export default function HospitalForm() {
 
     try {
       const response = await fetch(
-        "https://api-web-saude.vercel.app/admin/novo-hospital",
+        "https://web-saude-back-end-api.onrender.com/admin/novo-hospital",
         {
           method: "POST",
           headers: {

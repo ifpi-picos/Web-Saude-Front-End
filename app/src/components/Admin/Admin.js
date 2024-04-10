@@ -24,7 +24,7 @@ export default function Admin() {
 
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/deletar-usuario/${userId}`,
+        `https://web-saude-back-end-api.onrender.com/deletar-usuario/${userId}`,
         {
           method: "DELETE",
           headers: {
@@ -71,7 +71,7 @@ export default function Admin() {
     setUseToken(token);
     try {
       const response = await fetch(
-        `https://api-web-saude.vercel.app/usuarios/`,
+        `https://web-saude-back-end-api.onrender.com/usuarios/`,
         {
           headers: {
             "Content-Type": "application/json",
