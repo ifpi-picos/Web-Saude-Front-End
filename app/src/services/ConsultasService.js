@@ -30,7 +30,7 @@ class ConsultasService {
       const res = await fetch(
         `https://web-saude-back-end-api.onrender.com/unidade-de-saude/${nome}`,
         {
-          cache:"force-cache",
+          cache:"no-store",
 
         }
       );

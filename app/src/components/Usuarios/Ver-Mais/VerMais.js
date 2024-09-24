@@ -10,9 +10,9 @@ import Footer from "@/components/Usuarios/Footer";
 import Link from "next/link";
 import ConsultasService from "@/services/ConsultasService";
 import NotFound from "@/app/not-found";
-import "../../../components/Usuarios/css/verMais.css";
 import Galeria from "@/components/Usuarios/Ver-Mais/Galeria";
 import Comentarios from "@/components/Usuarios/Ver-Mais/Comentarios";
+import "../../../components/Usuarios/css/verMais.css";
 
 export default async function VerMais({ nome }) {
   const unidadeDeSaude = await ConsultasService?.pegarUnidadedeSaude(nome);

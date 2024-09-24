@@ -7,7 +7,7 @@ import { FaSignOutAlt } from "react-icons/fa"; // Importando o ícone de logout
 import styles from "../Admin/css/HeaderAdmin.module.css";
 import PrivateRoute from "./privateRouter";
 
-export default function HeaderAdmin() {
+export default function Header() {
   const [expanded, setExpanded] = useState(false);
   const [dropdownBackgroundColor, setDropdownBackgroundColor] =
     useState("transparent");

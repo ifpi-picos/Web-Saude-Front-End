@@ -32,7 +32,7 @@ const Comentarios = () => {
       <div className={styles.containerData}>
         <div className={styles.photoInput}>
           <div className={styles.perfilPhoto}>
-            <img src="image/perfil2.jpg" id="photoSelect" alt="" />
+            <img  id="photoSelect" alt="#" />
           </div>
           <input type="file" id="loadPhoto" />
           <input type="text" placeholder="Seu nome" />

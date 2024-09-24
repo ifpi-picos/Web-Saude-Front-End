@@ -4,7 +4,7 @@ import styles from "@/components/Admin/Formularios/css/Form.module.css";
 import Image from "next/image";
 
 function CloudinaryUploadWidget({ onURLChange, defaultImage }) {
-  const [imageSelected, setImageSelected] = useState(defaultImage || "");
+  const [imageSelected, setImageSelected] = useState("");
 
   function handleUploadSuccess(result) {
     const imageUrl = result.info.secure_url;
